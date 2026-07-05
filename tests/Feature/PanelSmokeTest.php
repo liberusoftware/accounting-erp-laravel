@@ -6,8 +6,11 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use App\Services\TeamManagementService;
+use Filament\Facades\Filament;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
@@ -82,5 +85,84 @@ class PanelSmokeTest extends TestCase
         }
 
         $this->assertSame([], $failures, count($failures).' Filament page(s) failed to render');
+    }
+
+    public function test_filament_edit_and_view_pages_render(): void
+    {
+        config(['accounting.enforce_2fa' => false]);
+
+        $user = User::factory()->create(['email_verified_at' => now()]);
+        app(TeamManagementService::class)->createPersonalTeamForUser($user);
+        $user = $user->fresh();
+        $team = (int) $user->current_team_id;
+        Role::findOrCreate('super_admin', 'web');
+        $user->assignRole('super_admin');
+        $this->actingAs($user);
+
+        $failures = [];
+        $checked = 0;
+        $skipped = [];
+
+        foreach (Filament::getPanels() as $panelId => $panel) {
+            foreach ($panel->getResources() as $resource) {
+                $pages = array_keys($resource::getPages());
+                $targets = array_values(array_intersect(['view', 'edit'], $pages));
+                if ($targets === []) {
+                    continue;
+                }
+
+                $record = $this->seedRecord($resource::getModel(), $team);
+                if (! $record instanceof Model) {
+                    $skipped[] = class_basename($resource);
+
+                    continue;
+                }
+
+                foreach ($targets as $page) {
+                    $name = "filament.{$panelId}.resources.{$resource::getSlug()}.{$page}";
+                    if (! Route::has($name)) {
+                        continue;
+                    }
+
+                    $params = ['record' => $record->getKey(), 'tenant' => $team];
+                    $checked++;
+                    try {
+                        $response = $this->get(route($name, $params));
+                        if ($response->status() >= 500) {
+                            $msg = $response->exception?->getMessage() ?? 'HTTP '.$response->status();
+                            $failures[] = "{$panelId}/".class_basename($resource)."/{$page} -> ".Str::limit($msg, 160);
+                        }
+                    } catch (\Throwable $e) {
+                        $failures[] = "{$panelId}/".class_basename($resource)."/{$page} -> EXC ".Str::limit($e->getMessage(), 160);
+                    }
+                }
+            }
+        }
+
+        fwrite(STDERR, "\n[edit-view-smoke] checked {$checked}, ".count($failures).' failed, '.count($skipped)." skipped (no factory/record)\n");
+        foreach ($failures as $f) {
+            fwrite(STDERR, "  ✗ {$f}\n");
+        }
+        if ($skipped !== []) {
+            fwrite(STDERR, '  (skipped: '.implode(', ', $skipped).")\n");
+        }
+
+        $this->assertSame([], $failures, count($failures).' Filament edit/view page(s) failed to render');
+    }
+
+    /** Best-effort: create one record of $model scoped to $team, or null if it can't be seeded. */
+    private function seedRecord(string $model, int $team): ?Model
+    {
+        try {
+            $record = $model::factory()->create();
+        } catch (\Throwable) {
+            return null; // no factory, or required relations the factory can't satisfy
+        }
+
+        if (Schema::hasColumn($record->getTable(), 'team_id')) {
+            $record->forceFill(['team_id' => $team])->save();
+        }
+
+        return $record;
     }
 }
