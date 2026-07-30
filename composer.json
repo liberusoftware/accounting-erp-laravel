@@ -27,7 +27,7 @@
         "nunomaduro/collision": "^8.9.4",
         "phpunit/phpunit": "^13.1.13",
         "spatie/laravel-menu": "^4.2.2",
-        "spatie/laravel-permission": "^7.4.2",
+        "spatie/laravel-permission": "^8.3.0",
         "spiral/roadrunner-cli": "^2.7.2",
         "spiral/roadrunner-http": "^4.1"
     },
