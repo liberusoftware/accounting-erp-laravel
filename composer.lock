@@ -3350,16 +3350,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v13.26.1",
+            "version": "v13.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "e4a1bc52ef551d52e60244bb004256d6861da7ab"
+                "reference": "6e2c363716964d8238cee7097b258119a984f0cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/e4a1bc52ef551d52e60244bb004256d6861da7ab",
-                "reference": "e4a1bc52ef551d52e60244bb004256d6861da7ab",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/6e2c363716964d8238cee7097b258119a984f0cf",
+                "reference": "6e2c363716964d8238cee7097b258119a984f0cf",
                 "shasum": ""
             },
             "require": {
@@ -3481,7 +3481,7 @@
                 "phpstan/phpstan": "^2.0",
                 "phpunit/phpunit": "^11.5.50 || ^12.5.8 || ^13.0.3",
                 "predis/predis": "^2.3 || ^3.0",
-                "rector/rector": "^2.3",
+                "rector/rector": "2.6.3",
                 "resend/resend-php": "^1.0",
                 "symfony/cache": "^7.4.0 || ^8.0.0",
                 "symfony/http-client": "^7.4.0 || ^8.0.0",
@@ -3573,7 +3573,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-08-18T20:31:28+00:00"
+            "time": "2026-08-25T20:57:16+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -3880,16 +3880,16 @@
         },
         {
             "name": "laravel/prompts",
-            "version": "v0.3.23",
+            "version": "v0.3.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/prompts.git",
-                "reference": "b7b4c35e5bc47450f6b6238c6cc9c47ba19b2221"
+                "reference": "5d3cdef29e93ca3b62b1871359db3078cd99908b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/b7b4c35e5bc47450f6b6238c6cc9c47ba19b2221",
-                "reference": "b7b4c35e5bc47450f6b6238c6cc9c47ba19b2221",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/5d3cdef29e93ca3b62b1871359db3078cd99908b",
+                "reference": "5d3cdef29e93ca3b62b1871359db3078cd99908b",
                 "shasum": ""
             },
             "require": {
@@ -3933,9 +3933,9 @@
             "description": "Add beautiful and user-friendly forms to your command-line applications.",
             "support": {
                 "issues": "https://github.com/laravel/prompts/issues",
-                "source": "https://github.com/laravel/prompts/tree/v0.3.23"
+                "source": "https://github.com/laravel/prompts/tree/v0.3.24"
             },
-            "time": "2026-08-11T18:58:24+00:00"
+            "time": "2026-08-20T12:55:36+00:00"
         },
         {
             "name": "laravel/pulse",
@@ -4226,16 +4226,16 @@
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v2.0.15",
+            "version": "v2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "dccd8bcb851bb03fcc005df650b708b57cc52661"
+                "reference": "7cfc24e4fa2cca045fb8dd2a797a2b2b13b655ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/dccd8bcb851bb03fcc005df650b708b57cc52661",
-                "reference": "dccd8bcb851bb03fcc005df650b708b57cc52661",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/7cfc24e4fa2cca045fb8dd2a797a2b2b13b655ed",
+                "reference": "7cfc24e4fa2cca045fb8dd2a797a2b2b13b655ed",
                 "shasum": ""
             },
             "require": {
@@ -4283,7 +4283,7 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2026-07-21T16:49:22+00:00"
+            "time": "2026-08-18T20:28:54+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -7049,7 +7049,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-collection-assistant",
-                "reference": "b0be8f28a5c6884148d96238569ed32846fa4ac3"
+                "reference": "89e6bcc08d3e9902da318ba4bf22806bf623f96e"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -7084,7 +7084,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-collection-assistant-api",
-                "reference": "fb9e0b445d578ba70dba72846b915f7c62d0a01a"
+                "reference": "165192b9e753ebae4a65148cfaefb92ced9fa57e"
             },
             "require": {
                 "illuminate/support": "^13.0",
@@ -7119,7 +7119,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-collection-assistant-filament",
-                "reference": "765896255106d10788b736d00929684fcd1088d0"
+                "reference": "ed1f7843d9cc5897004efa742a1d4eb603cca73e"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -7154,7 +7154,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-collection-assistant-livewire",
-                "reference": "8eea55a1205f5cdb9a83b4338a439d3d532d78f2"
+                "reference": "2679fbfa9f78d71a9d3976317a0180e4a80d2b65"
             },
             "require": {
                 "liberusoftware/module-accounting-cash-collection-assistant": "^1.0",
@@ -7189,7 +7189,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-flow-forecasting",
-                "reference": "94e7d92d0cc94295b02ec33e1b5490997628f315"
+                "reference": "87eeaef48a956246abe7a757be7c00538244e0a7"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -7224,7 +7224,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-flow-forecasting-api",
-                "reference": "19f67667ca81029eaac4dcd396622b1bb21db30a"
+                "reference": "42f73305d0f79658e00c6a831d25872315017fa6"
             },
             "require": {
                 "illuminate/support": "^13.0",
@@ -7259,7 +7259,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-flow-forecasting-filament",
-                "reference": "daf3200f4ac1e203d62a64f066302b283fcd033b"
+                "reference": "63aa86849061176bd41fdb0938279709a07bccab"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -7294,7 +7294,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-flow-forecasting-livewire",
-                "reference": "caa72f07b0fab925f6f40c7f71254994a27e5fd2"
+                "reference": "061274ba367498bd5bf5c8092c5079c347ae3fd4"
             },
             "require": {
                 "liberusoftware/module-accounting-cash-flow-forecasting": "^1.0",
@@ -7329,7 +7329,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-position",
-                "reference": "89f4a475db3470d4a9f1b5802b9080a58ba8cc21"
+                "reference": "03247c93d3d7065f0a8313c82f5f893460c8f4f0"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -7364,7 +7364,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-position-api",
-                "reference": "deb386ffff65bf23efbd763585612b663b0066ae"
+                "reference": "f55341876f39aae35d977e7784652c2faee2fb19"
             },
             "require": {
                 "illuminate/support": "^13.0",
@@ -7399,7 +7399,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-position-filament",
-                "reference": "d8599b68b2a5ca4e54f56e5d3e2d96285c9743e7"
+                "reference": "f28a3415680f2a8799c6afc7286ebaf83a2e526d"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -7434,7 +7434,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-position-livewire",
-                "reference": "9a1b1c3d41fb0e9af4b57068bb69a8dd1449453c"
+                "reference": "d39e079608bfd1176e42de80164e908f41ce4d88"
             },
             "require": {
                 "liberusoftware/module-accounting-cash-position": "^1.0",
@@ -7664,7 +7664,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-client-collaboration",
-                "reference": "29ef330dd7667e8be461a52c88fef058ab7c36c8"
+                "reference": "f8221f6abcd919cf1bfc4870d1978d2289b59e75"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -7699,7 +7699,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-client-collaboration-api",
-                "reference": "b39274631f00a079a53fd6d25f54fc55955f4394"
+                "reference": "9370560f56d34eddaaf38fa06d7162dc8453e0b5"
             },
             "require": {
                 "illuminate/support": "^13.0",
@@ -7734,7 +7734,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-client-collaboration-filament",
-                "reference": "b4bfbba77ecee674055db5dc173db0cf05080e2e"
+                "reference": "f83afbf840638a6fbc342c943493b9712e4181fe"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -7769,7 +7769,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-client-collaboration-livewire",
-                "reference": "abd2629bc7c26f97c2c9f9e40a41c88ae5a3e0fe"
+                "reference": "b2660ff42130ee84d4bae4c34d1fb63a2ad045f9"
             },
             "require": {
                 "liberusoftware/module-accounting-client-collaboration": "^1.0",
@@ -7804,7 +7804,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-close-management",
-                "reference": "95929a39e78de56bcfafeae6813f36c576edd619"
+                "reference": "011491733bd04beb9a56f5b82ebf4f3e38cee28d"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -7839,7 +7839,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-close-management-api",
-                "reference": "0cb202915ac2c2f6d411f6ff69c5766756b54806"
+                "reference": "3bdca242355bbaddb0f9b0ffa0439c772b4242e3"
             },
             "require": {
                 "illuminate/support": "^13.0",
@@ -7874,7 +7874,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-close-management-filament",
-                "reference": "c18e55e218d5623bdcf9789c70e0ef1d1294a831"
+                "reference": "b49f9fe69615db40b7d079b06411dca531d5a637"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -7909,7 +7909,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-close-management-livewire",
-                "reference": "24129f12e1ba545590b0b138f64179ea73326134"
+                "reference": "4758a571571cb46a37ac78811138d772ed8eee8b"
             },
             "require": {
                 "liberusoftware/module-accounting-close-management": "^1.0",
@@ -7944,7 +7944,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-coding-suggestions",
-                "reference": "67e2482e35b55099532335ec96a38aaf1515f204"
+                "reference": "e53dbdaf71fdf31e9c54a48a5e06e3b17f8db8bf"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -7979,7 +7979,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-coding-suggestions-api",
-                "reference": "a6124e20afd16ba4114246569295e3eacf24b2bd"
+                "reference": "51557b313f4bc9ed08362cf4edd28e5d62faff88"
             },
             "require": {
                 "illuminate/support": "^13.0",
@@ -8014,7 +8014,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-coding-suggestions-filament",
-                "reference": "471b1c5874a5a62361bd4d34c365d93d0040324c"
+                "reference": "97b5526763e504e0b18b2da4a4b3ed4dcd42990a"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -8049,7 +8049,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-coding-suggestions-livewire",
-                "reference": "57cc3ef7869a79ac90695ac74283462f6b0136ec"
+                "reference": "14ca6b3422d9f795bddcea8117c3db217eb44800"
             },
             "require": {
                 "liberusoftware/module-accounting-coding-suggestions": "^1.0",
@@ -8084,7 +8084,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-collections",
-                "reference": "6ca7b3826efc85ee49ecd6721a6ce15f68b5157c"
+                "reference": "86cf566f1d3203552e631a37d12b87eb80559e74"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -8119,7 +8119,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-collections-api",
-                "reference": "66fa7ba43f04d5927e398050d986b987d445ea2d"
+                "reference": "5effd8d62bf6721731b0aa64842ac6d32044b08e"
             },
             "require": {
                 "illuminate/support": "^13.0",
@@ -8154,7 +8154,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-collections-filament",
-                "reference": "e98630d9e8769dd85fcd776c06646515f346c523"
+                "reference": "6c9629ba06bb2611a0249abd1c5e38b14de8d9ea"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -8189,7 +8189,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-collections-livewire",
-                "reference": "1760fb4658555bdbe97e95be0d681d3b47a5bf8a"
+                "reference": "a001d386c0cd85de2e5dff302391b3a3b550cbdc"
             },
             "require": {
                 "liberusoftware/module-accounting-collections": "^1.0",
@@ -8224,7 +8224,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-consolidation",
-                "reference": "1d2e48811c718c04b01d1f12f89f277e6fe202f5"
+                "reference": "296aa7077cbc57d50b0c75854822aa2797bf86ac"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -8259,7 +8259,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-consolidation-api",
-                "reference": "59040c6bbccf44e77be67f8ad0e0d4a7af33134c"
+                "reference": "0bf85a6c1115f6d5c95b27f5e233bb5d48d32102"
             },
             "require": {
                 "illuminate/support": "^13.0",
@@ -8294,7 +8294,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-consolidation-filament",
-                "reference": "47431fe42301c3c6e256641d0cf1673e60b377f4"
+                "reference": "b949e1ac1d663d5bdc42c4c17cdc0eab5ed6d832"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -8329,7 +8329,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-consolidation-livewire",
-                "reference": "ade19bf0db8b01c23e72dbd36e38899b818b4224"
+                "reference": "127df77a1fe6cdbb8e5b7a41f3aaaa81bc377b1c"
             },
             "require": {
                 "liberusoftware/module-accounting-consolidation": "^1.0",
@@ -8364,7 +8364,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-construction-tax",
-                "reference": "19d28015fcb58054b71c12e50b5d9b55f734ffbf"
+                "reference": "cfe2b26a1ae5449e02919cdb62038762c1b0aaec"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -8399,7 +8399,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-construction-tax-api",
-                "reference": "f77e0673e0df11e4d19a820b9e277ea8cc2ac139"
+                "reference": "5d25b58e5cf1c435d340916f28af7647528efe11"
             },
             "require": {
                 "illuminate/support": "^13.0",
@@ -8434,7 +8434,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-construction-tax-filament",
-                "reference": "a3b020d2662a32f6336a0e82f82f68c2b1fbca5a"
+                "reference": "8a5c8ecf52000a5954bfee9821ba1c68b2170342"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -8469,7 +8469,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-construction-tax-livewire",
-                "reference": "7c1caf597b52d78bf3f804042e98324dd0094c72"
+                "reference": "b77bbc64f4ccc91a378f8b59f09129043561a02c"
             },
             "require": {
                 "liberusoftware/module-accounting-construction-tax": "^1.0",
@@ -8504,7 +8504,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-compliance",
-                "reference": "1e1610e6bc53fcb102bbc757b0c309b3aadf65fd"
+                "reference": "4833be166f52b565e4a62c65565c648e1594716f"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -8539,7 +8539,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-compliance-api",
-                "reference": "eb94c9f39d13a51837e3478bcf8daf84150cc1a3"
+                "reference": "f1720577e96144e761b895370dcb2bb4c30e15bd"
             },
             "require": {
                 "illuminate/support": "^13.0",
@@ -8574,7 +8574,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-compliance-filament",
-                "reference": "5ab24f49862b1bdf6fa2564f32345ff2ef82bad5"
+                "reference": "6a93257c13b6b2aba94db2ffc3d6626150d2184b"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -8609,7 +8609,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-compliance-livewire",
-                "reference": "7462329ef6125c446a551d0d436aa9cb421befe1"
+                "reference": "15255384143a8c519e48a31986d16b9e93d421ac"
             },
             "require": {
                 "liberusoftware/module-accounting-contractor-compliance": "^1.0",
@@ -8644,7 +8644,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-reporting",
-                "reference": "8ab6c09fc59411bc50cf8106294632dd4fe633e1"
+                "reference": "84c4123d739006e4968f7f318342f49503a72c39"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -8682,7 +8682,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-reporting-api",
-                "reference": "c9d1605e737be4af6323d99ba64f087c65dd237a"
+                "reference": "d8997e912b23c7ad3f3c6d2a32bb884b880e34cd"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -8720,7 +8720,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-reporting-filament",
-                "reference": "53cafe4a5a2393cccfac629abeb462709d5b4955"
+                "reference": "2819fe73af34e929e7fb94f772184a4a62606482"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -8758,7 +8758,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-reporting-livewire",
-                "reference": "f29643fa316973946a0006e82fe6910818f033a7"
+                "reference": "0578fe05b391fc1e57b84b676e8ee1ae22c94313"
             },
             "require": {
                 "liberusoftware/module-accounting-contractor-reporting": "^1.0",
@@ -8998,7 +8998,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-corporate-cards",
-                "reference": "364a1efa5b26928ba3fa78fe87bc9c2f0b9dfd9d"
+                "reference": "ac7e75289df9451d7453b7cc00465aaf1f68cfc6"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -9036,7 +9036,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-corporate-cards-api",
-                "reference": "f30a97992178d473639df6048e319dc1401786c2"
+                "reference": "eaeb753a0e9a8e2962d45e118219c77b29dcb6b9"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -9074,7 +9074,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-corporate-cards-filament",
-                "reference": "07d1ec961af64fcfdcb39773ac68633eb6df5320"
+                "reference": "5838dac333f59eb83d28d1fdeadbc394a6aed9f0"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -9112,7 +9112,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-corporate-cards-livewire",
-                "reference": "e2bfebb6affb3f8ab854efd15b4b836914e0c886"
+                "reference": "7adee04ea9e65c07d34b13c44ddaf2e21d9eb651"
             },
             "require": {
                 "liberusoftware/module-accounting-corporate-cards": "^1.0",
@@ -9150,7 +9150,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-credit-notes-and-adjustments",
-                "reference": "74c7a430f32cd8ff0293f0b46f69c3449b4e34ae"
+                "reference": "be9ce30a141a66b054dfc859dde626189b0a2c56"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -9188,7 +9188,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-credit-notes-and-adjustments-api",
-                "reference": "9e404524a5d5f01c5152aa3a4ce6202d08531e4d"
+                "reference": "ed10a8953e100f24bb64253af388b367dc6c8dce"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -9226,7 +9226,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-credit-notes-and-adjustments-filament",
-                "reference": "2089659a5141757c5a81d834bfbc2bff2f6237e2"
+                "reference": "401914a123142e1c85725ab4fc92fa2ad23fe8c7"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -9264,7 +9264,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-credit-notes-and-adjustments-livewire",
-                "reference": "6b93eb76d826a2e4ffc4b1b774c335f4d656fd9c"
+                "reference": "adc100171cf90dcda2e8ad9d3b0362a377db77a0"
             },
             "require": {
                 "liberusoftware/module-accounting-credit-notes-and-adjustments": "^1.0",
@@ -9302,7 +9302,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-custom-report-builder",
-                "reference": "4a760a0fa9ae36f7f5c1d85d3d7713d9304779ca"
+                "reference": "71cc7b80a23de1b68e8e5738d8209f02870695fc"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -9340,7 +9340,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-custom-report-builder-api",
-                "reference": "906c7c6313c23ba82c084bad2c8d1329d441732c"
+                "reference": "741d12472647aaa95e33c157e1171469cae9927a"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -9378,7 +9378,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-custom-report-builder-filament",
-                "reference": "2e6c34c0fc37e1a9403037bb14864b171d86f037"
+                "reference": "4613f904802a08384468523951e52c2b387b6b93"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -9416,7 +9416,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-custom-report-builder-livewire",
-                "reference": "79c40ac738646d469022a3373db47e0a3df4ef2f"
+                "reference": "077a01c23c8867248a102249121a93f64ed6609a"
             },
             "require": {
                 "liberusoftware/module-accounting-custom-report-builder": "^1.0",
@@ -9454,7 +9454,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-customer-payments",
-                "reference": "5d9f9a0dc21919a378decefa4a96b337a01d575d"
+                "reference": "4c1b1afe47cd589ec3e659f596ea35a5c7610eec"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -9492,7 +9492,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-customer-payments-api",
-                "reference": "82c344f3e787618437e81450066ce0b5faced0ec"
+                "reference": "7aa45fe7b1f5a31e7f4a8c29460410abfe8989c7"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -9530,7 +9530,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-customer-payments-filament",
-                "reference": "7f89f05514f464fbfb6f37ee0db79f268b5f3546"
+                "reference": "692a96ffe1057dcc1331c70f1a29b8463dbf0fdb"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -9568,7 +9568,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-customer-payments-livewire",
-                "reference": "e697e81174640605fa9af87934c1a3c4d63ad16c"
+                "reference": "9379855a620bdd2594274ece7bb9e72f63d3a6ef"
             },
             "require": {
                 "liberusoftware/module-accounting-customer-payments": "^1.0",
@@ -9606,7 +9606,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-customer-portal",
-                "reference": "a5adfc734cabcbd8f5b932c52279d7e15e88c93c"
+                "reference": "1080b5195cb43ff957cae71ee98240ed8f476c87"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -9644,7 +9644,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-customer-portal-api",
-                "reference": "1ec3952171c7074bcc8a79a26af7f2c0142f6cb4"
+                "reference": "f90dddb4e6d74c671e5482feb3098ae659da04be"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -9682,7 +9682,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-customer-portal-filament",
-                "reference": "11cc45e1c53c71e332f3cb9aa98517974779bc70"
+                "reference": "62693ee4c4b14f65777798c36119d65a86b231e8"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -9720,7 +9720,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-customer-portal-livewire",
-                "reference": "3627bd9e18d5f8d02673c3ad65dd1c80256ea3ee"
+                "reference": "a071cf15b84c010fe33376d76628267798e7abac"
             },
             "require": {
                 "liberusoftware/module-accounting-customer-portal": "^1.0",
@@ -9758,7 +9758,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-dashboards",
-                "reference": "03a3470c19ffb3e20be0a131afbd0e860c2057f7"
+                "reference": "f4476d1a9d46425be9f3cca0fa905ffc4a81b942"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -9796,7 +9796,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-dashboards-api",
-                "reference": "960727da128f243634ecb13d6ce5f324e2a56038"
+                "reference": "79ca37294d6bb62ffee9e833a63ca895003f2829"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -9834,7 +9834,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-dashboards-filament",
-                "reference": "572492d20c66fd61757037634353c9bed3050ba8"
+                "reference": "f96ea7aa2fe2f45b0a1d618db0ca60fb3cf9c3bf"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -9872,7 +9872,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-dashboards-livewire",
-                "reference": "79e4f9dcca2d1ba86984482419a9f7f14a1a8190"
+                "reference": "66489e34f6f6b39faf65207bc654cc6ee4782067"
             },
             "require": {
                 "liberusoftware/module-accounting-dashboards": "^1.0",
@@ -9910,7 +9910,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-debt-and-loans",
-                "reference": "e5a558cd9d7dcf6f8639712462a637861b6874da"
+                "reference": "0dd623221852d1b751335b8133e0b37502e347de"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -9948,7 +9948,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-debt-and-loans-api",
-                "reference": "f108b1d998fe8b2ba8e35a1102d3cc34da7eb9c5"
+                "reference": "01a89453cf103c52261c6b90380938b580a3b595"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -9987,7 +9987,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-debt-and-loans-filament",
-                "reference": "eba60c689fc729b66dee325e230a6f7ff407ea35"
+                "reference": "0dd582f407abdb3001d481fccadfc26e2923bb0d"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -10025,7 +10025,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-debt-and-loans-livewire",
-                "reference": "4f60b3d121ca9455269d60ed7f403eab00ebec79"
+                "reference": "9c1f860b857b22f031eb646ff382351c9776c6b0"
             },
             "require": {
                 "liberusoftware/module-accounting-debt-and-loans": "^1.0",
@@ -10063,7 +10063,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-deposits-and-clearing",
-                "reference": "0dec963754aa684dc058a5ad180e08ee49254c2d"
+                "reference": "9bbdd58d27fcaeb569c9256d3513f6260500267d"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -10101,7 +10101,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-deposits-and-clearing-api",
-                "reference": "70641854a61c8e4ebe3834b778afc9f56db5bef3"
+                "reference": "6b1eda9a1f9e64e03fbc3852ef61a12e955a9ca4"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -10140,7 +10140,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-deposits-and-clearing-filament",
-                "reference": "f115ce15b061bacea1f9231a56b1884599a75170"
+                "reference": "b49930af1625e73bbafd93ab44a43d73b6a6a2fd"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -10178,7 +10178,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-deposits-and-clearing-livewire",
-                "reference": "1888b84f966895ebec3106a3a72a352fe6440513"
+                "reference": "54d6525ed4a3621dfd457254056a15c619b9ae35"
             },
             "require": {
                 "liberusoftware/module-accounting-deposits-and-clearing": "^1.0",
@@ -10254,7 +10254,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-depreciation-api",
-                "reference": "b35098c3c972ad3c127ee26c69bf069d373a5bd2"
+                "reference": "cd6139e1e97081b3ab4bc1f5889974fedfe25401"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -10293,7 +10293,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-depreciation-filament",
-                "reference": "f86dbe4ea601ab1c2c279b78a8fe6d931d5f2b08"
+                "reference": "909a9ce0bbce36be3be0a152e9b5664457513349"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -10331,7 +10331,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-depreciation-livewire",
-                "reference": "1522bb36ee8be6bb45dd90dd907544d55ace9aec"
+                "reference": "d284831e2a8d3c9a1000de1c236e3862c0b50a56"
             },
             "require": {
                 "liberusoftware/module-accounting-depreciation": "^1.0",
@@ -18409,7 +18409,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-tax-returns",
-                "reference": "e3ed9611ef50cb8bc411bbd495610c4626c5a37a"
+                "reference": "fe92e49baadfff64d3a24e25f9e0598cfade65fe"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -18447,7 +18447,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-tax-returns-api",
-                "reference": "9b4cd80c4808bdc3b87a09040111bddc44a9bac3"
+                "reference": "8b0f98eb0593a672289370c23d1cd5300aedaa5e"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -18486,7 +18486,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-tax-returns-filament",
-                "reference": "bcdfa1cc00b40e0d2c27a617b470ede1335b163f"
+                "reference": "6679ec50bbc84b17b94dbfdbb3f81fd790ea42e6"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -18524,7 +18524,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-tax-returns-livewire",
-                "reference": "2049d234bf1ae36ef8e10629fa915f84f1666e2d"
+                "reference": "94d54688138ea756f8b6c907b0db6349b393b42c"
             },
             "require": {
                 "liberusoftware/module-accounting-tax-returns": "^1.0",
@@ -18715,7 +18715,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-time-tracking",
-                "reference": "e312072df4299c2e86896e1a995b004562dee8e7"
+                "reference": "ccc833808baf1ac4c2e67ad5dbe5c8bf067dc2b6"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -18753,7 +18753,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-time-tracking-api",
-                "reference": "42318bdd39e0877e7b592df50cb149bf1a2d2caf"
+                "reference": "606cea413947299f0849c9aee8f4cdd84df99e84"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -18792,7 +18792,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-time-tracking-filament",
-                "reference": "60fd10e0cf21db2c3985f8fcc2bd93c82e98e85f"
+                "reference": "c7ee8f6443666e65da50f88cb709862ed8ff25b6"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -18830,7 +18830,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-time-tracking-livewire",
-                "reference": "bde4f592ac0225a797875cc9a345c387c8fb522a"
+                "reference": "09db428e6dbc3a98726f838806d199112025c204"
             },
             "require": {
                 "liberusoftware/module-accounting-time-tracking": "^1.0",
@@ -18868,7 +18868,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-transfers",
-                "reference": "8d179e9a410f6d87b656a909ee8f8284dbacc6bb"
+                "reference": "f0c7df562593f88703dbd4a50a17c77cd8ce0811"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -18906,7 +18906,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-transfers-api",
-                "reference": "77664ad894487ab2b41e2d48273fbb6cbf23a53c"
+                "reference": "12c0378a4df8bbcf51ce90caaf854b9b7e647399"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -18945,7 +18945,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-transfers-filament",
-                "reference": "312d1b4edbe4c92a2a437af9d17cd9327194e6ac"
+                "reference": "d39dd18885bf597b2223e93884c95b00d2d245a3"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -18983,7 +18983,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-transfers-livewire",
-                "reference": "c25b57885792bcbdc7a07b87222db60efe518491"
+                "reference": "8402027e6c9d8ff8134e8d43bb83ba7d442e22c1"
             },
             "require": {
                 "liberusoftware/module-accounting-transfers": "^1.0",
@@ -19021,7 +19021,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-vat",
-                "reference": "ec83e4530ee2677c1b12efb381c9d9d5da035cde"
+                "reference": "faf937e0e85a181efa15b9358fed3778f40b47b5"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -19059,7 +19059,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-vat-api",
-                "reference": "348bc7cc8c3022569975ed41f5d0e3f134994dae"
+                "reference": "fdaec372b64c101a3f76a3e795ba79b8df9f73e4"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -19098,7 +19098,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-vat-filament",
-                "reference": "d3423a56be2a78f04ccad6e66aa8a57772749ccd"
+                "reference": "53a5ec0edbd5c927da6b136aff472fec90ba35b7"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -19136,7 +19136,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-vat-livewire",
-                "reference": "f72a70f197945cb780bb2d6aeb430dbcf6ae48be"
+                "reference": "20b351aff0da662858bbd44eaaadc9bf1a188050"
             },
             "require": {
                 "liberusoftware/module-accounting-vat": "^1.0",
@@ -19174,7 +19174,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-withholding-tax",
-                "reference": "dd795ee6a6dd1cdeb2457074b2349c6776b14486"
+                "reference": "41d48acb1f42d6b6b3357cce352a939ce6291f08"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -19209,7 +19209,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-withholding-tax-api",
-                "reference": "dbfb7df8d36f08b1031d23bf20689dbbd5914c9f"
+                "reference": "043e4d42d7968736bd22f65e21d5005e93ceea6f"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -19245,7 +19245,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-withholding-tax-filament",
-                "reference": "e7560ef6cd57f3fcb4a1ada23c3a63c5ab56201b"
+                "reference": "f8a6d9cfb12e92ad27b5b9aec4d054c72e5fafb6"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -19280,7 +19280,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-withholding-tax-livewire",
-                "reference": "1f119995558b4f530daeec69501399cacd40a9b0"
+                "reference": "1561ccfada2cd30e08b71c7534919c5cb8f08764"
             },
             "require": {
                 "liberusoftware/module-accounting-withholding-tax": "^1.0",
@@ -19315,7 +19315,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-workforce-costing",
-                "reference": "2e95f8ef91b9fda23ab65ef59743764abf647f19"
+                "reference": "843cafea13cefb9913654cadacf2b0097def0aa4"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -19353,7 +19353,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-workforce-costing-api",
-                "reference": "6e22b50f3e78a9079b4406961add3885d3bc56ed"
+                "reference": "029fac2bf7d34e592266b3dc749d04581ae67adc"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -19392,7 +19392,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-workforce-costing-filament",
-                "reference": "5aa9f1aecd1a7b087e8119b420d7b4434cbf64b1"
+                "reference": "5071d056f00792a3d9e785afdc0bf0df7c70005b"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -19430,7 +19430,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-workforce-costing-livewire",
-                "reference": "70b4f16074f6948e3cd41e87df7a480aec246a92"
+                "reference": "7ef4b9847add025e4bca0f4a9cc87a50576243a8"
             },
             "require": {
                 "liberusoftware/module-accounting-workforce-costing": "^1.0",
@@ -19468,7 +19468,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-workpapers",
-                "reference": "9535635b6591d72f54385e0cd2f1e3267bc46601"
+                "reference": "e71488bdb43fac87ff46ca1b90f02bdea561ff45"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -19506,7 +19506,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-workpapers-api",
-                "reference": "a891adbaf0b0ccce3e9dcec853fe0bc2c7c5d056"
+                "reference": "e987d221ea60da2d017d8bbe1bf2141a494cbc4c"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -19545,7 +19545,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-workpapers-filament",
-                "reference": "bae5fd5297419034afd1e175354e02098475c71f"
+                "reference": "6bb55d58d55336a9581afd76ea0f4722d98dc320"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -19583,7 +19583,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-workpapers-livewire",
-                "reference": "620841b1f441305732b096bcb2c9245be4087f63"
+                "reference": "a0611eaa238694039aa9ff5dfaced733599ea664"
             },
             "require": {
                 "liberusoftware/module-accounting-workpapers": "^1.0",
@@ -19621,7 +19621,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-xero-migration",
-                "reference": "2074b9b1b5a972a0008179de82546e96a749da8d"
+                "reference": "4de7b222918ec63e9341f912d3660806e24651ca"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -19659,7 +19659,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-xero-migration-api",
-                "reference": "49a3cd9625486518d97366c3b1d8fa6522592822"
+                "reference": "189e0dbba87eeef35d527a34a2514caa233f5885"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -19698,7 +19698,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-xero-migration-filament",
-                "reference": "62f4f4cb5d284621d988e36aa1c716cf49d5976c"
+                "reference": "49fa5ff87115788af7c6e77d97aa15aafc8dfa7d"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -19736,7 +19736,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-xero-migration-livewire",
-                "reference": "5e41586c0449c99d9e158cf2cbe0b0399bff70f7"
+                "reference": "d62e02a46dcf2e21ff7ff12404de964dc16b4878"
             },
             "require": {
                 "liberusoftware/module-accounting-xero-migration": "^1.0",
@@ -19774,7 +19774,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-year-end",
-                "reference": "89e980b55b2c319afa4c29d5c37b64513e6bd53a"
+                "reference": "b36909aa8362ff84bd4b5e54cea7ead7d8cd5108"
             },
             "require": {
                 "illuminate/database": "^13.0",
@@ -19812,7 +19812,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-year-end-api",
-                "reference": "424f8f97268728752580a43bb72a8a05f20c37cc"
+                "reference": "12e1afd5aa81a635d87dfba132692e12aa76fd49"
             },
             "require": {
                 "illuminate/http": "^13.0",
@@ -19850,7 +19850,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-year-end-filament",
-                "reference": "c084937652cf2b21163a62231a2db98e3f9e43a0"
+                "reference": "45c1e81ed3b1bb8ee097e6da22e5e13521ffa558"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -19888,7 +19888,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-year-end-livewire",
-                "reference": "31f24ceb34f1553434f6c1b420886936dfdae4df"
+                "reference": "12d91ab10096883e0d366248c23a9edc7d1ee8bf"
             },
             "require": {
                 "liberusoftware/module-accounting-year-end": "^1.0",
@@ -26570,16 +26570,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v8.1.5",
+            "version": "v8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "d07c06839e33047e2c894a6793248f3fb66c8129"
+                "reference": "eb7d9957d66739649e931ce7a9d05dab69f8abac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/d07c06839e33047e2c894a6793248f3fb66c8129",
-                "reference": "d07c06839e33047e2c894a6793248f3fb66c8129",
+                "url": "https://api.github.com/repos/symfony/console/zipball/eb7d9957d66739649e931ce7a9d05dab69f8abac",
+                "reference": "eb7d9957d66739649e931ce7a9d05dab69f8abac",
                 "shasum": ""
             },
             "require": {
@@ -26646,7 +26646,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v8.1.5"
+                "source": "https://github.com/symfony/console/tree/v8.1.6"
             },
             "funding": [
                 {
@@ -26666,20 +26666,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-21T14:29:57+00:00"
+            "time": "2026-08-25T14:18:42+00:00"
         },
         {
             "name": "symfony/css-selector",
-            "version": "v8.1.5",
+            "version": "v8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "a291fb5adb65f52a4bb315db2d803698315dc64d"
+                "reference": "08e2905152a39cf3fd1745d83f8c483e258887d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/a291fb5adb65f52a4bb315db2d803698315dc64d",
-                "reference": "a291fb5adb65f52a4bb315db2d803698315dc64d",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/08e2905152a39cf3fd1745d83f8c483e258887d9",
+                "reference": "08e2905152a39cf3fd1745d83f8c483e258887d9",
                 "shasum": ""
             },
             "require": {
@@ -26715,7 +26715,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v8.1.5"
+                "source": "https://github.com/symfony/css-selector/tree/v8.1.6"
             },
             "funding": [
                 {
@@ -26735,7 +26735,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-21T17:47:34+00:00"
+            "time": "2026-08-23T10:06:25+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -27294,16 +27294,16 @@
         },
         {
             "name": "symfony/http-client-contracts",
-            "version": "v3.7.1",
+            "version": "v3.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client-contracts.git",
-                "reference": "41fc42d276aeff21192465331ebbab7d83a743c0"
+                "reference": "35be0019e2c2c9fba80f9dc033290a5240f7b44f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/41fc42d276aeff21192465331ebbab7d83a743c0",
-                "reference": "41fc42d276aeff21192465331ebbab7d83a743c0",
+                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/35be0019e2c2c9fba80f9dc033290a5240f7b44f",
+                "reference": "35be0019e2c2c9fba80f9dc033290a5240f7b44f",
                 "shasum": ""
             },
             "require": {
@@ -27352,7 +27352,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/http-client-contracts/tree/v3.7.1"
+                "source": "https://github.com/symfony/http-client-contracts/tree/v3.7.3"
             },
             "funding": [
                 {
@@ -27372,20 +27372,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-06-05T06:23:12+00:00"
+            "time": "2026-08-04T08:41:16+00:00"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v8.1.5",
+            "version": "v8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "ee16f97e95cfa011a742714d7c8c8f70fe7423f4"
+                "reference": "093b78326f649c3a9db922b9f17123b6aeb3b8fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/ee16f97e95cfa011a742714d7c8c8f70fe7423f4",
-                "reference": "ee16f97e95cfa011a742714d7c8c8f70fe7423f4",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/093b78326f649c3a9db922b9f17123b6aeb3b8fb",
+                "reference": "093b78326f649c3a9db922b9f17123b6aeb3b8fb",
                 "shasum": ""
             },
             "require": {
@@ -27433,7 +27433,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v8.1.5"
+                "source": "https://github.com/symfony/http-foundation/tree/v8.1.6"
             },
             "funding": [
                 {
@@ -27453,20 +27453,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-20T09:59:12+00:00"
+            "time": "2026-08-30T20:10:55+00:00"
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v8.1.5",
+            "version": "v8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "0306e1e65b90023fe40de6c6be95d06396bcb2e6"
+                "reference": "2f73beb7c6f1a97d2c17bbf4dbd59da8cc18b355"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/0306e1e65b90023fe40de6c6be95d06396bcb2e6",
-                "reference": "0306e1e65b90023fe40de6c6be95d06396bcb2e6",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/2f73beb7c6f1a97d2c17bbf4dbd59da8cc18b355",
+                "reference": "2f73beb7c6f1a97d2c17bbf4dbd59da8cc18b355",
                 "shasum": ""
             },
             "require": {
@@ -27543,7 +27543,7 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-kernel/tree/v8.1.5"
+                "source": "https://github.com/symfony/http-kernel/tree/v8.1.6"
             },
             "funding": [
                 {
@@ -27563,7 +27563,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-22T13:45:00+00:00"
+            "time": "2026-08-30T21:40:49+00:00"
         },
         {
             "name": "symfony/mailer",
@@ -27647,7 +27647,7 @@
         },
         {
             "name": "symfony/mime",
-            "version": "v8.1.5",
+            "version": "v8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
@@ -27709,7 +27709,7 @@
                 "mime-type"
             ],
             "support": {
-                "source": "https://github.com/symfony/mime/tree/v8.1.5"
+                "source": "https://github.com/symfony/mime/tree/v8.1.6"
             },
             "funding": [
                 {
@@ -28642,7 +28642,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v8.1.5",
+            "version": "v8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -28683,7 +28683,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v8.1.5"
+                "source": "https://github.com/symfony/process/tree/v8.1.6"
             },
             "funding": [
                 {
@@ -28788,16 +28788,16 @@
         },
         {
             "name": "symfony/property-info",
-            "version": "v8.1.5",
+            "version": "v8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/property-info.git",
-                "reference": "b335f8e7fb1440ed3448fb33340efc6127678e53"
+                "reference": "d25e1dabbaff3f91bb15ba68328cf4fbd1c43c42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/property-info/zipball/b335f8e7fb1440ed3448fb33340efc6127678e53",
-                "reference": "b335f8e7fb1440ed3448fb33340efc6127678e53",
+                "url": "https://api.github.com/repos/symfony/property-info/zipball/d25e1dabbaff3f91bb15ba68328cf4fbd1c43c42",
+                "reference": "d25e1dabbaff3f91bb15ba68328cf4fbd1c43c42",
                 "shasum": ""
             },
             "require": {
@@ -28850,7 +28850,7 @@
                 "validator"
             ],
             "support": {
-                "source": "https://github.com/symfony/property-info/tree/v8.1.5"
+                "source": "https://github.com/symfony/property-info/tree/v8.1.6"
             },
             "funding": [
                 {
@@ -28870,7 +28870,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-21T17:47:34+00:00"
+            "time": "2026-08-30T08:48:43+00:00"
         },
         {
             "name": "symfony/psr-http-message-bridge",
@@ -28961,7 +28961,7 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v8.1.5",
+            "version": "v8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
@@ -29017,7 +29017,7 @@
                 "url"
             ],
             "support": {
-                "source": "https://github.com/symfony/routing/tree/v8.1.5"
+                "source": "https://github.com/symfony/routing/tree/v8.1.6"
             },
             "funding": [
                 {
@@ -29041,16 +29041,16 @@
         },
         {
             "name": "symfony/serializer",
-            "version": "v8.1.5",
+            "version": "v8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/serializer.git",
-                "reference": "9c064d505c661e3e17aa8999870f4fb0ed05e024"
+                "reference": "931151b12d6e2d4996ce2ce8e7b180d35455f37a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/serializer/zipball/9c064d505c661e3e17aa8999870f4fb0ed05e024",
-                "reference": "9c064d505c661e3e17aa8999870f4fb0ed05e024",
+                "url": "https://api.github.com/repos/symfony/serializer/zipball/931151b12d6e2d4996ce2ce8e7b180d35455f37a",
+                "reference": "931151b12d6e2d4996ce2ce8e7b180d35455f37a",
                 "shasum": ""
             },
             "require": {
@@ -29116,7 +29116,7 @@
             "description": "Handles serializing and deserializing data structures, including object graphs, into array structures or other formats like XML and JSON.",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/serializer/tree/v8.1.5"
+                "source": "https://github.com/symfony/serializer/tree/v8.1.6"
             },
             "funding": [
                 {
@@ -29136,20 +29136,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-22T09:06:25+00:00"
+            "time": "2026-08-30T08:48:47+00:00"
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v3.7.1",
+            "version": "v3.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "c0a284bab1ed8aa0417e3d69250ab437739563a0"
+                "reference": "15e6a07ec2a2c75ceb1b21dd98105ee8456d2257"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/c0a284bab1ed8aa0417e3d69250ab437739563a0",
-                "reference": "c0a284bab1ed8aa0417e3d69250ab437739563a0",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/15e6a07ec2a2c75ceb1b21dd98105ee8456d2257",
+                "reference": "15e6a07ec2a2c75ceb1b21dd98105ee8456d2257",
                 "shasum": ""
             },
             "require": {
@@ -29203,7 +29203,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/v3.7.1"
+                "source": "https://github.com/symfony/service-contracts/tree/v3.7.3"
             },
             "funding": [
                 {
@@ -29223,7 +29223,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-06-16T09:55:08+00:00"
+            "time": "2026-07-27T15:39:01+00:00"
         },
         {
             "name": "symfony/string",
@@ -29652,16 +29652,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v8.1.5",
+            "version": "v8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "61743d9bc7ab23b194527ca1be2fafd7dc93b74a"
+                "reference": "3783365b58972f4779254d98372af80fbf15e170"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/61743d9bc7ab23b194527ca1be2fafd7dc93b74a",
-                "reference": "61743d9bc7ab23b194527ca1be2fafd7dc93b74a",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/3783365b58972f4779254d98372af80fbf15e170",
+                "reference": "3783365b58972f4779254d98372af80fbf15e170",
                 "shasum": ""
             },
             "require": {
@@ -29715,7 +29715,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v8.1.5"
+                "source": "https://github.com/symfony/var-dumper/tree/v8.1.6"
             },
             "funding": [
                 {
@@ -29735,20 +29735,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-21T12:16:08+00:00"
+            "time": "2026-08-30T20:10:55+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v8.1.5",
+            "version": "v8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "b3fc9e8888eeb9daddc33bfbd15d282a61f543cd"
+                "reference": "0b4aa53a67f9fece88c665f1a1dadcfd25d93fe5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/b3fc9e8888eeb9daddc33bfbd15d282a61f543cd",
-                "reference": "b3fc9e8888eeb9daddc33bfbd15d282a61f543cd",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/0b4aa53a67f9fece88c665f1a1dadcfd25d93fe5",
+                "reference": "0b4aa53a67f9fece88c665f1a1dadcfd25d93fe5",
                 "shasum": ""
             },
             "require": {
@@ -29791,7 +29791,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v8.1.5"
+                "source": "https://github.com/symfony/yaml/tree/v8.1.6"
             },
             "funding": [
                 {
@@ -29811,7 +29811,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-21T12:16:08+00:00"
+            "time": "2026-08-30T01:03:44+00:00"
         },
         {
             "name": "thecodingmachine/safe",
@@ -31302,16 +31302,16 @@
         },
         {
             "name": "laravel/boost",
-            "version": "v2.5.5",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/boost.git",
-                "reference": "a6c798975a893d3c0a609ebc6ed37a007ecbedec"
+                "reference": "b19e98a8637cb69b2aab7b5b6c5fe9e2c79d182f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/boost/zipball/a6c798975a893d3c0a609ebc6ed37a007ecbedec",
-                "reference": "a6c798975a893d3c0a609ebc6ed37a007ecbedec",
+                "url": "https://api.github.com/repos/laravel/boost/zipball/b19e98a8637cb69b2aab7b5b6c5fe9e2c79d182f",
+                "reference": "b19e98a8637cb69b2aab7b5b6c5fe9e2c79d182f",
                 "shasum": ""
             },
             "require": {
@@ -31364,7 +31364,7 @@
                 "issues": "https://github.com/laravel/boost/issues",
                 "source": "https://github.com/laravel/boost"
             },
-            "time": "2026-08-19T02:26:00+00:00"
+            "time": "2026-08-26T21:39:22+00:00"
         },
         {
             "name": "laravel/mcp",
