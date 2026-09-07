@@ -16,14 +16,15 @@ final class OpenDispute
 {
     public function handle(PayableOpenItem $item, string $reason, ?float $amount = null): PayableDispute
     {
-        $amount ??= $item->outstanding();
-        if (blank($reason) || $amount <= 0 || $amount > $item->outstanding() || $item->status === PayableStatus::Settled) {
-            throw new InvalidPayable('A dispute requires a valid reason and amount within the open balance.');
-        }
-        if ($item->disputes()->where('status', DisputeStatus::Open)->exists()) {
-            throw new InvalidPayable('An open dispute already exists for this item.');
-        }
         $dispute = DB::transaction(function () use ($item, $amount, $reason): PayableDispute {
+            $item = PayableOpenItem::query()->lockForUpdate()->findOrFail($item->getKey());
+            $amount ??= $item->outstanding();
+            if (blank($reason) || $amount <= 0 || $amount > $item->outstanding() || $item->status === PayableStatus::Settled) {
+                throw new InvalidPayable('A dispute requires a valid reason and amount within the open balance.');
+            }
+            if ($item->disputes()->where('status', DisputeStatus::Open)->exists()) {
+                throw new InvalidPayable('An open dispute already exists for this item.');
+            }
             $dispute = $item->disputes()->create(['amount' => $amount, 'reason' => $reason, 'status' => DisputeStatus::Open, 'opened_at' => now()]);
             $item->update(['status' => PayableStatus::Disputed]);
             DB::afterCommit(fn (): mixed => event(new DisputeOpened(PayableDispute::query()->findOrFail($dispute->getKey()))));

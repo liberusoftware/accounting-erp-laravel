@@ -1,27 +1,98 @@
 openapi: 3.1.0
-info: {title: Accounting Accounts Receivable API, version: 1.0.0}
+info:
+  title: Accounting Accounts Receivable API
+  version: 1.0.0
 servers: [{url: /}]
 paths:
   /api/v1/accounting/accounts-receivable:
-    get: {operationId: accounting.accounts.receivable.list, security: [{sanctum: []}], parameters: [{name: party_id, in: query, schema: {type: integer}}, {name: page[size], in: query, schema: {type: integer, minimum: 1, maximum: 100}}], responses: {'200': {description: Authorized open items}}}
-    post: {operationId: accounting.accounts.receivable.create, security: [{sanctum: []}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/OpenItemCreate'}}}}, responses: {'201': {description: Open item created}}}
+    get:
+      operationId: accounting.accounts.receivable.list
+      security: [{sanctum: []}]
+      parameters: [{$ref: '#/components/parameters/PartyId'}, {$ref: '#/components/parameters/PageSize'}]
+      responses: {'200': {$ref: '#/components/responses/Collection'}}
+    post:
+      operationId: accounting.accounts.receivable.create
+      security: [{sanctum: []}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/OpenItemCreate'}}}}
+      responses: {'201': {$ref: '#/components/responses/OpenItem'}}
+  /api/v1/accounting/accounts-receivable/{openItem}:
+    get:
+      operationId: accounting.accounts.receivable.get
+      security: [{sanctum: []}]
+      parameters: [{name: openItem, in: path, required: true, schema: {type: string}}]
+      responses: {'200': {$ref: '#/components/responses/OpenItem'}}
+  /api/v1/accounting/accounts-receivable/receipts:
+    get:
+      operationId: accounting.accounts.receivable.receipts.list
+      security: [{sanctum: []}]
+      parameters: [{$ref: '#/components/parameters/PartyId'}, {$ref: '#/components/parameters/PageSize'}]
+      responses: {'200': {$ref: '#/components/responses/Collection'}}
+    post:
+      operationId: accounting.accounts.receivable.receipts.create
+      security: [{sanctum: []}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/ReceiptCreate'}}}}
+      responses: {'201': {$ref: '#/components/responses/Receipt'}}
+  /api/v1/accounting/accounts-receivable/receipts/{receipt}/apply:
+    post:
+      operationId: accounting.accounts.receivable.receipts.apply
+      security: [{sanctum: []}]
+      parameters: [{name: receipt, in: path, required: true, schema: {type: string}}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/ReceiptApplication'}}}}
+      responses: {'200': {$ref: '#/components/responses/Receipt'}}
+  /api/v1/accounting/accounts-receivable/disputes:
+    get:
+      operationId: accounting.accounts.receivable.disputes.list
+      security: [{sanctum: []}]
+      parameters: [{name: status, in: query, schema: {type: string, enum: [open, resolved, rejected]}}, {$ref: '#/components/parameters/PageSize'}]
+      responses: {'200': {$ref: '#/components/responses/Collection'}}
+    post: {operationId: accounting.accounts.receivable.disputes.create, security: [{sanctum: []}], responses: {'201': {description: Dispute created}}}
+  /api/v1/accounting/accounts-receivable/disputes/{dispute}/resolve:
+    post: {operationId: accounting.accounts.receivable.disputes.resolve, security: [{sanctum: []}], parameters: [{name: dispute, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Dispute resolved}}}
   /api/v1/accounting/accounts-receivable/aging:
     get: {operationId: accounting.accounts.receivable.aging, security: [{sanctum: []}], responses: {'200': {description: Aging buckets}}}
+  /api/v1/accounting/accounts-receivable/reconciliation:
+    get: {operationId: accounting.accounts.receivable.reconciliation, security: [{sanctum: []}], responses: {'200': {description: Control account reconciliation}}}
   /api/v1/accounting/accounts-receivable/statement/{party}:
-    get: {operationId: accounting.accounts.receivable.statement, security: [{sanctum: []}], responses: {'200': {description: Customer statement}}}
-  /api/v1/accounting/accounts-receivable/receipts:
-    post: {operationId: accounting.accounts.receivable.receipts.create, security: [{sanctum: []}], responses: {'201': {description: Receipt created}}}
+    get: {operationId: accounting.accounts.receivable.statement, security: [{sanctum: []}], parameters: [{name: party, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Customer statement}}}
+  /api/v1/accounting/accounts-receivable/balances/{party}:
+    get: {operationId: accounting.accounts.receivable.balances, security: [{sanctum: []}], parameters: [{name: party, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Customer balances}}}
+  /api/v1/accounting/accounts-receivable/customers/{party}/credit-control:
+    post: {operationId: accounting.accounts.receivable.credit-control.set, security: [{sanctum: []}], parameters: [{name: party, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Credit control updated}}}
 components:
   securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}
+  parameters:
+    PartyId: {name: party_id, in: query, schema: {type: integer, minimum: 1}}
+    PageSize: {name: page[size], in: query, schema: {type: integer, minimum: 1, maximum: 100, default: 25}}
   schemas:
     OpenItemCreate:
       type: object
       required: [party_id, reference, issued_on, original_amount, currency]
       properties:
-        party_id: {type: integer}
+        party_id: {type: integer, minimum: 1}
         reference: {type: string, maxLength: 128}
         issued_on: {type: string, format: date}
         due_on: {type: string, format: date, nullable: true}
-        original_amount: {type: number, minimum: 0.01}
-        currency: {type: string, minLength: 3, maxLength: 3}
+        original_amount: {type: number, exclusiveMinimum: 0}
+        currency: {type: string, pattern: '^[A-Z]{3}$'}
+        source_type: {type: string, nullable: true}
+        source_id: {type: string, nullable: true}
         metadata: {type: object, additionalProperties: true}
+    ReceiptCreate:
+      type: object
+      required: [amount, currency]
+      properties:
+        party_id: {type: integer, nullable: true}
+        received_on: {type: string, format: date, nullable: true}
+        amount: {type: number, exclusiveMinimum: 0}
+        currency: {type: string, pattern: '^[A-Z]{3}$'}
+        reference: {type: string, maxLength: 128, nullable: true}
+    ReceiptApplication:
+      type: object
+      required: [open_item_id, amount]
+      properties:
+        open_item_id: {type: integer, minimum: 1}
+        amount: {type: number, exclusiveMinimum: 0}
+  responses:
+    Collection: {description: Authorized paginated resources}
+    OpenItem: {description: Authorized receivable open item}
+    Receipt: {description: Authorized receivable receipt}

@@ -20,6 +20,8 @@ use Filament\Tables\Table;
 
 class PlanResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Workspace & Integrations';
+
     #[\Override]
     protected static ?string $model = Plan::class;
 

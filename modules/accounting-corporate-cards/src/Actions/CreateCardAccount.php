@@ -21,6 +21,6 @@ final class CreateCardAccount
             throw new InvalidCorporateCard('Card reference already exists.');
         }
 
-return CardAccount::create([...$attributes, 'spent_amount' => 0, 'status' => 'active']);
+        return CardAccount::create([...$attributes, 'spent_amount' => 0, 'status' => 'active']);
     }
 }

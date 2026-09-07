@@ -27,6 +27,6 @@ final class RecordCustomerPayment
             throw new InvalidCustomerPayment('Payment reference already exists.');
         }
 
-return CustomerPayment::create([...$attributes, 'kind' => $kind, 'status' => CustomerPaymentStatus::Unreconciled, 'allocated_amount' => 0, 'refunded_amount' => 0]);
+        return CustomerPayment::create([...$attributes, 'kind' => $kind, 'status' => CustomerPaymentStatus::Unreconciled, 'allocated_amount' => 0, 'refunded_amount' => 0]);
     }
 }

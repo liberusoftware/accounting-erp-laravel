@@ -43,6 +43,10 @@ Route::middleware('auth')->get('/dashboard', function (): RedirectResponse {
         return redirect()->to('/admin/'.($team?->getKey() ?? ''));
     }
 
+    if (($team = $user->currentTeam) !== null && $team->accounting_setup_completed_at === null) {
+        return redirect('/app/account-setup');
+    }
+
     return redirect()->route('filament.app.pages.dashboard');
 })->name('dashboard');
 

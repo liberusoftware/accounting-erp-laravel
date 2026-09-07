@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Liberu\Accounting\AccountsPayable\Enums\PayableStatus;
 use Liberu\Accounting\AccountsPayable\Events\PaymentApplied;
 use Liberu\Accounting\AccountsPayable\Exceptions\InvalidPayable;
+use Liberu\Accounting\AccountsPayable\Models\PayableAccount;
 use Liberu\Accounting\AccountsPayable\Models\PayableOpenItem;
 use Liberu\Accounting\AccountsPayable\Models\PayablePayment;
 
@@ -18,7 +19,8 @@ final class ApplyPayment
         return DB::transaction(function () use ($payment, $item, $amount) {
             $payment = PayablePayment::lockForUpdate()->findOrFail($payment->id);
             $item = PayableOpenItem::lockForUpdate()->findOrFail($item->id);
-            if ($amount <= 0 || ($payment->party_id !== null && $payment->party_id !== $item->party_id) || $payment->currency !== $item->currency || $amount > $payment->unapplied() || $amount > $item->outstanding()) {
+            $account = PayableAccount::query()->where('party_id', $item->party_id)->first();
+            if ($amount <= 0 || ($payment->party_id !== null && $payment->party_id !== $item->party_id) || $payment->currency !== $item->currency || $account?->payment_hold || $amount > $payment->unapplied() || $amount > $item->outstanding()) {
                 throw new InvalidPayable('Payment application must match the supplier and remain within both outstanding balances.');
             }
             if ($payment->applications()->where('open_item_id', $item->id)->exists()) {

@@ -17,6 +17,6 @@ final class RequestReportExport
             throw new InvalidCustomReport('Export format is not supported.');
         }
 
-return $report->exports()->create(['team_id' => $report->team_id, 'format' => $format, 'status' => ReportExportStatus::Requested, 'parameters' => $parameters]);
+        return $report->exports()->create(['team_id' => $report->team_id, 'format' => $format, 'status' => ReportExportStatus::Requested, 'parameters' => $parameters]);
     }
 }

@@ -26,6 +26,8 @@ use Filament\Tables\Table;
 
 class CustomerResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Sales';
+
     #[\Override]
     protected static ?string $model = Customer::class;
 

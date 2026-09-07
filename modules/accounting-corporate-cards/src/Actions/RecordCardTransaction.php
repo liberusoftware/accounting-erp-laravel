@@ -23,7 +23,7 @@ final class RecordCardTransaction
             throw new InvalidCorporateCard('Transaction exceeds the card limit.');
         }
 
-return DB::transaction(function () use ($account, $attributes, $amount): CardTransaction {
+        return DB::transaction(function () use ($account, $attributes, $amount): CardTransaction {
             $transaction = $account->transactions()->create([...$attributes, 'team_id' => $account->team_id, 'amount' => $amount, 'status' => CardTransactionStatus::Unassigned]);
             $account->increment('spent_amount', $amount);
 

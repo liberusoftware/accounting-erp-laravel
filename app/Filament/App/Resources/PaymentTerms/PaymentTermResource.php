@@ -20,6 +20,8 @@ use Filament\Tables\Table;
 
 class PaymentTermResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Sales';
+
     #[\Override]
     protected static ?string $model = PaymentTerm::class;
 

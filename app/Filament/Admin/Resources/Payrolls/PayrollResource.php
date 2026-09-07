@@ -31,7 +31,7 @@ class PayrollResource extends Resource
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-currency-dollar';
 
     #[\Override]
-    protected static string|\UnitEnum|null $navigationGroup = 'HR';
+    protected static string|\UnitEnum|null $navigationGroup = 'Payroll';
 
     #[\Override]
     public static function form(Schema $schema): Schema

@@ -1,0 +1,11 @@
+{
+  "name": "liberusoftware/module-accounting-account-reconciliations",
+  "description": "Account reconciliation workpapers, review, certification, and carry-forward.",
+  "type": "liberu-module",
+  "license": "MIT",
+  "require": {"php": "^8.5", "illuminate/database": "^13.0", "illuminate/support": "^13.0"},
+  "autoload": {"psr-4": {"Liberu\\Accounting\\AccountReconciliations\\": "src/"}},
+  "extra": {"laravel": {"providers": ["Liberu\\Accounting\\AccountReconciliations\\AccountReconciliationsServiceProvider"]}, "liberu": {"name": "accounting-account-reconciliations"}},
+  "version": "1.0.0",
+  "config": {"allow-plugins": {"pestphp/pest-plugin": true}}
+}

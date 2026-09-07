@@ -13,7 +13,7 @@ final class SyncFinalizedInvoice
     public function handle(SalesInvoice $invoice): ReceivableOpenItem
     {
         return DB::transaction(function () use ($invoice) {
-            $existing = ReceivableOpenItem::query()->where('source_type', SalesInvoice::class)->where('source_id', (string) $invoice->getKey())->first();
+            $existing = ReceivableOpenItem::query()->where('source_type', SalesInvoice::class)->where('source_id', (string) $invoice->getKey())->lockForUpdate()->first();
             if ($existing) {
                 return $existing;
             }
