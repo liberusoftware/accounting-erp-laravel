@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\FixedAssets\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $depreciation_account_ref
  * @property int $useful_life_months
  * @property string $depreciation_method
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Asset> $assets
+ * @property-read Collection<int, Asset> $assets
  */
 final class AssetCategory extends Model
 {

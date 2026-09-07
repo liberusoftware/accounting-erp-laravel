@@ -6,6 +6,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Liberu\Accounting\AccountsReceivable\Actions\ApplyReceipt;
 use Liberu\Accounting\AccountsReceivable\Actions\CreateOpenItem;
 use Liberu\Accounting\AccountsReceivable\Actions\OpenDispute;
@@ -13,6 +14,10 @@ use Liberu\Accounting\AccountsReceivable\Actions\RecordReceipt;
 use Liberu\Accounting\AccountsReceivable\Actions\ResolveDispute;
 use Liberu\Accounting\AccountsReceivable\Enums\DisputeStatus;
 use Liberu\Accounting\AccountsReceivable\Enums\ReceivableStatus;
+use Liberu\Accounting\AccountsReceivable\Events\DisputeOpened;
+use Liberu\Accounting\AccountsReceivable\Events\DisputeResolved;
+use Liberu\Accounting\AccountsReceivable\Events\ReceiptRecorded;
+use Liberu\Accounting\AccountsReceivable\Exceptions\InvalidReceivable;
 use Liberu\Accounting\AccountsReceivable\Queries\AgingQuery;
 use Liberu\Accounting\AccountsReceivable\Queries\StatementQuery;
 use Liberu\Accounting\FinancialMasterData\Enums\PartyType;
@@ -67,6 +72,19 @@ final class AccountingAccountsReceivableTest extends TestCase
         $this->assertSame(DisputeStatus::Resolved, $dispute->fresh()->status);
         $this->assertSame(ReceivableStatus::Open, $current->fresh()->status);
         $this->assertNotNull($old->fresh());
+    }
+
+    public function test_receivable_invariants_and_after_commit_events_are_enforced(): void
+    {
+        Event::fake([ReceiptRecorded::class, DisputeOpened::class, DisputeResolved::class]);
+        $party = $this->party();
+        $item = app(CreateOpenItem::class)->handle(['party_id' => $party->id, 'reference' => 'INVARIANT', 'issued_on' => '2026-08-01', 'original_amount' => 100, 'currency' => 'USD']);
+        $receipt = app(RecordReceipt::class)->handle(['party_id' => $party->id, 'amount' => 40, 'currency' => 'USD']);
+        Event::assertDispatched(ReceiptRecorded::class);
+
+        app(ApplyReceipt::class)->handle($receipt, $item, 40);
+        $this->expectException(InvalidReceivable::class);
+        app(ApplyReceipt::class)->handle($receipt, $item, 1);
     }
 
     private function party(): Party

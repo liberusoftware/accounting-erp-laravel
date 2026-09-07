@@ -13,6 +13,11 @@ use Liberu\Accounting\ChartOfAccounts\Enums\NormalBalance;
 use Liberu\Accounting\Core\Models\LegalEntity;
 
 /**
+ * @property int $legal_entity_id
+ * @property string $code
+ * @property string $name
+ * @property AccountType|null $type
+ * @property int|null $parent_id
  * @property bool $allow_manual_entry
  * @property bool $is_active
  */

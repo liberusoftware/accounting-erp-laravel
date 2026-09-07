@@ -1,10 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Liberu\Accounting\Dimensions\Actions\{AllocateDimensions,SaveDimension,SaveDimensionValue,ValidateDimensions};
+use Liberu\Accounting\Dimensions\Actions\AllocateDimensions;
+use Liberu\Accounting\Dimensions\Actions\SaveDimension;
+use Liberu\Accounting\Dimensions\Actions\SaveDimensionValue;
+use Liberu\Accounting\Dimensions\Actions\ValidateDimensions;
 use Liberu\Accounting\Dimensions\Exceptions\InvalidDimension;
 use Tests\TestCase;
 

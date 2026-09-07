@@ -15,7 +15,10 @@ class LoginController extends Controller
 {
     public function showLoginForm(): Factory|View
     {
-        return app(Factory::class)->make('loginv');
+        // Keep this legacy controller usable for integrations that still point
+        // at it. The old `loginv` view was removed during the modular theme
+        // migration; the canonical authentication view is now namespaced.
+        return app(Factory::class)->make('auth.login');
     }
 
     public function login(Request $request)

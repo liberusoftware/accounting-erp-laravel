@@ -1,0 +1,1 @@
+<div><h2>Customer payments</h2><ul>@forelse ($payments as $payment)<li>{{ $payment->reference }} — {{ number_format((float)$payment->amount,2) }} {{ $payment->currency }}</li>@empty<li>No customer payments.</li>@endforelse</ul></div>

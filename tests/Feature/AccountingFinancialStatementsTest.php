@@ -1,15 +1,19 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
-use App\Models\User;
 use Liberu\Accounting\ChartOfAccounts\Models\Account;
-use Liberu\Accounting\Core\Models\{Book,LegalEntity};
+use Liberu\Accounting\Core\Models\Book;
+use Liberu\Accounting\Core\Models\LegalEntity;
+use Liberu\Accounting\FinancialStatements\Exceptions\InvalidStatementRequest;
 use Liberu\Accounting\FinancialStatements\Queries\StatementQuery;
-use Liberu\Accounting\GeneralLedger\Actions\{CreateJournal,PostJournal};
+use Liberu\Accounting\GeneralLedger\Actions\CreateJournal;
+use Liberu\Accounting\GeneralLedger\Actions\PostJournal;
 use Tests\TestCase;
 
 class AccountingFinancialStatementsTest extends TestCase
@@ -50,7 +54,7 @@ class AccountingFinancialStatementsTest extends TestCase
         $book = Book::create(['legal_entity_id' => $entity->id, 'name' => 'Validation Book', 'code' => 'VALID', 'accounting_basis' => 'accrual']);
         $query = app(StatementQuery::class);
 
-        $this->expectException(\Liberu\Accounting\FinancialStatements\Exceptions\InvalidStatementRequest::class);
+        $this->expectException(InvalidStatementRequest::class);
         $query->profitAndLoss($book->id, '2026-02-01', '2026-01-01', ['Department' => ['not-scalar']]);
     }
 
@@ -66,5 +70,13 @@ class AccountingFinancialStatementsTest extends TestCase
 
         $this->getJson('/api/v1/accounting/financial-statements/profit-and-loss?book_id='.$book->id.'&start_date=2026-02-01&end_date=2026-01-01')
             ->assertStatus(422);
+    }
+
+    public function test_api_requires_the_financial_statements_read_ability(): void
+    {
+        Sanctum::actingAs(User::factory()->create(), []);
+
+        $this->getJson('/api/v1/accounting/financial-statements/profit-and-loss?book_id=1&start_date=2026-01-01&end_date=2026-01-31')
+            ->assertForbidden();
     }
 }

@@ -6,6 +6,7 @@ namespace Liberu\Accounting\AccountsReceivableFilament;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Liberu\Accounting\AccountsReceivableFilament\Resources\ReceivableOpenItemResource;
 
 final class AccountsReceivableFilamentPlugin implements Plugin
 {
@@ -19,7 +20,10 @@ final class AccountsReceivableFilamentPlugin implements Plugin
         return 'accounting-accounts-receivable';
     }
 
-    public function register(Panel $panel): void {}
+    public function register(Panel $panel): void
+    {
+        $panel->resources([ReceivableOpenItemResource::class]);
+    }
 
     public function boot(Panel $panel): void {}
 }

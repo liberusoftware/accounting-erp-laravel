@@ -1,11 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Livewire\Livewire;
+use Liberu\Accounting\Core\Models\Book;
+use Liberu\Accounting\Core\Models\LegalEntity;
 use Liberu\Accounting\PeriodsFilament\AccountingPeriodsFilamentPlugin;
 use Liberu\Accounting\PeriodsFilament\Resources\AccountingPeriodResource;
 use Liberu\Accounting\PeriodsLivewire\AccountingPeriodsLivewireServiceProvider;
+use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
 
@@ -19,10 +22,10 @@ it('exposes the Accounting Periods Filament and Livewire boundaries', function (
 });
 
 it('creates a period through Livewire', function (): void {
-    $entity = \Liberu\Accounting\Core\Models\LegalEntity::query()->create([
+    $entity = LegalEntity::query()->create([
         'name' => 'Periods Livewire', 'currency_code' => 'GBP', 'accounting_basis' => 'accrual',
     ]);
-    $book = \Liberu\Accounting\Core\Models\Book::query()->create([
+    $book = Book::query()->create([
         'legal_entity_id' => $entity->id, 'name' => 'Livewire Book', 'code' => 'LWB',
         'accounting_basis' => 'accrual', 'is_active' => true,
     ]);

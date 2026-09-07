@@ -11,5 +11,9 @@ use Liberu\Accounting\ChartOfAccountsFilament\Resources\AccountResource;
 final class ListAccounts extends ListRecords
 {
     protected static string $resource = AccountResource::class;
-    protected function getHeaderActions(): array { return [CreateAction::make()]; }
+
+    protected function getHeaderActions(): array
+    {
+        return [CreateAction::make()];
+    }
 }

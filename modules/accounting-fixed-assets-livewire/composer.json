@@ -24,4 +24,4 @@
       "name": "accounting-fixed-assets-livewire"
     }
   }
-}
+,"config":{"allow-plugins":{"pestphp/pest-plugin":true}}}

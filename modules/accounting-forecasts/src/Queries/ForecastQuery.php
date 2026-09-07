@@ -6,7 +6,8 @@ namespace Liberu\Accounting\Forecasts\Queries;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Liberu\Accounting\Forecasts\Enums\ForecastStatus;
-use Liberu\Accounting\Forecasts\Models\{Forecast, ForecastLine};
+use Liberu\Accounting\Forecasts\Models\Forecast;
+use Liberu\Accounting\Forecasts\Models\ForecastLine;
 
 final class ForecastQuery
 {
@@ -18,6 +19,7 @@ final class ForecastQuery
     public function variance(Forecast $forecast): array
     {
         $forecast->load('lines');
+
         return ['forecast_total' => (float) $forecast->lines->sum('forecast_value'), 'actual_total' => (float) $forecast->lines->sum('actual_value'), 'variance_total' => (float) $forecast->lines->sum('variance_value'), 'lines' => $forecast->lines->map(fn (ForecastLine $line) => ['period_ref' => $line->period_ref, 'account_ref' => $line->account_ref, 'forecast' => $line->forecast_value, 'actual' => $line->actual_value, 'variance' => $line->variance_value])->values()->all()];
     }
 }

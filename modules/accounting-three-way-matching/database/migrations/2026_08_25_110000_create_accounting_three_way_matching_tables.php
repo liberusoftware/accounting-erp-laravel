@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+return new class() extends Migration
 {
     public function up(): void
     {
@@ -35,8 +35,8 @@ return new class extends Migration
             $table->text('rejected_reason')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['purchase_order_type','purchase_order_id','receipt_type','receipt_id','bill_type','bill_id']);
-            $table->index(['status','created_at']);
+            $table->unique(['purchase_order_type', 'purchase_order_id', 'receipt_type', 'receipt_id', 'bill_type', 'bill_id']);
+            $table->index(['status', 'created_at']);
         });
 
         Schema::create('accounting_three_way_match_exceptions', function (Blueprint $table): void {
@@ -53,7 +53,7 @@ return new class extends Migration
             $table->timestamp('resolved_at')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->index(['match_id','status','severity']);
+            $table->index(['match_id', 'status', 'severity']);
         });
 
         Schema::create('accounting_three_way_match_evidence', function (Blueprint $table): void {
@@ -66,7 +66,7 @@ return new class extends Migration
             $table->unsignedBigInteger('captured_by')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['match_id','source_type','source_id','snapshot_hash']);
+            $table->unique(['match_id', 'source_type', 'source_id', 'snapshot_hash']);
         });
     }
 

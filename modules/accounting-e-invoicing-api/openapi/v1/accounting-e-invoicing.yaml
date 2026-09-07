@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info: {title: Accounting E-Invoicing API, version: 1.0.0}
+security: [{sanctum: []}]
+components: {securitySchemes: {sanctum: {type: http, scheme: bearer}}}
+paths:
+  /api/v1/accounting/e-invoicing: {get: {operationId: listEInvoices, responses: {'200': {description: Documents}}}, post: {operationId: createEInvoice, responses: {'201': {description: Created}}}}
+  /api/v1/accounting/e-invoicing/{document}/validate: {post: {operationId: validateEInvoice, responses: {'200': {description: Validated}}}}
+  /api/v1/accounting/e-invoicing/{document}/sign: {post: {operationId: signEInvoice, responses: {'200': {description: Signed}}}}
+  /api/v1/accounting/e-invoicing/{document}/submit: {post: {operationId: submitEInvoice, responses: {'200': {description: Submitted}}}}
+  /api/v1/accounting/e-invoicing/{document}/receipt: {post: {operationId: recordEInvoiceReceipt, responses: {'200': {description: Receipt recorded}}}}
+  /api/v1/accounting/e-invoicing/{document}/reconcile: {post: {operationId: reconcileEInvoice, responses: {'200': {description: Reconciled}}}}

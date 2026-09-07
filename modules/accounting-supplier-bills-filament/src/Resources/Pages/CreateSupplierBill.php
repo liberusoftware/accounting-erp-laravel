@@ -17,6 +17,7 @@ final class CreateSupplierBill extends CreateRecord
     {
         $lines = $data['lines'] ?? [];
         unset($data['lines']);
+
         return app(CreateSupplierBillAction::class)->handle($data, $lines);
     }
 }

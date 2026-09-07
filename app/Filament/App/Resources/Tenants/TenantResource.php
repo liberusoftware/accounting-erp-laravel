@@ -17,6 +17,8 @@ use Liberu\Foundation\Organizations\Models\Team;
 
 class TenantResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Settings';
+
     #[\Override]
     protected static ?string $model = Team::class;
 

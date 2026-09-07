@@ -4,16 +4,29 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
+use App\Models\Team;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\Sanctum;
-use App\Models\{Team, User};
-use Liberu\Accounting\FixedAssets\Actions\{AcquireAsset, AddAssetComponent, AddAssetDocument, ArchiveAsset, CapitalizeAsset, CreateCategory, CreateCustodian, CreateLocation, DisposeAsset};
+use Liberu\Accounting\FixedAssets\Actions\AcquireAsset;
+use Liberu\Accounting\FixedAssets\Actions\AddAssetComponent;
+use Liberu\Accounting\FixedAssets\Actions\AddAssetDocument;
+use Liberu\Accounting\FixedAssets\Actions\ArchiveAsset;
+use Liberu\Accounting\FixedAssets\Actions\CapitalizeAsset;
+use Liberu\Accounting\FixedAssets\Actions\CreateCategory;
+use Liberu\Accounting\FixedAssets\Actions\CreateCustodian;
+use Liberu\Accounting\FixedAssets\Actions\CreateLocation;
+use Liberu\Accounting\FixedAssets\Actions\DisposeAsset;
 use Liberu\Accounting\FixedAssets\Enums\AssetStatus;
-use Liberu\Accounting\FixedAssets\Events\{AssetAcquired, AssetCapitalized, AssetComponentAdded, AssetDisposed, AssetDocumentAdded};
+use Liberu\Accounting\FixedAssets\Events\AssetAcquired;
+use Liberu\Accounting\FixedAssets\Events\AssetArchived;
+use Liberu\Accounting\FixedAssets\Events\AssetCapitalized;
+use Liberu\Accounting\FixedAssets\Events\AssetComponentAdded;
+use Liberu\Accounting\FixedAssets\Events\AssetDisposed;
+use Liberu\Accounting\FixedAssets\Events\AssetDocumentAdded;
 use Liberu\Accounting\FixedAssets\Exceptions\InvalidAsset;
-use Liberu\Accounting\FixedAssets\Models\Asset;
 use Tests\TestCase;
 
 final class AccountingFixedAssetsTest extends TestCase
@@ -68,6 +81,7 @@ final class AccountingFixedAssetsTest extends TestCase
         Event::assertDispatched(AssetComponentAdded::class);
         Event::assertDispatched(AssetDocumentAdded::class);
         Event::assertDispatched(AssetDisposed::class);
+        Event::assertDispatched(AssetArchived::class);
     }
 
     public function test_location_and_custodian_are_tenant_owned_records(): void
@@ -156,5 +170,18 @@ final class AccountingFixedAssetsTest extends TestCase
         Sanctum::actingAs($otherUser, ['accounting.fixed-assets.read']);
 
         $this->getJson('/api/v1/accounting/fixed-assets')->assertOk()->assertJsonCount(0, 'data');
+    }
+
+    public function test_api_write_operations_require_the_write_ability(): void
+    {
+        $user = User::factory()->create();
+        $team = Team::forceCreate(['user_id' => $user->id, 'name' => 'Read-only team', 'personal_team' => false]);
+        $user->forceFill(['current_team_id' => $team->id])->save();
+        Sanctum::actingAs($user, ['accounting.fixed-assets.read']);
+
+        $this->postJson('/api/v1/accounting/fixed-assets/categories', [
+            'category_ref' => 'READ', 'name' => 'Read-only', 'asset_account_ref' => '1500',
+            'depreciation_account_ref' => '1590', 'useful_life_months' => 12, 'depreciation_method' => 'straight_line',
+        ])->assertForbidden();
     }
 }

@@ -1,9 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Core\Models\Book;
+use Liberu\Accounting\Core\Models\LegalEntity;
 use Liberu\Accounting\Periods\Models\AccountingPeriod;
 
 uses(RefreshDatabase::class);
@@ -16,10 +19,10 @@ it('requires the accounting periods read ability', function (): void {
 it('creates, transitions, locks, and checks posting dates', function (): void {
     $user = User::factory()->create();
     Sanctum::actingAs($user, ['accounting.periods.read', 'accounting.periods.write']);
-    $entity = \Liberu\Accounting\Core\Models\LegalEntity::query()->create([
+    $entity = LegalEntity::query()->create([
         'name' => 'Periods Entity', 'currency_code' => 'GBP', 'accounting_basis' => 'accrual',
     ]);
-    $book = \Liberu\Accounting\Core\Models\Book::query()->create([
+    $book = Book::query()->create([
         'legal_entity_id' => $entity->id, 'name' => 'Periods Book', 'code' => 'PER',
         'accounting_basis' => 'accrual', 'is_active' => true,
     ]);
@@ -44,10 +47,10 @@ it('creates, transitions, locks, and checks posting dates', function (): void {
 it('rejects overlapping periods and requires a reason to reopen', function (): void {
     $user = User::factory()->create();
     Sanctum::actingAs($user, ['accounting.periods.write']);
-    $entity = \Liberu\Accounting\Core\Models\LegalEntity::query()->create([
+    $entity = LegalEntity::query()->create([
         'name' => 'Overlap Entity', 'currency_code' => 'GBP', 'accounting_basis' => 'accrual',
     ]);
-    $book = \Liberu\Accounting\Core\Models\Book::query()->create([
+    $book = Book::query()->create([
         'legal_entity_id' => $entity->id, 'name' => 'Overlap Book', 'code' => 'OVR',
         'accounting_basis' => 'accrual', 'is_active' => true,
     ]);

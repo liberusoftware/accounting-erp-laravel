@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Liberu\Accounting\FixedAssets\Actions;
 
 use Illuminate\Support\Facades\DB;
-use Liberu\Accounting\FixedAssets\Events\AssetComponentAdded;
 use Liberu\Accounting\FixedAssets\Enums\AssetStatus;
+use Liberu\Accounting\FixedAssets\Events\AssetComponentAdded;
 use Liberu\Accounting\FixedAssets\Exceptions\InvalidAsset;
-use Liberu\Accounting\FixedAssets\Models\{Asset, AssetComponent};
+use Liberu\Accounting\FixedAssets\Models\Asset;
+use Liberu\Accounting\FixedAssets\Models\AssetComponent;
 
 final class AddAssetComponent
 {

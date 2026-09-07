@@ -17,7 +17,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 final class SupplierBillCredit extends Model
 {
     protected $table = 'accounting_supplier_bill_credits';
-    protected $fillable = ['bill_id','amount','currency','reason','reference','metadata'];
-    protected $casts = ['amount'=>'decimal:2','metadata'=>'array'];
-    public function bill(): BelongsTo { return $this->belongsTo(SupplierBill::class, 'bill_id'); }
+
+    protected $fillable = ['bill_id', 'amount', 'currency', 'reason', 'reference', 'metadata'];
+
+    protected $casts = ['amount' => 'decimal:2', 'metadata' => 'array'];
+
+    public function bill(): BelongsTo
+    {
+        return $this->belongsTo(SupplierBill::class, 'bill_id');
+    }
 }

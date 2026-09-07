@@ -9,7 +9,7 @@ use Liberu\Accounting\FinancialMasterData\Models\Party;
 
 final class FindDuplicateParties
 {
-    /** @return Collection<int, Collection<int, Party>> */
+    /** @return Collection<int, \Illuminate\Database\Eloquent\Collection<int, Party>> */
     public function handle(int $legalEntityId, ?string $type = null): Collection
     {
         $parties = Party::query()
@@ -19,11 +19,11 @@ final class FindDuplicateParties
             ->orderBy('name')
             ->get();
 
-        return $parties->groupBy(function (Party $party): string {
+        return collect($parties->groupBy(function (Party $party): string {
             $email = mb_strtolower(trim((string) $party->email));
             $name = mb_strtolower(trim($party->name));
 
             return $email !== '' ? 'email:'.$email : 'name:'.$name;
-        })->filter(static fn (Collection $group): bool => $group->count() > 1)->values();
+        })->filter(static fn (Collection $group): bool => $group->count() > 1)->values()->all());
     }
 }

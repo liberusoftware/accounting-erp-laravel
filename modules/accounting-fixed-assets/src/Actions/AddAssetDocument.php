@@ -7,7 +7,8 @@ namespace Liberu\Accounting\FixedAssets\Actions;
 use Illuminate\Support\Facades\DB;
 use Liberu\Accounting\FixedAssets\Events\AssetDocumentAdded;
 use Liberu\Accounting\FixedAssets\Exceptions\InvalidAsset;
-use Liberu\Accounting\FixedAssets\Models\{Asset, AssetDocument};
+use Liberu\Accounting\FixedAssets\Models\Asset;
+use Liberu\Accounting\FixedAssets\Models\AssetDocument;
 
 final class AddAssetDocument
 {

@@ -20,10 +20,13 @@ final class ApproveMatch
                 throw new InvalidMatch('This match cannot be approved without resolving blocking exceptions or recording an override reason.');
             }
             $metadata = $match->metadata ?? [];
-            if ($overrideReason) $metadata['approval_override_reason'] = $overrideReason;
-            $match->update(['status'=>MatchStatus::Approved,'approved_by'=>$actorId,'approved_at'=>now(),'metadata'=>$metadata]);
-            $match = $match->refresh()->load('exceptions','evidence');
+            if ($overrideReason) {
+                $metadata['approval_override_reason'] = $overrideReason;
+            }
+            $match->update(['status' => MatchStatus::Approved, 'approved_by' => $actorId, 'approved_at' => now(), 'metadata' => $metadata]);
+            $match = $match->refresh()->load('exceptions', 'evidence');
             DB::afterCommit(fn () => event(new MatchApproved($match)));
+
             return $match;
         });
     }

@@ -12,7 +12,7 @@ final class FinancialStatementsFilamentPlugin implements Plugin
 {
     public static function make(): static
     {
-        return new static();
+        return new self();
     }
 
     public function getId(): string

@@ -10,6 +10,7 @@ Route::prefix('api/v1/accounting/accounts-payable')->middleware(['auth:sanctum',
         Route::get('/', [PayableOpenItemController::class, 'index']);
         Route::get('/aging', [PayableOpenItemController::class, 'aging']);
         Route::get('/balances/{party}', [PayableOpenItemController::class, 'balances']);
+        Route::get('/reconciliation', [PayableOpenItemController::class, 'reconcile']);
         Route::get('/open-items/{payableOpenItem}', [PayableOpenItemController::class, 'show']);
     });
     Route::middleware('ability:accounting.payables.write')->group(function (): void {
@@ -18,6 +19,6 @@ Route::prefix('api/v1/accounting/accounts-payable')->middleware(['auth:sanctum',
         Route::post('/payments/{payment}/apply', [PayableOpenItemController::class, 'apply']);
         Route::post('/disputes', [PayableOpenItemController::class, 'dispute']);
         Route::post('/disputes/{dispute}/resolve', [PayableOpenItemController::class, 'resolve']);
-        Route::post('/suppliers/{party}/payment-control', [PayableOpenItemController::class, 'credit']);
+        Route::post('/suppliers/{party}/payment-control', [PayableOpenItemController::class, 'paymentControl']);
     });
 });

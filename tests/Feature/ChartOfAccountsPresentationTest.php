@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Livewire\Livewire;
 use Liberu\Accounting\ChartOfAccountsFilament\ChartOfAccountsFilamentPlugin;
 use Liberu\Accounting\ChartOfAccountsFilament\Resources\AccountResource;
 use Liberu\Accounting\ChartOfAccountsLivewire\ChartOfAccountsLivewireServiceProvider;
-use Liberu\Accounting\ChartOfAccountsLivewire\Livewire\Accounts;
+use Liberu\Accounting\Core\Models\LegalEntity;
+use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
 
@@ -21,7 +21,7 @@ it('exposes one-to-one Filament and Livewire boundaries', function (): void {
 });
 
 it('creates accounts through the Livewire boundary', function (): void {
-    $entity = \Liberu\Accounting\Core\Models\LegalEntity::query()->create([
+    $entity = LegalEntity::query()->create([
         'name' => 'Livewire Entity', 'currency_code' => 'USD', 'accounting_basis' => 'accrual',
     ]);
 

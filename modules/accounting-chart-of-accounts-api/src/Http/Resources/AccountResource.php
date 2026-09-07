@@ -31,6 +31,7 @@ final class AccountResource extends JsonResource
                 'locale' => $this->resource->locale,
                 'metadata' => $this->resource->metadata,
             ],
+            'children' => self::collection($this->whenLoaded('children')),
         ];
     }
 }

@@ -10,5 +10,9 @@ use Livewire\Livewire;
 
 final class ThreeWayMatchingLivewireServiceProvider extends ServiceProvider
 {
-    public function boot(): void { $this->loadViewsFrom(__DIR__.'/../resources/views', 'accounting-three-way-matching'); Livewire::component('module-accounting-three-way-matching-matches', Matches::class); }
+    public function boot(): void
+    {
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'accounting-three-way-matching');
+        Livewire::component('module-accounting-three-way-matching-matches', Matches::class);
+    }
 }

@@ -20,10 +20,32 @@ use Liberu\Accounting\MultiEntity\Enums\EntityBookStatus;
 final class EntityBook extends Model
 {
     protected $table = 'accounting_multi_entity_books';
-    protected $fillable = ['team_id','entity_ref','code','name','base_currency','timezone','tax_registration','status','metadata'];
-    protected $casts = ['status'=>EntityBookStatus::class,'metadata'=>'array'];
-    /** @return HasMany<EntityAccess, $this> */ public function access(): HasMany { return $this->hasMany(EntityAccess::class, 'entity_id'); }
-    /** @return HasMany<MasterDataPolicy, $this> */ public function policies(): HasMany { return $this->hasMany(MasterDataPolicy::class, 'entity_id'); }
-    /** @return HasMany<EntityPeriod, $this> */ public function periods(): HasMany { return $this->hasMany(EntityPeriod::class, 'entity_id'); }
-    /** @return HasMany<EntityMapping, $this> */ public function mappings(): HasMany { return $this->hasMany(EntityMapping::class, 'entity_id'); }
+
+    protected $fillable = ['team_id', 'entity_ref', 'code', 'name', 'base_currency', 'timezone', 'tax_registration', 'status', 'metadata'];
+
+    protected $casts = ['status' => EntityBookStatus::class, 'metadata' => 'array'];
+
+    /** @return HasMany<EntityAccess, $this> */
+    public function access(): HasMany
+    {
+        return $this->hasMany(EntityAccess::class, 'entity_id');
+    }
+
+    /** @return HasMany<MasterDataPolicy, $this> */
+    public function policies(): HasMany
+    {
+        return $this->hasMany(MasterDataPolicy::class, 'entity_id');
+    }
+
+    /** @return HasMany<EntityPeriod, $this> */
+    public function periods(): HasMany
+    {
+        return $this->hasMany(EntityPeriod::class, 'entity_id');
+    }
+
+    /** @return HasMany<EntityMapping, $this> */
+    public function mappings(): HasMany
+    {
+        return $this->hasMany(EntityMapping::class, 'entity_id');
+    }
 }

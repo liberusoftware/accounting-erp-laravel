@@ -11,6 +11,8 @@ final class CustomerSubledgerQuery
 {
     public function handle(int $partyId): array
     {
-        return ['open_items' => ReceivableOpenItem::with('disputes')->where('party_id', $partyId)->orderBy('due_on')->get(), 'receipts' => ReceivableReceipt::with('applications')->where('party_id', $partyId)->orderByDesc('received_on')->get(), 'balance' => (float) ReceivableOpenItem::where('party_id', $partyId)->get()->sum(fn (ReceivableOpenItem $item) => $item->outstanding())];
+        $items = ReceivableOpenItem::with('disputes')->where('party_id', $partyId)->orderBy('due_on')->get();
+
+        return ['open_items' => $items, 'receipts' => ReceivableReceipt::with('applications')->where('party_id', $partyId)->orderByDesc('received_on')->get(), 'balance' => (float) $items->sum(fn (ReceivableOpenItem $item): float => $item->outstanding())];
     }
 }

@@ -1,0 +1,1 @@
+<div><table><tbody>@forelse($projects as $project)<tr><td>{{ $project->name }}</td><td>{{ $project->code }}</td><td>{{ $project->status->value }}</td></tr>@empty<tr><td>No projects or jobs found.</td></tr>@endforelse</tbody></table>{{ $projects->links() }}</div>

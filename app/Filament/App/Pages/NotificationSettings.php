@@ -30,6 +30,10 @@ class NotificationSettings extends Page
     #[\Override]
     protected static ?string $title = 'Notification Settings';
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Account';
+
+    protected static ?int $navigationSort = 2;
+
     /** @var array<string, mixed>|null */
     public ?array $data = [];
 

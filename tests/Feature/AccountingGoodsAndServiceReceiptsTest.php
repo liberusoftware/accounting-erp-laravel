@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Liberu\Accounting\GoodsAndServiceReceipts\Actions\{AddReceiptAttachment, AddReceiptLine, CreateReceipt, PostAccrual, ReturnReceipt};
+use Liberu\Accounting\GoodsAndServiceReceipts\Actions\AddReceiptAttachment;
+use Liberu\Accounting\GoodsAndServiceReceipts\Actions\AddReceiptLine;
+use Liberu\Accounting\GoodsAndServiceReceipts\Actions\CreateReceipt;
+use Liberu\Accounting\GoodsAndServiceReceipts\Actions\PostAccrual;
+use Liberu\Accounting\GoodsAndServiceReceipts\Actions\ReturnReceipt;
 use Liberu\Accounting\GoodsAndServiceReceipts\Exceptions\InvalidReceipt;
 use Liberu\Accounting\GoodsAndServiceReceipts\Queries\ReceiptQuery;
 use Tests\TestCase;

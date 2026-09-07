@@ -21,6 +21,7 @@ final class EditSupplierBill extends EditRecord
         }
         $lines = $data['lines'] ?? [];
         unset($data['lines']);
+
         return app(UpdateSupplierBill::class)->handle($record, $data, $lines);
     }
 }

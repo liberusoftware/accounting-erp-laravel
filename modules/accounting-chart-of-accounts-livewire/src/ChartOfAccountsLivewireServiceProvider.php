@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Liberu\Accounting\ChartOfAccountsLivewire;
 
 use Illuminate\Support\ServiceProvider;
-use Livewire\Livewire;
 use Liberu\Accounting\ChartOfAccountsLivewire\Livewire\Accounts;
+use Livewire\Livewire;
 
 final class ChartOfAccountsLivewireServiceProvider extends ServiceProvider
 {

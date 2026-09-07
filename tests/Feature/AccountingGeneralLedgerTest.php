@@ -1,14 +1,23 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Liberu\Accounting\ChartOfAccounts\Models\Account;
-use Liberu\Accounting\Core\Models\{Book,LegalEntity};
-use Liberu\Accounting\GeneralLedger\Actions\{CreateAccrual,CreateAllocation,CreateCorrection,CreateJournal,CreatePrepayment,GenerateRecurringJournal,PostJournal,ReverseJournal,SaveRecurringJournal};
+use Liberu\Accounting\Core\Models\Book;
+use Liberu\Accounting\Core\Models\LegalEntity;
+use Liberu\Accounting\GeneralLedger\Actions\CreateAccrual;
+use Liberu\Accounting\GeneralLedger\Actions\CreateAllocation;
+use Liberu\Accounting\GeneralLedger\Actions\CreateCorrection;
+use Liberu\Accounting\GeneralLedger\Actions\CreateJournal;
+use Liberu\Accounting\GeneralLedger\Actions\CreatePrepayment;
+use Liberu\Accounting\GeneralLedger\Actions\GenerateRecurringJournal;
+use Liberu\Accounting\GeneralLedger\Actions\PostJournal;
+use Liberu\Accounting\GeneralLedger\Actions\ReverseJournal;
+use Liberu\Accounting\GeneralLedger\Actions\SaveRecurringJournal;
 use Liberu\Accounting\GeneralLedger\Enums\JournalStatus;
-use Liberu\Accounting\GeneralLedger\Exceptions\InvalidJournal;
 use Liberu\Accounting\GeneralLedger\Models\JournalEntry;
 use Tests\TestCase;
 
@@ -19,6 +28,7 @@ class AccountingGeneralLedgerTest extends TestCase
     private function book(): Book
     {
         $entity = LegalEntity::create(['name' => 'Ledger Entity', 'currency_code' => 'USD']);
+
         return Book::create(['legal_entity_id' => $entity->id, 'name' => 'Main Book', 'code' => 'MAIN', 'accounting_basis' => 'accrual']);
     }
 
@@ -26,6 +36,7 @@ class AccountingGeneralLedgerTest extends TestCase
     {
         $cash = Account::create(['legal_entity_id' => $book->legal_entity_id, 'code' => '1000', 'name' => 'Cash', 'type' => 'asset', 'normal_balance' => 'debit']);
         $revenue = Account::create(['legal_entity_id' => $book->legal_entity_id, 'code' => '4000', 'name' => 'Revenue', 'type' => 'revenue', 'normal_balance' => 'credit']);
+
         return [['account_id' => $cash->id, 'debit' => 100, 'credit' => 0], ['account_id' => $revenue->id, 'debit' => 0, 'credit' => 100]];
     }
 

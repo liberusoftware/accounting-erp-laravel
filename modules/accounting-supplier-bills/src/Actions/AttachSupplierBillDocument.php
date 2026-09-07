@@ -14,7 +14,8 @@ final class AttachSupplierBillDocument
     {
         return DB::transaction(function () use ($bill, $attributes): SupplierBillDocument {
             /** @var SupplierBillDocument $document */
-            $document = $bill->documents()->firstOrCreate(['sha256'=>$attributes['sha256']], $attributes);
+            $document = $bill->documents()->firstOrCreate(['sha256' => $attributes['sha256']], $attributes);
+
             return $document;
         });
     }

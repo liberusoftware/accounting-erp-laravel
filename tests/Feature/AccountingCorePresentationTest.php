@@ -1,12 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Livewire\Livewire;
-use Liberu\Accounting\CoreLivewire\AccountingCoreLivewireServiceProvider;
-use Liberu\Accounting\CoreLivewire\Livewire\AccountingSettings;
+use Liberu\Accounting\Core\Models\Book;
+use Liberu\Accounting\Core\Models\LegalEntity;
 use Liberu\Accounting\CoreFilament\AccountingCoreFilamentPlugin;
 use Liberu\Accounting\CoreFilament\Resources\BookResource;
+use Liberu\Accounting\CoreLivewire\AccountingCoreLivewireServiceProvider;
+use Liberu\Accounting\CoreLivewire\Livewire\AccountingSettings;
+use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
 
@@ -21,10 +24,10 @@ it('exposes book and settings presentation boundaries', function (): void {
 });
 
 it('creates accounting defaults through Livewire', function (): void {
-    $entity = \Liberu\Accounting\Core\Models\LegalEntity::query()->create([
+    $entity = LegalEntity::query()->create([
         'name' => 'Settings Livewire', 'currency_code' => 'GBP', 'accounting_basis' => 'accrual',
     ]);
-    $book = \Liberu\Accounting\Core\Models\Book::query()->create([
+    $book = Book::query()->create([
         'legal_entity_id' => $entity->id, 'name' => 'Main Book', 'code' => 'MAIN',
         'accounting_basis' => 'accrual', 'is_active' => true,
     ]);

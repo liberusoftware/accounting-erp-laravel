@@ -127,7 +127,6 @@ final class StatementQuery
         )->get()->map(static fn ($row): array => (array) $row)->all();
     }
 
-    /** @return Builder */
     private function lines(int $bookId, string $end, ?string $start = null, ?array $dimensions = null): Builder
     {
         $this->validateDate($end);

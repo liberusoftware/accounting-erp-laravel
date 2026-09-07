@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Liberu\Accounting\FixedAssets\Actions;
 
 use Liberu\Accounting\FixedAssets\Enums\AssetStatus;
+use Liberu\Accounting\FixedAssets\Events\AssetArchived;
 use Liberu\Accounting\FixedAssets\Exceptions\InvalidAsset;
 use Liberu\Accounting\FixedAssets\Models\Asset;
 
@@ -17,7 +18,9 @@ final class ArchiveAsset
         }
 
         $asset->update(['status' => AssetStatus::Archived]);
+        $asset = $asset->refresh();
+        event(new AssetArchived($asset));
 
-        return $asset->refresh();
+        return $asset;
     }
 }

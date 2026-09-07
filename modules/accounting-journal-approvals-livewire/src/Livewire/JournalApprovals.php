@@ -13,8 +13,23 @@ use Livewire\WithPagination;
 final class JournalApprovals extends Component
 {
     use WithPagination;
+
     public string $status = '';
-    public function mount(): void { if (! auth()->check()) throw new AuthorizationException('Authentication is required to view journal approvals.'); }
-    public function updatedStatus(): void { $this->resetPage(); }
-    public function render(): mixed { return view('module-accounting-journal-approvals-livewire::approvals', ['approvals' => app(JournalApprovalQuery::class)->paginate(auth()->user()?->current_team_id, $this->status !== '' ? ApprovalStatus::from($this->status) : null)]); }
+
+    public function mount(): void
+    {
+        if (! auth()->check()) {
+            throw new AuthorizationException('Authentication is required to view journal approvals.');
+        }
+    }
+
+    public function updatedStatus(): void
+    {
+        $this->resetPage();
+    }
+
+    public function render(): mixed
+    {
+        return view('module-accounting-journal-approvals-livewire::approvals', ['approvals' => app(JournalApprovalQuery::class)->paginate(auth()->user()?->current_team_id, $this->status !== '' ? ApprovalStatus::from($this->status) : null)]);
+    }
 }

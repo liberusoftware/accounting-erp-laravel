@@ -18,8 +18,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 final class MatchEvidence extends Model
 {
     protected $table = 'accounting_three_way_match_evidence';
-    protected $fillable = ['match_id','source_type','source_id','snapshot_hash','snapshot','captured_by','metadata'];
-    protected $casts = ['snapshot'=>'array','metadata'=>'array'];
-    protected $hidden = ['snapshot_hash','snapshot'];
-    public function match(): BelongsTo { return $this->belongsTo(MatchRecord::class, 'match_id'); }
+
+    protected $fillable = ['match_id', 'source_type', 'source_id', 'snapshot_hash', 'snapshot', 'captured_by', 'metadata'];
+
+    protected $casts = ['snapshot' => 'array', 'metadata' => 'array'];
+
+    protected $hidden = ['snapshot_hash', 'snapshot'];
+
+    public function match(): BelongsTo
+    {
+        return $this->belongsTo(MatchRecord::class, 'match_id');
+    }
 }

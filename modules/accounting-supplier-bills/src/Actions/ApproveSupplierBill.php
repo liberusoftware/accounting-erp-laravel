@@ -19,9 +19,10 @@ final class ApproveSupplierBill
             if ($bill->status !== SupplierBillStatus::Draft || $bill->total <= 0) {
                 throw new InvalidSupplierBill('Only non-empty draft supplier bills may be approved.');
             }
-            $bill->update(['status'=>SupplierBillStatus::Approved,'approval_status'=>'approved','approved_by'=>$actorId,'approved_at'=>now(),'rejection_reason'=>null]);
+            $bill->update(['status' => SupplierBillStatus::Approved, 'approval_status' => 'approved', 'approved_by' => $actorId, 'approved_at' => now(), 'rejection_reason' => null]);
             $bill = $bill->refresh();
             DB::afterCommit(fn () => event(new SupplierBillApproved($bill)));
+
             return $bill;
         });
     }

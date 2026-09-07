@@ -1,0 +1,1 @@
+<div><table><tbody>@forelse($liabilities as $liability)<tr><td>{{ $liability->payee_ref }}</td><td>{{ $liability->currency }}</td><td>{{ $liability->amount }}</td><td>{{ $liability->status->value }}</td></tr>@empty<tr><td>No reimbursements found.</td></tr>@endforelse</tbody></table>{{ $liabilities->links() }}</div>

@@ -27,6 +27,8 @@ use Filament\Tables\Table;
 
 class InvoiceResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Sales';
+
     #[\Override]
     protected static ?string $model = Invoice::class;
 

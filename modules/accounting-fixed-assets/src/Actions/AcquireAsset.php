@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 use Liberu\Accounting\FixedAssets\Enums\AssetStatus;
 use Liberu\Accounting\FixedAssets\Events\AssetAcquired;
 use Liberu\Accounting\FixedAssets\Exceptions\InvalidAsset;
-use Liberu\Accounting\FixedAssets\Models\{Asset, AssetCategory};
+use Liberu\Accounting\FixedAssets\Models\Asset;
+use Liberu\Accounting\FixedAssets\Models\AssetCategory;
 
 final class AcquireAsset
 {
