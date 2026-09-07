@@ -1,0 +1,1 @@
+<x-filament-panels::page><div class="grid gap-4 md:grid-cols-2"><div class="rounded-xl border p-4">Profit and loss</div><div class="rounded-xl border p-4">Balance sheet</div><div class="rounded-xl border p-4">Cash flow</div><div class="rounded-xl border p-4">Changes in equity</div></div></x-filament-panels::page>

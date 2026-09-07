@@ -1,0 +1,10 @@
+openapi: 3.1.0
+info: {title: accounting quickbooks online migration API, version: 1.0.0}
+paths:
+  /api/v1/accounting/quickbooks-online-migration:
+    get: {operationId: accounting.quickbooks.online.migration.list, responses: {'200': {description: Authorized migration runs}}}
+    post: {operationId: accounting.quickbooks.online.migration.create, responses: {'201': {description: Migration imported}}}
+  /api/v1/accounting/quickbooks-online-migration/{run}:
+    get: {operationId: accounting.quickbooks.online.migration.get, responses: {'200': {description: Migration run}}}
+  /api/v1/accounting/quickbooks-online-migration/{run}/reconcile:
+    post: {operationId: accounting.quickbooks.online.migration.reconcile, responses: {'200': {description: Reconciled migration}}}

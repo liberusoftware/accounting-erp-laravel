@@ -1,0 +1,1 @@
+<div><h2>Contractor reporting</h2><ul>@forelse ($reports as $report)<li>{{ $report->payee_ref }} — {{ $report->tax_year }} — {{ $report->status->value }}</li>@empty<li>No contractor reports.</li>@endforelse</ul></div>

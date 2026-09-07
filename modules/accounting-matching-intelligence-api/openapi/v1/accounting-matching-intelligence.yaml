@@ -1,0 +1,9 @@
+openapi: 3.1.0
+info: {title: Accounting Matching Intelligence API, version: 1.0.0}
+paths:
+  /api/v1/accounting/matching-intelligence/suggestions:
+    get: {operationId: accounting.matching-intelligence.list, security: [{sanctum: []}], responses: {'200': {description: Suggestions}}}
+    post: {operationId: accounting.matching-intelligence.create, security: [{sanctum: []}], parameters: [{'$ref': '#/components/parameters/IdempotencyKey'}], responses: {'201': {description: Suggestion created}}}
+  /api/v1/accounting/matching-intelligence/suggestions/{suggestion}/decide: {post: {operationId: accounting.matching-intelligence.decide, security: [{sanctum: []}], responses: {'200': {description: Decision recorded}}}}
+  /api/v1/accounting/matching-intelligence/suggestions/{suggestion}/feedback: {post: {operationId: accounting.matching-intelligence.feedback, security: [{sanctum: []}], responses: {'201': {description: Feedback recorded}}}}
+components: {parameters: {IdempotencyKey: {name: Idempotency-Key, in: header, schema: {type: string}}}, securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}}

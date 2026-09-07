@@ -23,6 +23,15 @@ it('adds team_id to the roles and pivot tables', function () {
         ->and(Schema::hasColumn('model_has_permissions', 'team_id'))->toBeTrue();
 });
 
+it('allows global permission assignments on permission pivots', function () {
+    foreach (['model_has_roles', 'model_has_permissions'] as $table) {
+        $teamId = collect(Schema::getColumns($table))->firstWhere('name', 'team_id');
+
+        expect($teamId)->not->toBeNull()
+            ->and($teamId['nullable'])->toBeTrue();
+    }
+});
+
 it('scopes a role to its team', function () {
     $user = User::factory()->create();
     $teamA = Team::factory()->create(['user_id' => $user->id]);

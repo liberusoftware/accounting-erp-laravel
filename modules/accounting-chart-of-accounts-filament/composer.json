@@ -1,0 +1,13 @@
+{
+  "name": "liberusoftware/module-accounting-chart-of-accounts-filament",
+  "description": "Filament 5 adapter for the accounting chart of accounts.",
+  "type": "liberu-module",
+  "license": "MIT",
+  "require": { "php": "^8.5", "filament/filament": "^5.1", "liberusoftware/module-accounting-chart-of-accounts": "^1.0" },
+  "autoload": { "psr-4": { "Liberu\\Accounting\\ChartOfAccountsFilament\\": "src/" } },
+  "extra": { "laravel": { "providers": ["Liberu\\Accounting\\ChartOfAccountsFilament\\ChartOfAccountsFilamentServiceProvider"] }, "liberu": { "name": "accounting-chart-of-accounts-filament" } },
+  "version": "1.0.0",
+  "require-dev": { "liberusoftware/package-testbench": "^1.5", "pestphp/pest": "^5.0" },
+  "scripts": { "test": "pest" },
+  "config": { "allow-plugins": { "pestphp/pest-plugin": true } }
+}

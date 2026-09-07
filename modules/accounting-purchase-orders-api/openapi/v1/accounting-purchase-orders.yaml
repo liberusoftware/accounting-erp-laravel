@@ -1,0 +1,14 @@
+openapi: 3.1.0
+info: {title: accounting purchase orders API, version: 1.0.0}
+paths:
+  /api/v1/accounting/purchase-orders:
+    get: {operationId: accounting.purchase.orders.list, responses: {'200': {description: Authorized purchase orders}}}
+    post: {operationId: accounting.purchase.orders.create, responses: {'201': {description: Purchase order created}}}
+  /api/v1/accounting/purchase-orders/{order}:
+    get: {operationId: accounting.purchase.orders.get, responses: {'200': {description: Purchase order resource}}}
+  /api/v1/accounting/purchase-orders/{order}/transition:
+    post: {operationId: accounting.purchase.orders.transition, responses: {'200': {description: Status changed}}}
+  /api/v1/accounting/purchase-orders/{order}/receipts:
+    post: {operationId: accounting.purchase.orders.receipt, responses: {'201': {description: Receipt recorded}}}
+  /api/v1/accounting/purchase-orders/{order}/changes:
+    post: {operationId: accounting.purchase.orders.change, responses: {'201': {description: Order change recorded}}}

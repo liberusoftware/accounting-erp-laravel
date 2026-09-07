@@ -1,0 +1,1 @@
+<div><table><tbody>@forelse($billings as $billing)<tr><td>{{ $billing->project_job_id }}</td><td>{{ $billing->method->value }}</td><td>{{ $billing->amount }}</td><td>{{ $billing->status->value }}</td></tr>@empty<tr><td>No project billing records found.</td></tr>@endforelse</tbody></table>{{ $billings->links() }}</div>

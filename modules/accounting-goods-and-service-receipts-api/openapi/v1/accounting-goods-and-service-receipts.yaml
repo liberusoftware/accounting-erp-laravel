@@ -1,0 +1,8 @@
+openapi: 3.1.0
+info: {title: Accounting Goods and Service Receipts API, version: 1.0.0}
+paths:
+  /api/v1/accounting/goods-and-service-receipts:
+    get: {operationId: listGoodsAndServiceReceipts, responses: {'200': {description: Receipts}}}
+    post: {operationId: createGoodsAndServiceReceipt, responses: {'201': {description: Created receipt}}}
+  /api/v1/accounting/goods-and-service-receipts/{receipt}/variance:
+    get: {operationId: calculateReceiptVariance, responses: {'200': {description: Quantity and value variance}}}

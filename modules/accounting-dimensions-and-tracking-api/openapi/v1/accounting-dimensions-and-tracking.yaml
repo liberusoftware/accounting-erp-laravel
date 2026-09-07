@@ -1,0 +1,9 @@
+openapi: 3.1.0
+info: {title: accounting dimensions and tracking API, version: 1.0.0}
+paths:
+  /api/v1/accounting/dimensions-and-tracking:
+    get: {operationId: accounting.dimensions.and.tracking.list, responses: {'200': {description: Authorized dimensions}}}
+    post: {operationId: accounting.dimensions.and.tracking.create, responses: {'201': {description: Dimension created}}}
+  /api/v1/accounting/dimensions-and-tracking/validate: {post: {operationId: accounting.dimensions.and.tracking.validate, responses: {'200': {description: Validation result}}}}
+  /api/v1/accounting/dimensions-and-tracking/allocate: {post: {operationId: accounting.dimensions.and.tracking.allocate, responses: {'201': {description: Allocation created}}}}
+  /api/v1/accounting/dimensions-and-tracking/balances: {get: {operationId: accounting.dimensions.and.tracking.balances, responses: {'200': {description: Dimensional balances}}}}

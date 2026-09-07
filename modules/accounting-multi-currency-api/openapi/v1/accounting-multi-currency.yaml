@@ -1,0 +1,9 @@
+openapi: 3.1.0
+info: {title: Accounting Multi-Currency API, version: 1.0.0}
+paths:
+  /api/v1/accounting/multi-currency/rates:
+    get: {operationId: accounting.multi.currency.rates, security: [{sanctum: []}], responses: {'200': {description: Historical exchange rates}}}
+    post: {operationId: accounting.multi.currency.rate, security: [{sanctum: []}], responses: {'201': {description: Rate recorded}}}
+  /api/v1/accounting/multi-currency/revaluations:
+    post: {operationId: accounting.multi.currency.revaluation, security: [{sanctum: []}], responses: {'201': {description: Revaluation calculated}}}
+components: {securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}}

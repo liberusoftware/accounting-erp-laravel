@@ -1,0 +1,10 @@
+openapi: 3.1.0
+info: {title: accounting projects and jobs API, version: 1.0.0}
+paths:
+  /api/v1/accounting/projects-and-jobs:
+    get: {operationId: accounting.projects.jobs.list, responses: {'200': {description: Authorized projects}}}
+    post: {operationId: accounting.projects.jobs.create, responses: {'201': {description: Project created}}}
+  /api/v1/accounting/projects-and-jobs/{project}:
+    get: {operationId: accounting.projects.jobs.get, responses: {'200': {description: Project resource}}}
+  /api/v1/accounting/projects-and-jobs/{project}/transition:
+    post: {operationId: accounting.projects.jobs.transition, responses: {'200': {description: Lifecycle changed}}}

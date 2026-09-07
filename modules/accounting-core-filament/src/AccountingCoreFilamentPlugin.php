@@ -4,6 +4,7 @@ namespace Liberu\Accounting\CoreFilament;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Liberu\Accounting\CoreFilament\Resources\BookResource;
 use Liberu\Accounting\CoreFilament\Resources\LegalEntityResource;
 
 final class AccountingCoreFilamentPlugin implements Plugin
@@ -20,7 +21,7 @@ final class AccountingCoreFilamentPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel->resources([LegalEntityResource::class]);
+        $panel->resources([LegalEntityResource::class, BookResource::class]);
     }
 
     public function boot(Panel $panel): void {}

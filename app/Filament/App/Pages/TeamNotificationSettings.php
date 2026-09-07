@@ -32,6 +32,10 @@ class TeamNotificationSettings extends Page
     #[\Override]
     protected static ?string $title = 'SMS Settings';
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Workspace & Integrations';
+
+    protected static ?int $navigationSort = 3;
+
     /** @var array<string, mixed>|null */
     public ?array $data = [];
 

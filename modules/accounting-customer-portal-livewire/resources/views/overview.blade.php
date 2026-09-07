@@ -1,0 +1,1 @@
+<div><h2>Customer portal</h2><ul>@forelse ($records as $record)<li>{{ $record->type->value }} {{ $record->reference }} — {{ $record->status->value }}</li>@empty<li>No customer portal records.</li>@endforelse</ul></div>

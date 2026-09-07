@@ -1,0 +1,66 @@
+openapi: 3.1.0
+info:
+  title: Accounting Periods API
+  version: 1.0.0
+servers:
+  - url: /api/v1/accounting/accounting-periods
+paths:
+  /periods:
+    get:
+      operationId: accounting.periods.list
+      security: [{ sanctum: [accounting.periods.read] }]
+      responses: { '200': { $ref: '#/components/responses/PeriodCollection' } }
+    post:
+      operationId: accounting.periods.create
+      security: [{ sanctum: [accounting.periods.write] }]
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/PeriodInput' } } }
+      responses: { '201': { $ref: '#/components/responses/Period' }, '422': { $ref: '#/components/responses/Problem' } }
+  /periods/{id}/transition:
+    post:
+      operationId: accounting.periods.transition
+      security: [{ sanctum: [accounting.periods.write] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      requestBody:
+        required: true
+        content: { application/json: { schema: { type: object, required: [state], properties: { state: { type: string, enum: [open, soft_closed, hard_closed] }, reason: { type: [string, 'null'] } } } } }
+      responses: { '200': { $ref: '#/components/responses/Period' }, '422': { $ref: '#/components/responses/Problem' } }
+  /periods/{id}/posting-allowed:
+    get:
+      operationId: accounting.periods.postingAllowed
+      security: [{ sanctum: [accounting.periods.read] }]
+      parameters:
+        - { $ref: '#/components/parameters/Id' }
+        - { name: date, in: query, required: true, schema: { type: string, format: date } }
+      responses: { '200': { description: Posting decision } }
+components:
+  parameters:
+    Id: { name: id, in: path, required: true, schema: { type: string } }
+  securitySchemes:
+    sanctum: { type: http, scheme: bearer, bearerFormat: Sanctum }
+  schemas:
+    Period:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id: { type: string }
+        type: { type: string, const: accounting-period }
+        attributes: { $ref: '#/components/schemas/PeriodInput' }
+    PeriodInput:
+      type: object
+      required: [book_id, starts_on, ends_on]
+      properties:
+        book_id: { type: string }
+        starts_on: { type: string, format: date }
+        ends_on: { type: string, format: date }
+        posting_ends_on: { type: [string, 'null'], format: date }
+        state: { type: string, enum: [open, soft_closed, hard_closed] }
+  responses:
+    Period: { description: Accounting period, content: { application/json: { schema: { $ref: '#/components/schemas/Period' } } } }
+    PeriodCollection:
+      description: Accounting periods
+      content: { application/json: { schema: { type: object, properties: { data: { type: array, items: { $ref: '#/components/schemas/Period' } } } } } }
+    Problem:
+      description: RFC 9457 problem details
+      content: { application/problem+json: { schema: { type: object, required: [type, title, status], properties: { type: { type: string }, title: { type: string }, status: { type: integer }, detail: { type: string } } } } }

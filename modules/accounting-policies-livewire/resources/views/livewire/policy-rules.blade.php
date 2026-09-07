@@ -1,0 +1,4 @@
+<div>
+    <form wire:submit="save"><input wire:model="bookId" placeholder="Book ID"><select wire:model="category"><option value="recognition">Recognition</option><option value="capitalization">Capitalization</option><option value="depreciation">Depreciation</option><option value="fx">FX</option><option value="tax">Tax</option><option value="rounding">Rounding</option><option value="write_off">Write-off</option><option value="materiality">Materiality</option><option value="approval">Approval</option></select><input wire:model="key" placeholder="Rule key"><textarea wire:model="value"></textarea><input wire:model="effectiveFrom" type="date"><input wire:model="effectiveUntil" type="date"><button type="submit">Save policy</button></form>
+    <ul>@foreach($policyRules as $rule)<li>{{ $rule->category->value }}:{{ $rule->key }} ({{ $rule->effective_from->toDateString() }})</li>@endforeach</ul>{{ $policyRules->links() }}
+</div>

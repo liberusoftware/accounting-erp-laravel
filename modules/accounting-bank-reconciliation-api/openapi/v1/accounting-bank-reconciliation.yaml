@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  title: accounting bank reconciliation API
+  version: 1.0.0
+paths:
+  /api/v1/accounting/bank-reconciliation:
+    get:
+      operationId: accounting.bank.reconciliation.list
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/PageSize'}]
+      responses: {'200': {$ref: '#/components/responses/ResourceCollection'}}
+    post:
+      operationId: accounting.bank.reconciliation.create
+      security: [{sanctum: []}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/ReconciliationCreate'}}}}
+      responses: {'201': {$ref: '#/components/responses/Resource'}}
+  /api/v1/accounting/bank-reconciliation/{session}:
+    get:
+      operationId: accounting.bank.reconciliation.get
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/SessionId'}]
+      responses: {'200': {$ref: '#/components/responses/Resource'}}
+  /api/v1/accounting/bank-reconciliation/{session}/summary:
+    get:
+      operationId: accounting.bank.reconciliation.summary
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/SessionId'}]
+      responses: {'200': {$ref: '#/components/responses/Summary'}}
+  /api/v1/accounting/bank-reconciliation/{session}/entries:
+    post:
+      operationId: accounting.bank.reconciliation.entry.create
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/SessionId'}, {'$ref': '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/EntryCreate'}}}}
+      responses: {'201': {$ref: '#/components/responses/Entry'}}
+  /api/v1/accounting/bank-reconciliation/{session}/entries/{entry}/confirm:
+    post:
+      operationId: accounting.bank.reconciliation.entry.confirm
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/SessionId'}, {'$ref': '#/components/parameters/EntryId'}]
+      responses: {'200': {$ref: '#/components/responses/Entry'}}
+  /api/v1/accounting/bank-reconciliation/{session}/sign-off:
+    post:
+      operationId: accounting.bank.reconciliation.sign-off
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/SessionId'}, {'$ref': '#/components/parameters/IdempotencyKey'}]
+      responses: {'200': {$ref: '#/components/responses/Resource'}, '409': {$ref: '#/components/responses/Problem'}}
+components:
+  securitySchemes:
+    sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}
+  parameters:
+    PageSize: {name: page[size], in: query, schema: {type: integer, minimum: 1, maximum: 100, default: 25}}
+    SessionId: {name: session, in: path, required: true, schema: {type: string}}
+    EntryId: {name: entry, in: path, required: true, schema: {type: string}}
+    IdempotencyKey: {name: Idempotency-Key, in: header, required: false, schema: {type: string, maxLength: 255}}
+  schemas:
+    ReconciliationCreate:
+      type: object
+      required: [bank_account_id, period_start, period_end, opening_balance, statement_balance]
+      properties:
+        bank_account_id: {type: integer}
+        period_start: {type: string, format: date}
+        period_end: {type: string, format: date}
+        opening_balance: {type: number}
+        statement_balance: {type: number}
+        metadata: {type: object, additionalProperties: true}
+    EntryCreate:
+      type: object
+      required: [kind, amount, currency]
+      properties:
+        source_type: {type: string, nullable: true}
+        source_id: {type: string, nullable: true}
+        kind: {type: string, enum: [match, transfer, grouped_receipt, fee, interest, adjustment]}
+        status: {type: string, enum: [suggested, confirmed, exception], default: suggested}
+        amount: {type: number}
+        currency: {type: string, minLength: 3, maxLength: 3}
+        confidence: {type: number, minimum: 0, maximum: 1, nullable: true}
+        description: {type: string, nullable: true}
+        exception_reason: {type: string, nullable: true}
+    AccountingBankReconciliationResource:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id: {type: string}
+        type: {type: string, const: accounting-bank-reconciliation}
+        attributes: {type: object, additionalProperties: true}
+    Summary:
+      type: object
+      properties:
+        data:
+          type: object
+          required: [confirmed, exceptions, cleared_amount, variance]
+          properties:
+            confirmed: {type: integer}
+            exceptions: {type: integer}
+            cleared_amount: {type: number}
+            variance: {type: number}
+  responses:
+    Resource: {description: Reconciliation resource, content: {application/json: {schema: {$ref: '#/components/schemas/AccountingBankReconciliationResource'}}}}
+    Entry: {description: Reconciliation entry, content: {application/json: {schema: {type: object}}}}
+    ResourceCollection: {description: Authorized paginated resources, content: {application/json: {schema: {type: object}}}}
+    Summary: {description: Reconciliation summary, content: {application/json: {schema: {$ref: '#/components/schemas/Summary'}}}}
+    Problem: {description: RFC 9457 problem, content: {application/problem+json: {schema: {type: object}}}}

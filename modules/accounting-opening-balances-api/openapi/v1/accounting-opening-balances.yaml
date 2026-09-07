@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info: {title: Accounting Opening Balances API, version: 1.0.0}
+paths:
+  /api/v1/accounting/opening-balances:
+    get: {operationId: accounting.opening.balances.list, security: [{sanctum: []}], responses: {'200': {description: Opening-balance batches}}}
+    post: {operationId: accounting.opening.balances.create, security: [{sanctum: []}], responses: {'201': {description: Batch created}, '422': {description: Invalid batch}}}
+  /api/v1/accounting/opening-balances/{openingBalance}/validate:
+    post: {operationId: accounting.opening.balances.validate, security: [{sanctum: []}], parameters: [{name: openingBalance, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Validated batch}}}
+  /api/v1/accounting/opening-balances/{openingBalance}/approve:
+    post: {operationId: accounting.opening.balances.approve, security: [{sanctum: []}], parameters: [{name: openingBalance, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Approved batch}}}
+  /api/v1/accounting/opening-balances/{openingBalance}/reconcile:
+    post: {operationId: accounting.opening.balances.reconcile, security: [{sanctum: []}], parameters: [{name: openingBalance, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Reconciled batch}}}
+components: {securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}}

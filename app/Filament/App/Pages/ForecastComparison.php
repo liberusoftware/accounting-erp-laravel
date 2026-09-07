@@ -31,6 +31,8 @@ class ForecastComparison extends Page
     #[\Override]
     protected static ?string $title = 'Forecast Comparison';
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Reports';
+
     #[\Override]
     protected string $view = 'filament.app.pages.forecast-comparison';
 

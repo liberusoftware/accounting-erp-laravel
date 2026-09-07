@@ -1,0 +1,59 @@
+openapi: 3.1.0
+info:
+  title: Accounting Policies API
+  version: 1.0.0
+servers:
+  - url: /api/v1/accounting/accounting-policies
+paths:
+  /policies:
+    get:
+      operationId: accounting.policies.list
+      security: [{ sanctum: [accounting.policies.read] }]
+      responses: { '200': { $ref: '#/components/responses/PolicyCollection' } }
+    post:
+      operationId: accounting.policies.create
+      security: [{ sanctum: [accounting.policies.write] }]
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: '#/components/schemas/PolicyInput' } } }
+      responses: { '201': { $ref: '#/components/responses/Policy' }, '422': { $ref: '#/components/responses/Problem' } }
+  /resolve:
+    get:
+      operationId: accounting.policies.resolve
+      security: [{ sanctum: [accounting.policies.read] }]
+      parameters:
+        - { name: book_id, in: query, required: true, schema: { type: string } }
+        - { name: category, in: query, required: true, schema: { type: string } }
+        - { name: key, in: query, required: true, schema: { type: string } }
+        - { name: date, in: query, required: true, schema: { type: string, format: date } }
+      responses: { '200': { $ref: '#/components/responses/Policy' } }
+components:
+  securitySchemes:
+    sanctum: { type: http, scheme: bearer, bearerFormat: Sanctum }
+  schemas:
+    Policy:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id: { type: string }
+        type: { type: string, const: accounting-policy-rule }
+        attributes: { $ref: '#/components/schemas/PolicyInput' }
+    PolicyInput:
+      type: object
+      required: [book_id, category, key, value, effective_from]
+      properties:
+        book_id: { type: string }
+        category: { type: string, enum: [recognition, capitalization, depreciation, fx, tax, rounding, write_off, materiality, approval] }
+        key: { type: string, maxLength: 100 }
+        value: { type: object, additionalProperties: true }
+        effective_from: { type: string, format: date }
+        effective_until: { type: [string, 'null'], format: date }
+        is_active: { type: boolean }
+  responses:
+    Policy: { description: Accounting policy rule, content: { application/json: { schema: { $ref: '#/components/schemas/Policy' } } } }
+    PolicyCollection:
+      description: Accounting policy rules
+      content: { application/json: { schema: { type: object, properties: { data: { type: array, items: { $ref: '#/components/schemas/Policy' } } } } } }
+    Problem:
+      description: RFC 9457 problem details
+      content: { application/problem+json: { schema: { type: object, required: [type, title, status], properties: { type: { type: string }, title: { type: string }, status: { type: integer }, detail: { type: string } } } } }

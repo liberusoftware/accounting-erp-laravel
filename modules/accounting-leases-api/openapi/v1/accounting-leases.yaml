@@ -1,0 +1,7 @@
+openapi: 3.1.0
+info: {title: Accounting Leases API, version: 1.0.0}
+paths:
+  /api/v1/accounting/leases: {get: {operationId: accounting.leases.list, security: [{sanctum: []}], responses: {'200': {description: Leases}}}, post: {operationId: accounting.leases.create, security: [{sanctum: []}], parameters: [{'$ref': '#/components/parameters/IdempotencyKey'}], responses: {'201': {description: Lease created}}}}
+  /api/v1/accounting/leases/{lease}/schedule: {post: {operationId: accounting.leases.schedule, security: [{sanctum: []}], responses: {'200': {description: Schedule generated}}}}
+  /api/v1/accounting/leases/{lease}/disclosure: {post: {operationId: accounting.leases.disclosure, security: [{sanctum: []}], responses: {'201': {description: Disclosure generated}}}}
+components: {parameters: {IdempotencyKey: {name: Idempotency-Key, in: header, schema: {type: string}}}, securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}}

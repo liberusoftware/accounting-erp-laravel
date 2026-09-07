@@ -1,0 +1,74 @@
+openapi: 3.1.0
+info:
+  title: Accounting Supplier Portal API
+  version: 1.0.0
+paths:
+  /api/v1/accounting/supplier-portal:
+    get:
+      operationId: accounting.supplier.portal.list
+      security: [{ sanctum: [] }]
+      parameters:
+        - { name: supplier_id, in: query, schema: { type: string } }
+        - { name: type, in: query, schema: { type: string, enum: [profile_change, purchase_order, invoice, statement, dispute, payment_status, document] } }
+        - { name: status, in: query, schema: { type: string } }
+        - { name: page, in: query, schema: { type: integer, minimum: 1 } }
+      responses: { '200': { $ref: '#/components/responses/Collection' } }
+    post:
+      operationId: accounting.supplier.portal.create
+      security: [{ sanctum: [] }]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/CreatePortalResource' } } } }
+      responses: { '201': { $ref: '#/components/responses/Resource' }, '422': { $ref: '#/components/responses/Problem' } }
+  /api/v1/accounting/supplier-portal/{id}:
+    get:
+      operationId: accounting.supplier.portal.get
+      security: [{ sanctum: [] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses: { '200': { $ref: '#/components/responses/Resource' } }
+  /api/v1/accounting/supplier-portal/{id}/transition:
+    post:
+      operationId: accounting.supplier.portal.transition
+      security: [{ sanctum: [] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }, { $ref: '#/components/parameters/IdempotencyKey' }]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/Transition' } } } }
+      responses: { '200': { $ref: '#/components/responses/Resource' }, '409': { $ref: '#/components/responses/Problem' } }
+components:
+  securitySchemes: { sanctum: { type: http, scheme: bearer, bearerFormat: Sanctum } }
+  parameters:
+    Id: { name: id, in: path, required: true, schema: { type: string, description: Opaque resource identifier } }
+    IdempotencyKey: { name: Idempotency-Key, in: header, required: false, schema: { type: string, maxLength: 255 } }
+  schemas:
+    CreatePortalResource:
+      type: object
+      required: [supplier_id, type, reference, currency]
+      properties:
+        supplier_id: { type: string, maxLength: 160 }
+        type: { type: string, enum: [profile_change, purchase_order, invoice, statement, dispute, payment_status, document] }
+        reference: { type: string, maxLength: 100 }
+        currency: { type: string, minLength: 3, maxLength: 3 }
+        amount: { type: number, minimum: 0 }
+        payload: { type: object, additionalProperties: true }
+    Transition:
+      type: object
+      required: [status]
+      properties:
+        status: { type: string, enum: [submitted, under_review, approved, rejected, paid, disputed, archived] }
+        reason: { type: string, maxLength: 2000 }
+    Resource:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id: { type: string }
+        type: { const: accounting-supplier-portal }
+        attributes: { type: object, additionalProperties: true }
+    Collection:
+      type: object
+      required: [data]
+      properties: { data: { type: array, items: { $ref: '#/components/schemas/Resource' } } }
+    Problem:
+      type: object
+      required: [type, title, status]
+      properties: { type: { type: string, format: uri }, title: { type: string }, status: { type: integer }, detail: { type: string } }
+  responses:
+    Resource: { description: Supplier portal resource, content: { application/json: { schema: { $ref: '#/components/schemas/Resource' } } } }
+    Collection: { description: Paginated supplier portal resources, content: { application/json: { schema: { $ref: '#/components/schemas/Collection' } } } }
+    Problem: { description: RFC 9457 problem details, content: { application/problem+json: { schema: { $ref: '#/components/schemas/Problem' } } } }
