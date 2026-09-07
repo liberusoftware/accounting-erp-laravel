@@ -25,6 +25,8 @@ use Filament\Tables\Table;
 
 class ChartOfAccountsResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Accounting';
+
     #[\Override]
     protected static ?string $model = Account::class;
 

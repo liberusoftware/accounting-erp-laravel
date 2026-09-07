@@ -15,6 +15,6 @@ final class SetCollectionDecision
             $assistant->forceFill([$field => $value])->save();
         }
 
-return $assistant->refresh();
+        return $assistant->refresh();
     }
 }

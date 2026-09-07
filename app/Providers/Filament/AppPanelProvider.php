@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\ModulePlugins;
+use App\Http\Middleware\EnsureAccountingSetup;
 use App\Http\Middleware\EnsurePremiumAccess;
 use App\Support\ThemeColors;
 use Filament\Http\Middleware\Authenticate;
@@ -32,6 +33,21 @@ class AppPanelProvider extends PanelProvider
             ->path('app')
             ->brandName('Liberu Accounting')
             ->colors(app(ThemeColors::class)->forSite())
+            ->navigationGroups([
+                'Overview',
+                'Sales',
+                'Purchasing',
+                'Vendors',
+                'Banking',
+                'Accounting',
+                'Assets',
+                'Payroll',
+                'Tax & Compliance',
+                'Reports',
+                'Workspace & Integrations',
+                'Settings',
+                'Account',
+            ])
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\Filament\App\Resources')
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\Filament\App\Pages')
             ->pages([
@@ -54,6 +70,7 @@ class AppPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
                 SetLocale::class,
                 SecurityHeaders::class,
+                EnsureAccountingSetup::class,
                 EnsurePremiumAccess::class,
             ])
             ->plugins(app(ModulePlugins::class)->forPanel('app'))

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Liberu\Accounting\AccountsPayable\Actions;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Liberu\Accounting\AccountsPayable\Enums\PayableStatus;
 use Liberu\Accounting\AccountsPayable\Events\PaymentRecorded;
 use Liberu\Accounting\AccountsPayable\Exceptions\InvalidPayable;
@@ -16,7 +17,8 @@ final class RecordPayment
 {
     public function handle(array $attributes): PayablePayment
     {
-        if ((float) ($attributes['amount'] ?? 0) <= 0 || strlen((string) ($attributes['currency'] ?? '')) !== 3) {
+        $attributes['currency'] = Str::upper((string) ($attributes['currency'] ?? ''));
+        if ((float) ($attributes['amount'] ?? 0) <= 0 || strlen($attributes['currency']) !== 3) {
             throw new InvalidPayable('A payment requires a positive amount and currency.');
         }
 

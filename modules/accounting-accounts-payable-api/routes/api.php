@@ -19,6 +19,6 @@ Route::prefix('api/v1/accounting/accounts-payable')->middleware(['auth:sanctum',
         Route::post('/payments/{payment}/apply', [PayableOpenItemController::class, 'apply']);
         Route::post('/disputes', [PayableOpenItemController::class, 'dispute']);
         Route::post('/disputes/{dispute}/resolve', [PayableOpenItemController::class, 'resolve']);
-        Route::post('/suppliers/{party}/payment-control', [PayableOpenItemController::class, 'credit']);
+        Route::post('/suppliers/{party}/payment-control', [PayableOpenItemController::class, 'paymentControl']);
     });
 });

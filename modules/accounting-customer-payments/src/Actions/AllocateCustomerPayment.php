@@ -18,7 +18,7 @@ final class AllocateCustomerPayment
             throw new InvalidCustomerPayment('Allocation exceeds the unapplied payment balance.');
         }
 
-return DB::transaction(function () use ($payment, $documentRef, $amount): CustomerPaymentAllocation {
+        return DB::transaction(function () use ($payment, $documentRef, $amount): CustomerPaymentAllocation {
             $allocation = $payment->allocations()->create(['team_id' => $payment->team_id, 'document_ref' => $documentRef, 'amount' => $amount]);
             $total = (float) $payment->allocated_amount + $amount;
             $payment->update(['allocated_amount' => $total, 'status' => $total >= (float) $payment->amount ? CustomerPaymentStatus::Allocated : CustomerPaymentStatus::PartiallyAllocated]);

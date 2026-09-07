@@ -15,16 +15,23 @@ final class SetCreditControl
 {
     public function handle(int $partyId, ?float $creditLimit = null, ?bool $hold = null, ?string $reason = null): ReceivableAccount
     {
-        if (! Party::query()->whereKey($partyId)->where('type', PartyType::Customer)->exists()) {
-            throw new InvalidReceivable('Credit control can only be configured for an existing customer.');
-        }
-        $account = app(EnsureAccount::class)->handle($partyId);
         if ($creditLimit !== null && $creditLimit < 0) {
             throw new \InvalidArgumentException('Credit limit cannot be negative.');
         }
-        $account->update(array_filter(['credit_limit' => $creditLimit, 'credit_hold' => $hold, 'hold_reason' => $reason], static fn ($v) => $v !== null));
-        DB::afterCommit(fn (): mixed => event(new CreditControlChanged(ReceivableAccount::query()->findOrFail($account->getKey()))));
 
-        return $account->refresh();
+        $account = DB::transaction(function () use ($partyId, $creditLimit, $hold, $reason): ReceivableAccount {
+            if (! Party::query()->whereKey($partyId)->where('type', PartyType::Customer)->exists()) {
+                throw new InvalidReceivable('Credit control can only be configured for an existing customer.');
+            }
+
+            $account = ReceivableAccount::query()->where('party_id', $partyId)->lockForUpdate()->first()
+                ?? app(EnsureAccount::class)->handle($partyId);
+            $account->update(array_filter(['credit_limit' => $creditLimit, 'credit_hold' => $hold, 'hold_reason' => $reason], static fn ($v) => $v !== null));
+            DB::afterCommit(fn (): mixed => event(new CreditControlChanged(ReceivableAccount::query()->findOrFail($account->getKey()))));
+
+            return $account->refresh();
+        });
+
+        return $account;
     }
 }

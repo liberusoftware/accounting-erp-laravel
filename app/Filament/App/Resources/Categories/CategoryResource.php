@@ -21,6 +21,8 @@ use Filament\Tables\Table;
 
 class CategoryResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Settings';
+
     #[\Override]
     protected static ?string $model = Category::class;
 

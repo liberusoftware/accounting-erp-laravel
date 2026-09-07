@@ -19,6 +19,6 @@ final class CreateCustomReport
             throw new InvalidCustomReport('At least one governed measure is required.');
         }
 
-return CustomReport::create($attributes);
+        return CustomReport::create($attributes);
     }
 }

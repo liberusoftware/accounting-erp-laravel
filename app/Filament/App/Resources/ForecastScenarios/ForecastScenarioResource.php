@@ -24,6 +24,8 @@ use Filament\Tables\Table;
 // same as every other team-scoped resource here — this one uses the default.
 class ForecastScenarioResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Reports';
+
     #[\Override]
     protected static ?string $model = ForecastScenario::class;
 

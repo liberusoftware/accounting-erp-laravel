@@ -15,11 +15,11 @@ final class ResolveDispute
 {
     public function handle(PayableDispute $dispute, string $resolution, bool $accepted = false): PayableDispute
     {
-        if ($dispute->status !== DisputeStatus::Open || blank($resolution)) {
-            throw new \InvalidArgumentException('Only open disputes can be resolved with a resolution.');
-        }
-
         return DB::transaction(function () use ($dispute, $resolution, $accepted): PayableDispute {
+            $dispute = PayableDispute::query()->lockForUpdate()->findOrFail($dispute->getKey());
+            if ($dispute->status !== DisputeStatus::Open || blank($resolution)) {
+                throw new \InvalidArgumentException('Only open disputes can be resolved with a resolution.');
+            }
             $dispute->update(['status' => $accepted ? DisputeStatus::Resolved : DisputeStatus::Rejected, 'resolution' => $resolution, 'resolved_at' => now()]);
             $item = PayableOpenItem::query()->findOrFail($dispute->open_item_id);
             if ($item->status === PayableStatus::Disputed) {

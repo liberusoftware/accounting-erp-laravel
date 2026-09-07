@@ -1,6 +1,8 @@
 # Accounting Accounts Payable Livewire
 
-The supplier subledger component is available as
-`module-accounting-accounts-payable::payables`; the legacy
-`module-accounting-accounts-payable-payables` alias remains supported. It
-requires an authenticated user and reads through `SupplierSubledgerQuery`.
+The supplier subledger, aging, and reconciliation components are available as
+`module-accounting-accounts-payable::payables`,
+`module-accounting-accounts-payable::aging`, and
+`module-accounting-accounts-payable::reconciliation`. Legacy aliases remain
+supported. Components require an authenticated user and read through the
+public Accounts Payable query boundary.

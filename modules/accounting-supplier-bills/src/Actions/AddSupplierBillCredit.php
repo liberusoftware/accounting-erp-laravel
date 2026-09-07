@@ -16,10 +16,11 @@ final class AddSupplierBillCredit
         return DB::transaction(function () use ($bill, $attributes): SupplierBill {
             $bill = SupplierBill::query()->lockForUpdate()->findOrFail($bill->id);
             $amount = (float) ($attributes['amount'] ?? 0);
-            if (! in_array($bill->status, [SupplierBillStatus::Approved, SupplierBillStatus::Posted], true) || $amount <= 0 || $amount > $bill->outstanding() || blank($attributes['reason'] ?? null)) {
+            $currency = strtoupper((string) ($attributes['currency'] ?? $bill->currency));
+            if (! in_array($bill->status, [SupplierBillStatus::Approved, SupplierBillStatus::Posted], true) || $amount <= 0 || $amount > $bill->outstanding() || blank($attributes['reason'] ?? null) || $currency !== $bill->currency) {
                 throw new InvalidSupplierBill('A credit requires an approved or posted bill, a reason, and an amount within the outstanding balance.');
             }
-            $bill->credits()->create(array_merge($attributes, ['amount' => $amount, 'currency' => $attributes['currency'] ?? $bill->currency]));
+            $bill->credits()->create(array_merge($attributes, ['amount' => $amount, 'currency' => $currency]));
 
             return $bill->refresh()->load('credits');
         });

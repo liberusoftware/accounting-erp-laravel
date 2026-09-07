@@ -47,6 +47,10 @@ it('lets every package install standalone', function () {
     foreach ($packageFiles as $packageFile) {
         $package = json_decode(file_get_contents($packageFile), true, flags: JSON_THROW_ON_ERROR);
 
+        if (! isset($package['require-dev']['pestphp/pest'])) {
+            continue;
+        }
+
         if (($package['config']['allow-plugins']['pestphp/pest-plugin'] ?? null) !== true) {
             throw new RuntimeException("{$package['name']} must allow pestphp/pest-plugin, or its standalone composer update aborts before installing Pest.");
         }
