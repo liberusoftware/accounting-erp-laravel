@@ -15,11 +15,17 @@ use Livewire\Component;
 final class ReferenceData extends Component
 {
     public string $resource = 'items-services';
+
     public string $legalEntityId = '';
+
     public string $code = '';
+
     public string $name = '';
+
     public string $sku = '';
+
     public string $rate = '';
+
     public string $days = '0';
 
     public function save(SaveReferenceData $save): void
@@ -37,7 +43,10 @@ final class ReferenceData extends Component
 
     public function render(): View
     {
-        $class = match ($this->resource) { 'tax-profiles' => TaxProfile::class, 'payment-terms' => PaymentTerm::class, default => ItemService::class };
+        $class = match ($this->resource) {
+            'tax-profiles' => TaxProfile::class, 'payment-terms' => PaymentTerm::class, default => ItemService::class
+        };
+
         return ViewFacade::make('accounting-financial-master-data-livewire::livewire.reference-data', ['records' => $class::query()->where('legal_entity_id', $this->legalEntityId ?: 0)->latest()->paginate(25)]);
     }
 }

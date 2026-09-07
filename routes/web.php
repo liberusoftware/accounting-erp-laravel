@@ -3,8 +3,10 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\PortalAccessController;
+use App\Http\Controllers\SaasPremiumBillingController;
 use Filament\Facades\Filament;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn (): Factory|\Illuminate\Contracts\View\View => view('home'))->name('home');
 
+Route::middleware('auth')->prefix('billing/premium')->name('billing.premium')->group(function (): void {
+    Route::get('/', [SaasPremiumBillingController::class, 'show'])->name('');
+    Route::post('/checkout', [SaasPremiumBillingController::class, 'checkout'])->name('.checkout');
+    Route::get('/success', [SaasPremiumBillingController::class, 'success'])->name('.success');
+    Route::post('/portal', [SaasPremiumBillingController::class, 'portal'])->name('.portal');
+});
+
+Route::post('/stripe/webhook', [SaasPremiumBillingController::class, 'webhook'])
+    ->withoutMiddleware([ValidateCsrfToken::class])
+    ->name('stripe.webhook');
+
 Route::middleware('auth')->get('/dashboard', function (): RedirectResponse {
     $user = request()->user();
 
@@ -30,8 +43,12 @@ Route::middleware('auth')->get('/dashboard', function (): RedirectResponse {
         return redirect()->to('/admin/'.($team?->getKey() ?? ''));
     }
 
+    if (($team = $user->currentTeam) !== null && $team->accounting_setup_completed_at === null) {
+        return redirect('/app/account-setup');
+    }
+
     return redirect()->route('filament.app.pages.dashboard');
-});
+})->name('dashboard');
 
 // Portal access (customer + vendor): signed-link set-password + forgot. The
 // guard is fixed per route via defaults('guard', ...) — never from user input.

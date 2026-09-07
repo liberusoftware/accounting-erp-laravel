@@ -5,7 +5,12 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Liberu\Accounting\Intercompany\Actions\{AddTransferPricingEvidence, ConfirmTransaction, CreateCounterparty, CreateTransaction, ReconcileIntercompany, SettleTransaction};
+use Liberu\Accounting\Intercompany\Actions\AddTransferPricingEvidence;
+use Liberu\Accounting\Intercompany\Actions\ConfirmTransaction;
+use Liberu\Accounting\Intercompany\Actions\CreateCounterparty;
+use Liberu\Accounting\Intercompany\Actions\CreateTransaction;
+use Liberu\Accounting\Intercompany\Actions\ReconcileIntercompany;
+use Liberu\Accounting\Intercompany\Actions\SettleTransaction;
 use Liberu\Accounting\Intercompany\Enums\TransactionStatus;
 use Liberu\Accounting\Intercompany\Exceptions\InvalidIntercompany;
 use Liberu\Accounting\Intercompany\Queries\IntercompanyQuery;

@@ -30,7 +30,7 @@ class ExpenseResource extends Resource
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-currency-dollar';
 
     #[\Override]
-    protected static string|\UnitEnum|null $navigationGroup = 'Finance';
+    protected static string|\UnitEnum|null $navigationGroup = 'Accounting';
 
     #[\Override]
     public static function form(Schema $schema): Schema
@@ -109,7 +109,7 @@ class ExpenseResource extends Resource
                     }),
                 TextColumn::make('approver.name')
                     ->label('Approved By')
-                    ->visible(fn (Expense $record): bool => $record->approved_by !== null),
+                    ->visible(fn (mixed $record): bool => $record instanceof Expense && $record->approved_by !== null),
             ])
             ->filters([
                 SelectFilter::make('approval_status')

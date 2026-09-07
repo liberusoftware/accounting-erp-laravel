@@ -13,10 +13,15 @@ use Livewire\Component;
 final class Accounts extends Component
 {
     public string $legalEntityId = '';
+
     public string $code = '';
+
     public string $name = '';
+
     public string $type = 'asset';
+
     public string $normalBalance = '';
+
     public string $parentId = '';
 
     public function save(SaveAccount $save): void

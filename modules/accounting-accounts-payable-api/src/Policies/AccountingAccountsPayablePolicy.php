@@ -4,32 +4,30 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\AccountsPayableApi\Policies;
 
-use Liberu\Accounting\AccountsPayable\Models\PayableOpenItem;
-
 final class AccountingAccountsPayablePolicy
 {
-    public function viewAny(?object $user = null): bool
+    private function can(?object $user, string $ability): bool
     {
-        return $user !== null;
+        return $user !== null && method_exists($user, 'tokenCan') && $user->tokenCan($ability);
     }
 
-    public function view(?object $user, PayableOpenItem $item): bool
+    public function viewAny(?object $user = null): bool
     {
-        return $user !== null;
+        return $this->can($user, 'accounting.payables.read');
+    }
+
+    public function view(?object $user, object $item): bool
+    {
+        return $this->can($user, 'accounting.payables.read');
     }
 
     public function create(?object $user = null): bool
     {
-        return $user !== null;
+        return $this->can($user, 'accounting.payables.write');
     }
 
-    public function update(?object $user, PayableOpenItem $item): bool
+    public function update(?object $user, object $item): bool
     {
-        return $user !== null;
-    }
-
-    public function delete(?object $user, PayableOpenItem $item): bool
-    {
-        return $user !== null;
+        return $this->can($user, 'accounting.payables.write');
     }
 }

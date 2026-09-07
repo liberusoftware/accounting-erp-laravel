@@ -1,2 +1,19 @@
 <?php
-declare(strict_types=1);use Illuminate\Database\Migrations\Migration;use Illuminate\Database\Schema\Blueprint;use Illuminate\Support\Facades\Schema;return new class extends Migration {public function up():void{Schema::create('accounting_forecasts',function(Blueprint $t){$t->id();$t->unsignedBigInteger('team_id')->nullable()->index();$t->string('forecast_ref');$t->string('name');$t->char('currency',3);$t->string('method');$t->string('status')->index();$t->string('base_period');$t->unsignedInteger('horizon_periods');$t->string('scenario_ref')->nullable();$t->json('metadata')->nullable();$t->timestamps();$t->unique(['team_id','forecast_ref']);});Schema::create('accounting_forecast_lines',function(Blueprint $t){$t->id();$t->foreignId('forecast_id')->constrained('accounting_forecasts')->cascadeOnDelete();$t->string('period_ref');$t->string('account_ref');$t->string('dimension_ref')->nullable();$t->string('description');$t->string('driver_ref')->nullable();$t->decimal('forecast_value',18,2);$t->decimal('actual_value',18,2)->default(0);$t->decimal('variance_value',18,2)->default(0);$t->json('metadata')->nullable();$t->timestamps();$t->unique(['forecast_id','period_ref','account_ref','dimension_ref']);});Schema::create('accounting_forecast_periods',function(Blueprint $t){$t->id();$t->foreignId('forecast_id')->constrained('accounting_forecasts')->cascadeOnDelete();$t->string('period_ref');$t->date('starts_on');$t->date('ends_on');$t->string('status');$t->boolean('is_rolling')->default(false);$t->json('metadata')->nullable();$t->timestamps();});Schema::create('accounting_forecast_assumptions',function(Blueprint $t){$t->id();$t->foreignId('forecast_id')->constrained('accounting_forecasts')->cascadeOnDelete();$t->string('assumption_ref');$t->string('name');$t->decimal('value',18,6);$t->string('unit');$t->string('source');$t->date('effective_from');$t->date('effective_to')->nullable();$t->json('metadata')->nullable();$t->timestamps();});Schema::create('accounting_forecast_approvals',function(Blueprint $t){$t->id();$t->foreignId('forecast_id')->constrained('accounting_forecasts')->cascadeOnDelete();$t->string('actor_ref');$t->boolean('approved');$t->text('comment')->nullable();$t->timestamp('decided_at');$t->json('metadata')->nullable();$t->timestamps();});Schema::create('accounting_forecast_actuals',function(Blueprint $t){$t->id();$t->foreignId('forecast_id')->constrained('accounting_forecasts')->cascadeOnDelete();$t->foreignId('line_id')->nullable()->constrained('accounting_forecast_lines')->nullOnDelete();$t->string('period_ref');$t->decimal('actual_value',18,2);$t->string('source_ref');$t->timestamp('replaced_at');$t->json('metadata')->nullable();$t->timestamps();});}public function down():void{foreach(['actuals','approvals','assumptions','periods','lines','forecasts']as$s)Schema::dropIfExists('accounting_forecast_'.$s);}};
+
+declare(strict_types=1);
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
+
+return new class() extends Migration
+{
+    public function up(): void
+    {
+        if (Schema::hasTable('accounting_forecasts')) {
+            return;
+        }
+        $migration = require __DIR__.'/2026_08_25_021000_create_accounting_forecast_tables.php';
+        $migration->up();
+    }
+
+    public function down(): void {}
+};

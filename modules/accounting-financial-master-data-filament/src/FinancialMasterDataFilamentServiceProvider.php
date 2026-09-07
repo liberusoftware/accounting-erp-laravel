@@ -8,5 +8,8 @@ use Illuminate\Support\ServiceProvider;
 
 final class FinancialMasterDataFilamentServiceProvider extends ServiceProvider
 {
-    public function register(): void { $this->app->singleton(FinancialMasterDataFilamentPlugin::class); }
+    public function register(): void
+    {
+        $this->app->singleton(FinancialMasterDataFilamentPlugin::class);
+    }
 }

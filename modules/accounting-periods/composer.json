@@ -7,4 +7,4 @@
   "autoload": {"psr-4": {"Liberu\\Accounting\\Periods\\": "src/"}},
   "extra": {"laravel": {"providers": ["Liberu\\Accounting\\Periods\\AccountingPeriodsServiceProvider"]}, "liberu": {"name": "accounting-periods"}},
   "version": "1.0.0"
-}
+,"config":{"allow-plugins":{"pestphp/pest-plugin":true}}}

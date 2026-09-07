@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\FinancialMasterDataApi\Http\Resources;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Database\Eloquent\Model;
 
 /** @mixin Model */
 final class ReferenceDataResource extends JsonResource

@@ -13,9 +13,13 @@ use Livewire\Component;
 final class Parties extends Component
 {
     public string $legalEntityId = '';
+
     public string $type = 'customer';
+
     public string $name = '';
+
     public string $email = '';
+
     public string $reference = '';
 
     public function save(SaveParty $save): void

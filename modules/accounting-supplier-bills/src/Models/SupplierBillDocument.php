@@ -15,8 +15,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 final class SupplierBillDocument extends Model
 {
     protected $table = 'accounting_supplier_bill_documents';
-    protected $fillable = ['bill_id','path','original_name','mime_type','sha256','metadata'];
-    protected $casts = ['metadata'=>'array'];
-    protected $hidden = ['path','sha256'];
-    public function bill(): BelongsTo { return $this->belongsTo(SupplierBill::class, 'bill_id'); }
+
+    protected $fillable = ['bill_id', 'path', 'original_name', 'mime_type', 'sha256', 'metadata'];
+
+    protected $casts = ['metadata' => 'array'];
+
+    protected $hidden = ['path', 'sha256'];
+
+    public function bill(): BelongsTo
+    {
+        return $this->belongsTo(SupplierBill::class, 'bill_id');
+    }
 }

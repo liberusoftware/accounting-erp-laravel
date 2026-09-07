@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Liberu\Accounting\MultiCurrency\Actions;
 
 use Illuminate\Support\Facades\DB;
-use Liberu\Accounting\MultiCurrency\Enums\{GainStatus, RevaluationStatus};
+use Liberu\Accounting\MultiCurrency\Enums\GainStatus;
+use Liberu\Accounting\MultiCurrency\Enums\RevaluationStatus;
 use Liberu\Accounting\MultiCurrency\Events\RevaluationCalculated;
 use Liberu\Accounting\MultiCurrency\Exceptions\InvalidCurrency;
 use Liberu\Accounting\MultiCurrency\Models\RevaluationRun;
@@ -32,6 +33,7 @@ final class CreateRevaluation
                 if ($existing->source_hash !== $hash) {
                     throw new InvalidCurrency('Revaluation reference already exists with different source data.');
                 }
+
                 return $existing->load('positions');
             }
             $run = RevaluationRun::create(['team_id' => $attributes['team_id'] ?? null, 'run_ref' => $attributes['run_ref'], 'scope_ref' => $attributes['scope_ref'] ?? null, 'as_of_date' => $attributes['as_of_date'], 'functional_currency' => $functional, 'status' => RevaluationStatus::Calculated, 'source_hash' => $hash, 'requested_by' => $attributes['requested_by'] ?? null]);
@@ -50,12 +52,21 @@ final class CreateRevaluation
                 $status = ($position['gain_status'] ?? null) === 'realized' ? GainStatus::Realized : GainStatus::Unrealized;
                 $run->positions()->create(['reference_type' => $position['reference_type'] ?? 'balance', 'reference_id' => (string) ($position['reference_id'] ?? ''), 'currency' => $currency, 'foreign_amount' => $foreign, 'book_rate' => $book, 'closing_rate' => $closing, 'book_value' => $bookValue, 'closing_value' => $closingValue, 'gain_loss' => $gainLoss, 'gain_status' => $status, 'metadata' => $position['metadata'] ?? null]);
                 if ($status === GainStatus::Realized) {
-                    if ($gainLoss >= 0) $realizedGains += $gainLoss; else $realizedLosses += abs($gainLoss);
-                } elseif ($gainLoss >= 0) $gains += $gainLoss; else $losses += abs($gainLoss);
+                    if ($gainLoss >= 0) {
+                        $realizedGains += $gainLoss;
+                    } else {
+                        $realizedLosses += abs($gainLoss);
+                    }
+                } elseif ($gainLoss >= 0) {
+                    $gains += $gainLoss;
+                } else {
+                    $losses += abs($gainLoss);
+                }
             }
             $run->update(['realized_gain' => $realizedGains, 'realized_loss' => $realizedLosses, 'unrealized_gain' => $gains, 'unrealized_loss' => $losses, 'summary' => ['position_count' => count($positions), 'net_unrealized' => round($gains - $losses, 2), 'net_realized' => round($realizedGains - $realizedLosses, 2)]]);
             $result = $run->refresh()->load('positions');
             DB::afterCommit(fn () => event(new RevaluationCalculated($result)));
+
             return $result;
         });
     }

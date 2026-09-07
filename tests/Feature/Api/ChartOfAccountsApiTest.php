@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Liberu\Accounting\ChartOfAccounts\Models\Account;
 use Liberu\Accounting\ChartOfAccountsApi\ChartOfAccountsApiServiceProvider;
+use Liberu\Accounting\Core\Models\LegalEntity;
 
 uses(RefreshDatabase::class);
 
@@ -16,7 +17,7 @@ beforeEach(function (): void {
 
 it('creates, updates, lists, and archives scoped chart accounts', function (): void {
     $user = User::factory()->create();
-    $entity = \Liberu\Accounting\Core\Models\LegalEntity::query()->create([
+    $entity = LegalEntity::query()->create([
         'name' => 'Chart Entity',
         'currency_code' => 'GBP',
         'accounting_basis' => 'accrual',
@@ -47,10 +48,10 @@ it('creates, updates, lists, and archives scoped chart accounts', function (): v
 });
 
 it('rejects a parent from another legal entity', function (): void {
-    $entity = \Liberu\Accounting\Core\Models\LegalEntity::query()->create([
+    $entity = LegalEntity::query()->create([
         'name' => 'One', 'currency_code' => 'GBP', 'accounting_basis' => 'accrual',
     ]);
-    $otherEntity = \Liberu\Accounting\Core\Models\LegalEntity::query()->create([
+    $otherEntity = LegalEntity::query()->create([
         'name' => 'Two', 'currency_code' => 'GBP', 'accounting_basis' => 'accrual',
     ]);
     Sanctum::actingAs(User::factory()->create(), ['accounting.chart.write']);
@@ -64,4 +65,26 @@ it('rejects a parent from another legal entity', function (): void {
         'legal_entity_id' => $entity->id, 'parent_id' => $parent->id,
         'code' => '1100', 'name' => 'Invalid Child', 'type' => 'asset',
     ])->assertUnprocessable()->assertJsonValidationErrors(['parent_id']);
+});
+
+it('rejects duplicate codes and mismatched normal balances', function (): void {
+    $entity = LegalEntity::query()->create([
+        'name' => 'Duplicate Chart Entity', 'currency_code' => 'GBP', 'accounting_basis' => 'accrual',
+    ]);
+    Sanctum::actingAs(User::factory()->create(), ['accounting.chart.write']);
+    Account::query()->create(['legal_entity_id' => $entity->id, 'code' => '1000', 'name' => 'Cash', 'type' => 'asset', 'normal_balance' => 'debit']);
+
+    $this->postJson('/api/v1/accounting/chart-of-accounts/accounts', ['legal_entity_id' => $entity->id, 'code' => '1000', 'name' => 'Duplicate', 'type' => 'asset'])->assertUnprocessable()->assertJsonValidationErrors(['account']);
+    $this->postJson('/api/v1/accounting/chart-of-accounts/accounts', ['legal_entity_id' => $entity->id, 'code' => '2000', 'name' => 'Invalid Cash', 'type' => 'asset', 'normal_balance' => 'credit'])->assertUnprocessable()->assertJsonValidationErrors(['account']);
+});
+
+it('returns a hierarchy tree for a legal entity', function (): void {
+    $entity = LegalEntity::query()->create([
+        'name' => 'Tree Entity', 'currency_code' => 'GBP', 'accounting_basis' => 'accrual',
+    ]);
+    $root = Account::query()->create(['legal_entity_id' => $entity->id, 'code' => '1000', 'name' => 'Assets', 'type' => 'asset', 'normal_balance' => 'debit']);
+    Account::query()->create(['legal_entity_id' => $entity->id, 'parent_id' => $root->id, 'code' => '1100', 'name' => 'Cash', 'type' => 'asset', 'normal_balance' => 'debit']);
+    Sanctum::actingAs(User::factory()->create(), ['accounting.chart.read']);
+
+    $this->getJson('/api/v1/accounting/chart-of-accounts/accounts/tree?legal_entity_id='.$entity->id)->assertOk()->assertJsonPath('data.0.children.0.attributes.code', '1100');
 });

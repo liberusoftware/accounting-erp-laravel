@@ -8,7 +8,10 @@ use Illuminate\Foundation\Http\FormRequest;
 
 final class StoreReferenceDataRequest extends FormRequest
 {
-    public function authorize(): bool { return $this->user() !== null; }
+    public function authorize(): bool
+    {
+        return $this->user() !== null;
+    }
 
     /** @return array<string, array<int, string>> */
     public function rules(): array

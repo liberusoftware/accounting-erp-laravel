@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\FixedAssets\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 use Liberu\Accounting\FixedAssets\Enums\AssetStatus;
 
 /**
@@ -20,14 +22,14 @@ use Liberu\Accounting\FixedAssets\Enums\AssetStatus;
  * @property string $currency
  * @property string|null $location_ref
  * @property string|null $custodian_ref
- * @property \Illuminate\Support\Carbon|null $acquired_on
- * @property \Illuminate\Support\Carbon|null $capitalized_on
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $acquired_on
+ * @property Carbon|null $capitalized_on
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property-read AssetCategory|null $category
- * @property-read \Illuminate\Database\Eloquent\Collection<int, AssetComponent> $components
- * @property-read \Illuminate\Database\Eloquent\Collection<int, AssetBook> $books
- * @property-read \Illuminate\Database\Eloquent\Collection<int, AssetDocument> $documents
+ * @property-read Collection<int, AssetComponent> $components
+ * @property-read Collection<int, AssetBook> $books
+ * @property-read Collection<int, AssetDocument> $documents
  */
 final class Asset extends Model
 {

@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Liberu\Accounting\JournalApprovals\Actions\{DecideJournal, PostJournal, SubmitJournal};
+use Liberu\Accounting\JournalApprovals\Actions\DecideJournal;
+use Liberu\Accounting\JournalApprovals\Actions\PostJournal;
+use Liberu\Accounting\JournalApprovals\Actions\SubmitJournal;
 use Liberu\Accounting\JournalApprovals\Enums\ApprovalStatus;
 use Liberu\Accounting\JournalApprovals\Exceptions\InvalidApproval;
 use Tests\TestCase;

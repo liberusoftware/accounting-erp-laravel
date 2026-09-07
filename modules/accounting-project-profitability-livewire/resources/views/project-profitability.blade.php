@@ -1,0 +1,1 @@
+<div><table><tbody>@forelse($records as $record)<tr><td>{{ $record->project_job_id }}</td><td>{{ $record->period_start->toDateString() }}</td><td>{{ $record->period_end->toDateString() }}</td><td>{{ $record->currency }}</td><td>{{ $record->status->value }}</td></tr>@empty<tr><td>No profitability records found.</td></tr>@endforelse</tbody></table>{{ $records->links() }}</div>

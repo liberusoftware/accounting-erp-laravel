@@ -17,13 +17,16 @@ final class ArchiveAccount
     public function handle(Account $account): Account
     {
         return DB::transaction(function () use ($account): Account {
+            if (! $account->is_active) {
+                throw new InvalidAccountHierarchy('The account is already archived.');
+            }
             if ($account->children()->where('is_active', true)->exists()) {
                 throw new InvalidAccountHierarchy('An account with active child accounts cannot be archived.');
             }
 
             $account->update(['is_active' => false]);
             $account = $account->refresh();
-            $this->events->dispatch(new AccountArchived($account));
+            DB::afterCommit(fn (): mixed => $this->events->dispatch(new AccountArchived(Account::query()->findOrFail($account->getKey()))));
 
             return $account;
         });

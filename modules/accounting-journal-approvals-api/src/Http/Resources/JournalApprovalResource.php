@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Liberu\Accounting\JournalApprovals\Models\JournalApproval;
 
-/** @mixin \Liberu\Accounting\JournalApprovals\Models\JournalApproval */
+/** @mixin JournalApproval */
 final class JournalApprovalResource extends JsonResource
 {
     public function toArray(Request $request): array

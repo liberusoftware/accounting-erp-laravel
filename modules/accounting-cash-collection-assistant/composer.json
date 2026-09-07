@@ -1,0 +1,14 @@
+{
+  "name": "liberusoftware/module-accounting-cash-collection-assistant",
+  "description": "Accounting cash collection assistant domain module.",
+  "type": "liberu-module",
+  "version": "1.0.0",
+  "autoload": {"psr-4": {"Liberu\\Accounting\\CashCollectionAssistant\\": "src/"}},
+  "extra": {"laravel": {"providers": ["Liberu\\Accounting\\CashCollectionAssistant\\CashCollectionAssistantServiceProvider"]}, "liberu": {"name": "accounting-cash-collection-assistant"}},
+  "require": {"php": "^8.5", "illuminate/database": "^13.0", "illuminate/support": "^13.0"},
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

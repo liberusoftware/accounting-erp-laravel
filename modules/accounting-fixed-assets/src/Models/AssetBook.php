@@ -16,7 +16,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 final class AssetBook extends Model
 {
     protected $table = 'accounting_fixed_asset_books';
+
     protected $fillable = ['asset_id', 'book_ref', 'cost', 'accumulated_depreciation', 'net_book_value', 'last_depreciated_on', 'metadata'];
+
     protected $casts = ['cost' => 'decimal:2', 'accumulated_depreciation' => 'decimal:2', 'net_book_value' => 'decimal:2', 'last_depreciated_on' => 'date', 'metadata' => 'array'];
 
     public function asset(): BelongsTo

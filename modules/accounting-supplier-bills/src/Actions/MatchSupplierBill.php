@@ -17,7 +17,8 @@ final class MatchSupplierBill
             if (! in_array($bill->status, [SupplierBillStatus::Approved, SupplierBillStatus::Posted], true) || blank($attributes['match_type'] ?? null) || blank($attributes['matched_type'] ?? null) || blank($attributes['matched_id'] ?? null)) {
                 throw new InvalidSupplierBill('Matching requires an approved or posted bill and a complete target reference.');
             }
-            $bill->matches()->firstOrCreate(['match_type'=>$attributes['match_type'],'matched_type'=>$attributes['matched_type'],'matched_id'=>(string) $attributes['matched_id']], $attributes);
+            $bill->matches()->firstOrCreate(['match_type' => $attributes['match_type'], 'matched_type' => $attributes['matched_type'], 'matched_id' => (string) $attributes['matched_id']], $attributes);
+
             return $bill->refresh()->load('matches');
         });
     }

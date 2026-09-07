@@ -30,6 +30,7 @@ final class SaveReferenceData
             if ($created) {
                 $this->events->dispatch(new MasterRecordCreated($record));
             }
+
             return $record->refresh();
         });
     }

@@ -8,14 +8,18 @@ use DateTimeImmutable;
 use Illuminate\Auth\Access\AuthorizationException;
 use Liberu\Accounting\FinancialStatements\Enums\StatementType;
 use Liberu\Accounting\FinancialStatements\Queries\StatementQuery;
+use Livewire\Attributes\Locked;
 use Livewire\Component;
 
 final class Statements extends Component
 {
+    #[Locked]
     public int $bookId;
 
+    #[Locked]
     public string $startDate;
 
+    #[Locked]
     public string $endDate;
 
     public string $statementType = 'profit_and_loss';

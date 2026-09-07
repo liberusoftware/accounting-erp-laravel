@@ -5,6 +5,8 @@ declare(strict_types=1);
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Core\Models\Book;
+use Liberu\Accounting\Core\Models\LegalEntity;
 
 uses(RefreshDatabase::class);
 
@@ -62,7 +64,7 @@ it('updates and deletes legal entities with the write ability', function (): voi
         'accounting_basis' => 'accrual',
     ])->assertCreated();
 
-    $entity = \Liberu\Accounting\Core\Models\LegalEntity::query()->firstOrFail();
+    $entity = LegalEntity::query()->firstOrFail();
 
     $this->patchJson("/api/v1/accounting/accounting-core/legal-entities/{$entity->id}", [
         'name' => 'Updated Entity',
@@ -81,7 +83,7 @@ it('manages books and rejects overlapping fiscal calendars', function (): void {
     $user = User::factory()->create();
     Sanctum::actingAs($user, ['accounting.core.write', 'accounting.core.read']);
 
-    $entity = \Liberu\Accounting\Core\Models\LegalEntity::query()->create([
+    $entity = LegalEntity::query()->create([
         'name' => 'Books Entity', 'currency_code' => 'GBP', 'accounting_basis' => 'accrual', 'is_active' => true,
     ]);
 
@@ -111,10 +113,10 @@ it('manages books and rejects overlapping fiscal calendars', function (): void {
 it('manages book defaults and policies within the book boundary', function (): void {
     $user = User::factory()->create();
     Sanctum::actingAs($user, ['accounting.core.write', 'accounting.core.read']);
-    $entity = \Liberu\Accounting\Core\Models\LegalEntity::query()->create([
+    $entity = LegalEntity::query()->create([
         'name' => 'Settings Entity', 'currency_code' => 'GBP', 'accounting_basis' => 'accrual', 'is_active' => true,
     ]);
-    $book = \Liberu\Accounting\Core\Models\Book::query()->create([
+    $book = Book::query()->create([
         'legal_entity_id' => $entity->id, 'name' => 'Settings Book', 'code' => 'SET', 'accounting_basis' => 'accrual', 'is_active' => true,
     ]);
 

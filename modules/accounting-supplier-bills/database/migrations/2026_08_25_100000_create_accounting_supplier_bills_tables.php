@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+return new class() extends Migration
 {
     public function up(): void
     {
@@ -100,7 +100,7 @@ return new class extends Migration
 
     public function down(): void
     {
-        foreach (['accounting_supplier_bill_matches','accounting_supplier_bill_documents','accounting_supplier_bill_credits','accounting_supplier_bill_lines','accounting_supplier_bills'] as $table) {
+        foreach (['accounting_supplier_bill_matches', 'accounting_supplier_bill_documents', 'accounting_supplier_bill_credits', 'accounting_supplier_bill_lines', 'accounting_supplier_bills'] as $table) {
             Schema::dropIfExists($table);
         }
     }

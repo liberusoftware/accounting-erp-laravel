@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Liberu\Accounting\Forecasts\Actions\{AddForecastLine, CreateForecast, DecideForecast, ReplaceActual, SubmitForecast};
+use Liberu\Accounting\Forecasts\Actions\AddForecastLine;
+use Liberu\Accounting\Forecasts\Actions\CreateForecast;
+use Liberu\Accounting\Forecasts\Actions\DecideForecast;
+use Liberu\Accounting\Forecasts\Actions\ReplaceActual;
+use Liberu\Accounting\Forecasts\Actions\SubmitForecast;
 use Liberu\Accounting\Forecasts\Enums\ForecastStatus;
 use Liberu\Accounting\Forecasts\Exceptions\InvalidForecast;
 use Liberu\Accounting\Forecasts\Queries\ForecastQuery;

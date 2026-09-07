@@ -17,8 +17,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 final class TaxEvidence extends Model
 {
     protected $table = 'accounting_tax_evidence';
-    protected $fillable = ['tax_rule_id','source_type','source_id','snapshot_hash','snapshot','captured_by','metadata'];
-    protected $casts = ['snapshot'=>'array','metadata'=>'array'];
-    protected $hidden = ['snapshot_hash','snapshot'];
-    public function taxRule(): BelongsTo { return $this->belongsTo(TaxRule::class, 'tax_rule_id'); }
+
+    protected $fillable = ['tax_rule_id', 'source_type', 'source_id', 'snapshot_hash', 'snapshot', 'captured_by', 'metadata'];
+
+    protected $casts = ['snapshot' => 'array', 'metadata' => 'array'];
+
+    protected $hidden = ['snapshot_hash', 'snapshot'];
+
+    public function taxRule(): BelongsTo
+    {
+        return $this->belongsTo(TaxRule::class, 'tax_rule_id');
+    }
 }

@@ -11,4 +11,5 @@ enum PayableStatus: string
     case Settled = 'settled';
     case Unapplied = 'unapplied';
     case Applied = 'applied';
+    case Disputed = 'disputed';
 }

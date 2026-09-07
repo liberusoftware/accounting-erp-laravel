@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Liberu\Accounting\InventoryAccounting\Actions\{ApplyLandedCost, CreateInventoryItem, IssueInventory, ReceiveInventory, WriteDownInventory};
+use Liberu\Accounting\InventoryAccounting\Actions\ApplyLandedCost;
+use Liberu\Accounting\InventoryAccounting\Actions\CreateInventoryItem;
+use Liberu\Accounting\InventoryAccounting\Actions\IssueInventory;
+use Liberu\Accounting\InventoryAccounting\Actions\ReceiveInventory;
+use Liberu\Accounting\InventoryAccounting\Actions\WriteDownInventory;
 use Liberu\Accounting\InventoryAccounting\Exceptions\InvalidInventory;
 use Liberu\Accounting\InventoryAccounting\Queries\InventoryQuery;
 use Tests\TestCase;

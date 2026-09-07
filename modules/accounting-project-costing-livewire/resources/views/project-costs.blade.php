@@ -1,0 +1,1 @@
+<div><table><tbody>@forelse($costs as $cost)<tr><td>{{ $cost->project_job_id }}</td><td>{{ $cost->type->value }}</td><td>{{ $cost->occurred_on->toDateString() }}</td><td>{{ $cost->amount }}</td></tr>@empty<tr><td>No project costs found.</td></tr>@endforelse</tbody></table>{{ $costs->links() }}</div>

@@ -40,15 +40,16 @@ jobs:
       - name: Install PHP dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
-      # §6.2: modules/ and themes/ are Composer output that happens to be tracked. A
-      # clean install must reproduce them byte for byte — a diff here means someone
-      # edited an installed package instead of its repository, and the next install
-      # would silently discard the change.
+      # §6.2: local path repositories are Composer output that happens to be tracked.
+      # A clean install must reproduce those sources byte for byte. Other module and
+      # theme directories are installed from their remote Composer repositories and
+      # are generated output, so their release contents may legitimately differ.
       - name: Installed packages match the tracked source
         run: |
-          if ! git diff --exit-code --stat -- modules themes; then
-            echo "::error::A clean install rewrote tracked files under modules/ or themes/."
-            echo "Edit the package repository and release it; do not edit installed files here."
+          path_packages="$(php -r '$composer=json_decode(file_get_contents("composer.json"), true, 512, JSON_THROW_ON_ERROR); foreach ($composer["repositories"] as $repository) { if (($repository["type"] ?? null) === "path") { echo $repository["url"]." "; } }')"
+          if ! git diff --exit-code --stat -- $path_packages; then
+            echo "::error::A clean install rewrote a tracked Composer path repository."
+            echo "Edit the package source in its path repository and keep the install reproducible."
             exit 1
           fi
 

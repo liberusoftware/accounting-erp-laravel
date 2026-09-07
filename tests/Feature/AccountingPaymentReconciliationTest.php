@@ -2,11 +2,17 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
-use Liberu\Accounting\PaymentReconciliation\Actions\{IdentifyMissingItems,ImportSettlement,MatchSettlementItem,RecordProviderDrift,ResolveReconciliationException};
-use Liberu\Accounting\PaymentReconciliation\Enums\{ReconciliationExceptionStatus,SettlementItemStatus,SettlementStatus};
+use Liberu\Accounting\PaymentReconciliation\Actions\IdentifyMissingItems;
+use Liberu\Accounting\PaymentReconciliation\Actions\ImportSettlement;
+use Liberu\Accounting\PaymentReconciliation\Actions\MatchSettlementItem;
+use Liberu\Accounting\PaymentReconciliation\Actions\RecordProviderDrift;
+use Liberu\Accounting\PaymentReconciliation\Actions\ResolveReconciliationException;
+use Liberu\Accounting\PaymentReconciliation\Enums\ReconciliationExceptionStatus;
+use Liberu\Accounting\PaymentReconciliation\Enums\SettlementItemStatus;
+use Liberu\Accounting\PaymentReconciliation\Enums\SettlementStatus;
 use Liberu\Accounting\PaymentReconciliation\Exceptions\InvalidReconciliation;
 use Liberu\Accounting\PaymentReconciliation\Queries\SettlementQuery;
 
@@ -14,14 +20,14 @@ uses(RefreshDatabase::class);
 
 function paymentSettlementAttributes(): array
 {
-    return ['team_id'=>1,'provider'=>'gateway-a','merchant_ref'=>'merchant-1','settlement_ref'=>'SET-100','period_start'=>'2026-01-01','period_end'=>'2026-01-31','currency'=>'GBP','items'=>[]];
+    return ['team_id' => 1, 'provider' => 'gateway-a', 'merchant_ref' => 'merchant-1', 'settlement_ref' => 'SET-100', 'period_start' => '2026-01-01', 'period_end' => '2026-01-31', 'currency' => 'GBP', 'items' => []];
 }
 
 function paymentSettlementItems(): array
 {
     return [
-        ['external_ref'=>'charge-1','type'=>'charge','gross_amount'=>100,'fee_amount'=>3,'refund_amount'=>0,'dispute_amount'=>0,'net_amount'=>97,'source_payload'=>['provider_id'=>'charge-1']],
-        ['external_ref'=>'refund-1','type'=>'refund','gross_amount'=>0,'fee_amount'=>0,'refund_amount'=>10,'dispute_amount'=>0,'net_amount'=>10],
+        ['external_ref' => 'charge-1', 'type' => 'charge', 'gross_amount' => 100, 'fee_amount' => 3, 'refund_amount' => 0, 'dispute_amount' => 0, 'net_amount' => 97, 'source_payload' => ['provider_id' => 'charge-1']],
+        ['external_ref' => 'refund-1', 'type' => 'refund', 'gross_amount' => 0, 'fee_amount' => 0, 'refund_amount' => 10, 'dispute_amount' => 0, 'net_amount' => 10],
     ];
 }
 
@@ -38,7 +44,7 @@ it('imports settlements idempotently and calculates gross to net totals', functi
         ->and($run->items)->toHaveCount(2)
         ->and($run->audits)->toHaveCount(1);
 
-    expect(fn (): mixed => $action->handle(paymentSettlementAttributes(), array_merge(paymentSettlementItems(), [['external_ref'=>'different','type'=>'charge','gross_amount'=>1,'net_amount'=>1]])))
+    expect(fn (): mixed => $action->handle(paymentSettlementAttributes(), array_merge(paymentSettlementItems(), [['external_ref' => 'different', 'type' => 'charge', 'gross_amount' => 1, 'net_amount' => 1]])))
         ->toThrow(InvalidReconciliation::class);
 });
 
@@ -51,7 +57,7 @@ it('matches items, identifies missing evidence, records drift, and resolves exce
         ->and($item->refresh()->status)->toBe(SettlementItemStatus::Matched)
         ->and($run->refresh()->status)->toBe(SettlementStatus::PartiallyMatched);
 
-    $missing = app(IdentifyMissingItems::class)->handle($run->refresh(), [['external_ref'=>'charge-missing','expected_amount'=>20,'currency'=>'GBP']]);
+    $missing = app(IdentifyMissingItems::class)->handle($run->refresh(), [['external_ref' => 'charge-missing', 'expected_amount' => 20, 'currency' => 'GBP']]);
     expect($missing)->toHaveCount(1)->and($run->refresh()->status)->toBe(SettlementStatus::Exception);
 
     $drift = app(RecordProviderDrift::class)->handle($run->refresh(), 'net_amount', '107.00', '106.00', 'blocking');

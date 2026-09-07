@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Liberu\Accounting\JobEstimates\Actions\{AddEstimateLine, CreateEstimate, DecideEstimate, RecordActual, SubmitEstimate};
+use Liberu\Accounting\JobEstimates\Actions\AddEstimateLine;
+use Liberu\Accounting\JobEstimates\Actions\CreateEstimate;
+use Liberu\Accounting\JobEstimates\Actions\DecideEstimate;
+use Liberu\Accounting\JobEstimates\Actions\RecordActual;
+use Liberu\Accounting\JobEstimates\Actions\SubmitEstimate;
 use Liberu\Accounting\JobEstimates\Enums\EstimateStatus;
 use Liberu\Accounting\JobEstimates\Exceptions\InvalidEstimate;
 use Liberu\Accounting\JobEstimates\Queries\JobEstimateQuery;

@@ -18,9 +18,13 @@ final class ApplyReceipt
         return DB::transaction(function () use ($receipt, $item, $amount) {
             $receipt = ReceivableReceipt::query()->lockForUpdate()->findOrFail($receipt->id);
             $item = ReceivableOpenItem::query()->lockForUpdate()->findOrFail($item->id);
-            if ($amount <= 0 || ($receipt->party_id !== null && $receipt->party_id !== $item->party_id) || $amount > $receipt->unapplied() || $amount > $item->outstanding()) {
+            if ($amount <= 0 || ($receipt->party_id !== null && $receipt->party_id !== $item->party_id) || $receipt->currency !== $item->currency || $amount > $receipt->unapplied() || $amount > $item->outstanding()) {
                 throw new InvalidReceivable('Receipt application must match the customer and remain within both outstanding balances.');
-            }$receipt->applications()->create(['open_item_id' => $item->id, 'amount' => $amount]);
+            }
+            if ($receipt->applications()->where('open_item_id', $item->id)->exists()) {
+                throw new InvalidReceivable('A receipt can only be applied to the same open item once.');
+            }
+            $receipt->applications()->create(['open_item_id' => $item->id, 'amount' => $amount]);
             $receipt->applied_amount = (float) $receipt->applied_amount + $amount;
             $receipt->status = $receipt->unapplied() <= 0 ? ReceivableStatus::Applied : ReceivableStatus::Partial;
             $receipt->save();

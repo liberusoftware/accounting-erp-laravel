@@ -37,7 +37,7 @@ class BudgetResource extends Resource
         return $schema
             ->components([
                 Select::make('account_id')
-                    ->relationship('account', 'name')
+                    ->relationship('account', 'account_name')
                     ->required(),
                 DatePicker::make('start_date')
                     ->required(),
@@ -61,7 +61,7 @@ class BudgetResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('account.name'),
+                TextColumn::make('account.account_name'),
                 TextColumn::make('start_date')
                     ->date(),
                 TextColumn::make('end_date')

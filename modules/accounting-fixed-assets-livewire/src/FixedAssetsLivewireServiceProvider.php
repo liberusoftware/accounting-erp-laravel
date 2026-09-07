@@ -14,6 +14,7 @@ final class FixedAssetsLivewireServiceProvider extends ServiceProvider
 
         if (class_exists(\Livewire\Livewire::class)) {
             \Livewire\Livewire::component('module-accounting-fixed-assets::assets', Livewire\Assets::class);
+            \Livewire\Livewire::component('fixed-assets', Livewire\Assets::class);
         }
     }
 }
