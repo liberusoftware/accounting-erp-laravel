@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: Accounting Job Estimates API
+  version: 1.0.0
+paths:
+  /api/v1/accounting/job-estimates:
+    get: {operationId: listJobEstimates, responses: {'200': {description: Paginated estimates}}}
+    post: {operationId: createJobEstimate, responses: {'201': {description: Created estimate}}}
+  /api/v1/accounting/job-estimates/{estimate}/comparison:
+    get: {operationId: compareJobEstimateActuals, responses: {'200': {description: Estimate to actual comparison}}}
+  /api/v1/accounting/job-estimates/{estimate}/eac:
+    get: {operationId: calculateJobEstimateAtCompletion, responses: {'200': {description: Estimate at completion}}}

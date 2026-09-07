@@ -1,0 +1,21 @@
+openapi: 3.1.0
+info: {title: Accounting Sales Tax and GST API, version: 1.0.0}
+paths:
+  /api/v1/accounting/sales-tax-and-gst:
+    get: {operationId: accounting.sales.tax.and.gst.list, security: [{sanctum: []}], responses: {'200': {$ref: '#/components/responses/Collection'}}}
+    post: {operationId: accounting.sales.tax.and.gst.create, security: [{sanctum: []}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Create'}}}}, responses: {'201': {$ref: '#/components/responses/Resource'}, '422': {$ref: '#/components/responses/Problem'}}}
+  /api/v1/accounting/sales-tax-and-gst/{id}:
+    get: {operationId: accounting.sales.tax.and.gst.get, security: [{sanctum: []}], parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {$ref: '#/components/responses/Resource'}}}
+  /api/v1/accounting/sales-tax-and-gst/{id}/activate:
+    post: {operationId: accounting.sales.tax.and.gst.activate, security: [{sanctum: []}], parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {$ref: '#/components/responses/Resource'}}}
+components:
+  securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}
+  schemas:
+    Create: {type: object, required: [context_id, type, jurisdiction, period_start, period_end], properties: {context_id: {type: string}, type: {type: string}, jurisdiction: {type: string}, origin: {type: string}, destination: {type: string}, rate: {type: number, minimum: 0, maximum: 100}, taxable_base: {type: number, minimum: 0}, period_start: {type: string, format: date}, period_end: {type: string, format: date}}}
+    Resource: {type: object, required: [id, type, attributes], properties: {id: {type: string}, type: {const: accounting-sales-tax-and-gst}, attributes: {type: object, additionalProperties: true}}}
+    Collection: {type: object, required: [data], properties: {data: {type: array, items: {$ref: '#/components/schemas/Resource'}}}}
+    Problem: {type: object, required: [type, title, status], properties: {type: {type: string}, title: {type: string}, status: {type: integer}, detail: {type: string}}}
+  responses:
+    Resource: {description: Sales tax resource, content: {application/json: {schema: {$ref: '#/components/schemas/Resource'}}}}
+    Collection: {description: Sales tax resources, content: {application/json: {schema: {$ref: '#/components/schemas/Collection'}}}}
+    Problem: {description: RFC 9457 problem, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}

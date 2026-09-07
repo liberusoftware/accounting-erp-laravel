@@ -1,0 +1,14 @@
+{
+  "$schema": "https://schemas.liberu.dev/module/v1.json",
+  "name": "accounting-financial-master-data-filament",
+  "display_name": "Accounting Financial Master Data Filament",
+  "description": "Filament 5 party administration surface.",
+  "version": "1.0.0",
+  "category": "presentation",
+  "provider": "Liberu\\Accounting\\FinancialMasterDataFilament\\FinancialMasterDataFilamentServiceProvider",
+  "requires": { "php": "^8.5", "laravel": "^13.0", "packages": { "liberusoftware/module-accounting-financial-master-data": "^1.0" } },
+  "presentation": { "filament": { "admin": ["Liberu\\Accounting\\FinancialMasterDataFilament\\FinancialMasterDataFilamentPlugin"] } },
+  "capabilities": ["accounting.financial-master-data.filament"],
+  "default_enabled": false,
+  "features": ["Customer resource", "Supplier resource", "Lifecycle actions", "Duplicate feedback"]
+}

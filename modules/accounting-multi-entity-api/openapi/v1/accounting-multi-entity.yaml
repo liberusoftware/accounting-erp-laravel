@@ -1,0 +1,9 @@
+openapi: 3.1.0
+info: {title: Accounting Multi-Entity API, version: 1.0.0}
+paths:
+  /api/v1/accounting/multi-entity:
+    get: {operationId: accounting.multi.entity.list, security: [{sanctum: []}], responses: {'200': {description: Entity books}}}
+    post: {operationId: accounting.multi.entity.create, security: [{sanctum: []}], responses: {'201': {description: Entity book created}}}
+  /api/v1/accounting/multi-entity/{entityBook}/switch:
+    post: {operationId: accounting.multi.entity.switch, security: [{sanctum: []}], parameters: [{name: entityBook, in: path, required: true, schema: {type: string}}], responses: {'201': {description: Context switched}}}
+components: {securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}}

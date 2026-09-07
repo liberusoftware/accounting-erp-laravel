@@ -1,0 +1,10 @@
+openapi: 3.1.0
+info: {title: Accounting Estimates and Quotes API, version: 1.0.0}
+security: [{sanctum: []}]
+components: {securitySchemes: {sanctum: {type: http, scheme: bearer}}}
+paths:
+  /api/v1/accounting/estimates-and-quotes: {get: {operationId: listEstimates, responses: {'200': {description: Estimates}}}, post: {operationId: createEstimate, responses: {'201': {description: Created}}}}
+  /api/v1/accounting/estimates-and-quotes/{estimate}/items: {post: {operationId: addEstimateItem, responses: {'200': {description: Updated}}}}
+  /api/v1/accounting/estimates-and-quotes/{estimate}/send: {post: {operationId: sendEstimate, responses: {'200': {description: Sent}}}}
+  /api/v1/accounting/estimates-and-quotes/{estimate}/decide: {post: {operationId: decideEstimate, responses: {'200': {description: Decided}}}}
+  /api/v1/accounting/estimates-and-quotes/{estimate}/convert: {post: {operationId: convertEstimate, responses: {'200': {description: Converted}}}}

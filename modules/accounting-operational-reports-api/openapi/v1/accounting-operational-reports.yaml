@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info: {title: Accounting Operational Reports API, version: 1.0.0}
+paths:
+  /api/v1/accounting/operational-reports:
+    get: {operationId: accounting.operational.reports.list, security: [{sanctum: []}], responses: {'200': {description: Report collection}}}
+    post: {operationId: accounting.operational.reports.generate, security: [{sanctum: []}], responses: {'201': {description: Report snapshot generated}, '422': {description: Invalid report}}}
+  /api/v1/accounting/operational-reports/{reportRun}:
+    get: {operationId: accounting.operational.reports.get, security: [{sanctum: []}], parameters: [{name: reportRun, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Report snapshot}}}
+  /api/v1/accounting/operational-reports/{reportRun}/publish:
+    post: {operationId: accounting.operational.reports.publish, security: [{sanctum: []}], parameters: [{name: reportRun, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Published report}}}
+components: {securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}}

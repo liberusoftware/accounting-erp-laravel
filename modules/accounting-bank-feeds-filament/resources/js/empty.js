@@ -1,0 +1,1 @@
+/* Extension point reserved for host panels. */

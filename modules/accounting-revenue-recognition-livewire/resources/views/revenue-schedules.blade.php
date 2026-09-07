@@ -1,0 +1,1 @@
+<div><table><tbody>@forelse($schedules as $schedule)<tr><td>{{ $schedule->obligation_id }}</td><td>{{ $schedule->total_amount }}</td><td>{{ $schedule->periods }}</td><td>{{ $schedule->status->value }}</td></tr>@empty<tr><td>No revenue schedules found.</td></tr>@endforelse</tbody></table>{{ $schedules->links() }}</div>

@@ -2,7 +2,7 @@
 
 This package is the one-to-one HTTP adapter for
 `liberusoftware/module-accounting-core`. It exposes only the authenticated,
-ability-scoped legal-entity operations owned by Accounting Core.
+ability-scoped Accounting Core operations owned by the module.
 
 ## Installation
 
@@ -16,7 +16,9 @@ application classes or expose another module's data.
 
 ## Contract
 
-Routes are registered below `/api/v1/accounting/accounting-core`. The versioned
+Routes are registered below `/api/v1/accounting/accounting-core`. The API
+exposes legal entities, books, fiscal calendars, numbering sequences (including
+atomic number allocation), and book-scoped defaults and policies. The versioned
 OpenAPI 3.1 fragment is stored at `openapi/v1/accounting-core.yaml`.
 
 ## Compatibility

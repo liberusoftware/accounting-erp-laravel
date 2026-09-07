@@ -1,0 +1,14 @@
+{
+  "name": "liberusoftware/module-accounting-consolidation",
+  "description": "Accounting consolidation domain module.",
+  "type": "liberu-module",
+  "version": "1.0.0",
+  "autoload": {"psr-4": {"Liberu\\Accounting\\Consolidation\\": "src/"}},
+  "extra": {"laravel": {"providers": ["Liberu\\Accounting\\Consolidation\\ConsolidationServiceProvider"]}, "liberu": {"name": "accounting-consolidation"}},
+  "require": {"php": "^8.5", "illuminate/database": "^13.0", "illuminate/support": "^13.0"},
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

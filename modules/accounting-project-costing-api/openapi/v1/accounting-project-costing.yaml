@@ -1,0 +1,10 @@
+openapi: 3.1.0
+info: {title: Accounting project costing API, version: 1.0.0}
+paths:
+  /api/v1/accounting/project-costing:
+    get: {operationId: accounting.project.costing.list, responses: {'200': {description: Cost entries}}}
+    post: {operationId: accounting.project.costing.create, responses: {'201': {description: Cost entry created}}}
+  /api/v1/accounting/project-costing/{id}:
+    get: {operationId: accounting.project.costing.get, parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Cost entry}}}
+  /api/v1/accounting/project-costing/project/{projectJobId}/summary:
+    get: {operationId: accounting.project.costing.summary, parameters: [{name: projectJobId, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Cost summary}}}

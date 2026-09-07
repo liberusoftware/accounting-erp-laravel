@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info: {title: accounting receipt management API, version: 1.0.0}
+paths:
+  /api/v1/accounting/receipt-management:
+    get: {operationId: accounting.receipt.management.list, responses: {'200': {description: Authorized receipts}}}
+    post: {operationId: accounting.receipt.management.create, responses: {'201': {description: Receipt ingested}}}
+  /api/v1/accounting/receipt-management/{receipt}:
+    get: {operationId: accounting.receipt.management.get, responses: {'200': {description: Receipt resource}}}
+  /api/v1/accounting/receipt-management/{receipt}/match:
+    post: {operationId: accounting.receipt.management.match, responses: {'200': {description: Receipt matched}}}
+  /api/v1/accounting/receipt-management/missing-requests:
+    post: {operationId: accounting.receipt.management.missing.request, responses: {'201': {description: Missing receipt request}}}

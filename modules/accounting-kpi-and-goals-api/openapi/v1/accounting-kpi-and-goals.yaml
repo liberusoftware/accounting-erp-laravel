@@ -1,0 +1,7 @@
+openapi: 3.1.0
+info: {title: Accounting KPI and Goals API, version: 1.0.0}
+paths:
+  /api/v1/accounting/kpi-and-goals/goals: {get: {operationId: accounting.kpi-and-goals.list, security: [{sanctum: []}], responses: {'200': {description: Goals}}}}
+  /api/v1/accounting/kpi-and-goals/metrics: {post: {operationId: accounting.kpi-and-goals.metric, security: [{sanctum: []}], responses: {'201': {description: Metric created}}}}
+  /api/v1/accounting/kpi-and-goals/goals/{goal}/measurements: {post: {operationId: accounting.kpi-and-goals.measurement, security: [{sanctum: []}], responses: {'201': {description: Measurement recorded}}}}
+components: {securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}}

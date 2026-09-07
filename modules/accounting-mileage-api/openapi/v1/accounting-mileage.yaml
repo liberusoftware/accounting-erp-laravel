@@ -1,0 +1,15 @@
+openapi: 3.1.0
+info:
+  title: Accounting Mileage API
+  version: 1.0.0
+paths:
+  /api/v1/accounting/mileage:
+    get: {operationId: accounting.mileage.list, security: [{sanctum: []}], responses: {'200': {description: Authorized mileage trips}}}
+    post: {operationId: accounting.mileage.create, security: [{sanctum: []}], parameters: [{'$ref': '#/components/parameters/IdempotencyKey'}], responses: {'201': {description: Created}}}
+  /api/v1/accounting/mileage/{trip}/submit: {post: {operationId: accounting.mileage.submit, security: [{sanctum: []}], responses: {'200': {description: Submitted}}}}
+  /api/v1/accounting/mileage/{trip}/approve: {post: {operationId: accounting.mileage.approve, security: [{sanctum: []}], responses: {'200': {description: Decided}}}}
+  /api/v1/accounting/mileage/{trip}/reimburse: {post: {operationId: accounting.mileage.reimburse, security: [{sanctum: []}], responses: {'201': {description: Reimbursement created}}}}
+components:
+  parameters:
+    IdempotencyKey: {name: Idempotency-Key, in: header, required: false, schema: {type: string}}
+  securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}

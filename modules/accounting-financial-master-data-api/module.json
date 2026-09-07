@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.liberu.dev/module/v1.json",
+  "name": "accounting-financial-master-data-api",
+  "display_name": "Accounting Financial Master Data API",
+  "description": "Versioned authenticated transport for financial master data.",
+  "version": "1.0.0",
+  "category": "presentation",
+  "provider": "Liberu\\Accounting\\FinancialMasterDataApi\\FinancialMasterDataApiServiceProvider",
+  "requires": { "php": "^8.5", "laravel": "^13.0", "packages": { "liberusoftware/module-accounting-financial-master-data": "^1.0" } },
+  "capabilities": ["accounting.financial-master-data.api"],
+  "default_enabled": false,
+  "features": ["Customer and supplier party API", "Scoped permissions", "Explicit resources", "OpenAPI 3.1"]
+}

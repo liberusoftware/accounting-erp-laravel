@@ -1,0 +1,1 @@
+<div><h2>Accounting Dimensions</h2><ul>@foreach($dimensions as $dimension)<li>{{ $dimension->kind->value }}: {{ $dimension->code }} — {{ $dimension->name }} ({{ $dimension->values_count }})</li>@endforeach</ul>{{ $dimensions->links() }}</div>

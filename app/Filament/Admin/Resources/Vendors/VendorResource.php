@@ -31,7 +31,7 @@ class VendorResource extends Resource
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-building-office';
 
     #[\Override]
-    protected static string|\UnitEnum|null $navigationGroup = 'Finance';
+    protected static string|\UnitEnum|null $navigationGroup = 'Vendors';
 
     #[\Override]
     public static function form(Schema $schema): Schema

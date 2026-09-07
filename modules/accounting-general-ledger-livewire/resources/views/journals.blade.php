@@ -1,0 +1,1 @@
+<div><h2>General Ledger Journals</h2><ul>@foreach($journals as $journal)<li>{{ $journal->entry_number }} — {{ $journal->status->value }} — {{ $journal->description }}</li>@endforeach</ul>{{ $journals->links() }}</div>

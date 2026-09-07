@@ -14,7 +14,7 @@
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             @auth
-                <a href="/app"
+                <a href="{{ route('dashboard') }}"
                     class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">
                     Go to Dashboard
                     <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
