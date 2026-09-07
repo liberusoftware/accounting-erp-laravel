@@ -21,6 +21,8 @@ use Filament\Tables\Table;
 
 class AccountResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Accounting';
+
     #[\Override]
     protected static ?string $model = Account::class;
 

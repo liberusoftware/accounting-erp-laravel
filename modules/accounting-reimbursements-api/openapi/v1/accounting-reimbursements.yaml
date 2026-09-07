@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info: {title: accounting reimbursements API, version: 1.0.0}
+paths:
+  /api/v1/accounting/reimbursements:
+    get: {operationId: accounting.reimbursements.list, responses: {'200': {description: Authorized liabilities}}}
+    post: {operationId: accounting.reimbursements.create, responses: {'201': {description: Liability created}}}
+  /api/v1/accounting/reimbursements/batches:
+    post: {operationId: accounting.reimbursements.batch.create, responses: {'201': {description: Payment batch created}}}
+  /api/v1/accounting/reimbursements/batches/{batch}/status:
+    post: {operationId: accounting.reimbursements.batch.status, responses: {'200': {description: Provider status updated}}}
+  /api/v1/accounting/reimbursements/batches/{batch}/reconcile:
+    post: {operationId: accounting.reimbursements.batch.reconcile, responses: {'200': {description: Payment batch reconciled}}}

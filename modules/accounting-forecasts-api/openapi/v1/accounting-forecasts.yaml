@@ -1,0 +1,38 @@
+openapi: 3.1.0
+info:
+  title: Accounting Forecasts API
+  version: 1.0.0
+  description: Forecast lifecycle, assumptions, rolling periods, approvals, actual replacement and variance reporting.
+security: [{sanctum: []}]
+components:
+  securitySchemes:
+    sanctum: {type: http, scheme: bearer}
+  schemas:
+    Forecast:
+      type: object
+      required: [id, forecast_ref, name, currency, method, status]
+      properties:
+        id: {type: integer}
+        forecast_ref: {type: string}
+        name: {type: string}
+        currency: {type: string, minLength: 3, maxLength: 3}
+        method: {type: string, enum: [driver, manual]}
+        status: {type: string, enum: [draft, submitted, approved, archived]}
+paths:
+  /api/v1/accounting/forecasts:
+    get:
+      operationId: listForecasts
+      parameters: [{name: status, in: query, schema: {type: string}}, {name: per_page, in: query, schema: {type: integer, minimum: 1, maximum: 100}}]
+      responses: {'200': {description: Forecasts}, '401': {description: Unauthenticated}, '403': {description: Missing read ability}}
+    post:
+      operationId: createForecast
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Forecast'}}}}
+      responses: {'201': {description: Created forecast}, '422': {description: Invalid forecast}}
+  /api/v1/accounting/forecasts/{forecast}/lines:
+    post: {operationId: addForecastLine, responses: {'200': {description: Updated forecast}}}
+  /api/v1/accounting/forecasts/{forecast}/assumptions:
+    post: {operationId: addForecastAssumption, responses: {'200': {description: Updated forecast}}}
+  /api/v1/accounting/forecasts/{forecast}/periods:
+    post: {operationId: createForecastPeriods, responses: {'200': {description: Updated forecast}}}
+  /api/v1/accounting/forecasts/{forecast}/variance:
+    get: {operationId: calculateForecastVariance, responses: {'200': {description: Forecast variance}}}

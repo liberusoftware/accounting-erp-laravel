@@ -1,0 +1,13 @@
+{
+  "name": "liberusoftware/module-accounting-financial-master-data-livewire",
+  "description": "Livewire 4 adapter for accounting financial master data.",
+  "type": "liberu-module",
+  "license": "MIT",
+  "require": { "php": "^8.5", "livewire/livewire": "^4.0", "liberusoftware/module-accounting-financial-master-data": "^1.0" },
+  "autoload": { "psr-4": { "Liberu\\Accounting\\FinancialMasterDataLivewire\\": "src/" } },
+  "extra": { "laravel": { "providers": ["Liberu\\Accounting\\FinancialMasterDataLivewire\\FinancialMasterDataLivewireServiceProvider"] }, "liberu": { "name": "accounting-financial-master-data-livewire" } },
+  "version": "1.0.0",
+  "require-dev": { "liberusoftware/package-testbench": "^1.5", "pestphp/pest": "^5.0" },
+  "scripts": { "test": "pest" },
+  "config": { "allow-plugins": { "pestphp/pest-plugin": true } }
+}

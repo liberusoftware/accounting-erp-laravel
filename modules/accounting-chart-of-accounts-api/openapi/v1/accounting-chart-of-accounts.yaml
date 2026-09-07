@@ -1,0 +1,59 @@
+openapi: 3.1.0
+info:
+  title: Accounting Chart of Accounts API
+  version: 1.0.0
+servers: [{url: /}]
+paths:
+  /api/v1/accounting/chart-of-accounts/accounts:
+    get:
+      operationId: accounting.chart.accounts.list
+      security: [{sanctum: []}]
+      parameters: [{name: legal_entity_id, in: query, required: true, schema: {type: integer}}, {name: type, in: query, schema: {type: string}}, {name: include_archived, in: query, schema: {type: boolean}}]
+      responses: {'200': {description: Authorized accounts}}
+    post:
+      operationId: accounting.chart.accounts.create
+      security: [{sanctum: []}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/AccountWrite'}}}}
+      responses: {'201': {description: Account created}}
+  /api/v1/accounting/chart-of-accounts/accounts/tree:
+    get:
+      operationId: accounting.chart.accounts.tree
+      security: [{sanctum: []}]
+      parameters: [{name: legal_entity_id, in: query, required: true, schema: {type: integer}}]
+      responses: {'200': {description: Hierarchical accounts}}
+  /api/v1/accounting/chart-of-accounts/accounts/{account}:
+    get:
+      operationId: accounting.chart.accounts.show
+      security: [{sanctum: []}]
+      parameters: [{name: account, in: path, required: true, schema: {type: integer}}]
+      responses: {'200': {description: Account}}
+    patch:
+      operationId: accounting.chart.accounts.update
+      security: [{sanctum: []}]
+      parameters: [{name: account, in: path, required: true, schema: {type: integer}}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/AccountUpdate'}}}}
+      responses: {'200': {description: Account updated}}
+    delete:
+      operationId: accounting.chart.accounts.archive
+      security: [{sanctum: []}]
+      parameters: [{name: account, in: path, required: true, schema: {type: integer}}]
+      responses: {'204': {description: Account archived}}
+components:
+  securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}
+  schemas:
+    AccountWrite:
+      type: object
+      required: [legal_entity_id, code, name, type]
+      properties:
+        legal_entity_id: {type: integer}
+        parent_id: {type: integer, nullable: true}
+        code: {type: string, maxLength: 64}
+        name: {type: string, maxLength: 255}
+        type: {type: string, enum: [asset, liability, equity, revenue, expense]}
+        normal_balance: {type: string, enum: [debit, credit]}
+        is_control_account: {type: boolean}
+        allow_manual_entry: {type: boolean}
+        locale: {type: string, nullable: true}
+        metadata: {type: object, additionalProperties: true}
+    AccountUpdate:
+      allOf: [{ $ref: '#/components/schemas/AccountWrite' }]

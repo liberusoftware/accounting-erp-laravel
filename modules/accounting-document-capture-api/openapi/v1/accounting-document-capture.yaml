@@ -1,0 +1,9 @@
+openapi: 3.1.0
+info: {title: Accounting Document Capture API, version: 1.0.0}
+security: [{sanctum: []}]
+components: {securitySchemes: {sanctum: {type: http, scheme: bearer}}}
+paths:
+  /api/v1/accounting/document-capture: {get: {operationId: listCapturedDocuments, responses: {'200': {description: Documents}}}, post: {operationId: uploadDocument, responses: {'201': {description: Uploaded}}}}
+  /api/v1/accounting/document-capture/{document}/extract: {post: {operationId: extractDocument, responses: {'200': {description: Extracted}}}}
+  /api/v1/accounting/document-capture/{document}/review: {post: {operationId: reviewCapturedDocument, responses: {'200': {description: Reviewed}}}}
+  /api/v1/accounting/document-capture/{document}/duplicate: {post: {operationId: markDuplicateDocument, responses: {'200': {description: Duplicate marked}}}}

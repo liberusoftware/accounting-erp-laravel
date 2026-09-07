@@ -1,0 +1,7 @@
+openapi: 3.1.0
+info: {title: Accounting Intercompany API, version: 1.0.0}
+paths:
+  /api/v1/accounting/intercompany:
+    get: {operationId: listIntercompanyTransactions, responses: {'200': {description: Transactions}}}
+  /api/v1/accounting/intercompany/transactions/{transaction}/summary:
+    get: {operationId: summarizeIntercompanySettlement, responses: {'200': {description: Settlement summary}}}

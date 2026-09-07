@@ -1,0 +1,27 @@
+{
+  "name": "liberusoftware/module-accounting-fixed-assets-livewire",
+  "description": "Livewire 4 UI for fixed assets.",
+  "type": "liberu-module",
+  "license": "MIT",
+  "version": "1.0.0",
+  "require": {
+    "php": "^8.5",
+    "livewire/livewire": "^4.0",
+    "liberusoftware/module-accounting-fixed-assets": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Liberu\\Accounting\\FixedAssetsLivewire\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Liberu\\Accounting\\FixedAssetsLivewire\\FixedAssetsLivewireServiceProvider"
+      ]
+    },
+    "liberu": {
+      "name": "accounting-fixed-assets-livewire"
+    }
+  }
+,"config":{"allow-plugins":{"pestphp/pest-plugin":true}}}

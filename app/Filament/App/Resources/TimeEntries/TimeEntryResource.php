@@ -22,6 +22,8 @@ use Filament\Tables\Table;
 
 class TimeEntryResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Payroll';
+
     #[\Override]
     protected static ?string $model = TimeEntry::class;
 

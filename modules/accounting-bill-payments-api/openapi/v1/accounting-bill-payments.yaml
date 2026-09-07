@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: accounting bill payments API
+  version: 1.0.0
+paths:
+  /api/v1/accounting/bill-payments:
+    get:
+      operationId: accounting.bill-payments.list
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/PageSize'}]
+      responses: {'200': {$ref: '#/components/responses/ResourceCollection'}}
+    post:
+      operationId: accounting.bill-payments.create
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/BillPaymentCreate'}}}}
+      responses: {'201': {$ref: '#/components/responses/Resource'}, '409': {$ref: '#/components/responses/Problem'}}
+  /api/v1/accounting/bill-payments/{payment}:
+    get:
+      operationId: accounting.bill-payments.get
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/PaymentId'}]
+      responses: {'200': {$ref: '#/components/responses/Resource'}}
+  /api/v1/accounting/bill-payments/{payment}/optimization:
+    get:
+      operationId: accounting.bill-payments.optimization
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/PaymentId'}]
+      responses: {'200': {$ref: '#/components/responses/Optimization'}}
+  /api/v1/accounting/bill-payments/{payment}/request-approval:
+    post:
+      operationId: accounting.bill-payments.request-approval
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/PaymentId'}, {'$ref': '#/components/parameters/IdempotencyKey'}]
+      responses: {'200': {$ref: '#/components/responses/Resource'}, '409': {$ref: '#/components/responses/Problem'}}
+  /api/v1/accounting/bill-payments/{payment}/approve:
+    post:
+      operationId: accounting.bill-payments.approve
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/PaymentId'}, {'$ref': '#/components/parameters/IdempotencyKey'}]
+      responses: {'200': {$ref: '#/components/responses/Resource'}, '409': {$ref: '#/components/responses/Problem'}}
+  /api/v1/accounting/bill-payments/{payment}/reject:
+    post:
+      operationId: accounting.bill-payments.reject
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/PaymentId'}, {'$ref': '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {type: object, required: [reason], properties: {reason: {type: string, maxLength: 2000}}}}}}
+      responses: {'200': {$ref: '#/components/responses/Resource'}, '409': {$ref: '#/components/responses/Problem'}}
+components:
+  securitySchemes:
+    sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}
+  parameters:
+    PageSize: {name: page[size], in: query, schema: {type: integer, minimum: 1, maximum: 100, default: 25}}
+    PaymentId: {name: payment, in: path, required: true, schema: {type: string}}
+    IdempotencyKey: {name: Idempotency-Key, in: header, required: false, schema: {type: string, maxLength: 180}}
+  schemas:
+    BillPaymentCreate:
+      type: object
+      required: [supplier_id, bill_reference, amount, currency, due_date, bank_details]
+      properties:
+        supplier_id: {type: integer}
+        bill_reference: {type: string, maxLength: 180}
+        amount: {type: number, exclusiveMinimum: 0}
+        currency: {type: string, minLength: 3, maxLength: 3}
+        due_date: {type: string, format: date}
+        discount_date: {type: string, format: date, nullable: true}
+        discount_rate: {type: number, minimum: 0, nullable: true}
+        bank_details: {type: object, additionalProperties: true, writeOnly: true}
+        provider: {type: string, nullable: true}
+        provider_connection_id: {type: integer, nullable: true}
+        payment_payload: {type: object, additionalProperties: true, writeOnly: true}
+        metadata: {type: object, additionalProperties: true}
+    AccountingBillPaymentResource:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id: {type: string}
+        type: {type: string, const: accounting-bill-payment}
+        attributes:
+          type: object
+          additionalProperties: true
+          description: Sensitive bank details and provider results are never returned.
+    Optimization:
+      type: object
+      properties:
+        discount_date: {type: string, format: date, nullable: true}
+        discount_amount: {type: number}
+        rationale: {type: string}
+  responses:
+    Resource: {description: Bill payment resource, content: {application/json: {schema: {$ref: '#/components/schemas/AccountingBillPaymentResource'}}}}
+    ResourceCollection: {description: Authorized paginated resources, content: {application/json: {schema: {type: object}}}}
+    Optimization: {description: Early-payment discount recommendation, content: {application/json: {schema: {$ref: '#/components/schemas/Optimization'}}}}
+    Problem: {description: RFC 9457 problem, content: {application/problem+json: {schema: {type: object}}}}

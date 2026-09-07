@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.liberu.dev/module/v1.json",
+  "name": "accounting-chart-of-accounts-api",
+  "display_name": "Accounting Chart of Accounts API",
+  "description": "Authenticated, scoped HTTP operations for the chart of accounts.",
+  "version": "1.0.0",
+  "category": "presentation",
+  "provider": "Liberu\\Accounting\\ChartOfAccountsApi\\ChartOfAccountsApiServiceProvider",
+  "requires": { "php": "^8.5", "laravel": "^13.0", "packages": { "liberusoftware/module-accounting-chart-of-accounts": "^1.0" } },
+  "capabilities": ["accounting.chart-of-accounts.api"],
+  "default_enabled": false,
+  "features": ["Versioned account CRUD API", "Hierarchy validation", "Sanctum authentication", "OpenAPI contract"]
+}

@@ -1,0 +1,8 @@
+openapi: 3.1.0
+info: {title: Accounting Migration Framework API, version: 1.0.0}
+paths:
+  /api/v1/accounting/migration-framework/sources: {get: {operationId: accounting.migration-framework.sources, security: [{sanctum: []}], responses: {'200': {description: Sources}}}, post: {operationId: accounting.migration-framework.source, security: [{sanctum: []}], responses: {'201': {description: Source created}}}}
+  /api/v1/accounting/migration-framework/sources/{source}/batches: {post: {operationId: accounting.migration-framework.batch, security: [{sanctum: []}], parameters: [{'$ref': '#/components/parameters/IdempotencyKey'}], responses: {'201': {description: Batch created}}}}
+  /api/v1/accounting/migration-framework/batches/{batch}/dry-run: {post: {operationId: accounting.migration-framework.dry-run, security: [{sanctum: []}], responses: {'200': {description: Dry run completed}}}}
+  /api/v1/accounting/migration-framework/batches/{batch}/resume: {post: {operationId: accounting.migration-framework.resume, security: [{sanctum: []}], responses: {'200': {description: Batch resumed}}}}
+components: {parameters: {IdempotencyKey: {name: Idempotency-Key, in: header, schema: {type: string}}}, securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://schemas.liberu.dev/module/v1.json",
+  "name": "accounting-chart-of-accounts-filament",
+  "display_name": "Accounting Chart of Accounts Filament",
+  "description": "Filament 5 resource for account hierarchy management.",
+  "version": "1.0.0",
+  "category": "presentation",
+  "provider": "Liberu\\Accounting\\ChartOfAccountsFilament\\ChartOfAccountsFilamentServiceProvider",
+  "requires": { "php": "^8.5", "laravel": "^13.0", "packages": { "liberusoftware/module-accounting-chart-of-accounts": "^1.0" } },
+  "presentation": { "filament": { "admin": ["Liberu\\Accounting\\ChartOfAccountsFilament\\ChartOfAccountsFilamentPlugin"] } },
+  "capabilities": ["accounting.chart-of-accounts.filament"],
+  "default_enabled": false,
+  "features": ["Account resource", "Hierarchy selection", "Archive action", "Control-account restrictions"]
+}

@@ -1,0 +1,54 @@
+openapi: 3.1.0
+info:
+  title: Accounting financial statements API
+  version: 1.0.0
+  description: Authenticated book-scoped reports over posted General Ledger entries.
+security:
+  - sanctum: []
+paths:
+  /api/v1/accounting/financial-statements/profit-and-loss:
+    get:
+      operationId: accounting.financial.statements.profit_and_loss
+      parameters: [{$ref: '#/components/parameters/BookId'}, {$ref: '#/components/parameters/StartDate'}, {$ref: '#/components/parameters/EndDate'}, {$ref: '#/components/parameters/Dimensions'}]
+      responses: {'200': {$ref: '#/components/responses/Statement'}, '401': {$ref: '#/components/responses/Problem'}, '403': {$ref: '#/components/responses/Problem'}, '422': {$ref: '#/components/responses/Problem'}}
+  /api/v1/accounting/financial-statements/balance-sheet:
+    get:
+      operationId: accounting.financial.statements.balance_sheet
+      parameters: [{$ref: '#/components/parameters/BookId'}, {$ref: '#/components/parameters/AsOfDate'}, {$ref: '#/components/parameters/Dimensions'}]
+      responses: {'200': {$ref: '#/components/responses/Statement'}, '401': {$ref: '#/components/responses/Problem'}, '403': {$ref: '#/components/responses/Problem'}, '422': {$ref: '#/components/responses/Problem'}}
+  /api/v1/accounting/financial-statements/cash-flow:
+    get:
+      operationId: accounting.financial.statements.cash_flow
+      parameters: [{$ref: '#/components/parameters/BookId'}, {$ref: '#/components/parameters/StartDate'}, {$ref: '#/components/parameters/EndDate'}, {$ref: '#/components/parameters/Dimensions'}]
+      responses: {'200': {$ref: '#/components/responses/Statement'}, '401': {$ref: '#/components/responses/Problem'}, '403': {$ref: '#/components/responses/Problem'}, '422': {$ref: '#/components/responses/Problem'}}
+  /api/v1/accounting/financial-statements/changes-in-equity:
+    get:
+      operationId: accounting.financial.statements.changes_in_equity
+      parameters: [{$ref: '#/components/parameters/BookId'}, {$ref: '#/components/parameters/StartDate'}, {$ref: '#/components/parameters/EndDate'}, {$ref: '#/components/parameters/Dimensions'}]
+      responses: {'200': {$ref: '#/components/responses/Statement'}, '401': {$ref: '#/components/responses/Problem'}, '403': {$ref: '#/components/responses/Problem'}, '422': {$ref: '#/components/responses/Problem'}}
+  /api/v1/accounting/financial-statements/comparative:
+    get:
+      operationId: accounting.financial.statements.comparative
+      parameters: [{$ref: '#/components/parameters/BookId'}, {$ref: '#/components/parameters/StartDate'}, {$ref: '#/components/parameters/EndDate'}, {name: comparative_start_date, in: query, required: true, schema: {type: string, format: date}}, {name: comparative_end_date, in: query, required: true, schema: {type: string, format: date}}, {$ref: '#/components/parameters/Dimensions'}]
+      responses: {'200': {$ref: '#/components/responses/Statement'}, '401': {$ref: '#/components/responses/Problem'}, '403': {$ref: '#/components/responses/Problem'}, '422': {$ref: '#/components/responses/Problem'}}
+  /api/v1/accounting/financial-statements/drill-through:
+    get:
+      operationId: accounting.financial.statements.drill_through
+      parameters: [{$ref: '#/components/parameters/BookId'}, {name: account_id, in: query, required: true, schema: {type: integer, minimum: 1}}, {$ref: '#/components/parameters/StartDate'}, {$ref: '#/components/parameters/EndDate'}, {$ref: '#/components/parameters/Dimensions'}]
+      responses: {'200': {$ref: '#/components/responses/Statement'}, '401': {$ref: '#/components/responses/Problem'}, '403': {$ref: '#/components/responses/Problem'}, '422': {$ref: '#/components/responses/Problem'}}
+components:
+  securitySchemes:
+    sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}
+  parameters:
+    BookId: {name: book_id, in: query, required: true, schema: {type: integer, minimum: 1}}
+    StartDate: {name: start_date, in: query, required: true, schema: {type: string, format: date}}
+    EndDate: {name: end_date, in: query, required: true, schema: {type: string, format: date}}
+    AsOfDate: {name: as_of_date, in: query, required: true, schema: {type: string, format: date}}
+    Dimensions: {name: dimensions, in: query, schema: {type: object, additionalProperties: {type: string}, style: deepObject}}
+  schemas:
+    Statement: {type: object, required: [type], properties: {type: {type: string}, period: {type: object}, dimensions: {type: object}, balance_check: {type: number}, net_income: {type: number}, assets: {type: object}, liabilities: {type: object}, equity: {type: object}, operating_activities: {type: object}, ending_cash: {type: number}}}
+    Response: {type: object, required: [data], properties: {data: {$ref: '#/components/schemas/Statement'}}}
+    Problem: {type: object, required: [type, title, status, detail], properties: {type: {type: string, format: uri}, title: {type: string}, status: {type: integer}, detail: {type: string}}}
+  responses:
+    Statement: {description: Financial statement, content: {application/json: {schema: {$ref: '#/components/schemas/Response'}}}}
+    Problem: {description: Invalid or unauthorized request, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}

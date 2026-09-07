@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.liberu.dev/module/v1.json",
+  "name": "accounting-fixed-assets-livewire",
+  "display_name": "Accounting Fixed Assets Livewire",
+  "description": "Livewire 4 fixed-asset register and lifecycle interactions.",
+  "version": "1.0.0",
+  "category": "presentation",
+  "provider": "Liberu\\Accounting\\FixedAssetsLivewire\\FixedAssetsLivewireServiceProvider",
+  "requires": {
+    "php": "^8.5",
+    "laravel": "^13.0",
+    "packages": {
+      "liberusoftware/module-accounting-fixed-assets": "^1.0"
+    }
+  },
+  "capabilities": [
+    "accounting.fixed-assets.livewire"
+  ],
+  "features": [
+    "Asset register",
+    "Category filtering",
+    "Lifecycle feedback"
+  ],
+  "default_enabled": true
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.liberu.dev/module/v1.json",
+  "name": "accounting-chart-of-accounts-livewire",
+  "display_name": "Accounting Chart of Accounts Livewire",
+  "description": "Livewire 4 account hierarchy management surface.",
+  "version": "1.0.0",
+  "category": "presentation",
+  "provider": "Liberu\\Accounting\\ChartOfAccountsLivewire\\ChartOfAccountsLivewireServiceProvider",
+  "requires": { "php": "^8.5", "laravel": "^13.0", "packages": { "liberusoftware/module-accounting-chart-of-accounts": "^1.0" } },
+  "capabilities": ["accounting.chart-of-accounts.livewire"],
+  "default_enabled": false,
+  "features": ["Account creation", "Hierarchy display", "Validation feedback", "Archive lifecycle"]
+}

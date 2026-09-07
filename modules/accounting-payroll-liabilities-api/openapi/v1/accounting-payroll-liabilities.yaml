@@ -1,0 +1,8 @@
+openapi: 3.1.0
+info: {title: Accounting payroll liabilities API, version: 1.0.0}
+paths:
+  /api/v1/accounting/payroll-liabilities:
+    get: {operationId: accounting.payroll.liabilities.list, responses: {'200': {description: Liabilities}}}
+    post: {operationId: accounting.payroll.liabilities.create, responses: {'201': {description: Liability created}}}
+  /api/v1/accounting/payroll-liabilities/{id}/allocate:
+    post: {operationId: accounting.payroll.liabilities.allocate, parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Allocation applied}}}

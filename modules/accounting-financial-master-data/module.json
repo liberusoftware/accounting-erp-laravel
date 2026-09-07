@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.liberu.dev/module/v1.json",
+  "name": "accounting-financial-master-data",
+  "display_name": "Accounting Financial Master Data",
+  "description": "Customers, suppliers, items/services, tax profiles, payment terms, addresses, bank references, lifecycle, and deduplication.",
+  "version": "1.0.0",
+  "category": "capability",
+  "provider": "Liberu\\Accounting\\FinancialMasterData\\FinancialMasterDataServiceProvider",
+  "requires": { "php": "^8.5", "laravel": "^13.0", "packages": { "liberusoftware/module-accounting-core": "^1.0" } },
+  "capabilities": ["accounting.financial-master-data"],
+  "default_enabled": true,
+  "features": ["Customers", "Suppliers", "Items/services", "Accounts references", "Tax profiles", "Payment terms", "Addresses", "Bank details references", "Lifecycle", "Deduplication"]
+}

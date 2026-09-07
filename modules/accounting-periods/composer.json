@@ -1,0 +1,10 @@
+{
+  "name": "liberusoftware/module-accounting-periods",
+  "description": "Accounting period states, posting controls, locks, reopen approval, and evidence.",
+  "type": "liberu-module",
+  "license": "MIT",
+  "require": {"php": "^8.5", "illuminate/database": "^13.0", "illuminate/support": "^13.0", "liberusoftware/module-accounting-core": "^1.0"},
+  "autoload": {"psr-4": {"Liberu\\Accounting\\Periods\\": "src/"}},
+  "extra": {"laravel": {"providers": ["Liberu\\Accounting\\Periods\\AccountingPeriodsServiceProvider"]}, "liberu": {"name": "accounting-periods"}},
+  "version": "1.0.0"
+,"config":{"allow-plugins":{"pestphp/pest-plugin":true}}}

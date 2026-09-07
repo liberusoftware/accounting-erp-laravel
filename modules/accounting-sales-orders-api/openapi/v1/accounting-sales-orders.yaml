@@ -1,0 +1,21 @@
+openapi: 3.1.0
+info: {title: Accounting Sales Orders API, version: 1.0.0}
+paths:
+  /api/v1/accounting/sales-orders:
+    get: {operationId: accounting.sales.orders.list, security: [{sanctum: []}], responses: {'200': {$ref: '#/components/responses/Collection'}}}
+    post: {operationId: accounting.sales.orders.create, security: [{sanctum: []}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Create'}}}}, responses: {'201': {$ref: '#/components/responses/Resource'}, '422': {$ref: '#/components/responses/Problem'}}}
+  /api/v1/accounting/sales-orders/{id}:
+    get: {operationId: accounting.sales.orders.get, security: [{sanctum: []}], parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {$ref: '#/components/responses/Resource'}}}
+  /api/v1/accounting/sales-orders/{id}/transition:
+    post: {operationId: accounting.sales.orders.transition, security: [{sanctum: []}], parameters: [{name: id, in: path, required: true, schema: {type: string}}], requestBody: {required: true, content: {application/json: {schema: {type: object, required: [status], properties: {status: {type: string}}}}}}, responses: {'200': {$ref: '#/components/responses/Resource'}}}
+components:
+  securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}
+  schemas:
+    Create: {type: object, required: [customer_id, currency, order_date, items], properties: {customer_id: {type: string}, estimate_id: {type: string}, currency: {type: string, minLength: 3, maxLength: 3}, order_date: {type: string, format: date}, items: {type: array, minItems: 1, items: {type: object, required: [description, quantity, unit_price], properties: {description: {type: string}, quantity: {type: number, exclusiveMinimum: 0}, unit_price: {type: number, minimum: 0}, tax_rate: {type: number, minimum: 0, maximum: 100}}}}}
+    Resource: {type: object, required: [id, type, attributes], properties: {id: {type: string}, type: {const: accounting-sales-orders}, attributes: {type: object, additionalProperties: true}}}
+    Collection: {type: object, required: [data], properties: {data: {type: array, items: {$ref: '#/components/schemas/Resource'}}}}
+    Problem: {type: object, required: [type, title, status], properties: {type: {type: string}, title: {type: string}, status: {type: integer}, detail: {type: string}}}
+  responses:
+    Resource: {description: Sales order resource, content: {application/json: {schema: {$ref: '#/components/schemas/Resource'}}}}
+    Collection: {description: Sales order resources, content: {application/json: {schema: {$ref: '#/components/schemas/Collection'}}}}
+    Problem: {description: RFC 9457 problem, content: {application/problem+json: {schema: {$ref: '#/components/schemas/Problem'}}}}

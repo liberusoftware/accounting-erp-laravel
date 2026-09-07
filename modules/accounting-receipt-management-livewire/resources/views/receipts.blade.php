@@ -1,0 +1,1 @@
+<div><table><tbody>@forelse($receipts as $receipt)<tr><td>{{ $receipt->file_ref }}</td><td>{{ $receipt->merchant }}</td><td>{{ $receipt->amount }}</td><td>{{ $receipt->status->value }}</td></tr>@empty<tr><td>No receipts found.</td></tr>@endforelse</tbody></table>{{ $receipts->links() }}</div>

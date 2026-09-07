@@ -1,0 +1,14 @@
+openapi: 3.1.0
+info:
+  title: Accounting project profitability API
+  version: 1.0.0
+paths:
+  /api/v1/accounting/project-profitability:
+    get: {operationId: accounting.project.profitability.list, responses: {'200': {description: Authorized profitability records}}}
+    post: {operationId: accounting.project.profitability.create, responses: {'201': {description: Profitability record created}}}
+  /api/v1/accounting/project-profitability/{id}:
+    get: {operationId: accounting.project.profitability.get, parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Profitability record}}}
+  /api/v1/accounting/project-profitability/{id}/finalize:
+    post: {operationId: accounting.project.profitability.finalize, parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Finalized record}}}
+  /api/v1/accounting/project-profitability/project/{projectJobId}/dashboard:
+    get: {operationId: accounting.project.profitability.dashboard, parameters: [{name: projectJobId, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Dashboard summary}}}

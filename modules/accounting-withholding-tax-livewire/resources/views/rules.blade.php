@@ -1,0 +1,1 @@
+<div><table><tbody>@forelse($rules as $rule)<tr><td>{{ $rule->code }}</td><td>{{ $rule->name }}</td><td>{{ $rule->jurisdiction }}</td><td>{{ $rule->rate }}%</td><td>{{ $rule->status->value }}</td></tr>@empty<tr><td>No withholding tax rules found.</td></tr>@endforelse</tbody></table>{{ $rules->links() }}</div>

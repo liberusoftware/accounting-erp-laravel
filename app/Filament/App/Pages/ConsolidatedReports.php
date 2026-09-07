@@ -33,6 +33,8 @@ class ConsolidatedReports extends Page
     #[\Override]
     protected static ?string $title = 'Consolidated Reports';
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Reports';
+
     #[\Override]
     protected string $view = 'filament.app.pages.consolidated-reports';
 
