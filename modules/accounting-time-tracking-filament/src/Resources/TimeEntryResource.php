@@ -7,6 +7,7 @@ namespace Liberu\Accounting\TimeTrackingFilament\Resources;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -25,7 +26,7 @@ final class TimeEntryResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('worker_ref')->searchable(), TextColumn::make('worked_on')->date()->sortable(), TextColumn::make('hours'), TextColumn::make('project_ref'), TextColumn::make('status')->badge(), TextColumn::make('billable')->boolean()]);
+        return $table->columns([TextColumn::make('worker_ref')->searchable(), TextColumn::make('worked_on')->date()->sortable(), TextColumn::make('hours'), TextColumn::make('project_ref'), TextColumn::make('status')->badge(), IconColumn::make('billable')->boolean()]);
     }
 
     public static function getEloquentQuery(): Builder

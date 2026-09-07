@@ -1,0 +1,14 @@
+{
+  "name": "liberusoftware/module-accounting-coding-suggestions",
+  "description": "Accounting coding suggestions domain module.",
+  "type": "liberu-module",
+  "version": "1.0.0",
+  "autoload": {"psr-4": {"Liberu\\Accounting\\CodingSuggestions\\": "src/"}},
+  "extra": {"laravel": {"providers": ["Liberu\\Accounting\\CodingSuggestions\\CodingSuggestionsServiceProvider"]}, "liberu": {"name": "accounting-coding-suggestions"}},
+  "require": {"php": "^8.5", "illuminate/database": "^13.0", "illuminate/support": "^13.0"},
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

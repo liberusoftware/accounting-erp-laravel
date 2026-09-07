@@ -7,6 +7,7 @@ namespace Liberu\Accounting\RecurringTransactionsFilament\Resources;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -25,7 +26,7 @@ final class RecurringTemplateResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('name')->searchable(), TextColumn::make('transaction_type'), TextColumn::make('frequency')->badge(), TextColumn::make('next_run_on')->date()->sortable(), TextColumn::make('status')->badge(), TextColumn::make('automatic')->boolean()])->defaultSort('next_run_on');
+        return $table->columns([TextColumn::make('name')->searchable(), TextColumn::make('transaction_type'), TextColumn::make('frequency')->badge(), TextColumn::make('next_run_on')->date()->sortable(), TextColumn::make('status')->badge(), IconColumn::make('automatic')->boolean()])->defaultSort('next_run_on');
     }
 
     public static function getEloquentQuery(): Builder

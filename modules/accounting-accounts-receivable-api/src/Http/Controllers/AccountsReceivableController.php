@@ -34,6 +34,26 @@ final class AccountsReceivableController extends Controller
         return response()->json(['data' => ReceivableOpenItemResource::collection(ReceivableOpenItem::query()->when($request->integer('party_id'), fn ($q, $v) => $q->where('party_id', $v))->latest()->paginate(min(100, max(1, $request->integer('page[size]', 25)))))]);
     }
 
+    public function receipts(Request $request): JsonResponse
+    {
+        Gate::authorize('viewAny', ReceivableReceipt::class);
+
+        return response()->json(['data' => ReceivableReceiptResource::collection(ReceivableReceipt::query()
+            ->when($request->integer('party_id'), fn ($q, $v) => $q->where('party_id', $v))
+            ->latest('received_on')
+            ->paginate(min(100, max(1, $request->integer('page[size]', 25)))))]);
+    }
+
+    public function disputes(Request $request): JsonResponse
+    {
+        Gate::authorize('viewAny', ReceivableDispute::class);
+
+        return response()->json(['data' => ReceivableDisputeResource::collection(ReceivableDispute::query()
+            ->when($request->string('status')->toString(), fn ($q, $v) => $q->where('status', $v))
+            ->latest('opened_at')
+            ->paginate(min(100, max(1, $request->integer('page[size]', 25)))))]);
+    }
+
     public function show(ReceivableOpenItem $openItem): ReceivableOpenItemResource
     {
         Gate::authorize('view', $openItem);

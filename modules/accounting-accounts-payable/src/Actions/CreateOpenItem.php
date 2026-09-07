@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Liberu\Accounting\AccountsPayable\Actions;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Liberu\Accounting\AccountsPayable\Enums\PayableStatus;
 use Liberu\Accounting\AccountsPayable\Events\OpenItemCreated;
 use Liberu\Accounting\AccountsPayable\Exceptions\InvalidPayable;
@@ -23,6 +24,16 @@ final class CreateOpenItem
             }
             if (! Party::query()->whereKey($attributes['party_id'])->where('type', PartyType::Supplier)->exists()) {
                 throw new InvalidPayable('Open items can only be created for an existing supplier.');
+            }
+            if (($attributes['due_on'] ?? null) !== null && $attributes['due_on'] < $attributes['issued_on']) {
+                throw new InvalidPayable('A payable due date cannot precede its issue date.');
+            }
+            $attributes['currency'] = Str::upper((string) $attributes['currency']);
+            if (strlen($attributes['currency']) !== 3) {
+                throw new InvalidPayable('A payable currency must be a three-letter code.');
+            }
+            if (($attributes['source_type'] ?? null) !== null && ($attributes['source_id'] ?? null) !== null && PayableOpenItem::query()->where('source_type', $attributes['source_type'])->where('source_id', $attributes['source_id'])->exists()) {
+                throw new InvalidPayable('A payable for this source already exists.');
             }
             $item = PayableOpenItem::create(array_merge($attributes, ['paid_amount' => 0, 'status' => PayableStatus::Open]));
             app(EnsureAccount::class)->handle((int) $item->party_id);

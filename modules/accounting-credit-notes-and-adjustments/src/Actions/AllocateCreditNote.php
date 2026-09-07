@@ -18,7 +18,7 @@ final class AllocateCreditNote
             throw new InvalidCreditNote('Credit must be approved and allocation must fit the remaining balance.');
         }
 
-return DB::transaction(function () use ($note, $invoiceRef, $amount): CreditNoteAllocation {
+        return DB::transaction(function () use ($note, $invoiceRef, $amount): CreditNoteAllocation {
             $allocation = $note->allocations()->create(['team_id' => $note->team_id, 'invoice_ref' => $invoiceRef, 'amount' => $amount]);
             $total = (float) $note->allocated_amount + $amount;
             $note->update(['allocated_amount' => $total, 'status' => $total >= (float) $note->amount ? CreditNoteStatus::Allocated : CreditNoteStatus::PartiallyAllocated]);

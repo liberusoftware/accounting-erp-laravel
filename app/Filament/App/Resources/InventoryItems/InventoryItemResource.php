@@ -29,6 +29,8 @@ use Filament\Tables\Table;
 
 class InventoryItemResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Assets';
+
     #[\Override]
     protected static ?string $model = InventoryItem::class;
 

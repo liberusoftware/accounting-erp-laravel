@@ -1,0 +1,1 @@
+<div><h2>Corporate cards</h2><ul>@forelse ($accounts as $account)<li>{{ $account->card_ref }} — {{ number_format((float)$account->spent_amount,2) }} / {{ number_format((float)$account->limit_amount,2) }}</li>@empty<li>No corporate cards.</li>@endforelse</ul></div>

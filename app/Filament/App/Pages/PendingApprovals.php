@@ -33,6 +33,8 @@ class PendingApprovals extends Page implements HasTable
     #[\Override]
     protected static ?string $title = 'Pending Approvals';
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Accounting';
+
     public function table(Table $table): Table
     {
         return $table

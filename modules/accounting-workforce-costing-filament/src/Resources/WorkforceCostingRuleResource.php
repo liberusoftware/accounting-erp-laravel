@@ -7,6 +7,7 @@ namespace Liberu\Accounting\WorkforceCostingFilament\Resources;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -25,7 +26,7 @@ final class WorkforceCostingRuleResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('name'), TextColumn::make('allocation_type')->badge(), TextColumn::make('allocation_ref'), TextColumn::make('hourly_rate'), TextColumn::make('capitalize')->boolean(), TextColumn::make('active')->boolean()]);
+        return $table->columns([TextColumn::make('name'), TextColumn::make('allocation_type')->badge(), TextColumn::make('allocation_ref'), TextColumn::make('hourly_rate'), IconColumn::make('capitalize')->boolean(), IconColumn::make('active')->boolean()]);
     }
 
     public static function getEloquentQuery(): Builder

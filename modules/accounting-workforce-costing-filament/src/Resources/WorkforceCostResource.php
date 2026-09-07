@@ -8,6 +8,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,7 +27,7 @@ final class WorkforceCostResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('worker_ref'), TextColumn::make('cost_date')->date(), TextColumn::make('hours'), TextColumn::make('amount'), TextColumn::make('allocation_type')->badge(), TextColumn::make('allocation_ref'), TextColumn::make('capitalized')->boolean(), TextColumn::make('status')->badge()]);
+        return $table->columns([TextColumn::make('worker_ref'), TextColumn::make('cost_date')->date(), TextColumn::make('hours'), TextColumn::make('amount'), TextColumn::make('allocation_type')->badge(), TextColumn::make('allocation_ref'), IconColumn::make('capitalized')->boolean(), TextColumn::make('status')->badge()]);
     }
 
     public static function getEloquentQuery(): Builder

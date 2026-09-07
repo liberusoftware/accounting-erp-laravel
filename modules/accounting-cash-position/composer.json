@@ -1,0 +1,14 @@
+{
+  "name": "liberusoftware/module-accounting-cash-position",
+  "description": "Accounting cash position domain module.",
+  "type": "liberu-module",
+  "version": "1.0.0",
+  "autoload": {"psr-4": {"Liberu\\Accounting\\CashPosition\\": "src/"}},
+  "extra": {"laravel": {"providers": ["Liberu\\Accounting\\CashPosition\\CashPositionServiceProvider"]}, "liberu": {"name": "accounting-cash-position"}},
+  "require": {"php": "^8.5", "illuminate/database": "^13.0", "illuminate/support": "^13.0"},
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

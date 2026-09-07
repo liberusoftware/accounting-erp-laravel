@@ -1,0 +1,62 @@
+@import '../../../base/resources/css/app.css';
+
+@layer tokens {
+    :root {
+        --erp-ink: #0f172a;
+        --erp-muted: #526176;
+        --erp-cyan: #0891b2;
+        --erp-cyan-dark: #0e7490;
+        --erp-mint: #cffafe;
+        --erp-line: #dbe5ec;
+        --erp-panel: #ffffff;
+        --erp-canvas: #f5f9fc;
+        --erp-radius: 1.25rem;
+        --erp-shadow: 0 24px 70px rgb(15 23 42 / .12);
+    }
+}
+
+@layer components {
+    .erp-page { min-block-size: 100vh; overflow: hidden; background: var(--erp-canvas); color: var(--erp-ink); }
+    .erp-nav { border-block-end: 1px solid var(--erp-line); background: rgb(255 255 255 / .86); backdrop-filter: blur(16px); }
+    .erp-nav__inner, .erp-wrap { inline-size: min(100% - 2rem, 72rem); margin-inline: auto; }
+    .erp-nav__inner { display: flex; min-block-size: 4.5rem; align-items: center; justify-content: space-between; gap: 1rem; }
+    .erp-brand { display: inline-flex; align-items: center; gap: .7rem; color: var(--erp-ink); font-weight: 800; letter-spacing: -.03em; }
+    .erp-brand__mark { display: grid; block-size: 2.35rem; inline-size: 2.35rem; place-items: center; border-radius: .8rem; background: var(--erp-ink); color: #67e8f9; }
+    .erp-nav__link { color: var(--erp-muted); font-size: .9rem; font-weight: 700; }
+    .erp-nav__link:hover { color: var(--erp-cyan-dark); }
+    .erp-hero { position: relative; padding-block: clamp(4rem, 10vw, 8rem); }
+    .erp-hero::before { position: absolute; z-index: 0; block-size: 34rem; inline-size: 34rem; border-radius: 999px; background: rgb(103 232 249 / .22); content: ''; filter: blur(4rem); inset-block-start: -10rem; inset-inline-end: -12rem; }
+    .erp-hero__grid { position: relative; z-index: 1; display: grid; align-items: center; gap: 3rem; grid-template-columns: minmax(0, 1.05fr) minmax(18rem, .95fr); }
+    .erp-kicker { color: var(--erp-cyan-dark); font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .erp-title { max-inline-size: 44rem; margin-block: 1rem 1.25rem; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 850; letter-spacing: -.075em; line-height: .98; }
+    .erp-lede { max-inline-size: 37rem; color: var(--erp-muted); font-size: clamp(1.05rem, 2vw, 1.3rem); }
+    .erp-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-block-start: 2rem; }
+    .erp-button { display: inline-flex; min-block-size: 2.9rem; align-items: center; justify-content: center; border-radius: .8rem; padding-inline: 1.15rem; font-weight: 800; transition: transform .15s ease, box-shadow .15s ease; }
+    .erp-button:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgb(8 145 178 / .2); }
+    .erp-button--primary { background: var(--erp-ink); color: white; }
+    .erp-button--accent { background: var(--erp-cyan); color: white; }
+    .erp-button--quiet { border: 1px solid var(--erp-line); background: white; color: var(--erp-ink); }
+    .erp-proof { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-block-start: 1.75rem; color: var(--erp-muted); font-size: .85rem; }
+    .erp-proof span::before { margin-inline-end: .4rem; color: var(--erp-cyan); content: '✓'; font-weight: 900; }
+    .erp-dashboard { position: relative; border: 1px solid rgb(255 255 255 / .8); border-radius: 1.5rem; background: linear-gradient(150deg, #0f172a, #164e63); box-shadow: var(--erp-shadow); color: white; transform: rotate(1.5deg); }
+    .erp-dashboard__top { display: flex; align-items: center; justify-content: space-between; border-block-end: 1px solid rgb(255 255 255 / .14); padding: 1.1rem 1.25rem; color: #cbd5e1; font-size: .75rem; }
+    .erp-dashboard__body { padding: 1.25rem; }
+    .erp-dashboard__metric { margin-block-end: 1.5rem; color: #a5f3fc; font-size: 2.4rem; font-weight: 850; letter-spacing: -.06em; }
+    .erp-bars { display: grid; align-items: end; block-size: 8rem; grid-template-columns: repeat(8, 1fr); gap: .45rem; }
+    .erp-bars i { display: block; border-radius: .35rem .35rem 0 0; background: linear-gradient(#67e8f9, #0891b2); }
+    .erp-section { padding-block: clamp(3.5rem, 8vw, 6rem); }
+    .erp-section--white { background: white; }
+    .erp-section__heading { max-inline-size: 38rem; margin-block-end: 2.25rem; }
+    .erp-section h2 { margin: 0 0 .7rem; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.06em; line-height: 1.05; }
+    .erp-section__heading p { color: var(--erp-muted); font-size: 1.05rem; }
+    .erp-cards { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
+    .erp-card { border: 1px solid var(--erp-line); border-radius: var(--erp-radius); background: var(--erp-panel); padding: 1.5rem; }
+    .erp-card__icon { display: grid; block-size: 2.5rem; inline-size: 2.5rem; place-items: center; margin-block-end: 1.25rem; border-radius: .75rem; background: var(--erp-mint); color: var(--erp-cyan-dark); font-weight: 900; }
+    .erp-card h3 { margin: 0 0 .45rem; font-size: 1.1rem; }
+    .erp-card p { margin: 0; color: var(--erp-muted); }
+    .erp-cta { border-radius: 1.5rem; background: var(--erp-ink); padding: clamp(2rem, 5vw, 4rem); color: white; }
+    .erp-cta h2 { max-inline-size: 35rem; }
+    .erp-footer { border-block-start: 1px solid var(--erp-line); padding-block: 1.5rem; color: var(--erp-muted); font-size: .85rem; }
+    @media (max-width: 48rem) { .erp-hero__grid, .erp-cards { grid-template-columns: 1fr; } .erp-dashboard { max-inline-size: 34rem; margin-inline: auto; transform: none; } .erp-nav__link--desktop { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .erp-button { transition: none; } .erp-button:hover { transform: none; } .erp-dashboard { transform: none; } }
+}

@@ -7,6 +7,7 @@ namespace Liberu\Accounting\RevenueRecognitionFilament\Resources;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -25,7 +26,7 @@ final class RevenueScheduleResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([TextColumn::make('obligation_id')->sortable(), TextColumn::make('total_amount'), TextColumn::make('start_date')->date()->sortable(), TextColumn::make('periods'), TextColumn::make('status')->badge(), TextColumn::make('funded')->boolean()])->defaultSort('start_date', 'desc');
+        return $table->columns([TextColumn::make('obligation_id')->sortable(), TextColumn::make('total_amount'), TextColumn::make('start_date')->date()->sortable(), TextColumn::make('periods'), TextColumn::make('status')->badge(), IconColumn::make('funded')->boolean()])->defaultSort('start_date', 'desc');
     }
 
     public static function getEloquentQuery(): Builder

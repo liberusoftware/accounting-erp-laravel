@@ -18,6 +18,6 @@ final class CreateYearEndPeriod
             }
         }
 
-return YearEndPeriod::create([...$attributes, 'status' => YearEndStatus::Open]);
+        return YearEndPeriod::create([...$attributes, 'status' => YearEndStatus::Open]);
     }
 }

@@ -46,7 +46,7 @@ final class PayrollLiabilityResource extends Resource
             Action::make('allocate')->label('Allocate payment')->icon('heroicon-o-banknotes')
                 ->visible(fn (PayrollLiability $record): bool => $record->outstanding() > 0 && $record->status !== LiabilityStatus::Reconciled)
                 ->schema([
-                    TextInput::make('amount')->numeric()->gt(0)->required(),
+                    TextInput::make('amount')->numeric()->rule('gt:0')->required(),
                     TextInput::make('allocation_ref')->required()->maxLength(255),
                 ])
                 ->action(fn (PayrollLiability $record, array $data, AllocatePayrollLiability $action): PayrollLiability => $action->handle($record, (float) $data['amount'], (string) $data['allocation_ref'])),

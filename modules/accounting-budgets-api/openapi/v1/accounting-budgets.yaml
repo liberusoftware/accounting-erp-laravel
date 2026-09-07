@@ -1,0 +1,16 @@
+openapi: 3.0.3
+info: { title: Accounting Budgets API, version: 1.0.0 }
+paths:
+  /api/v1/accounting/budgets:
+    get: { summary: List budgets, responses: { '200': { description: Paginated budgets } } }
+    post: { summary: Create a budget, responses: { '201': { description: Budget created } } }
+  /api/v1/accounting/budgets/{budget}/submit:
+    post: { summary: Submit a budget, responses: { '200': { description: Submitted budget } } }
+  /api/v1/accounting/budgets/{budget}/lines:
+    post: { summary: Add a phased budget line, responses: { '200': { description: Budget with line } } }
+  /api/v1/accounting/budgets/{budget}/approve:
+    post: { summary: Approve a budget, responses: { '200': { description: Approved budget } } }
+  /api/v1/accounting/budgets/{budget}/revise:
+    post: { summary: Revise an approved budget, responses: { '200': { description: Revised budget } } }
+  /api/v1/accounting/budgets/{budget}:
+    get: { summary: Show a budget, responses: { '200': { description: Budget with lines } } }

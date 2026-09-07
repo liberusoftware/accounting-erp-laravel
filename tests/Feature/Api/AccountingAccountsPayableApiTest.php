@@ -19,6 +19,7 @@ it('exposes authorized payable items and explicit payment resources', function (
     $this->postJson('/api/v1/accounting/accounts-payable/open-items', ['party_id' => $supplier->id, 'reference' => 'AP-API-1', 'issued_on' => '2026-08-20', 'original_amount' => 125, 'currency' => 'USD'])->assertCreated();
     $this->postJson('/api/v1/accounting/accounts-payable/payments', ['party_id' => $supplier->id, 'amount' => 25, 'currency' => 'USD'])->assertCreated()->assertJsonPath('data.type', 'accounting-ap-payment');
     $this->getJson('/api/v1/accounting/accounts-payable')->assertOk()->assertJsonCount(1, 'data');
+    $this->getJson('/api/v1/accounting/accounts-payable/aging')->assertOk();
 });
 
 it('rejects payable reads without the read ability', function (): void {

@@ -33,6 +33,16 @@ it('rejects receivable access without the read ability', function (): void {
     $this->getJson('/api/v1/accounting/accounts-receivable')->assertForbidden();
 });
 
+it('keeps receipt and dispute collection routes ahead of the item binding route', function (): void {
+    $party = Party::query()->create(['legal_entity_id' => dbEntity(), 'type' => PartyType::Customer, 'name' => 'Collection Customer']);
+    Sanctum::actingAs(User::factory()->create(), ['accounting.receivables.read', 'accounting.receivables.write']);
+
+    $this->postJson('/api/v1/accounting/accounts-receivable/receipts', ['party_id' => $party->id, 'amount' => 10, 'currency' => 'USD'])->assertCreated();
+
+    $this->getJson('/api/v1/accounting/accounts-receivable/receipts')->assertOk()->assertJsonCount(1, 'data');
+    $this->getJson('/api/v1/accounting/accounts-receivable/disputes')->assertOk()->assertJsonCount(0, 'data');
+});
+
 function dbEntity(): int
 {
     return DB::table('accounting_legal_entities')->insertGetId([

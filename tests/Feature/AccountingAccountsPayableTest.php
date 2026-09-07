@@ -12,6 +12,7 @@ use Liberu\Accounting\AccountsPayable\Actions\CreateOpenItem;
 use Liberu\Accounting\AccountsPayable\Actions\OpenDispute;
 use Liberu\Accounting\AccountsPayable\Actions\RecordPayment;
 use Liberu\Accounting\AccountsPayable\Actions\ResolveDispute;
+use Liberu\Accounting\AccountsPayable\Actions\SetPaymentControl;
 use Liberu\Accounting\AccountsPayable\Enums\DisputeStatus;
 use Liberu\Accounting\AccountsPayable\Enums\PayableStatus;
 use Liberu\Accounting\AccountsPayable\Events\DisputeOpened;
@@ -80,6 +81,20 @@ final class AccountingAccountsPayableTest extends TestCase
 
         $this->expectException(InvalidPayable::class);
         app(OpenDispute::class)->handle($item, 'Price under review', 20);
+    }
+
+    public function test_payment_hold_blocks_application_and_dates_are_validated(): void
+    {
+        $supplier = $this->supplier();
+        $item = app(CreateOpenItem::class)->handle(['party_id' => $supplier->id, 'reference' => 'BILL-AP-5', 'issued_on' => '2026-08-01', 'due_on' => '2026-08-31', 'original_amount' => 100, 'currency' => 'usd']);
+        $payment = app(RecordPayment::class)->handle(['party_id' => $supplier->id, 'amount' => 25, 'currency' => 'usd']);
+
+        $this->assertSame('USD', $item->currency);
+        $this->assertSame('USD', $payment->currency);
+        app(SetPaymentControl::class)->handle($supplier->id, true, 'Compliance review');
+
+        $this->expectException(InvalidPayable::class);
+        app(ApplyPayment::class)->handle($payment, $item, 10);
     }
 
     private function supplier(): Party

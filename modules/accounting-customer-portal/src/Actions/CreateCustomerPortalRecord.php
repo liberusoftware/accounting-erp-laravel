@@ -27,6 +27,6 @@ final class CreateCustomerPortalRecord
             throw new InvalidCustomerPortalRecord('The portal reference already exists.');
         }
 
-return CustomerPortalRecord::create([...$attributes, 'type' => $type, 'status' => $attributes['status'] ?? CustomerPortalStatus::Draft]);
+        return CustomerPortalRecord::create([...$attributes, 'type' => $type, 'status' => $attributes['status'] ?? CustomerPortalStatus::Draft]);
     }
 }

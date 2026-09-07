@@ -17,6 +17,6 @@ final class CreateDashboard
             }
         }
 
-return Dashboard::create([...$attributes, 'period' => $attributes['period'] ?? 'current']);
+        return Dashboard::create([...$attributes, 'period' => $attributes['period'] ?? 'current']);
     }
 }

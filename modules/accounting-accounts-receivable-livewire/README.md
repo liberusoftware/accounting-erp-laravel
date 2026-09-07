@@ -2,8 +2,12 @@
 
 Optional Livewire customer-balance and open-item boundary.
 
-The component is available as
-`module-accounting-accounts-receivable::receivables` (the legacy
-`accounting-accounts-receivables` alias remains supported) and accepts a
-customer `partyId`. It requires an authenticated user and delegates reads to
-`CustomerSubledgerQuery`.
+The bounded component namespace exposes:
+
+- `module-accounting-accounts-receivable::receivables` for the customer subledger;
+- `module-accounting-accounts-receivable::aging` for aging buckets; and
+- `module-accounting-accounts-receivable::statement` for a customer statement.
+
+The package also keeps kebab-case compatibility aliases for hosts that do not
+support namespaced component lookup. Components require an authenticated user,
+validate their public state, and delegate reads to the domain query objects.

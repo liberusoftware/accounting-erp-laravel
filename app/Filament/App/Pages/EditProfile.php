@@ -24,7 +24,11 @@ class EditProfile extends Page
     protected string $view = 'filament.pages.edit-profile';
 
     #[\Override]
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-chart-bar';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-user-circle';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Account';
+
+    protected static ?int $navigationSort = 1;
 
     public User $user;
 
