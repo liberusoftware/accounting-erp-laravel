@@ -6,11 +6,14 @@ namespace Liberu\Accounting\CoreApi\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Gate;
 use Liberu\Accounting\Core\Actions\CreateLegalEntity;
+use Liberu\Accounting\Core\Actions\UpdateLegalEntity;
 use Liberu\Accounting\Core\Models\LegalEntity;
 use Liberu\Accounting\CoreApi\Http\Requests\StoreLegalEntityRequest;
+use Liberu\Accounting\CoreApi\Http\Requests\UpdateLegalEntityRequest;
 use Liberu\Accounting\CoreApi\Http\Resources\LegalEntityResource;
 
 final class LegalEntityController extends Controller
@@ -42,5 +45,22 @@ final class LegalEntityController extends Controller
         return (new LegalEntityResource($entity))
             ->response()
             ->setStatusCode(201);
+    }
+
+    public function update(UpdateLegalEntityRequest $request, string $legalEntity, UpdateLegalEntity $update): LegalEntityResource
+    {
+        $entity = LegalEntity::query()->findOrFail($legalEntity);
+        Gate::authorize('update', $entity);
+
+        return new LegalEntityResource($update->handle($entity, $request->validated()));
+    }
+
+    public function destroy(string $legalEntity): Response
+    {
+        $entity = LegalEntity::query()->findOrFail($legalEntity);
+        Gate::authorize('delete', $entity);
+        $entity->delete();
+
+        return response()->noContent();
     }
 }

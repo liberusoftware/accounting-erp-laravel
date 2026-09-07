@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: Accounting Accounts Payable API
+  version: 1.0.0
+servers:
+  - url: /
+paths:
+  /api/v1/accounting/accounts-payable:
+    get:
+      operationId: accounting.accountsPayable.list
+      security: [{sanctum: []}]
+      responses: {'200': {description: Authorized payable items}}
+  /api/v1/accounting/accounts-payable/open-items:
+    post:
+      operationId: accounting.accountsPayable.openItems.create
+      security: [{sanctum: []}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/OpenItemCreate'}}}
+      responses: {'201': {description: Payable item created}}
+  /api/v1/accounting/accounts-payable/aging:
+    get:
+      operationId: accounting.accountsPayable.aging
+      security: [{sanctum: []}]
+      responses: {'200': {description: Aging buckets}}
+  /api/v1/accounting/accounts-payable/reconciliation:
+    get:
+      operationId: accounting.accountsPayable.reconciliation
+      security: [{sanctum: []}]
+      responses: {'200': {description: Control-account reconciliation}}
+  /api/v1/accounting/accounts-payable/payments:
+    post:
+      operationId: accounting.accountsPayable.payments.create
+      security: [{sanctum: []}]
+      responses: {'201': {description: Payment recorded}}
+  /api/v1/accounting/accounts-payable/payments/{payment}/apply:
+    post:
+      operationId: accounting.accountsPayable.payments.apply
+      security: [{sanctum: []}]
+      parameters: [{name: payment, in: path, required: true, schema: {type: integer}}]
+      responses: {'200': {description: Payment applied}}
+  /api/v1/accounting/accounts-payable/disputes:
+    post:
+      operationId: accounting.accountsPayable.disputes.open
+      security: [{sanctum: []}]
+      responses: {'201': {description: Dispute opened}}
+  /api/v1/accounting/accounts-payable/disputes/{dispute}/resolve:
+    post:
+      operationId: accounting.accountsPayable.disputes.resolve
+      security: [{sanctum: []}]
+      parameters: [{name: dispute, in: path, required: true, schema: {type: integer}}]
+      responses: {'200': {description: Dispute resolved}}
+components:
+  securitySchemes:
+    sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}
+  schemas:
+    OpenItemCreate:
+      type: object
+      required: [party_id, reference, issued_on, original_amount, currency]
+      properties:
+        party_id: {type: integer}
+        reference: {type: string, maxLength: 128}
+        issued_on: {type: string, format: date}
+        due_on: {type: string, format: date, nullable: true}
+        original_amount: {type: number, exclusiveMinimum: 0}
+        currency: {type: string, minLength: 3, maxLength: 3}
+        payment_terms: {type: string, nullable: true, maxLength: 64}

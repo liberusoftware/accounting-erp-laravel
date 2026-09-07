@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.liberu.dev/module/v1.json",
+  "name": "accounting-financial-master-data-livewire",
+  "display_name": "Accounting Financial Master Data Livewire",
+  "description": "Livewire 4 party management surface.",
+  "version": "1.0.0",
+  "category": "presentation",
+  "provider": "Liberu\\Accounting\\FinancialMasterDataLivewire\\FinancialMasterDataLivewireServiceProvider",
+  "requires": { "php": "^8.5", "laravel": "^13.0", "packages": { "liberusoftware/module-accounting-financial-master-data": "^1.0" } },
+  "capabilities": ["accounting.financial-master-data.livewire"],
+  "default_enabled": false,
+  "features": ["Customer and supplier forms", "Duplicate feedback", "Lifecycle state"]
+}

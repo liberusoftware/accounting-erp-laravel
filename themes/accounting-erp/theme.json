@@ -1,0 +1,20 @@
+{
+    "$schema": "https://schemas.liberu.dev/theme/v1.json",
+    "name": "accounting-erp",
+    "display_name": "Accounting ERP",
+    "version": "1.0.0",
+    "provider": "Liberu\\Themes\\AccountingErp\\AccountingErpThemeServiceProvider",
+    "type": "public",
+    "parent": "base",
+    "optimized_for": ["liberusoftware/accounting-erp-laravel:^1.0"],
+    "tested_with": ["liberusoftware/accounting-erp-laravel:^1.0"],
+    "required_capabilities": [],
+    "optional_capabilities": ["foundation.localization", "foundation.theme-support"],
+    "supports": ["application.shell", "identity.auth", "foundation.account"],
+    "assets": {
+        "css": ["resources/css/app.css"],
+        "js": []
+    },
+    "colors": {"primary": "cyan", "secondary": "slate"},
+    "description": "A confident, responsive accounting ERP landing experience with free and Premium compositions."
+}

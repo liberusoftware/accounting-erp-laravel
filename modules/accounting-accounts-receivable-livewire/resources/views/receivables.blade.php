@@ -1,0 +1,1 @@
+<div><h2>Accounts Receivable</h2><p>Outstanding balance: {{ number_format($ledger['balance'], 2) }}</p><ul>@foreach($ledger['open_items'] as $item)<li>{{ $item->reference }} — {{ number_format($item->outstanding(), 2) }} {{ $item->currency }}</li>@endforeach</ul></div>

@@ -1,0 +1,1 @@
+<div><h2>Sales invoices</h2><ul>@foreach($invoices as $invoice)<li>{{ $invoice->invoice_number }} — {{ $invoice->status->value }} — {{ number_format((float)$invoice->total, 2) }}</li>@endforeach</ul>{{ $invoices->links() }}</div>

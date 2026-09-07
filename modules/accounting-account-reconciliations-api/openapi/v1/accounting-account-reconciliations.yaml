@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: Accounting Account Reconciliations API
+  version: 1.0.0
+paths:
+  /api/v1/accounting/account-reconciliations:
+    get:
+      summary: List account reconciliations
+      security: [{ sanctum: [] }]
+      responses:
+        '200': { description: Paginated account reconciliations }
+    post:
+      summary: Create an account reconciliation
+      security: [{ sanctum: [] }]
+      responses:
+        '201': { description: Account reconciliation created }
+  /api/v1/accounting/account-reconciliations/{reconciliation}:
+    get:
+      summary: Show an account reconciliation
+      security: [{ sanctum: [] }]
+      parameters:
+        - { name: reconciliation, in: path, required: true, schema: { type: integer } }
+      responses:
+        '200': { description: Account reconciliation }
+  /api/v1/accounting/account-reconciliations/{reconciliation}/prepare:
+    post:
+      summary: Prepare an account reconciliation
+      security: [{ sanctum: [] }]
+      responses:
+        '200': { description: Prepared reconciliation }
+  /api/v1/accounting/account-reconciliations/{reconciliation}/review:
+    post:
+      summary: Submit an account reconciliation for review
+      security: [{ sanctum: [] }]
+      responses:
+        '200': { description: Reconciliation under review }
+  /api/v1/accounting/account-reconciliations/{reconciliation}/certify:
+    post:
+      summary: Certify an account reconciliation
+      security: [{ sanctum: [] }]
+      responses:
+        '200': { description: Certified reconciliation }
+  /api/v1/accounting/account-reconciliations/{reconciliation}/carry-forward:
+    post:
+      summary: Carry a certified reconciliation into a new period
+      security: [{ sanctum: [] }]
+      responses:
+        '200': { description: Carried-forward reconciliation }
+components:
+  securitySchemes:
+    sanctum:
+      type: http
+      scheme: bearer

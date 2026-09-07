@@ -1,0 +1,14 @@
+{
+  "name": "liberusoftware/module-accounting-cash-flow-forecasting",
+  "description": "Accounting cash-flow forecasting domain module.",
+  "type": "liberu-module",
+  "version": "1.0.0",
+  "autoload": {"psr-4": {"Liberu\\Accounting\\CashFlowForecasting\\": "src/"}},
+  "extra": {"laravel": {"providers": ["Liberu\\Accounting\\CashFlowForecasting\\CashFlowForecastingServiceProvider"]}, "liberu": {"name": "accounting-cash-flow-forecasting"}},
+  "require": {"php": "^8.5", "illuminate/database": "^13.0", "illuminate/support": "^13.0"},
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

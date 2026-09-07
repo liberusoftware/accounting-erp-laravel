@@ -1,0 +1,8 @@
+openapi: 3.1.0
+info: {title: Accounting payroll integration API, version: 1.0.0}
+paths:
+  /api/v1/accounting/payroll-integration:
+    get: {operationId: accounting.payroll.integration.list, responses: {'200': {description: Payroll imports}}}
+    post: {operationId: accounting.payroll.integration.create, responses: {'201': {description: Import accepted}}}
+  /api/v1/accounting/payroll-integration/{id}/status:
+    post: {operationId: accounting.payroll.integration.status, parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Import status updated}}}

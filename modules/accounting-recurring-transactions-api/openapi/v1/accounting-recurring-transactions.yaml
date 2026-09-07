@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info: {title: accounting recurring transactions API, version: 1.0.0}
+paths:
+  /api/v1/accounting/recurring-transactions:
+    get: {operationId: accounting.recurring.transactions.list, responses: {'200': {description: Authorized templates}}}
+    post: {operationId: accounting.recurring.transactions.create, responses: {'201': {description: Template created}}}
+  /api/v1/accounting/recurring-transactions/{template}:
+    get: {operationId: accounting.recurring.transactions.get, responses: {'200': {description: Template resource}}}
+  /api/v1/accounting/recurring-transactions/{template}/approve:
+    post: {operationId: accounting.recurring.transactions.approve, responses: {'200': {description: Approved template}}}
+  /api/v1/accounting/recurring-transactions/{template}/generate:
+    post: {operationId: accounting.recurring.transactions.generate, responses: {'200': {description: Generated occurrences}}}

@@ -1,0 +1,13 @@
+{
+  "$schema":"https://schemas.liberu.dev/module/v1.json",
+  "name":"accounting-supplier-bills",
+  "display_name":"Accounting Supplier Bills",
+  "description":"Supplier bill capture, coding, tax, approvals, matching, credits, documents, and posting.",
+  "version":"1.0.0",
+  "category":"capability",
+  "provider":"Liberu\\Accounting\\SupplierBills\\SupplierBillsServiceProvider",
+  "requires":{"php":"^8.5","laravel":"^13.0","packages":{"liberusoftware/module-accounting-financial-master-data":"^1.0","liberusoftware/module-accounting-accounts-payable":"^1.0"}},
+  "capabilities":["accounting.supplier-bills"],
+  "features":["Draft/approved/posted bills","Capture sources","Line coding","Tax","Due dates","Duplicate detection","Matching","Credits","Documents"],
+  "default_enabled":true
+}

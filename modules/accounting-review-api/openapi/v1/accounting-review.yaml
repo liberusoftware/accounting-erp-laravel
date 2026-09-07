@@ -1,0 +1,10 @@
+openapi: 3.0.3
+info: { title: Accounting Review API, version: 1.0.0 }
+paths:
+  /api/v1/accounting/review:
+    get: { summary: List review items, responses: { '200': { description: Review queue } } }
+    post: { summary: Create a review item, responses: { '201': { description: Review item created } } }
+  /api/v1/accounting/review/{item}/resolve:
+    post: { summary: Resolve a review item, responses: { '200': { description: Resolved item } } }
+  /api/v1/accounting/review/{item}/sign-off:
+    post: { summary: Sign off a resolved review item, responses: { '200': { description: Signed-off item } } }

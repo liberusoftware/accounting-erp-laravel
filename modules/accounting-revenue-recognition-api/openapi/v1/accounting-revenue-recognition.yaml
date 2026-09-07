@@ -1,0 +1,14 @@
+openapi: 3.1.0
+info:
+  title: accounting revenue recognition API
+  version: 1.0.0
+paths:
+  /api/v1/accounting/revenue-recognition:
+    get: {operationId: accounting.revenue.recognition.list, responses: {'200': {description: Authorized schedules}}}
+    post: {operationId: accounting.revenue.recognition.create, responses: {'201': {description: Schedule created}}}
+  /api/v1/accounting/revenue-recognition/{schedule}:
+    get: {operationId: accounting.revenue.recognition.get, responses: {'200': {description: Schedule resource}}}
+  /api/v1/accounting/revenue-recognition/{schedule}/recognize:
+    post: {operationId: accounting.revenue.recognition.recognize, responses: {'200': {description: Recognition run}}}
+  /api/v1/accounting/revenue-recognition/{schedule}/modify:
+    post: {operationId: accounting.revenue.recognition.modify, responses: {'200': {description: Schedule modification}}}
