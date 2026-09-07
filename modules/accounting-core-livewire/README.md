@@ -6,4 +6,7 @@ Livewire 4 presentation adapter for `liberusoftware/module-accounting-core`.
 composer require liberusoftware/module-accounting-core-livewire
 ```
 
-Use the explicit component alias `<livewire:module-accounting-core::legal-entities />`.
+Use explicit component aliases such as
+`<livewire:module-accounting-core::legal-entities />`,
+`<livewire:module-accounting-core::books />`, and
+`<livewire:module-accounting-core::accounting-settings />`.

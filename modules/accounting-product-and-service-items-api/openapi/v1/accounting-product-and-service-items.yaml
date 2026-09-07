@@ -1,0 +1,8 @@
+openapi: 3.1.0
+info: {title: Accounting product and service items API, version: 1.0.0}
+paths:
+  /api/v1/accounting/product-and-service-items:
+    get: {operationId: accounting.product.and.service.items.list, responses: {'200': {description: Authorized items}}}
+    post: {operationId: accounting.product.and.service.items.create, responses: {'201': {description: Item created}}}
+  /api/v1/accounting/product-and-service-items/{id}:
+    get: {operationId: accounting.product.and.service.items.get, parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Item}}}

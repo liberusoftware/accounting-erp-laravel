@@ -1,0 +1,8 @@
+openapi: 3.1.0
+info: {title: Accounting project billing API, version: 1.0.0}
+paths:
+  /api/v1/accounting/project-billing:
+    get: {operationId: accounting.project.billing.list, responses: {'200': {description: Billing records}}}
+    post: {operationId: accounting.project.billing.create, responses: {'201': {description: Billing record created}}}
+  /api/v1/accounting/project-billing/{id}/handoff:
+    post: {operationId: accounting.project.billing.handoff, parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Invoice handoff completed}}}

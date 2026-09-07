@@ -1,0 +1,7 @@
+openapi: 3.1.0
+info: {title: accounting sales invoicing API, version: 1.0.0}
+paths:
+  /api/v1/accounting/sales-invoicing: {get: {operationId: accounting.sales.invoicing.list, responses: {'200': {description: Authorized invoices}}}, post: {operationId: accounting.sales.invoicing.create, responses: {'201': {description: Invoice created}}}}
+  /api/v1/accounting/sales-invoicing/{id}/approve: {post: {operationId: accounting.sales.invoicing.approve, responses: {'200': {description: Invoice approved}}}}
+  /api/v1/accounting/sales-invoicing/{id}/finalize: {post: {operationId: accounting.sales.invoicing.finalize, responses: {'200': {description: Invoice finalized}}}}
+  /api/v1/accounting/sales-invoicing/{id}/deposit: {post: {operationId: accounting.sales.invoicing.deposit, responses: {'200': {description: Deposit recorded}}}}

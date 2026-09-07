@@ -1,0 +1,43 @@
+openapi: 3.1.0
+info: { title: Accounting Three-Way Matching API, version: 1.0.0 }
+paths:
+  /api/v1/accounting/three-way-matching:
+    get:
+      operationId: accounting.three-way-matching.list
+      security: [{ sanctum: [] }]
+      responses: {'200': {description: Match collection}}
+    post:
+      operationId: accounting.three-way-matching.evaluate
+      security: [{ sanctum: [] }]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/MatchRequest'}}}}
+      responses: {'200': {description: Evaluated match}, '422': {description: Invalid match}}
+  /api/v1/accounting/three-way-matching/{id}/approve:
+    post: {operationId: accounting.three-way-matching.approve, security: [{sanctum: []}], responses: {'200': {description: Approved match}, '409': {description: Blocking exceptions}}}
+  /api/v1/accounting/three-way-matching/{id}/reject:
+    post: {operationId: accounting.three-way-matching.reject, security: [{sanctum: []}], responses: {'200': {description: Rejected match}}}
+  /api/v1/accounting/three-way-matching/exceptions/{id}/resolve:
+    post: {operationId: accounting.three-way-matching.resolve-exception, security: [{sanctum: []}], responses: {'200': {description: Resolved exception}}}
+components:
+  securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}
+  schemas:
+    MatchRequest:
+      type: object
+      required: [purchase_order_type, purchase_order_id, receipt_type, receipt_id, bill_type, bill_id, currency, ordered_quantity, received_quantity, billed_quantity, ordered_unit_price, billed_unit_price, expected_tax, billed_tax]
+      properties:
+        purchase_order_type: {type: string}
+        purchase_order_id: {type: string}
+        receipt_type: {type: string}
+        receipt_id: {type: string}
+        bill_type: {type: string}
+        bill_id: {type: string}
+        currency: {type: string, minLength: 3, maxLength: 3}
+        ordered_quantity: {type: number, exclusiveMinimum: 0}
+        received_quantity: {type: number, exclusiveMinimum: 0}
+        billed_quantity: {type: number, exclusiveMinimum: 0}
+        ordered_unit_price: {type: number, minimum: 0}
+        billed_unit_price: {type: number, minimum: 0}
+        expected_tax: {type: number, minimum: 0}
+        billed_tax: {type: number, minimum: 0}
+        quantity_tolerance: {type: number, minimum: 0, default: 0}
+        price_tolerance: {type: number, minimum: 0, default: 0}
+        tax_tolerance: {type: number, minimum: 0, default: 0}

@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info: {title: accounting purchase requisitions API, version: 1.0.0}
+paths:
+  /api/v1/accounting/purchase-requisitions:
+    get: {operationId: accounting.purchase.requisitions.list, responses: {'200': {description: Authorized requisitions}}}
+    post: {operationId: accounting.purchase.requisitions.create, responses: {'201': {description: Requisition created}}}
+  /api/v1/accounting/purchase-requisitions/{requisition}:
+    get: {operationId: accounting.purchase.requisitions.get, responses: {'200': {description: Requisition resource}}}
+  /api/v1/accounting/purchase-requisitions/{requisition}/transition:
+    post: {operationId: accounting.purchase.requisitions.transition, responses: {'200': {description: Status transitioned}}}
+  /api/v1/accounting/purchase-requisitions/{requisition}/approve:
+    post: {operationId: accounting.purchase.requisitions.approve, responses: {'200': {description: Approval recorded}}}

@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info: {title: accounting regional packs API, version: 1.0.0}
+paths:
+  /api/v1/accounting/regional-packs:
+    get: {operationId: accounting.regional.packs.list, responses: {'200': {description: Authorized packs}}}
+    post: {operationId: accounting.regional.packs.create, responses: {'201': {description: Pack created}}}
+  /api/v1/accounting/regional-packs/{pack}:
+    get: {operationId: accounting.regional.packs.get, responses: {'200': {description: Pack resource}}}
+  /api/v1/accounting/regional-packs/{pack}/publish:
+    post: {operationId: accounting.regional.packs.publish, responses: {'200': {description: Pack published}}}
+  /api/v1/accounting/regional-packs/{pack}/compliance-tests:
+    post: {operationId: accounting.regional.packs.compliance, responses: {'200': {description: Compliance results}}}

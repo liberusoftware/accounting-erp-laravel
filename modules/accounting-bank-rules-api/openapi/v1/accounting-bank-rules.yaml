@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: accounting bank rules API
+  version: 1.0.0
+paths:
+  /api/v1/accounting/bank-rules:
+    get:
+      operationId: accounting.bank.rules.list
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/PageSize'}]
+      responses: {'200': {$ref: '#/components/responses/ResourceCollection'}}
+    post:
+      operationId: accounting.bank.rules.create
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/BankRuleWrite'}}}}
+      responses: {'201': {$ref: '#/components/responses/Resource'}, '409': {$ref: '#/components/responses/Problem'}}
+  /api/v1/accounting/bank-rules/{rule}:
+    get:
+      operationId: accounting.bank.rules.get
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/RuleId'}]
+      responses: {'200': {$ref: '#/components/responses/Resource'}}
+    patch:
+      operationId: accounting.bank.rules.update
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/RuleId'}, {'$ref': '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/BankRuleWrite'}}}}
+      responses: {'200': {$ref: '#/components/responses/Resource'}, '409': {$ref: '#/components/responses/Problem'}}
+    delete:
+      operationId: accounting.bank.rules.delete
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/RuleId'}, {'$ref': '#/components/parameters/IdempotencyKey'}]
+      responses: {'204': {description: Rule disabled}}
+  /api/v1/accounting/bank-rules/{rule}/test:
+    post:
+      operationId: accounting.bank.rules.test
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/RuleId'}]
+      requestBody: {required: true, content: {application/json: {schema: {type: object, required: [transaction], properties: {transaction: {type: object, additionalProperties: true}}}}}}
+      responses: {'200': {$ref: '#/components/responses/TestResult'}}
+  /api/v1/accounting/bank-rules/{rule}/history:
+    get:
+      operationId: accounting.bank.rules.history
+      security: [{sanctum: []}]
+      parameters: [{'$ref': '#/components/parameters/RuleId'}, {'$ref': '#/components/parameters/PageSize'}]
+      responses: {'200': {$ref: '#/components/responses/HistoryCollection'}}
+components:
+  securitySchemes:
+    sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}
+  parameters:
+    PageSize: {name: page[size], in: query, schema: {type: integer, minimum: 1, maximum: 100, default: 25}}
+    RuleId: {name: rule, in: path, required: true, schema: {type: string}}
+    IdempotencyKey: {name: Idempotency-Key, in: header, required: false, schema: {type: string, maxLength: 255}}
+  schemas:
+    BankRuleWrite:
+      type: object
+      required: [name, conditions, actions]
+      properties:
+        name: {type: string, maxLength: 160}
+        priority: {type: integer, minimum: 0, default: 0}
+        enabled: {type: boolean, default: true}
+        conditions: {type: object, additionalProperties: true, description: Payee, text, amount, and account predicates.}
+        actions: {type: object, additionalProperties: true, description: Category, tax, dimension, and percentage split actions.}
+        automation_mode: {type: string, enum: [disabled, suggest, automatic], default: suggest}
+        metadata: {type: object, additionalProperties: true}
+    AccountingBankRulesResource:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id: {type: string, description: Opaque Liberu resource identifier.}
+        type: {type: string, const: accounting-bank-rule}
+        attributes: {type: object, additionalProperties: true}
+    TestResult:
+      type: object
+      required: [data]
+      properties:
+        data: {type: object, required: [matched, actions, automation_mode], properties: {matched: {type: boolean}, actions: {type: object, additionalProperties: true}, automation_mode: {type: string, nullable: true}}}
+  responses:
+    Resource: {description: Authorized bank rule, content: {application/json: {schema: {$ref: '#/components/schemas/AccountingBankRulesResource'}}}}
+    ResourceCollection: {description: Authorized paginated bank rules, content: {application/json: {schema: {type: object}}}}
+    HistoryCollection: {description: Authorized rule decision history, content: {application/json: {schema: {type: object}}}}
+    TestResult: {description: Dry-run rule evaluation, content: {application/json: {schema: {$ref: '#/components/schemas/TestResult'}}}}
+    Problem: {description: RFC 9457 problem, content: {application/problem+json: {schema: {type: object}}}}

@@ -1,0 +1,14 @@
+openapi: 3.1.0
+info: {title: accounting general ledger API, version: 1.0.0}
+paths:
+  /api/v1/accounting/general-ledger:
+    get: {operationId: accounting.general.ledger.list, responses: {'200': {description: Authorized journals}}}
+    post: {operationId: accounting.general.ledger.create, responses: {'201': {description: Journal created}}}
+  /api/v1/accounting/general-ledger/{id}/post: {post: {operationId: accounting.general.ledger.post, responses: {'200': {description: Journal posted}}}}
+  /api/v1/accounting/general-ledger/{id}/reverse: {post: {operationId: accounting.general.ledger.reverse, responses: {'200': {description: Journal reversed}}}}
+  /api/v1/accounting/general-ledger/recurring: {post: {operationId: accounting.general.ledger.recurring.create, responses: {'201': {description: Recurring journal created}}}}
+  /api/v1/accounting/general-ledger/recurring/{id}/generate: {post: {operationId: accounting.general.ledger.recurring.generate, responses: {'201': {description: Recurring journal generated}}}}
+  /api/v1/accounting/general-ledger/corrections: {post: {operationId: accounting.general.ledger.correction.create, responses: {'201': {description: Correction journal created}}}}
+  /api/v1/accounting/general-ledger/allocations: {post: {operationId: accounting.general.ledger.allocation.create, responses: {'201': {description: Allocation journal created}}}}
+  /api/v1/accounting/general-ledger/accruals: {post: {operationId: accounting.general.ledger.accrual.create, responses: {'201': {description: Accrual journal created}}}}
+  /api/v1/accounting/general-ledger/prepayments: {post: {operationId: accounting.general.ledger.prepayment.create, responses: {'201': {description: Prepayment journal created}}}}

@@ -1,0 +1,1 @@
+<div><table><tbody>@forelse($templates as $template)<tr><td>{{ $template->name }}</td><td>{{ $template->transaction_type }}</td><td>{{ $template->frequency }}</td><td>{{ $template->status->value }}</td></tr>@empty<tr><td>No recurring transaction templates found.</td></tr>@endforelse</tbody></table>{{ $templates->links() }}</div>

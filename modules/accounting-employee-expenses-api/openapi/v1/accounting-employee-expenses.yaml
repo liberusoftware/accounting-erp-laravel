@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info: {title: Accounting Employee Expenses API, version: 1.0.0}
+security: [{sanctum: []}]
+components: {securitySchemes: {sanctum: {type: http, scheme: bearer}}}
+paths:
+  /api/v1/accounting/employee-expenses: {get: {operationId: listExpenseClaims, responses: {'200': {description: Claims}}}, post: {operationId: createExpenseClaim, responses: {'201': {description: Created}}}}
+  /api/v1/accounting/employee-expenses/{claim}/items: {post: {operationId: addExpenseItem, responses: {'200': {description: Updated}}}}
+  /api/v1/accounting/employee-expenses/{claim}/submit: {post: {operationId: submitExpenseClaim, responses: {'200': {description: Submitted}}}}
+  /api/v1/accounting/employee-expenses/{claim}/decide: {post: {operationId: decideExpenseClaim, responses: {'200': {description: Decided}}}}
+  /api/v1/accounting/employee-expenses/{claim}/reimburse: {post: {operationId: reimburseExpenseClaim, responses: {'200': {description: Reimbursed}}}}
+  /api/v1/accounting/employee-expenses/{claim}/post: {post: {operationId: postExpenseClaim, responses: {'200': {description: Posted}}}}

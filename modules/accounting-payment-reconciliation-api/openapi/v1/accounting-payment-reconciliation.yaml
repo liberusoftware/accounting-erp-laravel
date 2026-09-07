@@ -1,0 +1,18 @@
+openapi: 3.1.0
+info:
+  title: Accounting Payment Reconciliation API
+  version: 1.0.0
+paths:
+  /api/v1/accounting/payment-reconciliation:
+    get: {operationId: accounting.payment.reconciliation.list, security: [{sanctum: []}], responses: {'200': {description: Authorized settlement runs}}}
+    post: {operationId: accounting.payment.reconciliation.create, security: [{sanctum: []}], requestBody: {required: true}, responses: {'201': {description: Settlement imported}, '422': {description: Validation failure}}}
+  /api/v1/accounting/payment-reconciliation/{settlementRun}:
+    get: {operationId: accounting.payment.reconciliation.get, security: [{sanctum: []}], parameters: [{name: settlementRun, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Settlement resource}}}
+  /api/v1/accounting/payment-reconciliation/{settlementRun}/missing-items:
+    post: {operationId: accounting.payment.reconciliation.missing, security: [{sanctum: []}], parameters: [{name: settlementRun, in: path, required: true, schema: {type: string}}], responses: {'201': {description: Missing-item evidence}}}
+  /api/v1/accounting/payment-reconciliation/{settlementRun}/provider-drift:
+    post: {operationId: accounting.payment.reconciliation.drift, security: [{sanctum: []}], parameters: [{name: settlementRun, in: path, required: true, schema: {type: string}}], responses: {'201': {description: Provider drift evidence}}}
+  /api/v1/accounting/payment-reconciliation/items/{settlementItem}/match:
+    post: {operationId: accounting.payment.reconciliation.match, security: [{sanctum: []}], parameters: [{name: settlementItem, in: path, required: true, schema: {type: string}}], responses: {'201': {description: Settlement match}}}
+components:
+  securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}

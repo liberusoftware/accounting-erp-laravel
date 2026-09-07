@@ -1,0 +1,8 @@
+openapi: 3.1.0
+info: {title: Accounting Inventory Accounting API, version: 1.0.0}
+paths:
+  /api/v1/accounting/inventory-accounting:
+    get: {operationId: listInventoryItems, responses: {'200': {description: Inventory items}}}
+    post: {operationId: createInventoryItem, responses: {'201': {description: Created item}}}
+  /api/v1/accounting/inventory-accounting/{item}/valuation:
+    get: {operationId: valueInventoryItem, responses: {'200': {description: Inventory valuation}}}

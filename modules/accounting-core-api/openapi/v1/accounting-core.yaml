@@ -48,6 +48,96 @@ paths:
           $ref: '#/components/responses/LegalEntity'
         '404':
           $ref: '#/components/responses/Problem'
+    patch:
+      operationId: accounting.core.legalEntities.update
+      security:
+        - sanctum: [accounting.core.write]
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegalEntityPatch'
+      responses:
+        '200':
+          $ref: '#/components/responses/LegalEntity'
+        '422':
+          $ref: '#/components/responses/Problem'
+    delete:
+      operationId: accounting.core.legalEntities.delete
+      security:
+        - sanctum: [accounting.core.write]
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Legal entity deleted.
+        '404':
+          $ref: '#/components/responses/Problem'
+  /books:
+    get:
+      operationId: accounting.core.books.list
+      security: [{ sanctum: [accounting.core.read] }]
+      responses: { '200': { $ref: '#/components/responses/BookCollection' } }
+    post:
+      operationId: accounting.core.books.create
+      security: [{ sanctum: [accounting.core.write] }]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { $ref: '#/components/schemas/BookInput' } }
+      responses: { '201': { $ref: '#/components/responses/Book' }, '422': { $ref: '#/components/responses/Problem' } }
+  /books/{id}/fiscal-calendars:
+    get:
+      operationId: accounting.core.fiscalCalendars.list
+      security: [{ sanctum: [accounting.core.read] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses: { '200': { $ref: '#/components/responses/FiscalCalendarCollection' } }
+    post:
+      operationId: accounting.core.fiscalCalendars.create
+      security: [{ sanctum: [accounting.core.write] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { $ref: '#/components/schemas/FiscalCalendarInput' } }
+      responses: { '201': { $ref: '#/components/responses/FiscalCalendar' }, '422': { $ref: '#/components/responses/Problem' } }
+  /books/{id}/numbering-sequences:
+    get:
+      operationId: accounting.core.numberingSequences.list
+      security: [{ sanctum: [accounting.core.read] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses: { '200': { $ref: '#/components/responses/NumberingSequenceCollection' } }
+    post:
+      operationId: accounting.core.numberingSequences.create
+      security: [{ sanctum: [accounting.core.write] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { $ref: '#/components/schemas/NumberingSequenceInput' } }
+      responses: { '201': { $ref: '#/components/responses/NumberingSequence' }, '422': { $ref: '#/components/responses/Problem' } }
+  /books/{id}/{setting}:
+    get:
+      operationId: accounting.core.settings.list
+      security: [{ sanctum: [accounting.core.read] }]
+      parameters:
+        - { $ref: '#/components/parameters/Id' }
+        - $ref: '#/components/parameters/Setting'
+      responses: { '200': { $ref: '#/components/responses/AccountingSettingCollection' } }
+    post:
+      operationId: accounting.core.settings.create
+      security: [{ sanctum: [accounting.core.write] }]
+      parameters:
+        - { $ref: '#/components/parameters/Id' }
+        - $ref: '#/components/parameters/Setting'
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { $ref: '#/components/schemas/AccountingSettingInput' } }
+      responses: { '201': { $ref: '#/components/responses/AccountingSetting' }, '422': { $ref: '#/components/responses/Problem' } }
 components:
   parameters:
     Id:
@@ -72,6 +162,13 @@ components:
         minimum: 1
         maximum: 100
         default: 25
+    Setting:
+      name: setting
+      in: path
+      required: true
+      schema:
+        type: string
+        enum: [defaults, policies]
   securitySchemes:
     sanctum:
       type: http
@@ -107,6 +204,82 @@ components:
           enum: [accrual, cash]
         is_active:
           type: boolean
+    LegalEntityPatch:
+      type: object
+      minProperties: 1
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        registration_number:
+          type: [string, 'null']
+          maxLength: 255
+        currency_code:
+          type: string
+          pattern: '^[A-Z]{3}$'
+        accounting_basis:
+          type: string
+          enum: [accrual, cash]
+        is_active:
+          type: boolean
+    Book:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id: { type: string }
+        type: { type: string, const: accounting-book }
+        attributes: { $ref: '#/components/schemas/BookInput' }
+    BookInput:
+      type: object
+      required: [legal_entity_id, name, code, accounting_basis]
+      properties:
+        legal_entity_id: { type: string }
+        name: { type: string, maxLength: 255 }
+        code: { type: string, maxLength: 50 }
+        accounting_basis: { type: string, enum: [accrual, cash] }
+        is_active: { type: boolean }
+    FiscalCalendar:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id: { type: string }
+        type: { type: string, const: accounting-fiscal-calendar }
+        attributes: { $ref: '#/components/schemas/FiscalCalendarInput' }
+    FiscalCalendarInput:
+      type: object
+      required: [starts_on, ends_on]
+      properties:
+        starts_on: { type: string, format: date }
+        ends_on: { type: string, format: date }
+        is_closed: { type: boolean }
+    NumberingSequence:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id: { type: string }
+        type: { type: string, const: accounting-numbering-sequence }
+        attributes: { $ref: '#/components/schemas/NumberingSequenceInput' }
+    NumberingSequenceInput:
+      type: object
+      required: [key]
+      properties:
+        key: { type: string, maxLength: 100 }
+        prefix: { type: [string, 'null'], maxLength: 30 }
+        next_number: { type: integer, minimum: 1 }
+        padding: { type: integer, minimum: 1, maximum: 20 }
+    AccountingSetting:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id: { type: string }
+        type: { type: string, enum: [accounting-default, accounting-policy] }
+        attributes: { $ref: '#/components/schemas/AccountingSettingInput' }
+    AccountingSettingInput:
+      type: object
+      required: [key, value]
+      properties:
+        key: { type: string, maxLength: 100 }
+        value: { type: object, additionalProperties: true }
     Problem:
       type: object
       required: [type, title, status]
@@ -152,6 +325,42 @@ components:
                   $ref: '#/components/schemas/LegalEntity'
               meta:
                 $ref: '#/components/schemas/Pagination'
+    Book:
+      description: An authorized accounting book.
+      content: { application/json: { schema: { $ref: '#/components/schemas/Book' } } }
+    BookCollection:
+      description: Authorized accounting books.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data: { type: array, items: { $ref: '#/components/schemas/Book' } }
+              meta: { $ref: '#/components/schemas/Pagination' }
+    FiscalCalendar:
+      description: A fiscal calendar period.
+      content: { application/json: { schema: { $ref: '#/components/schemas/FiscalCalendar' } } }
+    FiscalCalendarCollection:
+      description: Fiscal calendar periods.
+      content:
+        application/json:
+          schema: { type: object, properties: { data: { type: array, items: { $ref: '#/components/schemas/FiscalCalendar' } } } }
+    NumberingSequence:
+      description: A book numbering sequence.
+      content: { application/json: { schema: { $ref: '#/components/schemas/NumberingSequence' } } }
+    NumberingSequenceCollection:
+      description: Book numbering sequences.
+      content:
+        application/json:
+          schema: { type: object, properties: { data: { type: array, items: { $ref: '#/components/schemas/NumberingSequence' } } } }
+    AccountingSetting:
+      description: A book default or policy.
+      content: { application/json: { schema: { $ref: '#/components/schemas/AccountingSetting' } } }
+    AccountingSettingCollection:
+      description: Book defaults or policies.
+      content:
+        application/json:
+          schema: { type: object, properties: { data: { type: array, items: { $ref: '#/components/schemas/AccountingSetting' } } } }
     Problem:
       description: RFC 9457 problem details.
       content:

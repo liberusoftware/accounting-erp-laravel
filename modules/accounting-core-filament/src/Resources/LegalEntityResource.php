@@ -2,6 +2,7 @@
 
 namespace Liberu\Accounting\CoreFilament\Resources;
 
+use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -11,6 +12,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Liberu\Accounting\Core\Models\LegalEntity;
+use Liberu\Accounting\CoreFilament\Resources\LegalEntityResource\Pages\CreateLegalEntity;
 use Liberu\Accounting\CoreFilament\Resources\LegalEntityResource\Pages\EditLegalEntity;
 use Liberu\Accounting\CoreFilament\Resources\LegalEntityResource\Pages\ListLegalEntities;
 
@@ -42,7 +44,7 @@ final class LegalEntityResource extends Resource
             TextColumn::make('currency_code')->badge(),
             TextColumn::make('accounting_basis')->badge(),
             TextColumn::make('created_at')->dateTime()->sortable(),
-        ])->recordActions([EditAction::make()]);
+        ])->recordActions([EditAction::make(), DeleteAction::make()]);
     }
 
     /** @return array<string, PageRegistration> */
@@ -50,6 +52,7 @@ final class LegalEntityResource extends Resource
     {
         return [
             'index' => ListLegalEntities::route('/'),
+            'create' => CreateLegalEntity::route('/create'),
             'edit' => EditLegalEntity::route('/{record}/edit'),
         ];
     }

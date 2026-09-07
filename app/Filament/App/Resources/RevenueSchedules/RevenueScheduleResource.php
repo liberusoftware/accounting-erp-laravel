@@ -20,6 +20,8 @@ use Filament\Tables\Table;
 
 class RevenueScheduleResource extends Resource
 {
+    protected static string|\UnitEnum|null $navigationGroup = 'Sales';
+
     #[\Override]
     protected static ?string $model = RevenueSchedule::class;
 

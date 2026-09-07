@@ -1,0 +1,176 @@
+openapi: 3.1.0
+info:
+  title: Accounting fixed assets API
+  version: 1.0.0
+  description: Tenant-scoped fixed asset register and lifecycle operations.
+servers:
+  - url: /
+tags:
+  - name: Fixed assets
+security:
+  - sanctum: []
+paths:
+  /api/v1/accounting/fixed-assets:
+    get:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.list
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/Status'
+      responses:
+        '200': { $ref: '#/components/responses/AssetCollection' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+    post:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.create
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/AssetCreateRequest' } } } }
+      responses:
+        '201': { $ref: '#/components/responses/Asset' }
+        '422': { $ref: '#/components/responses/Problem' }
+  /api/v1/accounting/fixed-assets/categories:
+    post:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.categories.create
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/CategoryCreateRequest' } } } }
+      responses:
+        '201': { $ref: '#/components/responses/Category' }
+        '422': { $ref: '#/components/responses/Problem' }
+  /api/v1/accounting/fixed-assets/locations:
+    post:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.locations.create
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [location_ref, name], properties: { location_ref: { type: string }, name: { type: string }, metadata: { type: object } } } } } }
+      responses: { '201': { $ref: '#/components/responses/Location' }, '422': { $ref: '#/components/responses/Problem' } }
+  /api/v1/accounting/fixed-assets/custodians:
+    post:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.custodians.create
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [custodian_ref, name], properties: { custodian_ref: { type: string }, name: { type: string }, email: { type: string, format: email }, metadata: { type: object } } } } } }
+      responses: { '201': { $ref: '#/components/responses/Custodian' }, '422': { $ref: '#/components/responses/Problem' } }
+  /api/v1/accounting/fixed-assets/{id}:
+    parameters: [{ $ref: '#/components/parameters/Id' }]
+    get:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.get
+      responses: { '200': { $ref: '#/components/responses/Asset' }, '404': { $ref: '#/components/responses/Problem' } }
+    patch:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.update
+      parameters: [{ $ref: '#/components/parameters/IfMatch' }]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/AssetUpdateRequest' } } } }
+      responses: { '200': { $ref: '#/components/responses/Asset' }, '409': { $ref: '#/components/responses/Problem' }, '422': { $ref: '#/components/responses/Problem' } }
+    delete:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.archive
+      responses: { '204': { description: Asset archived }, '409': { $ref: '#/components/responses/Problem' } }
+  /api/v1/accounting/fixed-assets/{id}/capitalize:
+    post:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.capitalize
+      parameters: [{ $ref: '#/components/parameters/Id' }, { $ref: '#/components/parameters/IdempotencyKey' }]
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [book_ref], properties: { book_ref: { type: string, maxLength: 100, example: statutory } } } } } }
+      responses: { '200': { $ref: '#/components/responses/Asset' }, '409': { $ref: '#/components/responses/Problem' } }
+  /api/v1/accounting/fixed-assets/{id}/dispose:
+    post:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.dispose
+      parameters: [{ $ref: '#/components/parameters/Id' }, { $ref: '#/components/parameters/IdempotencyKey' }]
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [reason], properties: { reason: { type: string, maxLength: 5000 } } } } } }
+      responses: { '200': { $ref: '#/components/responses/Asset' }, '409': { $ref: '#/components/responses/Problem' } }
+  /api/v1/accounting/fixed-assets/{id}/components:
+    post:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.components.create
+      parameters: [{ $ref: '#/components/parameters/Id' }, { $ref: '#/components/parameters/IdempotencyKey' }]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/ComponentCreateRequest' } } } }
+      responses: { '200': { $ref: '#/components/responses/Asset' }, '409': { $ref: '#/components/responses/Problem' } }
+  /api/v1/accounting/fixed-assets/{id}/location:
+    post:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.location.assign
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [location_id], properties: { location_id: { type: integer, minimum: 1 } } } } } }
+      responses: { '200': { $ref: '#/components/responses/Asset' }, '404': { $ref: '#/components/responses/Problem' } }
+  /api/v1/accounting/fixed-assets/{id}/custodian:
+    post:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.custodian.assign
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [custodian_id], properties: { custodian_id: { type: integer, minimum: 1 } } } } } }
+      responses: { '200': { $ref: '#/components/responses/Asset' }, '404': { $ref: '#/components/responses/Problem' } }
+  /api/v1/accounting/fixed-assets/{id}/documents:
+    post:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.documents.create
+      parameters: [{ $ref: '#/components/parameters/Id' }, { $ref: '#/components/parameters/IdempotencyKey' }]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/DocumentCreateRequest' } } } }
+      responses: { '200': { $ref: '#/components/responses/Asset' }, '409': { $ref: '#/components/responses/Problem' } }
+  /api/v1/accounting/fixed-assets/{id}/summary:
+    get:
+      tags: [Fixed assets]
+      operationId: accounting.fixed.assets.summary
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses: { '200': { $ref: '#/components/responses/Summary' }, '404': { $ref: '#/components/responses/Problem' } }
+components:
+  securitySchemes:
+    sanctum: { type: http, scheme: bearer, bearerFormat: Sanctum }
+  parameters:
+    Id: { name: id, in: path, required: true, schema: { type: string, description: Opaque resource identifier } }
+    PageSize: { name: page[size], in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 25 } }
+    Status: { name: status, in: query, schema: { type: string, enum: [draft, acquired, capitalized, disposed, archived] } }
+    IfMatch: { name: If-Match, in: header, schema: { type: string } }
+    IdempotencyKey: { name: Idempotency-Key, in: header, required: true, schema: { type: string, minLength: 16, maxLength: 255 } }
+  schemas:
+    Money: { type: object, required: [amount, currency], properties: { amount: { type: string, pattern: '^-?[0-9]+(\\.[0-9]{1,2})?$' }, currency: { type: string, pattern: '^[A-Z]{3}$' } } }
+    AssetResource:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id: { type: string }
+        type: { type: string, const: accounting-fixed-assets }
+        attributes: { $ref: '#/components/schemas/AssetAttributes' }
+        relationships: { type: object, additionalProperties: true }
+        meta: { type: object }
+    AssetAttributes:
+      type: object
+      required: [asset_ref, name, status, cost, net_book_value, currency]
+      properties:
+        asset_ref: { type: string, maxLength: 100 }
+        name: { type: string, maxLength: 255 }
+        status: { type: string, enum: [draft, acquired, capitalized, disposed, archived] }
+        acquired_on: { type: string, format: date-time }
+        capitalized_on: { type: string, format: date-time, nullable: true }
+        cost: { $ref: '#/components/schemas/Money' }
+        salvage_value: { $ref: '#/components/schemas/Money' }
+        net_book_value: { $ref: '#/components/schemas/Money' }
+        currency: { type: string, pattern: '^[A-Z]{3}$' }
+        location_ref: { type: string, nullable: true }
+        custodian_ref: { type: string, nullable: true }
+    AssetCreateRequest:
+      type: object
+      required: [category_id, asset_ref, name, acquired_on, cost, currency]
+      properties:
+        category_id: { type: integer, minimum: 1 }
+        asset_ref: { type: string, maxLength: 100 }
+        name: { type: string, maxLength: 255 }
+        acquired_on: { type: string, format: date }
+        cost: { type: number, exclusiveMinimum: 0 }
+        salvage_value: { type: number, minimum: 0, default: 0 }
+        currency: { type: string, pattern: '^[A-Za-z]{3}$' }
+        location_ref: { type: string, nullable: true }
+        custodian_ref: { type: string, nullable: true }
+        metadata: { type: object, additionalProperties: true }
+    AssetUpdateRequest: { type: object, minProperties: 1, properties: { asset_ref: { type: string }, name: { type: string }, currency: { type: string }, metadata: { type: object } } }
+    CategoryCreateRequest: { type: object, required: [category_ref, name, asset_account_ref, depreciation_account_ref, useful_life_months, depreciation_method], properties: { category_ref: { type: string }, name: { type: string }, asset_account_ref: { type: string }, depreciation_account_ref: { type: string }, useful_life_months: { type: integer, minimum: 1 }, depreciation_method: { type: string }, metadata: { type: object } } }
+    ComponentCreateRequest: { type: object, required: [component_ref, name, cost, useful_life_months], properties: { component_ref: { type: string }, name: { type: string }, cost: { type: number, exclusiveMinimum: 0 }, useful_life_months: { type: integer, minimum: 1 }, metadata: { type: object } } }
+    DocumentCreateRequest: { type: object, required: [document_ref, kind, file_ref], properties: { document_ref: { type: string }, kind: { type: string }, file_ref: { type: string }, description: { type: string }, checksum: { type: string }, metadata: { type: object } } }
+    Problem: { type: object, required: [type, title, status, detail], properties: { type: { type: string, format: uri }, title: { type: string }, status: { type: integer }, detail: { type: string }, instance: { type: string, format: uri }, errors: { type: object } } }
+  responses:
+    Asset: { description: Fixed asset, content: { application/json: { schema: { type: object, required: [data], properties: { data: { $ref: '#/components/schemas/AssetResource' } } } } } }
+    AssetCollection: { description: Paginated fixed assets, content: { application/json: { schema: { type: object, required: [data], properties: { data: { type: array, items: { $ref: '#/components/schemas/AssetResource' } }, links: { type: object }, meta: { type: object } } } } } }
+    Category: { description: Created category, content: { application/json: { schema: { type: object, required: [data], properties: { data: { type: object } } } } } }
+    Summary: { description: Register summary, content: { application/json: { schema: { type: object, properties: { data: { type: object } } } } } }
+    Location: { description: Created location, content: { application/json: { schema: { type: object, properties: { data: { type: object } } } } } }
+    Custodian: { description: Created custodian, content: { application/json: { schema: { type: object, properties: { data: { type: object } } } } } }
+    Problem: { description: RFC 9457 problem details, content: { application/problem+json: { schema: { $ref: '#/components/schemas/Problem' } } } }

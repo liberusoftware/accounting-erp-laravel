@@ -1,0 +1,1 @@
+<div class="space-y-4"><h1 class="text-xl font-semibold">Spreadsheet templates</h1><ul>@forelse($templates as $template)<li wire:key="migration-template-{{ $template->id }}" class="border-b py-2">{{ $template->name }} · {{ $template->entity }}</li>@empty<li>No templates found.</li>@endforelse</ul>{{ $templates->links() }}</div>

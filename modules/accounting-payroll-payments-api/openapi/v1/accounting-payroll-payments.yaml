@@ -1,0 +1,8 @@
+openapi: 3.1.0
+info: {title: Accounting payroll payments API, version: 1.0.0}
+paths:
+  /api/v1/accounting/payroll-payments:
+    get: {operationId: accounting.payroll.payments.list, responses: {'200': {description: Payment batches}}}
+    post: {operationId: accounting.payroll.payments.create, responses: {'201': {description: Batch created}}}
+  /api/v1/accounting/payroll-payments/{id}/transition:
+    post: {operationId: accounting.payroll.payments.transition, parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Status transition}}}

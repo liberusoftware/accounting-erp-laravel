@@ -10,7 +10,7 @@
     if (auth()->check()) {
         $authUser = auth()->user();
         $role = $authUser->getRoleNames()->first() ?? 'user';
-        $dashboardUrl = $role === 'admin' ? '/admin' : '/app';
+        $dashboardUrl = route('dashboard');
     }
 
     try {

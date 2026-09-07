@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.liberu.dev/module/v1.json",
+  "name": "accounting-chart-of-accounts",
+  "display_name": "Accounting Chart of Accounts",
+  "description": "Account types, codes, hierarchies, control accounts, restrictions, localization, and lifecycle.",
+  "version": "1.0.0",
+  "category": "capability",
+  "provider": "Liberu\\Accounting\\ChartOfAccounts\\ChartOfAccountsServiceProvider",
+  "requires": {
+    "php": "^8.5",
+    "laravel": "^13.0",
+    "packages": { "liberusoftware/module-accounting-core": "^1.0" }
+  },
+  "capabilities": ["accounting.chart-of-accounts"],
+  "default_enabled": true,
+  "features": ["Account types", "Codes", "Hierarchies", "Control accounts", "Normal balances", "Templates", "Restrictions", "Localization", "Lifecycle"]
+}

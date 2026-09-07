@@ -1,0 +1,10 @@
+openapi: 3.1.0
+info: {title: Accounting payroll journals API, version: 1.0.0}
+paths:
+  /api/v1/accounting/payroll-journals:
+    get: {operationId: accounting.payroll.journals.list, responses: {'200': {description: Payroll journals}}}
+    post: {operationId: accounting.payroll.journals.create, responses: {'201': {description: Journal created}}}
+  /api/v1/accounting/payroll-journals/{id}/post:
+    post: {operationId: accounting.payroll.journals.post, parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Journal posted}}}
+  /api/v1/accounting/payroll-journals/{id}/reverse:
+    post: {operationId: accounting.payroll.journals.reverse, parameters: [{name: id, in: path, required: true, schema: {type: string}}], responses: {'200': {description: Journal reversed}}}

@@ -1,0 +1,7 @@
+openapi: 3.1.0
+info: {title: Accounting Management Reporting API, version: 1.0.0}
+paths:
+  /api/v1/accounting/management-reporting/packs: {get: {operationId: accounting.management-reporting.list, security: [{sanctum: []}], responses: {'200': {description: Report packs}}}, post: {operationId: accounting.management-reporting.create, security: [{sanctum: []}], parameters: [{'$ref': '#/components/parameters/IdempotencyKey'}], responses: {'201': {description: Created}}}}
+  /api/v1/accounting/management-reporting/packs/{reportPack}/review: {post: {operationId: accounting.management-reporting.review, security: [{sanctum: []}], responses: {'200': {description: Reviewed}}}}
+  /api/v1/accounting/management-reporting/packs/{reportPack}/deliver: {post: {operationId: accounting.management-reporting.deliver, security: [{sanctum: []}], responses: {'201': {description: Delivered}}}}
+components: {parameters: {IdempotencyKey: {name: Idempotency-Key, in: header, schema: {type: string}}}, securitySchemes: {sanctum: {type: http, scheme: bearer, bearerFormat: Sanctum}}}
