@@ -20,10 +20,7 @@ trait ResolvesSyncedContacts
     {
         $ref = Str::random(8);
 
-        $attributes = ['customer_name' => $name];
-        if ($teamId !== null) {
-            $attributes['team_id'] = $teamId;
-        }
+        $attributes = ['customer_name' => $name, 'team_id' => $teamId];
 
         $values = [
             'customer_last_name' => '',
@@ -48,10 +45,7 @@ trait ResolvesSyncedContacts
     {
         $ref = Str::random(8);
 
-        $attributes = ['name' => $name];
-        if ($teamId !== null) {
-            $attributes['team_id'] = $teamId;
-        }
+        $attributes = ['name' => $name, 'team_id' => $teamId];
 
         $values = ['email' => Str::slug($name).'.'.$ref.'@'.$tag.'.imported'];
         if ($teamId !== null) {

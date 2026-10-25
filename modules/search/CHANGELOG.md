@@ -1,11 +1,12 @@
 # Changelog
 
-## Unreleased
+## 1.5.3 - 2026-08-24
 
-- Rank exact and prefix user-search matches ahead of later substring matches and add a
-  deterministic primary-key tie-breaker for stable pagination.
-- Correct the generic paginator PHPDoc so the package's standalone static analysis does not
-  reference an application-owned `User` class.
+- Rank prefix matches ahead of incidental contains matches for deterministic search results.
+
+## 1.5.2 - 2026-08-24
+
+- Prioritize exact user-name matches in filtered search results.
 
 ## 1.3.0 - 2026-08-06
 

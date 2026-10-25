@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\SupplierBillsApi\SupplierBillsApiServiceProvider\Models;
 
-use Liberu\Accounting\SupplierBillsApi\SupplierBillsApiServiceProvider\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Liberu\Accounting\SupplierBillsApi\SupplierBillsApiServiceProvider\Traits\IsTenantModel;
 
 class Supplier extends Model
 {

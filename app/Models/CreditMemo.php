@@ -31,6 +31,7 @@ class CreditMemo extends Model implements Documentable
 
     #[\Override]
     protected $fillable = [
+        'team_id',
         'customer_id',
         'invoice_id',
         'credit_memo_number',

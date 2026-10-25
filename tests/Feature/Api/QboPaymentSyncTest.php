@@ -62,8 +62,8 @@ class QboPaymentSyncTest extends TestCase
     {
         Http::fake(['*/v3/company/*/payment*' => Http::response(['Payment' => ['Id' => '80', 'SyncToken' => '0']], 200)]);
 
-        $customer = Customer::factory()->create();
-        $invoice = Invoice::factory()->create(['customer_id' => $customer->id, 'qbo_id' => '500']);
+        $customer = Customer::factory()->create(['team_id' => $this->user->current_team_id]);
+        $invoice = Invoice::factory()->create(['team_id' => $this->user->current_team_id, 'customer_id' => $customer->id, 'qbo_id' => '500']);
         $payment = Payment::create([
             'invoice_id' => $invoice->id,
             'payment_amount' => 150.00,
@@ -78,7 +78,7 @@ class QboPaymentSyncTest extends TestCase
 
     public function test_pull_payments_creates_local_payments(): void
     {
-        $invoice = Invoice::factory()->create(['qbo_id' => '500']);
+        $invoice = Invoice::factory()->create(['team_id' => $this->user->current_team_id, 'qbo_id' => '500']);
 
         Http::fake(['*/v3/company/*/query*' => Http::response([
             'QueryResponse' => ['Payment' => [

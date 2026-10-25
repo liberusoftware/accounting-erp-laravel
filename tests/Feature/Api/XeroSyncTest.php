@@ -98,8 +98,8 @@ class XeroSyncTest extends TestCase
             '*/api.xro/2.0/Invoices*' => Http::response(['Invoices' => [['InvoiceID' => 'xero-refreshed']]]),
         ]);
 
-        $customer = Customer::factory()->create();
-        $invoice = Invoice::factory()->create(['customer_id' => $customer->id]);
+        $customer = Customer::factory()->create(['team_id' => $this->user->current_team_id]);
+        $invoice = Invoice::factory()->create(['team_id' => $this->user->current_team_id, 'customer_id' => $customer->id]);
         $connection = $this->connection();
         $connection->update(['token_expires_at' => now()->subMinute()]);
 
@@ -131,8 +131,8 @@ class XeroSyncTest extends TestCase
     {
         Http::fake(['*/api.xro/2.0/Invoices*' => Http::response(['Invoices' => [['InvoiceID' => 'xero-guid-1']]], 200)]);
 
-        $customer = Customer::factory()->create();
-        $invoice = Invoice::factory()->create(['customer_id' => $customer->id, 'total_amount' => 150]);
+        $customer = Customer::factory()->create(['team_id' => $this->user->current_team_id]);
+        $invoice = Invoice::factory()->create(['team_id' => $this->user->current_team_id, 'customer_id' => $customer->id, 'total_amount' => 150]);
 
         $this->service()->pushInvoice($invoice, $this->connection());
 

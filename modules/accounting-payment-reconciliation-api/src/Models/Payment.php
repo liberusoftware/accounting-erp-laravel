@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\PaymentReconciliationApi\PaymentReconciliationApiServiceProvider\Models;
 
-use Liberu\Accounting\PaymentReconciliationApi\PaymentReconciliationApiServiceProvider\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Liberu\Accounting\PaymentReconciliationApi\PaymentReconciliationApiServiceProvider\Traits\IsTenantModel;
 
 /**
  * @property int|null $team_id

@@ -101,8 +101,8 @@ class QuickBooksSyncTest extends TestCase
         ]);
 
         $connection = $this->makeConnection();
-        $customer = Customer::factory()->create();
-        $invoice = Invoice::factory()->create([
+        $customer = Customer::factory()->create(['team_id' => $this->user->current_team_id]);
+        $invoice = Invoice::factory()->create(['team_id' => $this->user->current_team_id,
             'customer_id' => $customer->id,
             'total_amount' => 150.00,
         ]);
@@ -148,9 +148,9 @@ class QuickBooksSyncTest extends TestCase
         ]);
 
         $connection = $this->makeConnection();
-        $customer = Customer::factory()->create();
-        $estimate = Estimate::factory()->create(['customer_id' => $customer->id, 'total_amount' => 80]);
-        $creditMemo = CreditMemo::create(['customer_id' => $customer->id, 'credit_memo_date' => '2026-09-02', 'total_amount' => 20, 'subtotal_amount' => 20]);
+        $customer = Customer::factory()->create(['team_id' => $this->user->current_team_id]);
+        $estimate = Estimate::factory()->create(['team_id' => $this->user->current_team_id, 'customer_id' => $customer->id, 'total_amount' => 80]);
+        $creditMemo = CreditMemo::create(['team_id' => $this->user->current_team_id, 'customer_id' => $customer->id, 'credit_memo_date' => '2026-09-02', 'total_amount' => 20, 'subtotal_amount' => 20]);
 
         app(QuickBooksService::class)->pushEstimate($estimate, $connection);
         app(QuickBooksService::class)->pushCreditMemo($creditMemo, $connection);

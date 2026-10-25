@@ -116,7 +116,7 @@ class QuickBooksService
 
         foreach ($rows as $row) {
             Invoice::updateOrCreate(
-                ['qbo_id' => $row['Id']],
+                ['qbo_id' => $row['Id'], 'team_id' => $connection->team_id],
                 [
                     'invoice_number' => $row['DocNumber'] ?? ('QBO-'.$row['Id']),
                     'customer_id' => $this->resolveCustomerId($row['CustomerRef'] ?? null, $connection->team_id),
@@ -164,7 +164,7 @@ class QuickBooksService
             }
         }
 
-        return app(ProviderTransactionImporter::class)->handle($rows, $connection->team_id, function (array $row): array {
+        return app(ProviderTransactionImporter::class)->handle($rows, $connection->team_id, function (array $row) use ($connection): array {
             $entity = (string) $row['_entity'];
             $amount = (float) ($row['TotalAmt'] ?? $row['TransferAmt'] ?? 0);
             if ($entity === 'Purchase') {
@@ -178,7 +178,7 @@ class QuickBooksService
                 'date' => (string) ($row['TxnDate'] ?? now()->toDateString()),
                 'amount' => $amount,
                 'description' => $description,
-                'account_id' => app(ProviderTransactionImporter::class)->accountId('qbo_id', $row['AccountRef']['value'] ?? null),
+                'account_id' => app(ProviderTransactionImporter::class)->accountId('qbo_id', $row['AccountRef']['value'] ?? null, $connection->team_id),
                 'type' => strtolower($entity),
             ];
         });
@@ -220,7 +220,7 @@ class QuickBooksService
             }
 
             Estimate::updateOrCreate(
-                ['qbo_id' => (string) $row['Id']],
+                ['qbo_id' => (string) $row['Id'], 'team_id' => $connection->team_id],
                 [
                     'customer_id' => $this->resolveCustomerId($row['CustomerRef'] ?? null, $connection->team_id),
                     'estimate_number' => $row['DocNumber'] ?? 'QBO-'.$row['Id'],
@@ -272,7 +272,7 @@ class QuickBooksService
             }
 
             CreditMemo::updateOrCreate(
-                ['qbo_id' => (string) $row['Id']],
+                ['qbo_id' => (string) $row['Id'], 'team_id' => $connection->team_id],
                 [
                     'customer_id' => $this->resolveCustomerId($row['CustomerRef'] ?? null, $connection->team_id),
                     'credit_memo_number' => $row['DocNumber'] ?? 'QBO-'.$row['Id'],
@@ -319,7 +319,7 @@ class QuickBooksService
             }
 
             Customer::updateOrCreate(
-                ['qbo_id' => (string) $id],
+                ['qbo_id' => (string) $id, 'team_id' => $connection->team_id],
                 [
                     'customer_name' => $row['DisplayName'] ?? 'QBO Customer '.$id,
                     'customer_last_name' => '',
@@ -366,7 +366,7 @@ class QuickBooksService
             }
 
             Vendor::updateOrCreate(
-                ['qbo_id' => (string) $id],
+                ['qbo_id' => (string) $id, 'team_id' => $connection->team_id],
                 [
                     'name' => $row['DisplayName'] ?? 'QBO Vendor '.$id,
                     'email' => $row['PrimaryEmailAddr']['Address'] ?? 'qbo-vendor-'.$id.'@imported.invalid',
@@ -428,7 +428,7 @@ class QuickBooksService
 
         foreach ($rows as $row) {
             Account::updateOrCreate(
-                ['qbo_id' => $row['Id']],
+                ['qbo_id' => $row['Id'], 'team_id' => $connection->team_id],
                 [
                     'account_name' => $row['Name'] ?? ('QBO Account '.$row['Id']),
                     'account_type' => self::QBO_CLASSIFICATION[$row['Classification'] ?? ''] ?? 'asset',
@@ -481,7 +481,7 @@ class QuickBooksService
 
         foreach ($rows as $row) {
             Bill::updateOrCreate(
-                ['qbo_id' => $row['Id']],
+                ['qbo_id' => $row['Id'], 'team_id' => $connection->team_id],
                 [
                     'vendor_id' => $this->resolveVendorId($row['VendorRef'] ?? null, $connection->team_id),
                     'total_amount' => $row['TotalAmt'] ?? 0,
@@ -535,10 +535,15 @@ class QuickBooksService
         $rows = $this->query($connection, 'select * from Payment')['Payment'] ?? [];
 
         foreach ($rows as $row) {
+            $invoiceId = $this->resolvePaymentInvoiceId($row, $connection->team_id);
+            if ($invoiceId === null) {
+                continue;
+            }
+
             Payment::updateOrCreate(
-                ['qbo_id' => $row['Id']],
+                ['qbo_id' => $row['Id'], 'team_id' => $connection->team_id],
                 [
-                    'invoice_id' => $this->resolvePaymentInvoiceId($row),
+                    'invoice_id' => $invoiceId,
                     'payment_amount' => $row['TotalAmt'] ?? 0,
                     'payment_date' => $row['TxnDate'] ?? now()->toDateString(),
                     'qbo_sync_token' => $row['SyncToken'] ?? null,
@@ -557,11 +562,16 @@ class QuickBooksService
      *
      * @param  array<string, mixed>  $row
      */
-    private function resolvePaymentInvoiceId(array $row): int
+    private function resolvePaymentInvoiceId(array $row, ?int $teamId): ?int
     {
         $txnId = $row['Line'][0]['LinkedTxn'][0]['TxnId'] ?? null;
 
-        return (int) (Invoice::where('qbo_id', $txnId)->value('id') ?? 0);
+        if ((! is_string($txnId) && ! is_int($txnId)) || (string) $txnId === '') {
+            return null;
+        }
+        $invoiceId = Invoice::where('qbo_id', $txnId)->where('team_id', $teamId)->value('id');
+
+        return $invoiceId === null ? null : (int) $invoiceId;
     }
 
     /**
@@ -585,7 +595,7 @@ class QuickBooksService
     private function resolveVendorId(?array $vendorRef, ?int $teamId = null): int
     {
         $externalId = $vendorRef['value'] ?? null;
-        if ($externalId !== null && ($localId = Vendor::where('qbo_id', (string) $externalId)->value('vendor_id')) !== null) {
+        if ($externalId !== null && ($localId = Vendor::where('qbo_id', (string) $externalId)->where('team_id', $teamId)->value('vendor_id')) !== null) {
             return (int) $localId;
         }
 
@@ -601,7 +611,7 @@ class QuickBooksService
     private function resolveCustomerId(?array $customerRef, ?int $teamId = null): int
     {
         $externalId = $customerRef['value'] ?? null;
-        if ($externalId !== null && ($localId = Customer::where('qbo_id', (string) $externalId)->value('id')) !== null) {
+        if ($externalId !== null && ($localId = Customer::where('qbo_id', (string) $externalId)->where('team_id', $teamId)->value('id')) !== null) {
             return (int) $localId;
         }
 

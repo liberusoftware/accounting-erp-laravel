@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\PurchaseOrdersApi\PurchaseOrdersApiServiceProvider\Models;
 
-use Liberu\Accounting\PurchaseOrdersApi\PurchaseOrdersApiServiceProvider\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Liberu\Accounting\PurchaseOrdersApi\PurchaseOrdersApiServiceProvider\Traits\IsTenantModel;
 
 class PurchaseOrder extends Model
 {

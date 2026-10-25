@@ -100,7 +100,7 @@ class SageService
 
         foreach ($rows as $row) {
             Invoice::updateOrCreate(
-                ['sage_id' => $row['id']],
+                ['sage_id' => $row['id'], 'team_id' => $connection->team_id],
                 [
                     'invoice_number' => $row['displayed_as'] ?? ('SAGE-'.$row['id']),
                     'customer_id' => $this->resolveCustomerId($row['contact_id'] ?? null, $row['contact_name'] ?? null, $connection->team_id),
@@ -141,7 +141,7 @@ class SageService
     {
         $rows = $this->client($connection)->get('/bank_transactions')->throw()->json()['$items'] ?? [];
 
-        return app(ProviderTransactionImporter::class)->handle($rows, $connection->team_id, function (array $row): array {
+        return app(ProviderTransactionImporter::class)->handle($rows, $connection->team_id, function (array $row) use ($connection): array {
             $amount = (float) ($row['amount'] ?? $row['total_amount'] ?? 0);
             if (strtolower((string) ($row['transaction_type'] ?? $row['type'] ?? 'receive')) === 'payment') {
                 $amount *= -1;
@@ -152,7 +152,7 @@ class SageService
                 'date' => (string) ($row['date'] ?? now()->toDateString()),
                 'amount' => $amount,
                 'description' => (string) ($row['description'] ?? $row['reference'] ?? 'Sage bank transaction'),
-                'account_id' => app(ProviderTransactionImporter::class)->accountId('sage_id', $row['bank_account_id'] ?? null),
+                'account_id' => app(ProviderTransactionImporter::class)->accountId('sage_id', $row['bank_account_id'] ?? null, $connection->team_id),
                 'type' => strtolower((string) ($row['transaction_type'] ?? $row['type'] ?? 'bank')),
             ];
         });
@@ -189,7 +189,7 @@ class SageService
             }
 
             Estimate::updateOrCreate(
-                ['sage_id' => (string) $row['id']],
+                ['sage_id' => (string) $row['id'], 'team_id' => $connection->team_id],
                 [
                     'customer_id' => $this->resolveCustomerId($row['contact_id'] ?? null, $row['contact_name'] ?? null, $connection->team_id),
                     'estimate_number' => $row['reference'] ?? $row['displayed_as'] ?? 'SAGE-'.$row['id'],
@@ -237,7 +237,7 @@ class SageService
             }
 
             CreditMemo::updateOrCreate(
-                ['sage_id' => (string) $row['id']],
+                ['sage_id' => (string) $row['id'], 'team_id' => $connection->team_id],
                 [
                     'customer_id' => $this->resolveCustomerId($row['contact_id'] ?? null, $row['contact_name'] ?? null, $connection->team_id),
                     'credit_memo_number' => $row['reference'] ?? $row['displayed_as'] ?? 'SAGE-'.$row['id'],
@@ -308,7 +308,7 @@ class SageService
             }
 
             Vendor::updateOrCreate(
-                ['sage_id' => (string) $id],
+                ['sage_id' => (string) $id, 'team_id' => $connection->team_id],
                 [
                     'name' => $row['name'] ?? $row['displayed_as'] ?? 'Sage Vendor '.$id,
                     'email' => $row['email'] ?? 'sage-vendor-'.$id.'@imported.invalid',
@@ -349,7 +349,7 @@ class SageService
             }
 
             Account::updateOrCreate(
-                ['sage_id' => (string) $externalId],
+                ['sage_id' => (string) $externalId, 'team_id' => $connection->team_id],
                 [
                     'account_name' => $row['name'] ?? $row['displayed_as'] ?? 'Sage Account '.$externalId,
                     'account_type' => $this->localAccountType($row),
@@ -399,7 +399,7 @@ class SageService
             }
 
             Bill::updateOrCreate(
-                ['sage_id' => (string) $externalId],
+                ['sage_id' => (string) $externalId, 'team_id' => $connection->team_id],
                 [
                     'bill_number' => $row['reference'] ?? $row['displayed_as'] ?? 'SAGE-'.$externalId,
                     'vendor_id' => $this->resolveVendorId($row['contact_id'] ?? null, $row['contact_name'] ?? null, $connection->team_id),
@@ -445,13 +445,17 @@ class SageService
                 continue;
             }
 
-            $invoiceId = Invoice::where('sage_id', $row['invoice_id'] ?? null)->value('id');
+            $externalInvoiceId = $row['invoice_id'] ?? null;
+            if (! is_string($externalInvoiceId) || $externalInvoiceId === '') {
+                continue;
+            }
+            $invoiceId = Invoice::where('sage_id', $externalInvoiceId)->where('team_id', $connection->team_id)->value('id');
             if ($invoiceId === null) {
                 continue;
             }
 
             Payment::updateOrCreate(
-                ['sage_id' => (string) $externalId],
+                ['sage_id' => (string) $externalId, 'team_id' => $connection->team_id],
                 [
                     'invoice_id' => (int) $invoiceId,
                     'payment_amount' => $row['total_amount'] ?? 0,
@@ -521,7 +525,7 @@ class SageService
 
     private function resolveCustomerId(?string $externalId, ?string $contactName = null, ?int $teamId = null): int
     {
-        if ($externalId !== null && ($localId = Customer::where('sage_id', $externalId)->value('id')) !== null) {
+        if ($externalId !== null && ($localId = Customer::where('sage_id', $externalId)->where('team_id', $teamId)->value('id')) !== null) {
             return (int) $localId;
         }
 
@@ -537,7 +541,7 @@ class SageService
         }
 
         Customer::updateOrCreate(
-            ['sage_id' => (string) $id],
+            ['sage_id' => (string) $id, 'team_id' => $teamId],
             [
                 'customer_name' => $row['name'] ?? $row['displayed_as'] ?? 'Sage Customer '.$id,
                 'customer_last_name' => '',
@@ -552,7 +556,7 @@ class SageService
 
     private function resolveVendorId(?string $externalId, ?string $contactName = null, ?int $teamId = null): int
     {
-        if ($externalId !== null && ($localId = Vendor::where('sage_id', $externalId)->value('vendor_id')) !== null) {
+        if ($externalId !== null && ($localId = Vendor::where('sage_id', $externalId)->where('team_id', $teamId)->value('vendor_id')) !== null) {
             return (int) $localId;
         }
 

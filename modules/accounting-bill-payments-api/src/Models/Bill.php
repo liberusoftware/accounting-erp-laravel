@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\BillPaymentsApi\BillPaymentsApiServiceProvider\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 use Liberu\Accounting\BillPaymentsApi\BillPaymentsApiServiceProvider\Concerns\Approvable;
 use Liberu\Accounting\BillPaymentsApi\BillPaymentsApiServiceProvider\Concerns\HasDocuments;
 use Liberu\Accounting\BillPaymentsApi\BillPaymentsApiServiceProvider\Concerns\Recurring;
 use Liberu\Accounting\BillPaymentsApi\BillPaymentsApiServiceProvider\Contracts\ApprovableRecord;
 use Liberu\Accounting\BillPaymentsApi\BillPaymentsApiServiceProvider\Contracts\Documentable;
 use Liberu\Accounting\BillPaymentsApi\BillPaymentsApiServiceProvider\Traits\IsTenantModel;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Collection;
 
 /**
  * @property int|null $team_id

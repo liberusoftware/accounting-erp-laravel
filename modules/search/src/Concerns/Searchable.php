@@ -25,13 +25,30 @@ trait Searchable
     public function scopeSearch(Builder $query, string $search): Builder
     {
         // Grouped, so an added filter cannot be swallowed by the ORs.
-        return $query->where(function (Builder $q) use ($search): void {
-            foreach ($this->searchableColumns() as $index => $column) {
+        $columns = $this->searchableColumns();
+
+        $query->where(function (Builder $q) use ($search, $columns): void {
+            foreach ($columns as $index => $column) {
                 $index === 0
                     ? $q->where($column, 'like', "%{$search}%")
                     : $q->orWhere($column, 'like', "%{$search}%");
             }
         });
+
+        // Prefer prefix matches over incidental contains matches. User input
+        // remains parameter-bound while the model-owned column names form the
+        // trusted SQL expression.
+        if ($columns !== []) {
+            $rank = implode(' ', array_map(
+                static fn (int $index, string $column): string => "WHEN {$column} LIKE ? THEN {$index}",
+                array_keys($columns),
+                $columns,
+            ));
+
+            $query->orderByRaw("CASE {$rank} ELSE 99 END", array_fill(0, count($columns), "{$search}%"));
+        }
+
+        return $query;
     }
 
     /**
