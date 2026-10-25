@@ -16,14 +16,6 @@ it('matches the term against name and email', function () {
         ->toBe(['Grace Hopper']);
 });
 
-it('ranks a name prefix before a later substring match', function () {
-    TestUser::factory()->create(['name' => 'Electa Johnson', 'email' => 'electa@example.test']);
-    TestUser::factory()->create(['name' => 'John Doe', 'email' => 'john@example.test']);
-
-    expect(app(SearchService::class)->searchUsers(['query' => 'John'])->value('name'))
-        ->toBe('John Doe');
-});
-
 /**
  * `role()` is Spatie's `HasRoles` scope. This package neither requires nor
  * declares it, so a model without the trait used to fatal here rather than

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\EmployeeExpensesApi\EmployeeExpensesApiServiceProvider\Models;
 
-use Liberu\Accounting\EmployeeExpensesApi\EmployeeExpensesApiServiceProvider\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Liberu\Accounting\EmployeeExpensesApi\EmployeeExpensesApiServiceProvider\Traits\IsTenantModel;
 
 /**
  * @property int $id

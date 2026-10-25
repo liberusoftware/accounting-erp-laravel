@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\DocumentCaptureApi\DocumentCaptureApiServiceProvider\Models;
 
-use Liberu\Accounting\DocumentCaptureApi\DocumentCaptureApiServiceProvider\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Liberu\Accounting\DocumentCaptureApi\DocumentCaptureApiServiceProvider\Traits\IsTenantModel;
 
 class Document extends Model
 {

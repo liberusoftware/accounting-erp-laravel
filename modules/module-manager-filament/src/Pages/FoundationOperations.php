@@ -5,7 +5,6 @@ namespace Liberu\Foundation\ModuleManagerFilament\Pages;
 use Filament\Pages\Page;
 use Liberu\Foundation\ModuleManager\ModuleRegistry;
 use Liberu\Foundation\Observability\Contracts\ObservabilityActor;
-use Livewire\Attributes\Computed;
 
 final class FoundationOperations extends Page
 {
@@ -17,13 +16,11 @@ final class FoundationOperations extends Page
 
     protected static string|\UnitEnum|null $navigationGroup = 'Operations';
 
-    #[Computed]
-    public function modules(): array
+    public array $modules = [];
+
+    public function mount(ModuleRegistry $registry): void
     {
-        return array_map(
-            fn ($manifest): array => $manifest->toArray(),
-            app(ModuleRegistry::class)->all(),
-        );
+        $this->modules = array_map(fn ($manifest) => $manifest->toArray(), $registry->all());
     }
 
     public static function canAccess(): bool

@@ -13,6 +13,36 @@
     "repositories": [
         {
             "type": "path",
+            "url": "modules/theme-support",
+            "options": {
+                "symlink": false,
+                "versions": {
+                    "liberusoftware/theme-support": "1.4.3"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/localization-core",
+            "options": {
+                "symlink": false,
+                "versions": {
+                    "liberusoftware/localization-core": "1.4.1"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/search",
+            "options": {
+                "symlink": false,
+                "versions": {
+                    "liberusoftware/search": "1.5.3"
+                }
+            }
+        },
+        {
+            "type": "path",
             "url": "modules/accounting-core",
             "options": {
                 "symlink": true
@@ -3426,13 +3456,6 @@
         {
             "type": "path",
             "url": "modules/search-api",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "modules/search",
             "options": {
                 "symlink": true
             }

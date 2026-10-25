@@ -62,7 +62,7 @@ class QboAccountBillSyncTest extends TestCase
     {
         Http::fake(['*/v3/company/*/account*' => Http::response(['Account' => ['Id' => '55', 'SyncToken' => '0']], 200)]);
 
-        $account = Account::factory()->create(['account_type' => 'revenue', 'normal_balance' => 'credit']);
+        $account = Account::factory()->create(['team_id' => $this->user->current_team_id, 'account_type' => 'revenue', 'normal_balance' => 'credit']);
 
         $this->service()->pushAccount($account, $this->connection());
 
@@ -88,8 +88,8 @@ class QboAccountBillSyncTest extends TestCase
     {
         Http::fake(['*/v3/company/*/bill*' => Http::response(['Bill' => ['Id' => '70', 'SyncToken' => '0']], 200)]);
 
-        $vendor = Vendor::factory()->create();
-        $bill = Bill::factory()->create(['vendor_id' => $vendor->vendor_id, 'total_amount' => 480]);
+        $vendor = Vendor::factory()->create(['team_id' => $this->user->current_team_id]);
+        $bill = Bill::factory()->create(['team_id' => $this->user->current_team_id, 'vendor_id' => $vendor->vendor_id, 'total_amount' => 480]);
 
         $this->service()->pushBill($bill, $this->connection());
 

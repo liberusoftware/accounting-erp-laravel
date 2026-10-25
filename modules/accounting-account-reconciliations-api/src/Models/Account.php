@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\AccountReconciliationsApi\AccountReconciliationsApiServiceProvider\Models;
 
-use Liberu\Accounting\AccountReconciliationsApi\AccountReconciliationsApiServiceProvider\Services\ExchangeRateService;
-use Liberu\Accounting\AccountReconciliationsApi\AccountReconciliationsApiServiceProvider\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
+use Liberu\Accounting\AccountReconciliationsApi\AccountReconciliationsApiServiceProvider\Services\ExchangeRateService;
+use Liberu\Accounting\AccountReconciliationsApi\AccountReconciliationsApiServiceProvider\Traits\IsTenantModel;
 
 /**
  * @property int|null $team_id

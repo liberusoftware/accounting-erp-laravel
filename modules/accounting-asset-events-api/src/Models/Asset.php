@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\AssetEventsApi\AssetEventsApiServiceProvider\Models;
 
-use Liberu\Accounting\AssetEventsApi\AssetEventsApiServiceProvider\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Liberu\Accounting\AssetEventsApi\AssetEventsApiServiceProvider\Traits\IsTenantModel;
 
 class Asset extends Model
 {

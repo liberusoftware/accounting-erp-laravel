@@ -101,8 +101,8 @@ class SageSyncTest extends TestCase
             '*/v3.1/sales_invoices*' => Http::response(['id' => 'sage-refreshed']),
         ]);
 
-        $customer = Customer::factory()->create();
-        $invoice = Invoice::factory()->create(['customer_id' => $customer->id]);
+        $customer = Customer::factory()->create(['team_id' => $this->user->current_team_id]);
+        $invoice = Invoice::factory()->create(['team_id' => $this->user->current_team_id, 'customer_id' => $customer->id]);
         $connection = $this->connection();
         $connection->update(['token_expires_at' => now()->subMinute()]);
 
@@ -134,8 +134,8 @@ class SageSyncTest extends TestCase
     {
         Http::fake(['*/v3.1/sales_invoices*' => Http::response(['id' => 'sage-1'], 200)]);
 
-        $customer = Customer::factory()->create();
-        $invoice = Invoice::factory()->create(['customer_id' => $customer->id, 'total_amount' => 150]);
+        $customer = Customer::factory()->create(['team_id' => $this->user->current_team_id]);
+        $invoice = Invoice::factory()->create(['team_id' => $this->user->current_team_id, 'customer_id' => $customer->id, 'total_amount' => 150]);
 
         $this->service()->pushInvoice($invoice, $this->connection());
 
@@ -164,7 +164,7 @@ class SageSyncTest extends TestCase
                 ->push(['$items' => [['id' => 'sage-account-9', 'name' => 'Sales', 'nominal_code' => '4000', 'ledger_account_type' => ['name' => 'Income']]]]),
         ]);
 
-        $account = Account::factory()->create(['account_name' => 'Cash', 'account_type' => 'asset', 'account_number' => 1000]);
+        $account = Account::factory()->create(['team_id' => $this->user->current_team_id, 'account_name' => 'Cash', 'account_type' => 'asset', 'account_number' => 1000]);
         $connection = $this->connection();
 
         $this->service()->pushAccount($account, $connection);
@@ -177,8 +177,8 @@ class SageSyncTest extends TestCase
 
     public function test_full_sync_reports_accounts_bills_and_payments(): void
     {
-        $vendor = Vendor::factory()->create(['name' => 'Sage Vendor']);
-        $invoice = Invoice::factory()->create(['customer_id' => Customer::factory(), 'sage_id' => 'sage-invoice-1']);
+        $vendor = Vendor::factory()->create(['team_id' => $this->user->current_team_id, 'name' => 'Sage Vendor']);
+        $invoice = Invoice::factory()->create(['team_id' => $this->user->current_team_id, 'customer_id' => Customer::factory()->state(['team_id' => $this->user->current_team_id]), 'sage_id' => 'sage-invoice-1']);
         Payment::create(['invoice_id' => $invoice->id, 'payment_amount' => 40, 'payment_date' => '2026-09-02']);
 
         Http::fake([

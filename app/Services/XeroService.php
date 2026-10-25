@@ -111,7 +111,7 @@ class XeroService
 
         foreach ($rows as $row) {
             Invoice::updateOrCreate(
-                ['xero_id' => $row['InvoiceID']],
+                ['xero_id' => $row['InvoiceID'], 'team_id' => $connection->team_id],
                 [
                     'invoice_number' => $row['InvoiceNumber'] ?? ('XERO-'.$row['InvoiceID']),
                     'customer_id' => $this->resolveCustomerId($row['Contact'] ?? null, $connection->team_id),
@@ -152,7 +152,7 @@ class XeroService
     {
         $rows = $this->client($connection)->get('/BankTransactions')->throw()->json()['BankTransactions'] ?? [];
 
-        return app(ProviderTransactionImporter::class)->handle($rows, $connection->team_id, function (array $row): array {
+        return app(ProviderTransactionImporter::class)->handle($rows, $connection->team_id, function (array $row) use ($connection): array {
             $type = strtoupper((string) ($row['Type'] ?? 'RECEIVE'));
             $amount = (float) ($row['Total'] ?? 0);
             if ($type === 'SPEND') {
@@ -164,7 +164,7 @@ class XeroService
                 'date' => (string) ($row['Date'] ?? now()->toDateString()),
                 'amount' => $amount,
                 'description' => (string) ($row['Reference'] ?? 'Xero bank transaction'),
-                'account_id' => app(ProviderTransactionImporter::class)->accountId('xero_id', $row['BankAccount']['AccountID'] ?? null),
+                'account_id' => app(ProviderTransactionImporter::class)->accountId('xero_id', $row['BankAccount']['AccountID'] ?? null, $connection->team_id),
                 'type' => strtolower($type),
             ];
         });
@@ -207,7 +207,7 @@ class XeroService
             }
 
             Estimate::updateOrCreate(
-                ['xero_id' => (string) $row['QuoteID']],
+                ['xero_id' => (string) $row['QuoteID'], 'team_id' => $connection->team_id],
                 [
                     'customer_id' => $this->resolveCustomerId($row['Contact'] ?? null, $connection->team_id),
                     'estimate_number' => $row['QuoteNumber'] ?? 'XERO-'.$row['QuoteID'],
@@ -262,7 +262,7 @@ class XeroService
             }
 
             CreditMemo::updateOrCreate(
-                ['xero_id' => (string) $row['CreditNoteID']],
+                ['xero_id' => (string) $row['CreditNoteID'], 'team_id' => $connection->team_id],
                 [
                     'customer_id' => $this->resolveCustomerId($row['Contact'] ?? null, $connection->team_id),
                     'credit_memo_number' => $row['CreditNoteNumber'] ?? 'XERO-'.$row['CreditNoteID'],
@@ -306,7 +306,7 @@ class XeroService
             }
 
             Customer::updateOrCreate(
-                ['xero_id' => (string) $id],
+                ['xero_id' => (string) $id, 'team_id' => $connection->team_id],
                 [
                     'customer_name' => $row['Name'] ?? 'Xero Customer '.$id,
                     'customer_last_name' => '',
@@ -349,7 +349,7 @@ class XeroService
             }
 
             Vendor::updateOrCreate(
-                ['xero_id' => (string) $id],
+                ['xero_id' => (string) $id, 'team_id' => $connection->team_id],
                 [
                     'name' => $row['Name'] ?? 'Xero Vendor '.$id,
                     'email' => $row['EmailAddress'] ?? 'xero-vendor-'.$id.'@imported.invalid',
@@ -416,7 +416,7 @@ class XeroService
 
         foreach ($rows as $row) {
             Account::updateOrCreate(
-                ['xero_id' => $row['AccountID']],
+                ['xero_id' => $row['AccountID'], 'team_id' => $connection->team_id],
                 [
                     'account_name' => $row['Name'] ?? ('Xero Account '.$row['AccountID']),
                     'account_type' => self::XERO_CLASS[$row['Class'] ?? ''] ?? 'asset',
@@ -469,7 +469,7 @@ class XeroService
 
         foreach ($rows as $row) {
             Bill::updateOrCreate(
-                ['xero_id' => $row['InvoiceID']],
+                ['xero_id' => $row['InvoiceID'], 'team_id' => $connection->team_id],
                 [
                     'vendor_id' => $this->resolveVendorId($row['Contact'] ?? null, $connection->team_id),
                     'total_amount' => $row['Total'] ?? 0,
@@ -508,14 +508,18 @@ class XeroService
         $rows = $this->client($connection)->get('/Payments')->throw()->json()['Payments'] ?? [];
 
         foreach ($rows as $row) {
-            $invoiceId = Invoice::where('xero_id', $row['Invoice']['InvoiceID'] ?? null)->value('id');
+            $externalInvoiceId = $row['Invoice']['InvoiceID'] ?? null;
+            if (! is_string($externalInvoiceId) || $externalInvoiceId === '') {
+                continue;
+            }
+            $invoiceId = Invoice::where('xero_id', $externalInvoiceId)->where('team_id', $connection->team_id)->value('id');
 
             if ($invoiceId === null) {
                 continue;
             }
 
             Payment::updateOrCreate(
-                ['xero_id' => $row['PaymentID']],
+                ['xero_id' => $row['PaymentID'], 'team_id' => $connection->team_id],
                 [
                     'invoice_id' => (int) $invoiceId,
                     'payment_amount' => $row['Amount'] ?? 0,
@@ -535,7 +539,7 @@ class XeroService
      */
     private function resolveVendorId(?array $contact, ?int $teamId = null): int
     {
-        if (isset($contact['ContactID']) && ($localId = Vendor::where('xero_id', $contact['ContactID'])->value('vendor_id')) !== null) {
+        if (isset($contact['ContactID']) && ($localId = Vendor::where('xero_id', $contact['ContactID'])->where('team_id', $teamId)->value('vendor_id')) !== null) {
             return (int) $localId;
         }
 
@@ -578,7 +582,7 @@ class XeroService
      */
     private function resolveCustomerId(?array $contact, ?int $teamId = null): int
     {
-        if (isset($contact['ContactID']) && ($localId = Customer::where('xero_id', $contact['ContactID'])->value('id')) !== null) {
+        if (isset($contact['ContactID']) && ($localId = Customer::where('xero_id', $contact['ContactID'])->where('team_id', $teamId)->value('id')) !== null) {
             return (int) $localId;
         }
 

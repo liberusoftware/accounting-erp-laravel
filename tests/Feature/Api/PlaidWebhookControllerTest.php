@@ -49,8 +49,8 @@ class PlaidWebhookControllerTest extends TestCase
         $this->jwk = [
             'kty' => 'EC',
             'crv' => 'P-256',
-            'x' => $this->b64url($details['ec']['x']),
-            'y' => $this->b64url($details['ec']['y']),
+            'x' => $this->b64url(str_pad($details['ec']['x'], 32, "\0", STR_PAD_LEFT)),
+            'y' => $this->b64url(str_pad($details['ec']['y'], 32, "\0", STR_PAD_LEFT)),
             'kid' => self::KID,
             'use' => 'sig',
             'alg' => 'ES256',

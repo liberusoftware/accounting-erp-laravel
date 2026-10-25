@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.3 - 2026-08-24
+
+- Ignore duplicate tracked package paths when Composer also exposes the same theme.
+
 ## 1.3.0 - 2026-08-06
 
 - Themes are discovered through Composer as well as the tracked tree, mirroring how modules

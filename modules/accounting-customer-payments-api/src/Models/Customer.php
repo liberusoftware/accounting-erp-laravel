@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\CustomerPaymentsApi\CustomerPaymentsApiServiceProvider\Models;
 
-use Liberu\Accounting\CustomerPaymentsApi\CustomerPaymentsApiServiceProvider\Traits\IsTenantModel;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Liberu\Accounting\CustomerPaymentsApi\CustomerPaymentsApiServiceProvider\Traits\IsTenantModel;
 
 /**
  * @property string|null $qbo_id

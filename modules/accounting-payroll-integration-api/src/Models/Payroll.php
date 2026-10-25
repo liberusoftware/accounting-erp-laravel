@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Liberu\Accounting\PayrollIntegrationApi\PayrollIntegrationApiServiceProvider\Models;
 
-use Liberu\Accounting\PayrollIntegrationApi\PayrollIntegrationApiServiceProvider\Services\PayrollTaxService;
-use Liberu\Accounting\PayrollIntegrationApi\PayrollIntegrationApiServiceProvider\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Liberu\Accounting\PayrollIntegrationApi\PayrollIntegrationApiServiceProvider\Services\PayrollTaxService;
+use Liberu\Accounting\PayrollIntegrationApi\PayrollIntegrationApiServiceProvider\Traits\IsTenantModel;
 
 /**
  * @property float|string|null $gross_pay
