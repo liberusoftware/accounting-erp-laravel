@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
+use Database\Seeders\TeamSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
@@ -36,12 +37,11 @@ class SeederSecurityTest extends TestCase
     {
         $this->app->instance('env', 'production');
         config(['app.seed_admin_password' => null]);
-        $exitCode = Artisan::call('db:seed', ['--class' => \Database\Seeders\TeamSeeder::class, '--force' => true]);
+        $exitCode = Artisan::call('db:seed', ['--class' => TeamSeeder::class, '--force' => true]);
         $admin = User::query()->where('email', 'admin@example.com')->firstOrFail();
 
         $this->assertSame(0, $exitCode);
         $this->assertFalse(Hash::check('ChangeMe!123456', $admin->password));
         $this->assertStringNotContainsString('Admin password:', Artisan::output());
     }
-
 }
