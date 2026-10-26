@@ -14,7 +14,7 @@ final class AutomationRecipeController extends Controller
 {
     public function index(Request $request): mixed
     {
-        return response()->json(['data' => AutomationRecipe::query()->where('team_id', $this->teamId($request))->latest()->paginate($request->integer('per_page', 25))]);
+        return response()->json(['data' => AutomationRecipe::query()->where('team_id', $this->teamId($request))->latest()->paginate(min(100, max(1, $request->integer('per_page', 25))))]);
     }
 
     public function store(Request $request, CreateAutomationRecipe $action): mixed

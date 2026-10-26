@@ -5,5 +5,5 @@
   "version": "1.0.0",
   "autoload": {"psr-4": {"Liberu\\Accounting\\AutomationPack\\": "src/"}},
   "extra": {"laravel": {"providers": ["Liberu\\Accounting\\AutomationPack\\AutomationPackServiceProvider"]}, "liberu": {"name": "accounting-automation-pack"}},
-  "require": {"php": "^8.5", "illuminate/database": "^13.0", "illuminate/support": "^13.0"}
+  "require": {"php": "^8.5", "illuminate/database": "^13.38.0", "illuminate/support": "^13.38.0"}
 }

@@ -3,7 +3,7 @@
   "description": "Provider-neutral Liberu platform composition and lifecycle orchestration.",
   "type": "liberu-module",
   "license": "MIT",
-  "require": { "php": "^8.5", "illuminate/database": "^13.0", "illuminate/support": "^13.0", "liberusoftware/module-manager": "^1.0" },
+  "require": { "php": "^8.5", "illuminate/database": "^13.38.0", "illuminate/support": "^13.38.0", "liberusoftware/module-manager": "^1.0" },
   "autoload": { "psr-4": { "Liberu\\PlatformOrchestration\\": "src/" } },
   "autoload-dev": { "psr-4": { "Liberu\\PlatformOrchestration\\Tests\\": "tests/" } },
   "extra": {
@@ -11,7 +11,7 @@
     "liberu": { "name": "liberu-platform-orchestration" }
   },
   "version": "1.0.0",
-  "require-dev": { "liberusoftware/package-testbench": "^1.5", "pestphp/pest": "^5.0" },
+  "require-dev": { "liberusoftware/package-testbench": "^1.5", "pestphp/pest": "^5.3.3" },
   "scripts": { "test": "pest" },
   "config": { "allow-plugins": { "pestphp/pest-plugin": true } }
 }

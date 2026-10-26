@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "require": {
     "php": "^8.5",
-    "livewire/livewire": "^4.0",
+    "livewire/livewire": "^4.4.8",
     "liberusoftware/module-accounting-fixed-assets": "^1.0"
   },
   "autoload": {

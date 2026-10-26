@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.2 - 2026-08-30
+
+- Synchronize webhook actions and models with the host integration.
+- Declare the current module-manager and HTTP dependencies.
+
 ## 1.2.2 - 2026-08-06
 
 - Split CI into the three workflows `CONFORMANCE.md` §3.9 asks for, rather than one calling all

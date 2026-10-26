@@ -17,6 +17,8 @@ use Illuminate\Support\ServiceProvider;
 
 return [
 
+    'seed_admin_password' => env('SEED_ADMIN_PASSWORD'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

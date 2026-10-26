@@ -60,7 +60,7 @@
     "src": "_inter-700-normal-Yt3aPRUw.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Da_3rdZD.css",
+    "file": "assets/app-Xom9FJzZ.css",
     "name": "app",
     "names": [
       "app.css"
@@ -69,9 +69,18 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-C_RJPZ5V.js",
+    "file": "assets/app-BNdg5J3l.js",
     "name": "app",
     "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "themes/accounting-erp/resources/css/app.css": {
+    "file": "assets/app-C9vAp8O5.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "themes/accounting-erp/resources/css/app.css",
     "isEntry": true
   },
   "themes/base/resources/css/app.css": {
