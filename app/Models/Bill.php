@@ -13,6 +13,7 @@ use App\Traits\IsTenantModel;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 
@@ -141,7 +142,8 @@ class Bill extends Model implements ApprovableRecord, Documentable
         return $this->belongsTo(PurchaseOrder::class, 'purchase_order_id', 'purchase_order_id');
     }
 
-    public function items()
+    /** @return HasMany<BillItem, $this> */
+    public function items(): HasMany
     {
         return $this->hasMany(BillItem::class, 'bill_id', 'bill_id');
     }

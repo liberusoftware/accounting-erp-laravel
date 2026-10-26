@@ -104,7 +104,8 @@ class Invoice extends Model implements ApprovableRecord, Documentable
         return $this->hasMany(TimeEntry::class, 'invoice_id');
     }
 
-    public function items()
+    /** @return HasMany<InvoiceItem, $this> */
+    public function items(): HasMany
     {
         return $this->hasMany(InvoiceItem::class, 'invoice_id');
     }
