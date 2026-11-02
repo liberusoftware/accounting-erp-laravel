@@ -1,0 +1,2337 @@
+{
+  "module-accounting-account-reconciliations": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-account-reconciliations-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-account-reconciliations-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-account-reconciliations-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accountant-workspace": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accountant-workspace-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accountant-workspace-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accountant-workspace-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accounts-payable": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accounts-payable-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accounts-payable-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accounts-payable-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accounts-receivable": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accounts-receivable-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accounts-receivable-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-accounts-receivable-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-anomaly-detection": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-anomaly-detection-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-anomaly-detection-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-anomaly-detection-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-asset-events": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-asset-events-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-asset-events-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-asset-events-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-audit-support": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-audit-support-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-audit-support-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-audit-support-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-automation-pack": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-automation-pack-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-automation-pack-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-automation-pack-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-accounts": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-accounts-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-accounts-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-accounts-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-feeds": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-feeds-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-feeds-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-feeds-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-reconciliation": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-reconciliation-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-reconciliation-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-reconciliation-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-rules": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-rules-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-rules-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bank-rules-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bill-payments": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bill-payments-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bill-payments-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-bill-payments-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-branch-and-location-accounting": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-branch-and-location-accounting-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-branch-and-location-accounting-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-branch-and-location-accounting-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-budgets": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-budgets-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-budgets-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-budgets-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-business-insights": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-business-insights-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-business-insights-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-business-insights-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-carbon-accounting": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-carbon-accounting-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-carbon-accounting-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-carbon-accounting-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-coding": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-coding-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-coding-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-coding-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-collection-assistant": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-collection-assistant-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-collection-assistant-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-collection-assistant-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-flow-forecasting": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-flow-forecasting-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-flow-forecasting-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-flow-forecasting-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-position": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-position-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-position-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-cash-position-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-chart-of-accounts": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-chart-of-accounts-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-chart-of-accounts-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-chart-of-accounts-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-client-collaboration": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-client-collaboration-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-client-collaboration-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-client-collaboration-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-close-management": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-close-management-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-close-management-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-close-management-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-coding-suggestions": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-coding-suggestions-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-coding-suggestions-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-coding-suggestions-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-collections": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-collections-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-collections-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-collections-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-consolidation": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-consolidation-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-consolidation-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-consolidation-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-construction-tax": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-construction-tax-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-construction-tax-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-construction-tax-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-contractor-compliance": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-contractor-compliance-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-contractor-compliance-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-contractor-compliance-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-contractor-reporting": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-contractor-reporting-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-contractor-reporting-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-contractor-reporting-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-copilot": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-copilot-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-copilot-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-copilot-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-core": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-core-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-core-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-core-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-corporate-cards": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-corporate-cards-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-corporate-cards-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-corporate-cards-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-credit-notes-and-adjustments": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-credit-notes-and-adjustments-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-credit-notes-and-adjustments-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-credit-notes-and-adjustments-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-custom-report-builder": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-custom-report-builder-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-custom-report-builder-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-custom-report-builder-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-customer-payments": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-customer-payments-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-customer-payments-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-customer-payments-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-customer-portal": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-customer-portal-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-customer-portal-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-customer-portal-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-dashboards": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-dashboards-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-dashboards-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-dashboards-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-debt-and-loans": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-debt-and-loans-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-debt-and-loans-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-debt-and-loans-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-deposits-and-clearing": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-deposits-and-clearing-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-deposits-and-clearing-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-deposits-and-clearing-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-depreciation": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-depreciation-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-depreciation-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-depreciation-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-dimensions-and-tracking": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-dimensions-and-tracking-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-dimensions-and-tracking-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-dimensions-and-tracking-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-document-capture": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-document-capture-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-document-capture-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-document-capture-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-e-invoicing": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-e-invoicing-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-e-invoicing-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-e-invoicing-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-employee-expenses": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-employee-expenses-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-employee-expenses-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-employee-expenses-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-estimates-and-quotes": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-estimates-and-quotes-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-estimates-and-quotes-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-estimates-and-quotes-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-financial-master-data": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-financial-master-data-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-financial-master-data-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-financial-master-data-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-financial-statements": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-financial-statements-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-financial-statements-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-financial-statements-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-fixed-assets": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-fixed-assets-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-fixed-assets-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-fixed-assets-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-forecasts": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-forecasts-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-forecasts-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-forecasts-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-general-ledger": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-general-ledger-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-general-ledger-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-general-ledger-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-goods-and-service-receipts": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-goods-and-service-receipts-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-goods-and-service-receipts-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-goods-and-service-receipts-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-intercompany": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-intercompany-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-intercompany-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-intercompany-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-inventory-accounting": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-inventory-accounting-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-inventory-accounting-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-inventory-accounting-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-job-estimates": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-job-estimates-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-job-estimates-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-job-estimates-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-journal-approvals": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-journal-approvals-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-journal-approvals-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-journal-approvals-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-kpi-and-goals": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-kpi-and-goals-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-kpi-and-goals-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-kpi-and-goals-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-leases": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-leases-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-leases-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-leases-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-management-reporting": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-management-reporting-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-management-reporting-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-management-reporting-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-matching-intelligence": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-matching-intelligence-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-matching-intelligence-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-matching-intelligence-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-migration-framework": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-migration-framework-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-migration-framework-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-migration-framework-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-mileage": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-mileage-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-mileage-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-mileage-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-multi-currency": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-multi-currency-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-multi-currency-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-multi-currency-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-multi-entity": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-multi-entity-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-multi-entity-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-multi-entity-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-opening-balances": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-opening-balances-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-opening-balances-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-opening-balances-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-operational-reports": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-operational-reports-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-operational-reports-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-operational-reports-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payment-reconciliation": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payment-reconciliation-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payment-reconciliation-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payment-reconciliation-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-integration": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-integration-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-integration-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-integration-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-journals": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-journals-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-journals-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-journals-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-liabilities": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-liabilities-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-liabilities-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-liabilities-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-payments": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-payments-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-payments-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-payroll-payments-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-periods-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-periods-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-periods-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-plaid": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-policies-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-policies-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-policies-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-product-and-service-items": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-product-and-service-items-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-product-and-service-items-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-product-and-service-items-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-billing": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-billing-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-billing-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-billing-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-costing": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-costing-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-costing-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-costing-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-profitability": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-profitability-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-profitability-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-project-profitability-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-projects-and-jobs": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-projects-and-jobs-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-projects-and-jobs-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-projects-and-jobs-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-purchase-orders": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-purchase-orders-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-purchase-orders-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-purchase-orders-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-purchase-requisitions": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-purchase-requisitions-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-purchase-requisitions-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-purchase-requisitions-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-quickbooks-online-migration": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-quickbooks-online-migration-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-quickbooks-online-migration-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-quickbooks-online-migration-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-receipt-management": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-receipt-management-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-receipt-management-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-receipt-management-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-recurring-transactions": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-recurring-transactions-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-recurring-transactions-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-recurring-transactions-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-regional-packs": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-regional-packs-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-regional-packs-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-regional-packs-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-reimbursements": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-reimbursements-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-reimbursements-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-reimbursements-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-revenue-recognition": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-revenue-recognition-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-revenue-recognition-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-revenue-recognition-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-review": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-review-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-review-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-review-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-revolut": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sage-accounting-migration": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sage-accounting-migration-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sage-accounting-migration-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sage-accounting-migration-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sales-invoicing": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sales-invoicing-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sales-invoicing-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sales-invoicing-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sales-orders": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sales-orders-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sales-orders-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sales-orders-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sales-tax-and-gst": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sales-tax-and-gst-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-sales-tax-and-gst-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-spreadsheet-migration": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-spreadsheet-migration-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-spreadsheet-migration-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-supplier-bills": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-supplier-bills-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-supplier-bills-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-supplier-bills-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-supplier-portal": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-supplier-portal-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-supplier-portal-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-supplier-portal-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-tax-core": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-tax-core-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-tax-core-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-tax-core-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-tax-returns": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-tax-returns-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-tax-returns-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-tax-returns-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-three-way-matching": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-three-way-matching-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-three-way-matching-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-three-way-matching-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-time-tracking": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-time-tracking-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-time-tracking-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-time-tracking-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-transfers": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-transfers-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-transfers-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-transfers-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-vat": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-vat-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-vat-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-vat-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-wise": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-withholding-tax": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-withholding-tax-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-withholding-tax-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-withholding-tax-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-workforce-costing": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-workforce-costing-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-workforce-costing-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-workforce-costing-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-workpapers": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-workpapers-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-workpapers-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-workpapers-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-xero-migration": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-xero-migration-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-xero-migration-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-xero-migration-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-year-end": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-year-end-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-year-end-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-accounting-year-end-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-activity-comments": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-core": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-google": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-analytics-meta": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-api-access": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-application": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-audit": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-currency-context": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-developer-experience": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-feature-flags": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-files-media": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-identity-core": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-identity-core-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-identity-socialstream": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-import-export": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-integrations": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-jetstream-bridge": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-liberu-business-workflow-reconciliation": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-liberu-executive-insights": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-liberu-platform-orchestration": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-localization-core": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-localization-core-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-localization-mymemory": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-module-manager": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-module-manager-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-notifications": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-observability": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-organizations-teams": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-organizations-teams-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-profiles": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-roles-permissions": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-roles-permissions-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-scheduler-queues": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-search": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-search-api": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-sessions-devices": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-sessions-devices-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-settings": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-settings-filament": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-theme-support": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-theme-support-livewire": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-two-factor-authentication": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-users-roles": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "module-webhooks": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "theme-base": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "theme-clear-signal": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "theme-dark": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  },
+  "theme-default": {
+    "archived": false,
+    "default_branch": "main",
+    "private": false
+  }
+}

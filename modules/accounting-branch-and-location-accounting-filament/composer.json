@@ -22,5 +22,6 @@
         "php": "^8.5",
         "filament/filament": "^5.11.0",
         "liberusoftware/module-accounting-branch-and-location-accounting": "^1.0"
-    }
+    },
+    "license": "MIT"
 }
