@@ -1185,16 +1185,16 @@
         },
         {
             "name": "composer/semver",
-            "version": "3.5.2",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "9dfce66f1e97360ea5e6d3e38ab14277e4cc591e"
+                "reference": "d92543b7ede9c4ec6b59853cefb061e39866d2cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/9dfce66f1e97360ea5e6d3e38ab14277e4cc591e",
-                "reference": "9dfce66f1e97360ea5e6d3e38ab14277e4cc591e",
+                "url": "https://api.github.com/repos/composer/semver/zipball/d92543b7ede9c4ec6b59853cefb061e39866d2cf",
+                "reference": "d92543b7ede9c4ec6b59853cefb061e39866d2cf",
                 "shasum": ""
             },
             "require": {
@@ -1246,7 +1246,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.5.2"
+                "source": "https://github.com/composer/semver/tree/3.6.0"
             },
             "funding": [
                 {
@@ -1258,7 +1258,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-22T15:37:26+00:00"
+            "time": "2026-10-29T09:13:34+00:00"
         },
         {
             "name": "danharrin/date-format-converter",
@@ -3433,16 +3433,16 @@
         },
         {
             "name": "internal/dload",
-            "version": "1.19.0",
+            "version": "1.19.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-internal/dload.git",
-                "reference": "9c4c18ceb96e11b893bfbdd3e39ef5fe32c8a2f9"
+                "reference": "45055ece87fe40b7a2b62a8c0c2f04f82306bc7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-internal/dload/zipball/9c4c18ceb96e11b893bfbdd3e39ef5fe32c8a2f9",
-                "reference": "9c4c18ceb96e11b893bfbdd3e39ef5fe32c8a2f9",
+                "url": "https://api.github.com/repos/php-internal/dload/zipball/45055ece87fe40b7a2b62a8c0c2f04f82306bc7f",
+                "reference": "45055ece87fe40b7a2b62a8c0c2f04f82306bc7f",
                 "shasum": ""
             },
             "require": {
@@ -3505,7 +3505,7 @@
             ],
             "support": {
                 "issues": "https://github.com/php-internal/dload/issues",
-                "source": "https://github.com/php-internal/dload/tree/1.19.0"
+                "source": "https://github.com/php-internal/dload/tree/1.19.1"
             },
             "funding": [
                 {
@@ -3513,7 +3513,7 @@
                     "type": "boosty"
                 }
             ],
-            "time": "2026-10-12T19:28:10+00:00"
+            "time": "2026-10-28T13:14:24+00:00"
         },
         {
             "name": "internal/path",
@@ -7197,7 +7197,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-accountant-workspace",
-                "reference": "6db49a317fb010d09a52bbc04a5d6b14ba382092"
+                "reference": "7c883271835c640df8ac3ada10a5452e1a1d187f"
             },
             "require": {
                 "php": "^8.5"
@@ -7218,6 +7218,9 @@
                     "Liberu\\Accounting\\AccountantWorkspace\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting accountant workspace",
             "transport-options": {
                 "symlink": true,
@@ -7230,7 +7233,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-accountant-workspace-api",
-                "reference": "62435e184e1254ea0f3e68182460509d9d81fc85"
+                "reference": "f2e431a154289989e0315e1b3fb6e13e46ea70da"
             },
             "require": {
                 "liberusoftware/module-accounting-accountant-workspace": "^1.0",
@@ -7252,6 +7255,9 @@
                     "Liberu\\Accounting\\AccountantWorkspaceApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting accountant workspace API",
             "transport-options": {
                 "symlink": true,
@@ -7264,7 +7270,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-accountant-workspace-filament",
-                "reference": "425f4957ed91fc78fe73957fecaf8303e04e2c58"
+                "reference": "f977e649b90e66ba131903916c41e6675072aaaa"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -7287,6 +7293,9 @@
                     "Liberu\\Accounting\\AccountantWorkspaceFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting accountant workspace Filament adapter",
             "transport-options": {
                 "symlink": true,
@@ -7299,7 +7308,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-accountant-workspace-livewire",
-                "reference": "e340ce17b249fb444e3f247145eb8caa23e6e298"
+                "reference": "b0fa604b323cf6897c8c53560148e2e9e98964d5"
             },
             "require": {
                 "liberusoftware/module-accounting-accountant-workspace": "^1.0",
@@ -7322,6 +7331,9 @@
                     "Liberu\\Accounting\\AccountantWorkspaceLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting accountant workspace Livewire adapter",
             "transport-options": {
                 "symlink": true,
@@ -7645,7 +7657,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-anomaly-detection",
-                "reference": "12573ab506e7e5385f08a58022fd0d7173161bcf"
+                "reference": "cb4b1014adf3bbd06804973067c8832d8f165dff"
             },
             "require": {
                 "php": "^8.5"
@@ -7666,6 +7678,9 @@
                     "Liberu\\Accounting\\AnomalyDetection\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting anomaly detection",
             "transport-options": {
                 "symlink": true,
@@ -7678,7 +7693,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-anomaly-detection-api",
-                "reference": "981e69d4d3ee3eee73570346ac65e726c19a9f71"
+                "reference": "1b9f2fb35786fd09f06b9f14558fcaa0a3c24f41"
             },
             "require": {
                 "liberusoftware/module-accounting-anomaly-detection": "^1.0",
@@ -7700,6 +7715,9 @@
                     "Liberu\\Accounting\\AnomalyDetectionApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting anomaly detection API",
             "transport-options": {
                 "symlink": true,
@@ -7712,7 +7730,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-anomaly-detection-filament",
-                "reference": "88ee4ee2fd9c4dadbd825e57bf5c01e5a7750154"
+                "reference": "cf393877baccc2d0c136108a8d18a5d42d78305d"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -7735,6 +7753,9 @@
                     "Liberu\\Accounting\\AnomalyDetectionFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting anomaly detection Filament adapter",
             "transport-options": {
                 "symlink": true,
@@ -7747,7 +7768,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-anomaly-detection-livewire",
-                "reference": "1416effa8c478c3ce887fde3a2305d5455035661"
+                "reference": "8fad29149e967c111b161a9ecfc06d8d5e0aed4d"
             },
             "require": {
                 "liberusoftware/module-accounting-anomaly-detection": "^1.0",
@@ -7770,6 +7791,9 @@
                     "Liberu\\Accounting\\AnomalyDetectionLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting anomaly detection Livewire adapter",
             "transport-options": {
                 "symlink": true,
@@ -7782,7 +7806,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-asset-events",
-                "reference": "23c7effcabad30f2d294a6601bf248d94163e0af"
+                "reference": "dc61c03ca612fd56b11444b74ca2f0076bf90f2b"
             },
             "require": {
                 "php": "^8.5"
@@ -7803,6 +7827,9 @@
                     "Liberu\\Accounting\\AssetEvents\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting asset events",
             "transport-options": {
                 "symlink": true,
@@ -7815,7 +7842,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-asset-events-api",
-                "reference": "b7f7c172015849ed2d64e12e1f49acf2c564cf2f"
+                "reference": "f65b0fac1a150d8ab2c1e1a40741d55152d256d3"
             },
             "require": {
                 "liberusoftware/module-accounting-asset-events": "^1.0",
@@ -7837,6 +7864,9 @@
                     "Liberu\\Accounting\\AssetEventsApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting asset events API",
             "transport-options": {
                 "symlink": true,
@@ -7849,7 +7879,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-asset-events-filament",
-                "reference": "ab659d1298604cbd19a193c86982aa5eef78a000"
+                "reference": "68c57a893161588bf4e010163766eff652e5ec64"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -7872,6 +7902,9 @@
                     "Liberu\\Accounting\\AssetEventsFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting asset events Filament adapter",
             "transport-options": {
                 "symlink": true,
@@ -7884,7 +7917,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-asset-events-livewire",
-                "reference": "774fb85ad1ca857812a9456335e5c88ec8fdbf0f"
+                "reference": "35638ef7444fd5675b625db45b5f3a045dd37f84"
             },
             "require": {
                 "liberusoftware/module-accounting-asset-events": "^1.0",
@@ -7907,6 +7940,9 @@
                     "Liberu\\Accounting\\AssetEventsLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting asset events Livewire adapter",
             "transport-options": {
                 "symlink": true,
@@ -7919,7 +7955,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-audit-support",
-                "reference": "cf1d8d86af64e28898345c1e971405987b6aeb56"
+                "reference": "d6b96d4c38c8ef28f0ca540f57a7c9930419c2d6"
             },
             "require": {
                 "php": "^8.5"
@@ -7940,6 +7976,9 @@
                     "Liberu\\Accounting\\AuditSupport\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting audit support",
             "transport-options": {
                 "symlink": true,
@@ -7952,7 +7991,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-audit-support-api",
-                "reference": "546c19a4becf94865264f27c4d6dddf80125e343"
+                "reference": "138dce539cd2fe3a553e9d81d9ece65b438b6799"
             },
             "require": {
                 "liberusoftware/module-accounting-audit-support": "^1.0",
@@ -7974,6 +8013,9 @@
                     "Liberu\\Accounting\\AuditSupportApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting audit support API",
             "transport-options": {
                 "symlink": true,
@@ -7986,7 +8028,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-audit-support-filament",
-                "reference": "1030185c2dfd8941f49fd77c3f29baf186ca6623"
+                "reference": "816ee4aa098c70e1d779f3ed81d8be97e631afcb"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -8009,6 +8051,9 @@
                     "Liberu\\Accounting\\AuditSupportFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting audit support Filament adapter",
             "transport-options": {
                 "symlink": true,
@@ -8021,7 +8066,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-audit-support-livewire",
-                "reference": "5ddea4314c133fde0b14790028b60deb6f676556"
+                "reference": "240afd589e7929d47f69ef21e3f6a4f448c52031"
             },
             "require": {
                 "liberusoftware/module-accounting-audit-support": "^1.0",
@@ -8044,6 +8089,9 @@
                     "Liberu\\Accounting\\AuditSupportLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting audit support Livewire adapter",
             "transport-options": {
                 "symlink": true,
@@ -8056,7 +8104,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-automation-pack",
-                "reference": "51390e315971637cf5cfaefca16b8a6b22a46899"
+                "reference": "deb4535b1d35247b544a7329a4b9a3e411e887f0"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -8079,6 +8127,9 @@
                     "Liberu\\Accounting\\AutomationPack\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting automation triggers, recipes, schedules and approvals.",
             "transport-options": {
                 "symlink": true,
@@ -8091,7 +8142,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-automation-pack-api",
-                "reference": "7367228551d35ca9aa27890079e0e24a4bd10ed5"
+                "reference": "e6d89ebc2801cb28414e9a026e4807be788d19e1"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -8114,6 +8165,9 @@
                     "Liberu\\Accounting\\AutomationPackApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting Automation Pack API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -8126,7 +8180,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-automation-pack-filament",
-                "reference": "9ec05f6e66ceb69e3bff69503afdd9eab8b7ce76"
+                "reference": "5249f7eb6a21be4470054a39e64c03d778afb654"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -8149,6 +8203,9 @@
                     "Liberu\\Accounting\\AutomationPackFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting Automation Pack Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -8161,7 +8218,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-automation-pack-livewire",
-                "reference": "e78a085db5e5c788d0e8890ece847a01089dbac4"
+                "reference": "13bdbd062bc6a35ee665d991826feba4432762e3"
             },
             "require": {
                 "liberusoftware/module-accounting-automation-pack": "^1.0",
@@ -8184,6 +8241,9 @@
                     "Liberu\\Accounting\\AutomationPackLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting Automation Pack Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -8963,7 +9023,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-branch-and-location-accounting",
-                "reference": "f18f2e3babc0f7cf20122ba7f4c0f3218fe67547"
+                "reference": "d60857b2308963b0abcfa404ddd989f6f850f07d"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -8986,6 +9046,9 @@
                     "Liberu\\Accounting\\BranchLocationAccounting\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting branches, locations, allocations and performance.",
             "transport-options": {
                 "symlink": true,
@@ -8998,7 +9061,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-branch-and-location-accounting-api",
-                "reference": "48a0be26788e305008be04b95b63a446e9883ab6"
+                "reference": "54b2353e5089f36abeb50998daa2cd48d700a7dd"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -9021,6 +9084,9 @@
                     "Liberu\\Accounting\\BranchLocationAccountingApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Branch and Location Accounting API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -9033,7 +9099,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-branch-and-location-accounting-filament",
-                "reference": "3603d3392d1c076a880195cc2b056ce3cbbdf2af"
+                "reference": "4d70ffb0177d11ad7b0a35b9bf622f386c18e468"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -9056,6 +9122,9 @@
                     "Liberu\\Accounting\\BranchLocationAccountingFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Branch and Location Accounting Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -9068,7 +9137,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-branch-and-location-accounting-livewire",
-                "reference": "49a0a461d6d729b112f9d8597791861822f7276d"
+                "reference": "7ddd31ada734537d88b4262c4ccc18d21f801421"
             },
             "require": {
                 "liberusoftware/module-accounting-branch-and-location-accounting": "^1.0",
@@ -9091,6 +9160,9 @@
                     "Liberu\\Accounting\\BranchLocationAccountingLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Branch and Location Accounting Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -9103,7 +9175,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-budgets",
-                "reference": "ef6355e2d9f8560d232938753104aecccb84abd1"
+                "reference": "4cb21ff87fcfd22dd4445ce1b1e5d2cacb7c1c24"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -9126,6 +9198,9 @@
                     "Liberu\\Accounting\\Budgets\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting budgets domain module",
             "transport-options": {
                 "symlink": true,
@@ -9138,7 +9213,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-budgets-api",
-                "reference": "6e3d40b21875f2dc5df681256de9345b50256508"
+                "reference": "860c995a13b82d1daa61961a2efab13a80188396"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
@@ -9162,6 +9237,9 @@
                     "Liberu\\Accounting\\BudgetsApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting budgets API adapter",
             "transport-options": {
                 "symlink": true,
@@ -9174,7 +9252,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-budgets-filament",
-                "reference": "7836ff0aa07c0e27c5f6e0dc9f0129cd25dfa98e"
+                "reference": "d7b219b167fa90d89f9ccc982aa653b8a32e0ee3"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -9197,6 +9275,9 @@
                     "Liberu\\Accounting\\BudgetsFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting budgets Filament adapter",
             "transport-options": {
                 "symlink": true,
@@ -9209,7 +9290,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-budgets-livewire",
-                "reference": "d6cc7849eb4aa8c9fa869c4170402e21b96d783f"
+                "reference": "03b5c1e69a5b6be8ab92f3409f42002ad3ac5a31"
             },
             "require": {
                 "liberusoftware/module-accounting-budgets": "^1.0",
@@ -9232,6 +9313,9 @@
                     "Liberu\\Accounting\\BudgetsLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting budgets Livewire adapter",
             "transport-options": {
                 "symlink": true,
@@ -9244,7 +9328,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-business-insights",
-                "reference": "b0fb2a5dbfd07fcb644c0b2cf43c13bfcb8f6dc3"
+                "reference": "311272100e3490ebc13a91ffa6e5ee15c0bc7f7f"
             },
             "require": {
                 "php": "^8.5"
@@ -9265,6 +9349,9 @@
                     "Liberu\\Accounting\\BusinessInsights\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting business insights",
             "transport-options": {
                 "symlink": true,
@@ -9277,7 +9364,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-business-insights-api",
-                "reference": "a47ca9c9287feda5411b7187425d937e8835d478"
+                "reference": "12e586fac6be05cc3afa58093f0796b40f0be9c3"
             },
             "require": {
                 "liberusoftware/module-accounting-business-insights": "^1.0",
@@ -9299,6 +9386,9 @@
                     "Liberu\\Accounting\\BusinessInsightsApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting business insights API",
             "transport-options": {
                 "symlink": true,
@@ -9311,7 +9401,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-business-insights-filament",
-                "reference": "d0e17c63e338859def49a3f899a33ce7ea225eba"
+                "reference": "92f6468e2b0ea7f9a4db6089681dec0db10623b9"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -9334,6 +9424,9 @@
                     "Liberu\\Accounting\\BusinessInsightsFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting business insights Filament adapter",
             "transport-options": {
                 "symlink": true,
@@ -9346,7 +9439,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-business-insights-livewire",
-                "reference": "3ab1a1f9afcbd2ef2b07d3705ac132cce35a79b6"
+                "reference": "16511406d4d1c5524fabfe8883b29e06c4fe99bb"
             },
             "require": {
                 "liberusoftware/module-accounting-business-insights": "^1.0",
@@ -9369,6 +9462,9 @@
                     "Liberu\\Accounting\\BusinessInsightsLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting business insights Livewire adapter",
             "transport-options": {
                 "symlink": true,
@@ -9381,7 +9477,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-carbon-accounting",
-                "reference": "520a3099a14305d03b951c49bb215b9533da80db"
+                "reference": "1c6ec8d36572885259dbfa5da19083ada8fe06c0"
             },
             "require": {
                 "php": "^8.5"
@@ -9402,6 +9498,9 @@
                     "Liberu\\Accounting\\CarbonAccounting\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting carbon accounting",
             "transport-options": {
                 "symlink": true,
@@ -9414,7 +9513,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-carbon-accounting-api",
-                "reference": "25012e141db1bf2cf73aa015bf64e8658a6ef6ba"
+                "reference": "7538e7dd6ada993cb8f8fd8419a64e06a451bb75"
             },
             "require": {
                 "liberusoftware/module-accounting-carbon-accounting": "^1.0",
@@ -9436,6 +9535,9 @@
                     "Liberu\\Accounting\\CarbonAccountingApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting carbon accounting API",
             "transport-options": {
                 "symlink": true,
@@ -9448,7 +9550,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-carbon-accounting-filament",
-                "reference": "ce328cce64e9b9d08cf823888729f644ff5a65b3"
+                "reference": "4629df68a076ac8ad11971849be1ce9306b796d2"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -9471,6 +9573,9 @@
                     "Liberu\\Accounting\\CarbonAccountingFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting carbon accounting Filament adapter",
             "transport-options": {
                 "symlink": true,
@@ -9483,7 +9588,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-carbon-accounting-livewire",
-                "reference": "4e897933ff989a05ca67bd0cdbbaed916f610961"
+                "reference": "b05254d4aaa505a89f90bb752886c887d79e6c38"
             },
             "require": {
                 "liberusoftware/module-accounting-carbon-accounting": "^1.0",
@@ -9506,6 +9611,9 @@
                     "Liberu\\Accounting\\CarbonAccountingLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting carbon accounting Livewire adapter",
             "transport-options": {
                 "symlink": true,
@@ -9670,7 +9778,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-collection-assistant",
-                "reference": "779a6ebc7835729b5b5c09ac8d27fea0e5eb1d39"
+                "reference": "39fad3f944c1f7e1564a54892a2fd1472db215c3"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -9693,6 +9801,9 @@
                     "Liberu\\Accounting\\CashCollectionAssistant\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash collection assistant domain module.",
             "transport-options": {
                 "symlink": true,
@@ -9705,7 +9816,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-collection-assistant-api",
-                "reference": "bb7e46beef2f1153e5b30cc9a0f113c2eadeebb5"
+                "reference": "affa66169dcb70f6888484487f28dd6302290583"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -9728,6 +9839,9 @@
                     "Liberu\\Accounting\\CashCollectionAssistantApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash collection assistant API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -9740,7 +9854,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-collection-assistant-filament",
-                "reference": "21445733fc58056394f279ef7166956d99a41e7b"
+                "reference": "b0591e16c8955dbc27d4a761fe39e65a08552c31"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -9763,6 +9877,9 @@
                     "Liberu\\Accounting\\CashCollectionAssistantFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash collection assistant Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -9775,7 +9892,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-collection-assistant-livewire",
-                "reference": "f68199d2e8feacdba2421fe3dee0131459088694"
+                "reference": "8fc448acc8a8f13144b4111b5176a59663bc1375"
             },
             "require": {
                 "liberusoftware/module-accounting-cash-collection-assistant": "^1.0",
@@ -9798,6 +9915,9 @@
                     "Liberu\\Accounting\\CashCollectionAssistantLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash collection assistant Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -9810,7 +9930,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-flow-forecasting",
-                "reference": "d014e6eb64de6dbc56c6d298e04bd4a93e216089"
+                "reference": "e7f553242ff27a0d5dbe453541d8ed70a55440db"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -9833,6 +9953,9 @@
                     "Liberu\\Accounting\\CashFlowForecasting\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash-flow forecasting domain module.",
             "transport-options": {
                 "symlink": true,
@@ -9845,7 +9968,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-flow-forecasting-api",
-                "reference": "fd4a8907c1d2d51051ef24427f6bc5929c605e46"
+                "reference": "7c07b64cf1406ebc45d2dd964272cce01a10d74f"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -9868,6 +9991,9 @@
                     "Liberu\\Accounting\\CashFlowForecastingApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash-flow forecasting API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -9880,7 +10006,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-flow-forecasting-filament",
-                "reference": "4c204a9a86a584d0166f1e97a9ec98f8c189dee5"
+                "reference": "5272efb9983d2a49170816f0b527bf664a7a2090"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -9903,6 +10029,9 @@
                     "Liberu\\Accounting\\CashFlowForecastingFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash-flow forecasting Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -9915,7 +10044,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-flow-forecasting-livewire",
-                "reference": "e9fe8a5d89f9b9e6a05d85fc6a3802f4044a6d2c"
+                "reference": "084f421839a69c2cef7c0c329249b075424cd785"
             },
             "require": {
                 "liberusoftware/module-accounting-cash-flow-forecasting": "^1.0",
@@ -9938,6 +10067,9 @@
                     "Liberu\\Accounting\\CashFlowForecastingLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash-flow forecasting Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -9950,7 +10082,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-position",
-                "reference": "7e4fb4b1db9eaa8f2b0a7949aa773bb1117a567a"
+                "reference": "0cd7470706e0456f9beb31d629157e1217f098f1"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -9973,6 +10105,9 @@
                     "Liberu\\Accounting\\CashPosition\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash position domain module.",
             "transport-options": {
                 "symlink": true,
@@ -9985,7 +10120,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-position-api",
-                "reference": "ab68fcc6afd929d2bd62c6b0a746598358194706"
+                "reference": "6be0064a40a5d9db2dd9f6242cb8bdcad92e7803"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -10008,6 +10143,9 @@
                     "Liberu\\Accounting\\CashPositionApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash position API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10020,7 +10158,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-position-filament",
-                "reference": "cc8580161f930da7ffee6048fcfc3bf970cefdcd"
+                "reference": "a150f49583d07aa7beced9689f49b3751cf40f71"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -10043,6 +10181,9 @@
                     "Liberu\\Accounting\\CashPositionFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash position Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10055,7 +10196,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-cash-position-livewire",
-                "reference": "4d8d6138229dc92a3200cc4a4b54ad6708ef4eea"
+                "reference": "868c2eeb187d5a5ff7a0e898f18dfe662454fe13"
             },
             "require": {
                 "liberusoftware/module-accounting-cash-position": "^1.0",
@@ -10078,6 +10219,9 @@
                     "Liberu\\Accounting\\CashPositionLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting cash position Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10285,7 +10429,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-client-collaboration",
-                "reference": "9820eb0468c93c39949deff8a023f489814b834b"
+                "reference": "d2e589f77b144cf08acae825c57d943c29d4b801"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -10308,6 +10452,9 @@
                     "Liberu\\Accounting\\ClientCollaboration\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting client collaboration domain module.",
             "transport-options": {
                 "symlink": true,
@@ -10320,7 +10467,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-client-collaboration-api",
-                "reference": "86d98e3f5543f3b02a4f459374f9c47eb0995c6c"
+                "reference": "bdeffcff223372358d4019bbf7f424c3d24bfd88"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -10343,6 +10490,9 @@
                     "Liberu\\Accounting\\ClientCollaborationApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting client collaboration API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10355,7 +10505,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-client-collaboration-filament",
-                "reference": "fc4094e36a70e06eadd65895aad40f94e2d20ab0"
+                "reference": "3df340c9f7eb3eee716e32dc7fd1058620e4fa8a"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -10378,6 +10528,9 @@
                     "Liberu\\Accounting\\ClientCollaborationFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting client collaboration Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10390,7 +10543,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-client-collaboration-livewire",
-                "reference": "1dcd819b9db1abf93e254e179bd62230a117177d"
+                "reference": "8dee4b50d329ef0f536ee3a99a41603463e3ead6"
             },
             "require": {
                 "liberusoftware/module-accounting-client-collaboration": "^1.0",
@@ -10413,6 +10566,9 @@
                     "Liberu\\Accounting\\ClientCollaborationLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting client collaboration Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10425,7 +10581,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-close-management",
-                "reference": "c25c1b1244afbbe813cad7a7d39ad22a55bc7a96"
+                "reference": "9f88614dcc580e1e2bbbfe9d85be1c3a0bcf3ed8"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -10448,6 +10604,9 @@
                     "Liberu\\Accounting\\CloseManagement\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting close management domain module.",
             "transport-options": {
                 "symlink": true,
@@ -10460,7 +10619,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-close-management-api",
-                "reference": "d88f34c4ff24c403aba250565153f54c78219014"
+                "reference": "0f1c69225e19a42afaef33d4aee2a5088da778c4"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -10483,6 +10642,9 @@
                     "Liberu\\Accounting\\CloseManagementApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting close management API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10495,7 +10657,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-close-management-filament",
-                "reference": "44ef1c85066a88a5c34b1877eb07b49b6001d120"
+                "reference": "f584d4fa704d392e090000110dd7a0d22d254286"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -10518,6 +10680,9 @@
                     "Liberu\\Accounting\\CloseManagementFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting close management Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10530,7 +10695,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-close-management-livewire",
-                "reference": "8514b9789d2c207e01c2ad346218ef93541ddd46"
+                "reference": "3e7eb0a65fa230d42ea7e92615d8e9a645496d32"
             },
             "require": {
                 "liberusoftware/module-accounting-close-management": "^1.0",
@@ -10553,6 +10718,9 @@
                     "Liberu\\Accounting\\CloseManagementLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting close management Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10565,7 +10733,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-coding-suggestions",
-                "reference": "874f7a6128630c7ca2cbbf6cbf40d3637cfc5d67"
+                "reference": "7f79ff1602dcbaee142a10220110b504b3903127"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -10588,6 +10756,9 @@
                     "Liberu\\Accounting\\CodingSuggestions\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting coding suggestions domain module.",
             "transport-options": {
                 "symlink": true,
@@ -10600,7 +10771,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-coding-suggestions-api",
-                "reference": "ae70fe38999d0aef6fd9919ffaa2554ec8982826"
+                "reference": "20e717ec12ff88c77853d9262c6d156d5fdc9695"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -10623,6 +10794,9 @@
                     "Liberu\\Accounting\\CodingSuggestionsApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting coding suggestions API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10635,7 +10809,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-coding-suggestions-filament",
-                "reference": "11de01bccbf43cf965e0c74f0fbc50cd3d811711"
+                "reference": "0fe5c1b105cbd2765a0b2e806d1cd57927a67c0d"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -10658,6 +10832,9 @@
                     "Liberu\\Accounting\\CodingSuggestionsFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting coding suggestions Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10670,7 +10847,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-coding-suggestions-livewire",
-                "reference": "b8bf398594612c41ea34b85817f79e8dcdcb2ef1"
+                "reference": "3655b0aa5b5837aba9f2695ee9a267699f10d6d1"
             },
             "require": {
                 "liberusoftware/module-accounting-coding-suggestions": "^1.0",
@@ -10693,6 +10870,9 @@
                     "Liberu\\Accounting\\CodingSuggestionsLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting coding suggestions Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10705,7 +10885,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-collections",
-                "reference": "6d0343bd4de161d8b140b7130f3d1ba011b1ad9b"
+                "reference": "448d62713e6cec3576519703268b26c7f1c2d0f4"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -10728,6 +10908,9 @@
                     "Liberu\\Accounting\\Collections\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting collections domain module.",
             "transport-options": {
                 "symlink": true,
@@ -10740,7 +10923,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-collections-api",
-                "reference": "890e725414a6a66865a1b8c8c492ecaaf4a15b14"
+                "reference": "339e82ec3e4c5f0621eb14f9a57477df4e29f4e0"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -10763,6 +10946,9 @@
                     "Liberu\\Accounting\\CollectionsApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting collections API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10775,7 +10961,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-collections-filament",
-                "reference": "4449bbf19c669f4a706741822663da5e13ed95ce"
+                "reference": "f8286ea851152ac18d4ecd1bb4793422f1e82b26"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -10798,6 +10984,9 @@
                     "Liberu\\Accounting\\CollectionsFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting collections Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10810,7 +10999,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-collections-livewire",
-                "reference": "a9d3f9e97df528c444c1cfd32379540ec3e7a36a"
+                "reference": "76de1fe462286e402dea00173a746b4830912858"
             },
             "require": {
                 "liberusoftware/module-accounting-collections": "^1.0",
@@ -10833,6 +11022,9 @@
                     "Liberu\\Accounting\\CollectionsLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting collections Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10845,7 +11037,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-consolidation",
-                "reference": "8362bfb3e2a855baa0e9b9ea40c8f7509a8c9d84"
+                "reference": "a5d4db16f7631cc28aad82270c3315ee68bf1e8f"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -10868,6 +11060,9 @@
                     "Liberu\\Accounting\\Consolidation\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting consolidation domain module.",
             "transport-options": {
                 "symlink": true,
@@ -10880,7 +11075,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-consolidation-api",
-                "reference": "41b43d2d6d771ccfc95622ff7ce25e8ed200241e"
+                "reference": "b78511110392da096f42114a62b19d90151aa59d"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -10903,6 +11098,9 @@
                     "Liberu\\Accounting\\ConsolidationApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting consolidation API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10915,7 +11113,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-consolidation-filament",
-                "reference": "c1fb29ad904a59e82fbea97405bf24b630ab098f"
+                "reference": "18e14eb72fbb8a089d6312b3db2adfb52c4c596f"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -10938,6 +11136,9 @@
                     "Liberu\\Accounting\\ConsolidationFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting consolidation Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10950,7 +11151,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-consolidation-livewire",
-                "reference": "8d0b35027cdbad2f145a10026f17c70f65bcb3e9"
+                "reference": "60f51c3028564d5ffea5a353f95d7c6277674eb7"
             },
             "require": {
                 "liberusoftware/module-accounting-consolidation": "^1.0",
@@ -10973,6 +11174,9 @@
                     "Liberu\\Accounting\\ConsolidationLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting consolidation Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -10985,7 +11189,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-construction-tax",
-                "reference": "71adb93b83ea5ceec08f9d4fa9b825ae099eb853"
+                "reference": "6afb6ed9755b8ed5fed2dca57581cc9e914c17ef"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -11008,6 +11212,9 @@
                     "Liberu\\Accounting\\ConstructionTax\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting construction tax domain module.",
             "transport-options": {
                 "symlink": true,
@@ -11020,7 +11227,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-construction-tax-api",
-                "reference": "4ce1f3751506e22d414de107f205231f1a046280"
+                "reference": "cf7833473c7b54b611fddc762309ed225d6ac491"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -11043,6 +11250,9 @@
                     "Liberu\\Accounting\\ConstructionTaxApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting construction tax API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -11055,7 +11265,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-construction-tax-filament",
-                "reference": "4c2fc63fca04dd968dfead556a1f498c39a799ef"
+                "reference": "20a308f09d09f1152012ad4a387708de18e243b8"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -11078,6 +11288,9 @@
                     "Liberu\\Accounting\\ConstructionTaxFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting construction tax Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -11090,7 +11303,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-construction-tax-livewire",
-                "reference": "d62c81d30dc130a374e88c5c87c26c28bf719bae"
+                "reference": "78df9200715cf10fa7ec0d24aae2e26153a4b141"
             },
             "require": {
                 "liberusoftware/module-accounting-construction-tax": "^1.0",
@@ -11113,6 +11326,9 @@
                     "Liberu\\Accounting\\ConstructionTaxLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting construction tax Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -11125,7 +11341,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-compliance",
-                "reference": "6708973ef6fec55e5abd006112d0484ee6e428ec"
+                "reference": "872ae7883039803b379972c02046985cb9b48063"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -11148,6 +11364,9 @@
                     "Liberu\\Accounting\\ContractorCompliance\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting contractor compliance domain module.",
             "transport-options": {
                 "symlink": true,
@@ -11160,7 +11379,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-compliance-api",
-                "reference": "ad42d59d14c28c44943f602da61ed869689114bd"
+                "reference": "cf03a3900c386b54b19b48513c7fee92977458e7"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -11183,6 +11402,9 @@
                     "Liberu\\Accounting\\ContractorComplianceApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting contractor compliance API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -11195,7 +11417,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-compliance-filament",
-                "reference": "92a03f8b42c85a4ec2d7b9c042814a58147ba08d"
+                "reference": "176929055621f0743f3e16ded734efdc8d63040f"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -11218,6 +11440,9 @@
                     "Liberu\\Accounting\\ContractorComplianceFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting contractor compliance Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -11230,7 +11455,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-contractor-compliance-livewire",
-                "reference": "e07a877062b6ae376487c9979c1b8c3a704785bf"
+                "reference": "9b92d7f99aba8cbed4d9797d555905abdc98ccfc"
             },
             "require": {
                 "liberusoftware/module-accounting-contractor-compliance": "^1.0",
@@ -11253,6 +11478,9 @@
                     "Liberu\\Accounting\\ContractorComplianceLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting contractor compliance Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -11417,7 +11645,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-copilot",
-                "reference": "7aea40391c571f8938c60cdb75e51dae8bd6f704"
+                "reference": "ca35d890c2bced19ba66a1bf98ad418ed885e83a"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -11440,6 +11668,9 @@
                     "Liberu\\Accounting\\Copilot\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Permission-bounded accounting copilot requests and confirmations.",
             "transport-options": {
                 "symlink": true,
@@ -11452,7 +11683,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-copilot-api",
-                "reference": "0d85e8b3e5447838182634321fe0bee043c60e5b"
+                "reference": "2165848ae5b87f73311a12081b7f31561efa7d42"
             },
             "require": {
                 "illuminate/support": "^13.38.0",
@@ -11475,6 +11706,9 @@
                     "Liberu\\Accounting\\CopilotApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting Copilot API presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -11487,7 +11721,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-copilot-filament",
-                "reference": "6accd4c7a56a411d845713bb8985039c04edab2a"
+                "reference": "31a2f67799c9d961d0dbd8bdff564131decda2b2"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -11510,6 +11744,9 @@
                     "Liberu\\Accounting\\CopilotFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting Copilot Filament presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -11522,7 +11759,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-copilot-livewire",
-                "reference": "7c3f2ba60c67270b790fdb219de839698989f44e"
+                "reference": "ead5a5f19417be75c66df1395aedbb978d87d396"
             },
             "require": {
                 "liberusoftware/module-accounting-copilot": "^1.0",
@@ -11545,6 +11782,9 @@
                     "Liberu\\Accounting\\CopilotLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting Copilot Livewire presentation module.",
             "transport-options": {
                 "symlink": true,
@@ -17156,7 +17396,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-integration",
-                "reference": "668dda72d48bd6a89875934df405a869a76d5fb3"
+                "reference": "2336b8697d8d8eb7658dea91278182d074d08888"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -17179,6 +17419,9 @@
                     "Liberu\\Accounting\\PayrollIntegration\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll integration domain module.",
             "transport-options": {
                 "symlink": true,
@@ -17191,7 +17434,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-integration-api",
-                "reference": "d2ddfa2c5a71e84b25f4f381d7297b56e53bae73"
+                "reference": "4590185dc0478dc5c467980db60a914c9a65ffa5"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
@@ -17215,6 +17458,9 @@
                     "Liberu\\Accounting\\PayrollIntegrationApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll integration API adapter.",
             "transport-options": {
                 "symlink": true,
@@ -17227,7 +17473,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-integration-filament",
-                "reference": "a3e2b8a786d16a42b1877783106d29f767b669fe"
+                "reference": "b6daabfba50ea367059c444f33c24a5b44476943"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -17250,6 +17496,9 @@
                     "Liberu\\Accounting\\PayrollIntegrationFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll integration Filament adapter.",
             "transport-options": {
                 "symlink": true,
@@ -17262,7 +17511,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-integration-livewire",
-                "reference": "0193f11b0f52a38a3ea0e4cabdc5efa99c02637d"
+                "reference": "d6cb59770ebc1058ca47b9bf5e0d1e8df7081949"
             },
             "require": {
                 "liberusoftware/module-accounting-payroll-integration": "^1.0",
@@ -17285,6 +17534,9 @@
                     "Liberu\\Accounting\\PayrollIntegrationLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll integration Livewire adapter.",
             "transport-options": {
                 "symlink": true,
@@ -17297,7 +17549,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-journals",
-                "reference": "63c2ab02f209f8dd0649e48f9ea04dbc59f521f0"
+                "reference": "8d0d0b29af711bf74bfedb783e4d864c42c54036"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -17320,6 +17572,9 @@
                     "Liberu\\Accounting\\PayrollJournals\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll journals domain module.",
             "transport-options": {
                 "symlink": true,
@@ -17332,7 +17587,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-journals-api",
-                "reference": "6f2751e64547b3aa06129a22d49eda95e37c9ed0"
+                "reference": "3011b7263b304cc07ba5b16c2a6440f592dc00c8"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
@@ -17356,6 +17611,9 @@
                     "Liberu\\Accounting\\PayrollJournalsApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll journals API adapter.",
             "transport-options": {
                 "symlink": true,
@@ -17368,7 +17626,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-journals-filament",
-                "reference": "2e30bb209fafb4941765025cc6ffe50c0b170a8f"
+                "reference": "867dc125507c9ad83b1ad7cdf423e829c6a408dc"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -17391,6 +17649,9 @@
                     "Liberu\\Accounting\\PayrollJournalsFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll journals Filament adapter.",
             "transport-options": {
                 "symlink": true,
@@ -17403,7 +17664,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-journals-livewire",
-                "reference": "5420ad70de649ac8f63c09c8f9c7bf693f40bdaf"
+                "reference": "c024e0d000288ef09f707f4ad7975d025f9318c8"
             },
             "require": {
                 "liberusoftware/module-accounting-payroll-journals": "^1.0",
@@ -17426,6 +17687,9 @@
                     "Liberu\\Accounting\\PayrollJournalsLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll journals Livewire adapter.",
             "transport-options": {
                 "symlink": true,
@@ -17438,7 +17702,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-liabilities",
-                "reference": "1b6f88f8431d378772800ac8e8c36965eafd7f97"
+                "reference": "b1cb0271b3d37f7e7841dcda085615e3e41f176b"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -17461,6 +17725,9 @@
                     "Liberu\\Accounting\\PayrollLiabilities\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll liabilities domain module.",
             "transport-options": {
                 "symlink": true,
@@ -17473,7 +17740,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-liabilities-api",
-                "reference": "351bc7f5fb3dbd1f4d79d8ac990699616c0b2acd"
+                "reference": "2374c3bfbc22d463236d504ba1d5cb404361b0eb"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
@@ -17497,6 +17764,9 @@
                     "Liberu\\Accounting\\PayrollLiabilitiesApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll liabilities API adapter.",
             "transport-options": {
                 "symlink": true,
@@ -17509,7 +17779,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-liabilities-filament",
-                "reference": "3d145447a9c683bb1e633568e5198ca3a7428715"
+                "reference": "8e28c28ae502a909b36202894c06724bb64ff333"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -17532,6 +17802,9 @@
                     "Liberu\\Accounting\\PayrollLiabilitiesFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll liabilities Filament adapter.",
             "transport-options": {
                 "symlink": true,
@@ -17544,7 +17817,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-liabilities-livewire",
-                "reference": "90a63a919089477868e5c3b97ddd53241f260401"
+                "reference": "d568383603b74a141ab7499bd74d97b2a180ca64"
             },
             "require": {
                 "liberusoftware/module-accounting-payroll-liabilities": "^1.0",
@@ -17567,6 +17840,9 @@
                     "Liberu\\Accounting\\PayrollLiabilitiesLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll liabilities Livewire adapter.",
             "transport-options": {
                 "symlink": true,
@@ -17579,7 +17855,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-payments",
-                "reference": "efe897374669cc8b65a3a29d415f854e3158b256"
+                "reference": "b1a47cfb3cd5731f56297cf89e3b03c4818455ea"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -17602,6 +17878,9 @@
                     "Liberu\\Accounting\\PayrollPayments\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll payments domain module.",
             "transport-options": {
                 "symlink": true,
@@ -17614,7 +17893,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-payments-api",
-                "reference": "cfba47e9abab2faaf920d7baa7f0c73a0bbc9975"
+                "reference": "80bc88c4bc450e95b0fcb38ba9b7fc91d369bdb4"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
@@ -17638,6 +17917,9 @@
                     "Liberu\\Accounting\\PayrollPaymentsApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll payments API adapter.",
             "transport-options": {
                 "symlink": true,
@@ -17650,7 +17932,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-payments-filament",
-                "reference": "5d19c8923cf9cb44ab513852819bbdd5c8f4f67a"
+                "reference": "9d19a7eff8e141a285ee275dc2e7cad65fb0edec"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -17673,6 +17955,9 @@
                     "Liberu\\Accounting\\PayrollPaymentsFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll payments Filament adapter.",
             "transport-options": {
                 "symlink": true,
@@ -17685,7 +17970,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-payroll-payments-livewire",
-                "reference": "7377d29ea6a56d4bc28841249a4ffefb03e672ec"
+                "reference": "3d7f5c049acc6d0dcc6f2147ee0430ca7640de90"
             },
             "require": {
                 "liberusoftware/module-accounting-payroll-payments": "^1.0",
@@ -17708,6 +17993,9 @@
                     "Liberu\\Accounting\\PayrollPaymentsLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Payroll payments Livewire adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18068,7 +18356,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-product-and-service-items",
-                "reference": "c5ebfa066b70ea7edcf16f4fe9caa02a6b3e54dc"
+                "reference": "58f70d84bae0e2385b1fc0803741c5fd3c4f4b50"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -18091,6 +18379,9 @@
                     "Liberu\\Accounting\\ProductAndServiceItems\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Product and service items domain module.",
             "transport-options": {
                 "symlink": true,
@@ -18103,7 +18394,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-product-and-service-items-api",
-                "reference": "9c453bf534a2cd51f2da1ee3a8174313d6bba885"
+                "reference": "f77050c71caff08ed6596dbd5292baaa99ce477e"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
@@ -18127,6 +18418,9 @@
                     "Liberu\\Accounting\\ProductAndServiceItemsApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Product and service items API adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18139,7 +18433,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-product-and-service-items-filament",
-                "reference": "287d597e53681f2b50a7b5ce5b75dca840029d24"
+                "reference": "ebdbcb006afdfd8297cbbd1c1ae350a400d4d11a"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -18162,6 +18456,9 @@
                     "Liberu\\Accounting\\ProductAndServiceItemsFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Product and service items Filament adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18174,7 +18471,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-product-and-service-items-livewire",
-                "reference": "62c469323ac132118efa3f5c32f744a17ec1e464"
+                "reference": "f386fa356ec0b138393b8078c51e5f7727923b72"
             },
             "require": {
                 "liberusoftware/module-accounting-product-and-service-items": "^1.0",
@@ -18197,6 +18494,9 @@
                     "Liberu\\Accounting\\ProductAndServiceItemsLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Product and service items Livewire adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18209,7 +18509,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-billing",
-                "reference": "8d01c9b844f7ecb338bce895199cfb6fcb2eda48"
+                "reference": "59af778e039d6913ef5fd6b20d8ea94bd34dc6ad"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -18233,6 +18533,9 @@
                     "Liberu\\Accounting\\ProjectBilling\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project billing domain module.",
             "transport-options": {
                 "symlink": true,
@@ -18245,7 +18548,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-billing-api",
-                "reference": "1dd1ee92cc00ec6337fc0d050441db092a219e29"
+                "reference": "7097d0beec5ec14b3a1b2d1abed5556ef881cd67"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
@@ -18269,6 +18572,9 @@
                     "Liberu\\Accounting\\ProjectBillingApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project billing API adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18281,7 +18587,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-billing-filament",
-                "reference": "ca2f060aa4b148e377fa8a529baeb93308b16230"
+                "reference": "fb4bae0a1253fb943ba4ae632e362dacf29dad53"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -18304,6 +18610,9 @@
                     "Liberu\\Accounting\\ProjectBillingFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project billing Filament adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18316,7 +18625,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-billing-livewire",
-                "reference": "3e51234ffa0ffeb54572a00dbc8a22f9b78699ea"
+                "reference": "2845dbb9771151a95bc6a1d6b7555904e892e032"
             },
             "require": {
                 "liberusoftware/module-accounting-project-billing": "^1.0",
@@ -18339,6 +18648,9 @@
                     "Liberu\\Accounting\\ProjectBillingLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project billing Livewire adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18351,7 +18663,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-costing",
-                "reference": "6ffdecf93b292f09f8bf2f3eeffe33a8a565f748"
+                "reference": "8623303a04df8bb659893945016a93b1f8de31f4"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -18375,6 +18687,9 @@
                     "Liberu\\Accounting\\ProjectCosting\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project costing domain module.",
             "transport-options": {
                 "symlink": true,
@@ -18387,7 +18702,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-costing-api",
-                "reference": "34bb7c9c5fd0fbf637c7f397752a8b18e829abae"
+                "reference": "69e599a8112a212c026d2d847036cab73d6f69cf"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
@@ -18411,6 +18726,9 @@
                     "Liberu\\Accounting\\ProjectCostingApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project costing API adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18423,7 +18741,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-costing-filament",
-                "reference": "8a735ec5dbf8fba5a8d69d7f22387103d9b1a7cd"
+                "reference": "471a33d3cafd162c49f3a584cbf0b402b3a9a4e4"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -18446,6 +18764,9 @@
                     "Liberu\\Accounting\\ProjectCostingFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project costing Filament adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18458,7 +18779,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-costing-livewire",
-                "reference": "0912d1dc87b8e4df67b6d57e0840705ff2c1040b"
+                "reference": "d0b333d7c361c61573865fd976665bc8f5c37754"
             },
             "require": {
                 "liberusoftware/module-accounting-project-costing": "^1.0",
@@ -18481,6 +18802,9 @@
                     "Liberu\\Accounting\\ProjectCostingLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project costing Livewire adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18493,7 +18817,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-profitability",
-                "reference": "56bf845d9cdbb2b528b5c1e19c202aa995e31ae6"
+                "reference": "e986d865bd5781311cedc90cedfed5848995a65d"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -18517,6 +18841,9 @@
                     "Liberu\\Accounting\\ProjectProfitability\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project profitability domain module.",
             "transport-options": {
                 "symlink": true,
@@ -18529,7 +18856,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-profitability-api",
-                "reference": "e8d8c2b5318c713c0f8bc2da54f5a4139bd5e6be"
+                "reference": "9bd05b6b960cd6bb8a6f14a3466b9054e468d4c6"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
@@ -18553,6 +18880,9 @@
                     "Liberu\\Accounting\\ProjectProfitabilityApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project profitability API adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18565,7 +18895,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-profitability-filament",
-                "reference": "16b008a14efc179907a4921dce6f46c39133e729"
+                "reference": "9c059c25c731d288646c17d1af3c2cfdaac7150f"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -18588,6 +18918,9 @@
                     "Liberu\\Accounting\\ProjectProfitabilityFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project profitability Filament adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18600,7 +18933,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-project-profitability-livewire",
-                "reference": "e8476f08c7e620bf3354d1ee2123e91a34dd40b2"
+                "reference": "133b578a54ebff5b03a31fb3b940d17ea609df0f"
             },
             "require": {
                 "liberusoftware/module-accounting-project-profitability": "^1.0",
@@ -18623,6 +18956,9 @@
                     "Liberu\\Accounting\\ProjectProfitabilityLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Project profitability Livewire adapter.",
             "transport-options": {
                 "symlink": true,
@@ -18635,7 +18971,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-projects-and-jobs",
-                "reference": "55be2852b618f4457cfa2db4d34916d05e1e8309"
+                "reference": "e0d3ef5c45c53d4426545ba915d39c3a39b41163"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -18658,6 +18994,9 @@
                     "Liberu\\Accounting\\ProjectsAndJobs\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting projects and jobs domain module",
             "transport-options": {
                 "symlink": true,
@@ -18785,7 +19124,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-purchase-orders",
-                "reference": "3e26daecae1f349fc688b22e45fdbd8acaf1b217"
+                "reference": "67a030c57a7a6ead96288c942ac36dd0cf8cd27e"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -18808,6 +19147,9 @@
                     "Liberu\\Accounting\\PurchaseOrders\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting purchase orders domain module",
             "transport-options": {
                 "symlink": true,
@@ -18935,7 +19277,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-purchase-requisitions",
-                "reference": "c389d6174331cd301076ab224b892da910820420"
+                "reference": "1b42a1f89027c5edffa0698e3741db58b838f35a"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -18958,6 +19300,9 @@
                     "Liberu\\Accounting\\PurchaseRequisitions\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting purchase requisitions domain module",
             "transport-options": {
                 "symlink": true,
@@ -19085,7 +19430,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-quickbooks-online-migration",
-                "reference": "a2db54301bc3d3dbc502943286fdb71ec2f4ab30"
+                "reference": "a3b525392c89805d49d0e5dc08aaa65bb3feae10"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -19108,6 +19453,9 @@
                     "Liberu\\Accounting\\QuickBooksOnlineMigration\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting QuickBooks Online migration domain module",
             "transport-options": {
                 "symlink": true,
@@ -19235,7 +19583,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-receipt-management",
-                "reference": "436cc9c3ea9c27c99f5a16edb5035c3a45c72974"
+                "reference": "5f69a57df2c5b66b03e3c689fd750f1e8cb2ffe7"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -19258,6 +19606,9 @@
                     "Liberu\\Accounting\\ReceiptManagement\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting receipt management domain module",
             "transport-options": {
                 "symlink": true,
@@ -19385,7 +19736,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-recurring-transactions",
-                "reference": "7aea14ec3c5c5019f56b34b3f0866e54a6045747"
+                "reference": "12c716929aa4e088613e8f6e67b0489811cb0600"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -19408,6 +19759,9 @@
                     "Liberu\\Accounting\\RecurringTransactions\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting recurring transactions domain module",
             "transport-options": {
                 "symlink": true,
@@ -19535,7 +19889,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-regional-packs",
-                "reference": "c0ce14bbef43ea7fabc66003f1bef0d916f5d7d4"
+                "reference": "b2e5aec23e6008f01e1fa84559df9832e7f071e1"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -19558,6 +19912,9 @@
                     "Liberu\\Accounting\\RegionalPacks\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting regional packs domain module",
             "transport-options": {
                 "symlink": true,
@@ -19685,7 +20042,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-reimbursements",
-                "reference": "9ccab2f1b4bcd33921ca12cc7396a4d98e2d280c"
+                "reference": "7aa55c0d14d86132b088a1b685ecd6f454aab123"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -19708,6 +20065,9 @@
                     "Liberu\\Accounting\\Reimbursements\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting reimbursements domain module",
             "transport-options": {
                 "symlink": true,
@@ -19835,7 +20195,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-revenue-recognition",
-                "reference": "cc2bb5b5ffd7248aecd8bf283fc81066f49baccb"
+                "reference": "3e87ae8c0576d93f980780eb37f8a7df1e90d8d9"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -19858,6 +20218,9 @@
                     "Liberu\\Accounting\\RevenueRecognition\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting revenue recognition domain module",
             "transport-options": {
                 "symlink": true,
@@ -19985,7 +20348,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-review",
-                "reference": "345d38026b0cc67046b43d534f410e9612fc0e62"
+                "reference": "316fa0c8237d0da0d1dcf0b6bbbfecaa68239982"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -20008,6 +20371,9 @@
                     "Liberu\\Accounting\\Review\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting review domain module",
             "transport-options": {
                 "symlink": true,
@@ -20020,7 +20386,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-review-api",
-                "reference": "e515c71cb44342205c2d5e99683f51203c114c9c"
+                "reference": "d3c8e0d774cff636980035ed080cb3ca97a0967e"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
@@ -20044,6 +20410,9 @@
                     "Liberu\\Accounting\\ReviewApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting review API adapter",
             "transport-options": {
                 "symlink": true,
@@ -20056,7 +20425,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-review-filament",
-                "reference": "f8a4f2894f3f9e83173e918e745701b1d1e0541e"
+                "reference": "5e772853edbaece7b6c60aecd0b1d5e3a5e09b6b"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -20079,6 +20448,9 @@
                     "Liberu\\Accounting\\ReviewFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting review Filament adapter",
             "transport-options": {
                 "symlink": true,
@@ -20091,7 +20463,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-review-livewire",
-                "reference": "a8b088cfe9b8eb3db0f8d23c2e5f1d6c001330c3"
+                "reference": "720ba680ae9015f726fd1d98d9fd36d0751987e1"
             },
             "require": {
                 "liberusoftware/module-accounting-review": "^1.0",
@@ -20114,6 +20486,9 @@
                     "Liberu\\Accounting\\ReviewLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting review Livewire adapter",
             "transport-options": {
                 "symlink": true,
@@ -20166,7 +20541,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-sage-accounting-migration",
-                "reference": "a558c9d60380abc2c7fc8e5265d74fe06c61cc8b"
+                "reference": "24cebdefa77b5f79f3c3bf5c7269495dc2e3f370"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -20189,6 +20564,9 @@
                     "Liberu\\Accounting\\SageAccountingMigration\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Sage Accounting migration domain module",
             "transport-options": {
                 "symlink": true,
@@ -22196,7 +22574,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-withholding-tax",
-                "reference": "a5e08b6a3ee3cfe9b91e68edcd4283af0942220f"
+                "reference": "f8fb80d55fcd9ec9d8c5b8a1bfa303564ad5e8da"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -22219,6 +22597,9 @@
                     "Liberu\\Accounting\\WithholdingTax\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting withholding tax domain module.",
             "transport-options": {
                 "symlink": true,
@@ -22231,7 +22612,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-withholding-tax-api",
-                "reference": "4fc1a1281b641a62da7103b551758bcd2779b310"
+                "reference": "3aa25b08ccd15786565297760109dbf828e47490"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
@@ -22255,6 +22636,9 @@
                     "Liberu\\Accounting\\WithholdingTaxApi\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting withholding tax API adapter.",
             "transport-options": {
                 "symlink": true,
@@ -22267,7 +22651,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-withholding-tax-filament",
-                "reference": "e64a6b1b1a653ae20bd71a3b014bb9f9c2bbde93"
+                "reference": "ef53dc9d516ad6c56b0925343583f5078aeecddb"
             },
             "require": {
                 "filament/filament": "^5.11.0",
@@ -22290,6 +22674,9 @@
                     "Liberu\\Accounting\\WithholdingTaxFilament\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting withholding tax Filament adapter.",
             "transport-options": {
                 "symlink": true,
@@ -22302,7 +22689,7 @@
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-withholding-tax-livewire",
-                "reference": "22ab8e82a352e90f1c40a0493b7c25cbc537d11d"
+                "reference": "b8d9e4adde3e762848e93898dd6f43909f21313c"
             },
             "require": {
                 "liberusoftware/module-accounting-withholding-tax": "^1.0",
@@ -22325,6 +22712,9 @@
                     "Liberu\\Accounting\\WithholdingTaxLivewire\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "description": "Accounting withholding tax Livewire adapter.",
             "transport-options": {
                 "symlink": true,
@@ -28819,22 +29209,22 @@
         },
         {
             "name": "spiral/roadrunner-cli",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roadrunner-php/cli.git",
-                "reference": "2e87a385801962403679f6c8751fda9af98afb9a"
+                "reference": "2124655555d872c2a8d18dcc9b59cbdce9791b83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roadrunner-php/cli/zipball/2e87a385801962403679f6c8751fda9af98afb9a",
-                "reference": "2e87a385801962403679f6c8751fda9af98afb9a",
+                "url": "https://api.github.com/repos/roadrunner-php/cli/zipball/2124655555d872c2a8d18dcc9b59cbdce9791b83",
+                "reference": "2124655555d872c2a8d18dcc9b59cbdce9791b83",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.0",
                 "composer/semver": "^3.4",
-                "internal/dload": "^1.19.0",
+                "internal/dload": "^1.19.1",
                 "php": ">=8.2",
                 "roadrunner/worker": "^3.8",
                 "symfony/console": "^6.4 || ^7.0 || ^8.0",
@@ -28895,7 +29285,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-19T08:50:22+00:00"
+            "time": "2026-10-30T21:04:24+00:00"
         },
         {
             "name": "spiral/roadrunner-http",
@@ -29260,16 +29650,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v8.1.9",
+            "version": "v8.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "630e74196a2635ec0f06c12bd3fb47cfedf85157"
+                "reference": "5b6d9b127ec27bc6db59bf65e2e37b6fe5b00083"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/630e74196a2635ec0f06c12bd3fb47cfedf85157",
-                "reference": "630e74196a2635ec0f06c12bd3fb47cfedf85157",
+                "url": "https://api.github.com/repos/symfony/console/zipball/5b6d9b127ec27bc6db59bf65e2e37b6fe5b00083",
+                "reference": "5b6d9b127ec27bc6db59bf65e2e37b6fe5b00083",
                 "shasum": ""
             },
             "require": {
@@ -29336,7 +29726,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v8.1.9"
+                "source": "https://github.com/symfony/console/tree/v8.1.10"
             },
             "funding": [
                 {
@@ -29356,7 +29746,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-12T19:11:16+00:00"
+            "time": "2026-10-28T11:16:19+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -29887,16 +30277,16 @@
         },
         {
             "name": "symfony/http-client",
-            "version": "v8.1.9",
+            "version": "v8.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "f892301df77ac25613b19fc2450139c950d1368a"
+                "reference": "1f6bd9bb0dddbbb1b88823e26c6d05fc3ba89219"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/f892301df77ac25613b19fc2450139c950d1368a",
-                "reference": "f892301df77ac25613b19fc2450139c950d1368a",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/1f6bd9bb0dddbbb1b88823e26c6d05fc3ba89219",
+                "reference": "1f6bd9bb0dddbbb1b88823e26c6d05fc3ba89219",
                 "shasum": ""
             },
             "require": {
@@ -29960,7 +30350,7 @@
                 "http"
             ],
             "support": {
-                "source": "https://github.com/symfony/http-client/tree/v8.1.9"
+                "source": "https://github.com/symfony/http-client/tree/v8.1.10"
             },
             "funding": [
                 {
@@ -29980,7 +30370,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-13T15:31:40+00:00"
+            "time": "2026-10-26T21:55:04+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
@@ -30506,16 +30896,16 @@
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "v1.43.0",
+            "version": "v1.43.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
-                "reference": "5cac8f4db97208823aa353f59a01faad2da52c75"
+                "reference": "5a8f33c87aeecffce24e721b5064fab05f4becf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/5cac8f4db97208823aa353f59a01faad2da52c75",
-                "reference": "5cac8f4db97208823aa353f59a01faad2da52c75",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/5a8f33c87aeecffce24e721b5064fab05f4becf8",
+                "reference": "5a8f33c87aeecffce24e721b5064fab05f4becf8",
                 "shasum": ""
             },
             "require": {
@@ -30564,7 +30954,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.43.0"
+                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.43.3"
             },
             "funding": [
                 {
@@ -30584,7 +30974,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-25T15:46:47+00:00"
+            "time": "2026-10-15T09:18:53+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
@@ -30760,16 +31150,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.43.0",
+            "version": "v1.43.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "4d5d331bf731e0aedbc6b2f5e61135b7b7996a72"
+                "reference": "122889ed24dc000165bcbfd77ec412f15cbdfc6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/4d5d331bf731e0aedbc6b2f5e61135b7b7996a72",
-                "reference": "4d5d331bf731e0aedbc6b2f5e61135b7b7996a72",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/122889ed24dc000165bcbfd77ec412f15cbdfc6a",
+                "reference": "122889ed24dc000165bcbfd77ec412f15cbdfc6a",
                 "shasum": ""
             },
             "require": {
@@ -30821,7 +31211,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.43.0"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.43.3"
             },
             "funding": [
                 {
@@ -30841,7 +31231,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-24T15:19:04+00:00"
+            "time": "2026-10-28T09:35:49+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
@@ -32160,16 +32550,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v8.1.9",
+            "version": "v8.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "07fb208558f941eab50ec49c89c2a6a93fb11f01"
+                "reference": "6c6110979c0150393bbb336170e286d51ab4d76c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/07fb208558f941eab50ec49c89c2a6a93fb11f01",
-                "reference": "07fb208558f941eab50ec49c89c2a6a93fb11f01",
+                "url": "https://api.github.com/repos/symfony/string/zipball/6c6110979c0150393bbb336170e286d51ab4d76c",
+                "reference": "6c6110979c0150393bbb336170e286d51ab4d76c",
                 "shasum": ""
             },
             "require": {
@@ -32226,7 +32616,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v8.1.9"
+                "source": "https://github.com/symfony/string/tree/v8.1.10"
             },
             "funding": [
                 {
@@ -32246,7 +32636,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-03T15:16:03+00:00"
+            "time": "2026-10-23T17:06:53+00:00"
         },
         {
             "name": "symfony/translation",
@@ -32672,16 +33062,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v8.1.9",
+            "version": "v8.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "6107ee26a25215c3df3af0a3315e56bb4fd0b7db"
+                "reference": "9de4ff9874dd18b738b9f248398c3e36ef15a1d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/6107ee26a25215c3df3af0a3315e56bb4fd0b7db",
-                "reference": "6107ee26a25215c3df3af0a3315e56bb4fd0b7db",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/9de4ff9874dd18b738b9f248398c3e36ef15a1d2",
+                "reference": "9de4ff9874dd18b738b9f248398c3e36ef15a1d2",
                 "shasum": ""
             },
             "require": {
@@ -32724,7 +33114,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v8.1.9"
+                "source": "https://github.com/symfony/yaml/tree/v8.1.10"
             },
             "funding": [
                 {
@@ -32744,7 +33134,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-12T12:37:13+00:00"
+            "time": "2026-10-18T14:56:39+00:00"
         },
         {
             "name": "thiagoalessio/tesseract_ocr",
