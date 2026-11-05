@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Filament\App\Pages\AccountSetupWizard;
+use App\Filament\App\Widgets\AccountingQuickActions;
 use App\Http\Middleware\EnsureAccountingSetup;
 use App\Models\Team;
 use App\Models\User;
@@ -114,4 +115,29 @@ it('does not force a member into a wizard they cannot edit', function (): void {
         ->handle($request, fn () => response('Dashboard'));
 
     expect($response->getContent())->toBe('Dashboard');
+});
+
+it('shows saved accounting preferences on the workspace dashboard without exposing credentials', function (): void {
+    $user = User::factory()->create();
+    $team = app(TeamManagementService::class)->createPersonalTeamForUser($user);
+    $team->update([
+        'accounting_setup' => [
+            'currency' => 'GBP',
+            'fiscal_year_start' => '04-01',
+            'integrations' => ['xero' => ['client_secret' => 'dashboard-secret']],
+        ],
+        'accounting_setup_completed_at' => now(),
+    ]);
+    $user->unsetRelation('currentTeam');
+    $this->actingAs($user);
+    Filament::setCurrentPanel(Filament::getPanel('app'));
+    Filament::setTenant(null);
+
+    $workspace = app(AccountingQuickActions::class)->workspace();
+
+    expect($workspace)->toMatchArray([
+        'currency' => 'GBP',
+        'fiscal_year_start' => '1 April',
+        'completed' => true,
+    ])->not->toHaveKey('integrations');
 });
