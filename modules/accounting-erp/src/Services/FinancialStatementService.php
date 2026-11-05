@@ -1,0 +1,360 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Liberu\Accounting\Erp\Services;
+
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\JournalEntryLine;
+
+class FinancialStatementService
+{
+    /**
+     * When set, statements are produced for this team instead of the acting
+     * user's current team. Lets consolidation compute any member team without
+     * an auth context (see withTeam()).
+     */
+    private ?int $teamOverride = null;
+
+    /**
+     * An immutable copy scoped to a specific team. Every statement method
+     * resolves its team through scopedTeamId(), so this reparameterizes all of
+     * them without threading a team id through each call.
+     */
+    public function withTeam(int $teamId): self
+    {
+        $clone = clone $this;
+        $clone->teamOverride = $teamId;
+
+        return $clone;
+    }
+
+    /**
+     * The team to scope to: an explicit override, else the acting user's
+     * current team, else -1 — a sentinel that matches no row (team ids are
+     * positive), so a tenantless call returns empty rather than leaking every
+     * unassigned (team_id IS NULL) row.
+     *
+     * Mirrors GeneralLedgerService::scopedTeamId(); statements are only produced
+     * in authenticated contexts (Sanctum API, Filament panel) or via withTeam().
+     */
+    private function scopedTeamId(): int
+    {
+        return $this->teamOverride ?? auth()->user()->current_team_id ?? -1;
+    }
+
+    /**
+     * Generate Profit & Loss (Income Statement) for a given period
+     */
+    public function profitAndLoss(Carbon $startDate, Carbon $endDate): array
+    {
+        $teamId = $this->scopedTeamId();
+
+        // Get revenue accounts (income)
+        $revenueAccounts = Account::where('team_id', $teamId)
+            ->where('account_type', 'revenue')
+            ->orderBy('account_number')
+            ->get();
+
+        // Get expense accounts
+        $expenseAccounts = Account::where('team_id', $teamId)
+            ->where('account_type', 'expense')
+            ->orderBy('account_number')
+            ->get();
+
+        // Get cost of goods sold accounts (nested OR keeps the team_id filter from
+        // being short-circuited by the name match — AND binds tighter than OR).
+        $cogsAccounts = Account::where('team_id', $teamId)
+            ->where(function ($query): void {
+                $query->where('account_type', 'cost_of_goods_sold')
+                    ->orWhere('account_name', 'like', '%cost of goods%');
+            })
+            ->orderBy('account_number')
+            ->get();
+
+        // Calculate balances for each account
+        $revenue = $this->calculateAccountsBalance($revenueAccounts, $startDate, $endDate);
+        $cogs = $this->calculateAccountsBalance($cogsAccounts, $startDate, $endDate);
+        $expenses = $this->calculateAccountsBalance($expenseAccounts, $startDate, $endDate);
+
+        // Calculate totals
+        $totalRevenue = $revenue->sum('balance');
+        $totalCogs = abs((float) $cogs->sum('balance'));
+        $grossProfit = $totalRevenue - $totalCogs;
+        $totalExpenses = abs((float) $expenses->sum('balance'));
+        $netIncome = $grossProfit - $totalExpenses;
+
+        return [
+            'period' => [
+                'start_date' => $startDate->toDateString(),
+                'end_date' => $endDate->toDateString(),
+            ],
+            'revenue' => [
+                'accounts' => $revenue,
+                'total' => $totalRevenue,
+            ],
+            'cost_of_goods_sold' => [
+                'accounts' => $cogs,
+                'total' => $totalCogs,
+            ],
+            'gross_profit' => $grossProfit,
+            'expenses' => [
+                'accounts' => $expenses,
+                'total' => $totalExpenses,
+            ],
+            'net_income' => $netIncome,
+        ];
+    }
+
+    /**
+     * Generate Balance Sheet for a given date
+     */
+    public function balanceSheet(Carbon $asOfDate): array
+    {
+        $teamId = $this->scopedTeamId();
+
+        // Get asset accounts
+        $assetAccounts = Account::where('team_id', $teamId)
+            ->whereIn('account_type', ['asset', 'bank', 'current_asset', 'fixed_asset', 'other_asset'])
+            ->orderBy('account_number')
+            ->get();
+
+        // Get liability accounts
+        $liabilityAccounts = Account::where('team_id', $teamId)
+            ->whereIn('account_type', ['liability', 'current_liability', 'long_term_liability'])
+            ->orderBy('account_number')
+            ->get();
+
+        // Get equity accounts
+        $equityAccounts = Account::where('team_id', $teamId)
+            ->where('account_type', 'equity')
+            ->orderBy('account_number')
+            ->get();
+
+        // Calculate balances as of date
+        $assets = $this->calculateAccountsBalance($assetAccounts, null, $asOfDate);
+        $liabilities = $this->calculateAccountsBalance($liabilityAccounts, null, $asOfDate);
+        $equity = $this->calculateAccountsBalance($equityAccounts, null, $asOfDate);
+
+        // Calculate retained earnings (net income for the period)
+        $retainedEarnings = $this->calculateRetainedEarnings($asOfDate);
+
+        // Calculate totals
+        $totalAssets = $assets->sum('balance');
+        $totalLiabilities = abs((float) $liabilities->sum('balance'));
+        $totalEquity = $equity->sum('balance') + $retainedEarnings;
+
+        return [
+            'as_of_date' => $asOfDate->toDateString(),
+            'assets' => [
+                'accounts' => $assets,
+                'total' => $totalAssets,
+            ],
+            'liabilities' => [
+                'accounts' => $liabilities,
+                'total' => $totalLiabilities,
+            ],
+            'equity' => [
+                'accounts' => $equity,
+                'retained_earnings' => $retainedEarnings,
+                'total' => $totalEquity,
+            ],
+            'total_liabilities_and_equity' => $totalLiabilities + $totalEquity,
+        ];
+    }
+
+    /**
+     * Generate Cash Flow Statement for a given period
+     */
+    public function cashFlowStatement(Carbon $startDate, Carbon $endDate): array
+    {
+        // Get net income from P&L
+        $profitLoss = $this->profitAndLoss($startDate, $endDate);
+        $netIncome = $profitLoss['net_income'];
+
+        // Operating Activities
+        $operatingActivities = $this->calculateOperatingCashFlow($startDate, $endDate, $netIncome);
+
+        // Investing Activities
+        $investingActivities = $this->calculateInvestingCashFlow($startDate, $endDate);
+
+        // Financing Activities
+        $financingActivities = $this->calculateFinancingCashFlow($startDate, $endDate);
+
+        // Calculate net change in cash
+        $netCashFlow = $operatingActivities['net_cash_from_operations']
+                      + $investingActivities['net_cash_from_investing']
+                      + $financingActivities['net_cash_from_financing'];
+
+        // Get beginning and ending cash balances
+        $beginningCash = $this->getCashBalance($startDate->copy()->subDay());
+        $endingCash = $this->getCashBalance($endDate);
+
+        return [
+            'period' => [
+                'start_date' => $startDate->toDateString(),
+                'end_date' => $endDate->toDateString(),
+            ],
+            'operating_activities' => $operatingActivities,
+            'investing_activities' => $investingActivities,
+            'financing_activities' => $financingActivities,
+            'net_change_in_cash' => $netCashFlow,
+            'beginning_cash' => $beginningCash,
+            'ending_cash' => $endingCash,
+        ];
+    }
+
+    /**
+     * Calculate account balances for given accounts and date range
+     *
+     * @param  Collection  $accounts
+     * @param  Carbon|null  $startDate
+     * @param  Carbon  $endDate
+     * @return Collection
+     */
+    protected function calculateAccountsBalance($accounts, $startDate, $endDate)
+    {
+        return $accounts->map(function ($account) use ($startDate, $endDate): array {
+            $balance = $this->getAccountBalance($account->id, $startDate, $endDate);
+
+            return [
+                'id' => $account->id,
+                'code' => $account->account_number,
+                'name' => $account->account_name,
+                'type' => $account->account_type,
+                'balance' => $balance,
+            ];
+        })->filter(
+            // Only show accounts with non-zero balances
+            fn ($account): bool => abs((float) $account['balance']) > 0.01);
+    }
+
+    /**
+     * Get account balance for a specific period
+     *
+     * @param  Carbon|null  $startDate
+     */
+    protected function getAccountBalance(int $accountId, $startDate, Carbon $endDate): float
+    {
+        $account = Account::find($accountId);
+        if (! $account) {
+            return 0;
+        }
+
+        $query = JournalEntryLine::where('account_id', $accountId)
+            ->whereHas('journalEntry', function ($q) use ($startDate, $endDate): void {
+                $q->where('is_posted', true)
+                    ->where('entry_date', '<=', $endDate);
+
+                if ($startDate) {
+                    $q->where('entry_date', '>=', $startDate);
+                }
+            });
+
+        $debits = $query->sum('debit_amount');
+        $credits = $query->sum('credit_amount');
+
+        // Calculate balance based on account type
+        // Assets and Expenses: Debit increases, Credit decreases
+        // Liabilities, Equity, Revenue: Credit increases, Debit decreases
+        $normalBalanceIsDebit = in_array($account->account_type, ['asset', 'expense', 'bank', 'current_asset', 'fixed_asset', 'other_asset', 'cost_of_goods_sold']);
+
+        $balance = $normalBalanceIsDebit ? ($debits - $credits) : ($credits - $debits);
+
+        // Add opening balance if no start date (balance sheet)
+        if (! $startDate && $account->opening_balance) {
+            $balance += $account->opening_balance;
+        }
+
+        return $balance;
+    }
+
+    /**
+     * Calculate retained earnings as of a specific date
+     */
+    protected function calculateRetainedEarnings(Carbon $asOfDate): float
+    {
+        // Get net income from the beginning of time to the as-of date
+        $startOfTime = Carbon::parse('2000-01-01'); // Or your company's start date
+        $profitLoss = $this->profitAndLoss($startOfTime, $asOfDate);
+
+        return $profitLoss['net_income'];
+    }
+
+    /**
+     * Calculate operating cash flow
+     */
+    protected function calculateOperatingCashFlow(Carbon $startDate, Carbon $endDate, float $netIncome): array
+    {
+        // Simplified version - in a real implementation, you'd add back non-cash expenses
+        // and adjust for changes in working capital
+
+        $adjustments = [
+            'depreciation' => 0, // Would need to calculate from depreciation entries
+            'accounts_receivable_change' => 0,
+            'accounts_payable_change' => 0,
+            'inventory_change' => 0,
+        ];
+
+        $netCashFromOperations = $netIncome + array_sum($adjustments);
+
+        return [
+            'net_income' => $netIncome,
+            'adjustments' => $adjustments,
+            'net_cash_from_operations' => $netCashFromOperations,
+        ];
+    }
+
+    /**
+     * Calculate investing cash flow
+     */
+    protected function calculateInvestingCashFlow(Carbon $startDate, Carbon $endDate): array
+    {
+        // Get cash flows from investing activities (purchase/sale of fixed assets, investments)
+        $fixedAssetPurchases = 0; // Would calculate from asset acquisition transactions
+        $fixedAssetSales = 0;
+
+        return [
+            'fixed_asset_purchases' => $fixedAssetPurchases,
+            'fixed_asset_sales' => $fixedAssetSales,
+            'net_cash_from_investing' => $fixedAssetSales - $fixedAssetPurchases,
+        ];
+    }
+
+    /**
+     * Calculate financing cash flow
+     */
+    protected function calculateFinancingCashFlow(Carbon $startDate, Carbon $endDate): array
+    {
+        // Get cash flows from financing activities (loans, equity, dividends)
+        $loanProceeds = 0; // Would calculate from loan transactions
+        $loanRepayments = 0;
+        $ownerContributions = 0;
+        $ownerDraws = 0;
+
+        return [
+            'loan_proceeds' => $loanProceeds,
+            'loan_repayments' => $loanRepayments,
+            'owner_contributions' => $ownerContributions,
+            'owner_draws' => $ownerDraws,
+            'net_cash_from_financing' => $loanProceeds - $loanRepayments + $ownerContributions - $ownerDraws,
+        ];
+    }
+
+    /**
+     * Get cash balance as of a specific date
+     */
+    protected function getCashBalance(Carbon $asOfDate): float
+    {
+        $cashAccounts = Account::where('team_id', $this->scopedTeamId())
+            ->where(function ($query): void {
+                $query->whereIn('account_type', ['bank', 'cash'])
+                    ->orWhere('account_name', 'like', '%cash%');
+            })
+            ->get();
+
+        return $cashAccounts->sum(fn ($account): float => $this->getAccountBalance($account->id, null, $asOfDate));
+    }
+}

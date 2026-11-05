@@ -18,6 +18,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Liberu\Accounting\ErpFilament\ErpFilamentPlugin;
 
 /**
  * Vendor self-service portal. Guard `vendor`; no tenancy. Read-only resources
@@ -30,6 +31,7 @@ class VendorPanelProvider extends PanelProvider
     {
         return $panel
             ->id('vendor')
+            ->plugin(ErpFilamentPlugin::make())
             ->path('vendor-portal')
             ->authGuard('vendor')
             ->login()
@@ -37,9 +39,6 @@ class VendorPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/Vendor/Resources'), for: 'App\\Filament\\Vendor\\Resources')
-            ->discoverPages(in: app_path('Filament/Vendor/Pages'), for: 'App\\Filament\\Vendor\\Pages')
-            ->discoverWidgets(in: app_path('Filament/Vendor/Widgets'), for: 'App\\Filament\\Vendor\\Widgets')
             ->pages([
                 Dashboard::class,
             ])

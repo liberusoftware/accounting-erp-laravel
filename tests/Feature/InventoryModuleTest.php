@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Filament\App\Resources\InventoryItems\InventoryItemResource;
-use App\Models\Module;
-use App\Modules\Inventory\InventoryModule;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Module;
+use Liberu\Accounting\Erp\Modules\Inventory\InventoryModule;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\InventoryItems\InventoryItemResource;
 use Tests\TestCase;
 
 class InventoryModuleTest extends TestCase

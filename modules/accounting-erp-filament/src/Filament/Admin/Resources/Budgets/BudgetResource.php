@@ -1,0 +1,108 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Liberu\Accounting\ErpFilament\Filament\Admin\Resources\Budgets;
+
+use Filament\Actions\Action;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Liberu\Accounting\Erp\Models\Budget;
+use Liberu\Accounting\Erp\Services\BudgetService;
+use Liberu\Accounting\ErpFilament\Filament\Admin\Resources\Budgets\Pages\CreateBudget;
+use Liberu\Accounting\ErpFilament\Filament\Admin\Resources\Budgets\Pages\EditBudget;
+use Liberu\Accounting\ErpFilament\Filament\Admin\Resources\Budgets\Pages\ListBudgets;
+
+class BudgetResource extends Resource
+{
+    #[\Override]
+    protected static ?string $model = Budget::class;
+
+    #[\Override]
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-calculator';
+
+    #[\Override]
+    public static function form(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Select::make('account_id')
+                    ->relationship('account', 'account_name')
+                    ->required(),
+                DatePicker::make('start_date')
+                    ->required(),
+                DatePicker::make('end_date')
+                    ->required(),
+                TextInput::make('planned_amount')
+                    ->numeric()
+                    ->required(),
+                TextInput::make('forecast_amount')
+                    ->numeric()
+                    ->disabled(),
+                Toggle::make('is_approved')
+                    ->label('Approved'),
+                TextInput::make('description')
+                    ->maxLength(255),
+            ]);
+    }
+
+    #[\Override]
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('account.account_name'),
+                TextColumn::make('start_date')
+                    ->date(),
+                TextColumn::make('end_date')
+                    ->date(),
+                TextColumn::make('planned_amount')
+                    ->money(),
+                TextColumn::make('forecast_amount')
+                    ->money(),
+                TextColumn::make('variance')
+                    ->money(),
+                IconColumn::make('is_approved')
+                    ->boolean(),
+                TextColumn::make('description'),
+            ])
+            ->filters([
+                //
+            ])
+            ->recordActions([
+                EditAction::make(),
+                DeleteAction::make(),
+                Action::make('generate_forecast')
+                    ->action(function (Budget $record): void {
+                        $budgetService = new BudgetService();
+                        $budgetService->generateForecast($record);
+                    })
+                    ->requiresConfirmation()
+                    ->color('success')
+                    ->icon('heroicon-o-calculator'),
+            ])
+            ->toolbarActions([
+                DeleteBulkAction::make(),
+            ]);
+    }
+
+    #[\Override]
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListBudgets::route('/'),
+            'create' => CreateBudget::route('/create'),
+            'edit' => EditBudget::route('/{record}/edit'),
+        ];
+    }
+}

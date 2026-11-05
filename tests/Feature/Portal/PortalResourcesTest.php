@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Portal;
 
-use App\Filament\Customer\Resources\Invoices\PortalInvoiceResource;
-use App\Filament\Customer\Widgets\PortalBalanceWidget;
-use App\Filament\Vendor\Resources\Bills\PortalBillResource;
-use App\Models\Bill;
-use App\Models\Customer;
-use App\Models\Invoice;
-use App\Models\Vendor;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Bill;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\Vendor;
+use Liberu\Accounting\ErpFilament\Filament\Customer\Resources\Invoices\PortalInvoiceResource;
+use Liberu\Accounting\ErpFilament\Filament\Customer\Widgets\PortalBalanceWidget;
+use Liberu\Accounting\ErpFilament\Filament\Vendor\Resources\Bills\PortalBillResource;
 use Tests\TestCase;
 
 class PortalResourcesTest extends TestCase

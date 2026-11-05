@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Middleware\EncryptCookies;
-use App\Http\Middleware\VerifyCsrfToken;
 use Laravel\Sanctum\Http\Middleware\AuthenticateSession;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Http\Middleware\EncryptCookies;
+use Liberu\Accounting\Erp\Http\Middleware\VerifyCsrfToken;
 
 return [
 

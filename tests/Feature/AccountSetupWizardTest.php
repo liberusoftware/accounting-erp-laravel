@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-use App\Filament\App\Pages\AccountSetupWizard;
-use App\Filament\App\Widgets\AccountingQuickActions;
-use App\Http\Middleware\EnsureAccountingSetup;
-use App\Models\Team;
-use App\Models\User;
-use App\Services\TeamManagementService;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
+use Liberu\Accounting\Erp\Http\Middleware\EnsureAccountingSetup;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
+use Liberu\Accounting\ErpFilament\Filament\App\Pages\AccountSetupWizard;
+use Liberu\Accounting\ErpFilament\Filament\App\Widgets\AccountingQuickActions;
 use Livewire\Livewire;
 
 uses(RefreshDatabase::class);

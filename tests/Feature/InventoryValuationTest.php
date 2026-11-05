@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Account;
-use App\Models\InventoryCostLayer;
-use App\Models\InventoryItem;
-use App\Models\InventoryTransaction;
-use App\Models\User;
-use App\Services\InventoryPostingService;
-use App\Services\InventoryValuationService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\InventoryCostLayer;
+use Liberu\Accounting\Erp\Models\InventoryItem;
+use Liberu\Accounting\Erp\Models\InventoryTransaction;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\InventoryPostingService;
+use Liberu\Accounting\Erp\Services\InventoryValuationService;
 use Tests\TestCase;
 
 class InventoryValuationTest extends TestCase

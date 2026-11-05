@@ -1,0 +1,91 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Liberu\Accounting\Erp\Models;
+
+use Illuminate\Database\Eloquent\Attributes\UseFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Liberu\Accounting\Erp\Database\Factories\BankConnectionFactory;
+use Liberu\Accounting\Erp\Traits\IsTenantModel;
+
+/**
+ * @property int|null $team_id
+ */
+#[UseFactory(BankConnectionFactory::class)]
+class BankConnection extends Model
+{
+    use HasFactory;
+    use IsTenantModel;
+
+    #[\Override]
+    protected $fillable = [
+        'bank_id',
+        'institution_name',
+        'plaid_item_id',
+        'plaid_institution_id',
+        'plaid_cursor',
+        'revolut_token_expires_at',
+        'wise_token_expires_at',
+        'status',
+        'last_synced_at',
+        // Tenancy + provider credentials set server-side on OAuth connect.
+        // Token/credential columns are encrypted casts (+ $hidden).
+        'user_id',
+        'team_id',
+        'plaid_access_token',
+        'revolut_access_token',
+        'revolut_refresh_token',
+        'wise_access_token',
+        'wise_refresh_token',
+        'credentials',
+    ];
+
+    #[\Override]
+    protected $casts = [
+        'credentials' => 'encrypted:array',
+        'plaid_access_token' => 'encrypted',
+        'revolut_access_token' => 'encrypted',
+        'revolut_refresh_token' => 'encrypted',
+        'revolut_token_expires_at' => 'datetime',
+        'wise_access_token' => 'encrypted',
+        'wise_refresh_token' => 'encrypted',
+        'wise_token_expires_at' => 'datetime',
+        'last_synced_at' => 'datetime',
+    ];
+
+    protected static function booted(): void
+    {
+        static::creating(function (BankConnection $bankConnection): void {
+            if (empty($bankConnection->user_id) && auth()->check()) {
+                $bankConnection->user_id = auth()->id();
+            }
+
+            // ponytail: stamp tenant team on non-Filament creates (Filament stamps panel creates itself); additive, leaves DB default when tenantless.
+            if (empty($bankConnection->team_id) && ($team = auth()->user()?->currentTeam) !== null) {
+                $bankConnection->team_id = $team->getKey();
+            }
+        });
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function bankFeedTransactions()
+    {
+        return $this->hasMany(BankFeedTransaction::class);
+    }
+
+    public function balances()
+    {
+        return $this->hasMany(BankAccountBalance::class);
+    }
+}

@@ -1,11 +1,11 @@
 <?php
 
 declare(strict_types=1);
-use App\Models\Team;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Liberu\Accounting\AnomalyDetection\Actions\RecordAnomaly;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
 
 uses(RefreshDatabase::class);
 it('lists and sends tenant anomalies to review', function (): void {

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Asset;
-use App\Models\DepreciationCalculation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Asset;
+use Liberu\Accounting\Erp\Models\DepreciationCalculation;
 use Tests\TestCase;
 
 class AssetDepreciationTest extends TestCase

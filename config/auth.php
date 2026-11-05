@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-use App\Models\Customer;
-use App\Models\User;
-use App\Models\Vendor;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Models\Vendor;
 
 return [
 

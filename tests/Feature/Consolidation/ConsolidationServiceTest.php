@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Consolidation;
 
-use App\Models\Account;
-use App\Models\ConsolidationGroup;
-use App\Models\JournalEntry;
-use App\Models\Team;
-use App\Models\User;
-use App\Services\ConsolidationService;
-use App\Services\FinancialStatementService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\ConsolidationGroup;
+use Liberu\Accounting\Erp\Models\JournalEntry;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\ConsolidationService;
+use Liberu\Accounting\Erp\Services\FinancialStatementService;
 use Tests\TestCase;
 
 class ConsolidationServiceTest extends TestCase

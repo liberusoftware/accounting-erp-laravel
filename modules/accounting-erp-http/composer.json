@@ -1,0 +1,32 @@
+{
+    "name": "liberusoftware/module-accounting-erp-http",
+    "description": "HTTP controllers, API resources, and routes for the ERP runtime.",
+    "type": "liberu-module",
+    "license": "MIT",
+    "version": "1.0.0",
+    "require": {
+        "filament/filament": "^5.11.0",
+        "laravel/framework": "^13.38.0",
+        "liberusoftware/module-accounting-erp": "^1.0",
+        "liberusoftware/module-manager": "^1.0",
+        "php": "^8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Liberu\\Accounting\\ErpHttp\\": "src/"
+        },
+        "files": [
+            "compatibility.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Liberu\\Accounting\\ErpHttp\\ErpHttpServiceProvider"
+            ]
+        },
+        "liberu": {
+            "name": "accounting-erp-http"
+        }
+    }
+}

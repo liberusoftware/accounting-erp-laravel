@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\User;
 
 uses(RefreshDatabase::class);
 

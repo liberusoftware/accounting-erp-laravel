@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Models;
 
-use App\Models\Account;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
 use Tests\TestCase;
 
 class AccountModelTest extends TestCase

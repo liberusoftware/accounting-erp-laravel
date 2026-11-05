@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Services\FinancialStatementService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Services\FinancialStatementService;
 use Tests\TestCase;
 
 class FinancialStatementServiceTest extends TestCase

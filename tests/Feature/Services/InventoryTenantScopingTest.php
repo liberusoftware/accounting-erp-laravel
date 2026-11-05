@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Services;
 
-use App\Models\InventoryItem;
-use App\Models\User;
-use App\Services\InventoryService;
-use App\Services\TeamManagementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\InventoryItem;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\InventoryService;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
 use Tests\TestCase;
 
 /**

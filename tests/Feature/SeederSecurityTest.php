@@ -2,12 +2,12 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
-use Database\Seeders\TeamSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
+use Liberu\Accounting\Erp\Database\Seeders\TeamSeeder;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 class SeederSecurityTest extends TestCase

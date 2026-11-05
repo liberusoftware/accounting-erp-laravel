@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Accounting\EstimatesAndQuotes\Actions\AddEstimateItem;
 use Liberu\Accounting\EstimatesAndQuotes\Actions\ConvertEstimate;
 use Liberu\Accounting\EstimatesAndQuotes\Actions\CreateEstimate;

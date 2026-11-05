@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\Organizations\Models\Team;
 use Spatie\Activitylog\Models\Activity;
 

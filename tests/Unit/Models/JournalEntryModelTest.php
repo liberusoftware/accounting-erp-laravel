@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Models;
 
-use App\Models\JournalEntry;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\JournalEntry;
 use Tests\TestCase;
 
 class JournalEntryModelTest extends TestCase

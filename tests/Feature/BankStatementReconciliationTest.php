@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
-use App\Models\Account;
-use App\Models\BankStatement;
-use App\Models\Transaction;
-use App\Models\User;
-use App\Services\ReconciliationService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\BankStatement;
+use Liberu\Accounting\Erp\Models\Transaction;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\ReconciliationService;
 use Tests\TestCase;
 
 class BankStatementReconciliationTest extends TestCase

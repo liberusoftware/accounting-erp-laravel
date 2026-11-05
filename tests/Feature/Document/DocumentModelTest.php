@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Document;
 
-use App\Models\DocumentVersion;
-use App\Models\Invoice;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\DocumentVersion;
+use Liberu\Accounting\Erp\Models\Invoice;
 use Tests\TestCase;
 
 class DocumentModelTest extends TestCase

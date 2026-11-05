@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Procurement;
 
-use App\Models\PurchaseRequest;
-use App\Models\PurchaseRequestItem;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\PurchaseRequest;
+use Liberu\Accounting\Erp\Models\PurchaseRequestItem;
 use Tests\TestCase;
 
 class PurchaseRequestModelTest extends TestCase

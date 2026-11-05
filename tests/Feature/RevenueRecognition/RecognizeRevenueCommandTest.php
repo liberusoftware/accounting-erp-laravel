@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Feature\RevenueRecognition;
 
-use App\Models\Account;
-use App\Models\Invoice;
-use App\Models\JournalEntry;
-use App\Models\Team;
-use App\Models\User;
-use App\Services\InvoicePostingService;
-use App\Services\RevenueRecognitionService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\JournalEntry;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\InvoicePostingService;
+use Liberu\Accounting\Erp\Services\RevenueRecognitionService;
 use Tests\TestCase;
 
 class RecognizeRevenueCommandTest extends TestCase

@@ -5,12 +5,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature\SalesOrder;
 
-use App\Models\Customer;
-use App\Models\SalesOrder;
-use App\Models\Team;
-use App\Models\User;
-use App\Services\SalesOrderService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\SalesOrder;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\SalesOrderService;
 use Tests\TestCase;
 
 class ConvertToInvoiceTest extends TestCase

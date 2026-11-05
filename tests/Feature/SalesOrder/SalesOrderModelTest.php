@@ -5,9 +5,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature\SalesOrder;
 
-use App\Models\SalesOrder;
-use App\Models\SalesOrderItem;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\SalesOrder;
+use Liberu\Accounting\Erp\Models\SalesOrderItem;
 use Tests\TestCase;
 
 class SalesOrderModelTest extends TestCase

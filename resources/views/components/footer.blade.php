@@ -1,6 +1,6 @@
 @php
     try {
-        $settings = app(\App\Settings\GeneralSettings::class);
+        $settings = app(\Liberu\Accounting\Erp\Settings\GeneralSettings::class);
         $siteName = $settings->site_name;
         $siteAddress = $settings->site_address ?? '';
         $sitePhone = $settings->site_phone ?? '';

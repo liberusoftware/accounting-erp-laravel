@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Models\Customer;
-use App\Models\Estimate;
-use App\Models\Team;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\Estimate;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 class EstimateApiTest extends TestCase

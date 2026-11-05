@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\User;
-use App\Services\TeamManagementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
 use Tests\TestCase;
 
 /**

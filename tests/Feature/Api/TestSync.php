@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Api;
 
-use App\Models\BankConnection;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
+use Liberu\Accounting\Erp\Models\BankConnection;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 class TestSync extends TestCase

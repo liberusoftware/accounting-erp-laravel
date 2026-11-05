@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Company;
-use App\Models\HmrcCorporationTaxSubmission;
-use App\Services\HmrcAuthService;
-use App\Services\HmrcMtdCorporationTaxService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
+use Liberu\Accounting\Erp\Models\Company;
+use Liberu\Accounting\Erp\Models\HmrcCorporationTaxSubmission;
+use Liberu\Accounting\Erp\Services\HmrcAuthService;
+use Liberu\Accounting\Erp\Services\HmrcMtdCorporationTaxService;
 use Tests\TestCase;
 
 class HmrcCorporationTaxTest extends TestCase

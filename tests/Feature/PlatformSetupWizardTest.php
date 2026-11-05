@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-use App\Filament\Admin\Pages\ManageGeneralSettings;
-use App\Filament\Admin\Pages\PlatformSetupWizard;
-use App\Models\User;
-use App\Settings\GeneralSettings;
 use Filament\Facades\Filament;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Settings\GeneralSettings;
+use Liberu\Accounting\ErpFilament\Filament\Admin\Pages\ManageGeneralSettings;
+use Liberu\Accounting\ErpFilament\Filament\Admin\Pages\PlatformSetupWizard;
 use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\Foundation\RolesPermissions\Models\Role;
 use Livewire\Livewire;
+use Spatie\LaravelSettings\Factories\SettingsRepositoryFactory;
 
 it('restricts platform configuration to super administrators', function (): void {
     $this->actingAs(User::factory()->create());
@@ -47,4 +48,18 @@ it('lets a super administrator configure the platform without changing optional 
     expect($settings->site_name)->toBe('Acme Accounting')
         ->and($settings->site_email)->toBe('support@example.com')
         ->and($settings->github_url)->toBe('https://github.com/example');
+});
+
+it('preserves legacy ERP settings when moving to the shared site settings', function () {
+    $repository = SettingsRepositoryFactory::create();
+    $repository->createProperty('general', 'site_name', 'Existing ERP name', true);
+    $repository->createProperty('general', 'github_url', 'https://github.com/existing');
+
+    $files = glob(base_path('modules/accounting-erp/database/migrations/*migrate_legacy_erp_general_settings.php'));
+    (require $files[0])->up();
+
+    expect($repository->getPropertyPayload('site', 'site_name'))->toBe('Existing ERP name')
+        ->and($repository->getPropertyPayload('site', 'github_url'))->toBe('https://github.com/existing')
+        ->and($repository->getPropertyPayload('general', 'site_name'))->toBe('Existing ERP name')
+        ->and($repository->getLockedProperties('site'))->toContain('site_name');
 });

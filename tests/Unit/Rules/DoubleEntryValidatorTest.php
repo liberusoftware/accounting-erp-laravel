@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Rules;
 
-use App\Rules\DoubleEntryValidator;
+use Liberu\Accounting\Erp\Rules\DoubleEntryValidator;
 use Tests\TestCase;
 
 class DoubleEntryValidatorTest extends TestCase

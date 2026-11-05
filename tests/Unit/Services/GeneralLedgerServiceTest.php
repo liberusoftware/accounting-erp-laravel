@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Services\ExchangeRateService;
-use App\Services\GeneralLedgerService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
+use Liberu\Accounting\Erp\Services\ExchangeRateService;
+use Liberu\Accounting\Erp\Services\GeneralLedgerService;
 use Mockery;
 use Tests\TestCase;
 

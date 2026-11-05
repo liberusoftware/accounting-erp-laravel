@@ -5,12 +5,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature\SalesOrder;
 
-use App\Models\Customer;
-use App\Models\Estimate;
-use App\Models\EstimateItem;
-use App\Models\Invoice;
-use App\Services\SalesOrderService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\Estimate;
+use Liberu\Accounting\Erp\Models\EstimateItem;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Services\SalesOrderService;
 use Tests\TestCase;
 
 class CreateFromEstimateTest extends TestCase

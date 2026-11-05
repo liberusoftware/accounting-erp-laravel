@@ -1,0 +1,180 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Liberu\Accounting\ErpFilament\Filament\App\Resources\Transactions;
+
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ExportBulkAction;
+use Filament\Actions\ViewAction;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
+use Liberu\Accounting\Erp\Models\Currency;
+use Liberu\Accounting\Erp\Models\Transaction;
+use Liberu\Accounting\Erp\Rules\DoubleEntryValidator;
+use Liberu\Accounting\Erp\Services\ExchangeRateService;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\Transactions\Pages\CreateTransaction;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\Transactions\Pages\EditTransaction;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\Transactions\Pages\ListTransactions;
+
+class TransactionResource extends Resource
+{
+    #[\Override]
+    protected static ?string $model = Transaction::class;
+
+    #[\Override]
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    #[\Override]
+    protected static string|\UnitEnum|null $navigationGroup = 'Banking';
+
+    #[\Override]
+    protected static ?int $navigationSort = 3;
+
+    #[\Override]
+    public static function form(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                DatePicker::make('transaction_date')
+                    ->label('Date')
+                    ->required(),
+                Textarea::make('transaction_description')
+                    ->label('Description')
+                    ->required(),
+                TextInput::make('amount')
+                    ->numeric()
+                    ->label('Amount')
+                    ->required()
+                    ->rules(['required', new DoubleEntryValidator()])
+                    ->step('0.01'),
+                Select::make('currency_id')
+                    ->relationship('currency', 'code')
+                    ->label('Currency')
+                    ->required()
+                    ->searchable()
+                    ->preload()
+                    ->live()
+                    ->afterStateUpdated(function ($state, callable $set): void {
+                        if ($state) {
+                            $defaultCurrency = Currency::where('is_default', true)->first();
+                            if ($state !== $defaultCurrency->currency_id) {
+                                $exchangeRateService = app(ExchangeRateService::class);
+                                $rate = $exchangeRateService->getExchangeRate(
+                                    Currency::find($state),
+                                    $defaultCurrency
+                                );
+                                $set('exchange_rate', $rate);
+                            } else {
+                                $set('exchange_rate', 1);
+                            }
+                        }
+                    }),
+                TextInput::make('exchange_rate')
+                    ->numeric()
+                    ->label('Exchange Rate')
+                    ->required()
+                    ->default(1)
+                    ->step('0.000001')
+                    ->helperText('Exchange rate to default currency'),
+                Select::make('debit_account_id')
+                    ->relationship('debitAccount', 'account_name')
+                    ->label('Debit Account')
+                    ->required()
+                    ->searchable()
+                    ->preload(),
+                Select::make('credit_account_id')
+                    ->relationship('creditAccount', 'account_name')
+                    ->label('Credit Account')
+                    ->required()
+                    ->searchable()
+                    ->preload(),
+                Toggle::make('reconciled')
+                    ->label('Reconciled'),
+                Textarea::make('discrepancy_notes')
+                    ->label('Discrepancy Notes'),
+            ]);
+    }
+
+    #[\Override]
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('transaction_date')
+                    ->label('Date')
+                    ->date()
+                    ->sortable(),
+                TextColumn::make('transaction_description')
+                    ->label('Description')
+                    ->searchable()
+                    ->limit(30),
+                TextColumn::make('amount')
+                    ->label('Amount')
+                    ->money('usd')
+                    ->sortable(),
+                TextColumn::make('debitAccount.name')
+                    ->label('Debit Account')
+                    ->searchable(),
+                TextColumn::make('creditAccount.name')
+                    ->label('Credit Account')
+                    ->searchable(),
+                IconColumn::make('reconciled')
+                    ->boolean()
+                    ->label('Reconciled')
+                    ->tooltip('Reconciliation Status'),
+                TextColumn::make('discrepancy_notes')
+                    ->label('Notes')
+                    ->searchable()
+                    ->limit(20),
+            ])
+            ->filters([
+                SelectFilter::make('reconciled')
+                    ->options([
+                        true => 'Reconciled',
+                        false => 'Not Reconciled',
+                    ]),
+                // DateRangeFilter::make('transaction_date'),
+            ])
+            ->recordActions([
+                EditAction::make(),
+                ViewAction::make(),
+            ])
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                    ExportBulkAction::make(),
+                ]),
+            ])
+            ->defaultSort('transaction_date', 'desc');
+    }
+
+    #[\Override]
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    #[\Override]
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListTransactions::route('/'),
+            'create' => CreateTransaction::route('/create'),
+            'edit' => EditTransaction::route('/{record}/edit'),
+        ];
+    }
+}

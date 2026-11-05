@@ -5,14 +5,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Forecast;
 
-use App\Models\Account;
-use App\Models\ForecastScenario;
-use App\Models\ForecastScenarioLine;
-use App\Models\Team;
-use App\Models\Transaction;
-use App\Models\User;
-use App\Services\ForecastService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\ForecastScenario;
+use Liberu\Accounting\Erp\Models\ForecastScenarioLine;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\Transaction;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\ForecastService;
 use Tests\TestCase;
 
 class ForecastServiceTest extends TestCase

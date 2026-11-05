@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Models\Account;
-use App\Models\Currency;
-use App\Models\Transaction;
-use App\Models\User;
-use App\Services\TeamManagementService;
-use App\Services\TransactionSettlementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\Currency;
+use Liberu\Accounting\Erp\Models\Transaction;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
+use Liberu\Accounting\Erp\Services\TransactionSettlementService;
 use Tests\TestCase;
 
 class TransactionCurrencyTest extends TestCase

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Modules;
 
-use App\Modules\ModuleManager;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
+use Liberu\Accounting\Erp\Modules\ModuleManager;
 use Tests\TestCase;
 
 class ModuleManagerTest extends TestCase

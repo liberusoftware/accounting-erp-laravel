@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Services\PayrollTaxService;
+use Liberu\Accounting\Erp\Services\PayrollTaxService;
 use Tests\TestCase;
 
 class PayrollTaxPeriodTest extends TestCase

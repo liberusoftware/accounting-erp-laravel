@@ -1,0 +1,19 @@
+name: Package quality
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  package-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: '8.5'
+          tools: composer:v2
+      - run: composer validate --no-check-lock --no-check-all
+      - name: Lint PHP
+        run: git ls-files -z '*.php' | xargs -0 -r -n1 php -l

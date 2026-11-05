@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Recurring;
 
-use App\Models\Expense;
-use App\Models\Team;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Expense;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 /**
- * Covers Expense wired to the App\Concerns\Recurring engine: a single-row
+ * Covers Expense wired to the Liberu\Accounting\Erp\Concerns\Recurring engine: a single-row
  * template (no line items, no number column) catches up one draft per missed
  * occurrence, honours the per-run safety cap, and carries team_id to children.
  */

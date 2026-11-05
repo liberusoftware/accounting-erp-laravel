@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Models\Account;
-use App\Models\Bill;
-use App\Models\QboConnection;
-use App\Models\User;
-use App\Models\Vendor;
-use App\Services\QuickBooksService;
-use App\Services\TeamManagementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\Bill;
+use Liberu\Accounting\Erp\Models\QboConnection;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Models\Vendor;
+use Liberu\Accounting\Erp\Services\QuickBooksService;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
 use Tests\TestCase;
 
 class QboAccountBillSyncTest extends TestCase

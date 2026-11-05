@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Models\Account;
-use App\Models\Budget;
-use App\Models\User;
-use App\Services\BudgetService;
-use App\Services\TeamManagementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\Budget;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\BudgetService;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
 use Tests\TestCase;
 
 class BudgetServiceTest extends TestCase

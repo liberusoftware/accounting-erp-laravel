@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Laravel\Sanctum\Sanctum;
@@ -17,6 +16,7 @@ use Liberu\Accounting\EmployeeExpenses\Actions\SubmitExpenseClaim;
 use Liberu\Accounting\EmployeeExpenses\Enums\ClaimStatus;
 use Liberu\Accounting\EmployeeExpenses\Events\ClaimLifecycleChanged;
 use Liberu\Accounting\EmployeeExpenses\Exceptions\InvalidClaim;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 final class AccountingEmployeeExpensesTest extends TestCase

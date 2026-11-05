@@ -1,10 +1,10 @@
 <?php
 
 declare(strict_types=1);
-use App\Models\Team;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
 
 uses(RefreshDatabase::class);
 it('records carbon activity and calculates co2e for the current team', function (): void {

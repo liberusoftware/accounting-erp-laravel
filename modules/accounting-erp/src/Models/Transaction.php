@@ -1,0 +1,177 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Liberu\Accounting\Erp\Models;
+
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\UseFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
+use Liberu\Accounting\Erp\Database\Factories\TransactionFactory;
+use Liberu\Accounting\Erp\Observers\TransactionObserver;
+use Liberu\Accounting\Erp\Services\ExchangeRateService;
+use Liberu\Accounting\Erp\Traits\IsTenantModel;
+
+/**
+ * @property string $transaction_date
+ * @property string|null $type
+ * @property float|string $amount
+ * @property string|null $description
+ * @property int|null $team_id
+ * @property-read Currency|null $currency
+ * @property-read Collection<int, InventoryTransaction> $inventoryTransactions
+ */
+#[ObservedBy(TransactionObserver::class)]
+#[UseFactory(TransactionFactory::class)]
+class Transaction extends Model
+{
+    use HasFactory;
+    use IsTenantModel;
+
+    #[\Override]
+    protected $primaryKey = 'transaction_id';
+
+    #[\Override]
+    protected $fillable = [
+        'transaction_date',
+        'transaction_description',
+        'description',
+        'amount',
+        'currency_id',
+        'account_id',
+        'debit_account_id',
+        'credit_account_id',
+        'bank_statement_id',
+        'discrepancy_notes',
+        'exchange_rate',
+        'transaction_type',
+        'type',
+        'external_id',
+        'bank_connection_id',
+        'category',
+        'status',
+        'team_id',
+        'reconciled',
+    ];
+
+    #[\Override]
+    protected $casts = [
+        'reconciled' => 'boolean',
+        'exchange_rate' => 'decimal:6',
+        'amount' => 'decimal:2',
+        'transaction_date' => 'date',
+    ];
+
+    #[\Override]
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function (Transaction $transaction): void {
+            if (empty($transaction->user_id) && auth()->check()) {
+                $transaction->user_id = auth()->id();
+            }
+
+            // ponytail: stamp tenant team on non-Filament creates (Filament stamps panel creates itself); additive, leaves DB default when tenantless.
+            if (empty($transaction->team_id) && ($team = auth()->user()?->currentTeam) !== null) {
+                $transaction->team_id = $team->getKey();
+            }
+
+            if (! $transaction->exchange_rate) {
+                $defaultCurrency = Currency::where('is_default', true)->first();
+                if ($defaultCurrency && $transaction->currency_id && $transaction->currency_id !== $defaultCurrency->currency_id) {
+                    $exchangeRateService = app(ExchangeRateService::class);
+                    $transaction->exchange_rate = $exchangeRateService->getExchangeRate(
+                        $transaction->currency,
+                        $defaultCurrency
+                    );
+                } else {
+                    $transaction->exchange_rate = 1;
+                }
+            }
+        });
+    }
+
+    /**
+     * @return BelongsTo<Currency, $this>
+     */
+    public function currency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class, 'currency_id', 'currency_id');
+    }
+
+    /**
+     * @return BelongsTo<Account, $this>
+     */
+    public function account(): BelongsTo
+    {
+        return $this->belongsTo(Account::class);
+    }
+
+    public function debitAccount()
+    {
+        return $this->belongsTo(Account::class, 'debit_account_id');
+    }
+
+    public function creditAccount()
+    {
+        return $this->belongsTo(Account::class, 'credit_account_id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    /**
+     * @return HasMany<InventoryTransaction, $this>
+     */
+    public function inventoryTransactions(): HasMany
+    {
+        return $this->hasMany(InventoryTransaction::class);
+    }
+
+    public function bankConnection()
+    {
+        return $this->belongsTo(BankConnection::class);
+    }
+
+    public function auditLogs()
+    {
+        return $this->morphMany(AuditLog::class, 'auditable');
+    }
+
+    public function getAmountInCurrency(Currency $targetCurrency)
+    {
+        if ($this->currency_id === $targetCurrency->currency_id) {
+            return $this->amount;
+        }
+
+        $exchangeRateService = app(ExchangeRateService::class);
+        $rate = $exchangeRateService->getExchangeRate($this->currency, $targetCurrency);
+
+        return $this->amount * $rate;
+    }
+
+    public function getAmountInDefaultCurrency()
+    {
+        $defaultCurrency = Currency::where('is_default', true)->first();
+
+        return $this->getAmountInCurrency($defaultCurrency);
+    }
+
+    public function updateInventory(): void
+    {
+        foreach ($this->inventoryTransactions as $inventoryTx) {
+            $quantity = $inventoryTx->quantity;
+            if ($this->transaction_type === 'sale') {
+                $quantity *= -1;
+            }
+            $inventoryTx->inventoryItem->updateQuantity($quantity);
+        }
+    }
+}

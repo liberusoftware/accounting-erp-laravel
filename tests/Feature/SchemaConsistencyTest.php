@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
+use Liberu\Accounting\Erp\Models\Invoice;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionNamedType;
@@ -27,8 +28,8 @@ class SchemaConsistencyTest extends TestCase
     {
         $problems = [];
 
-        foreach (glob(app_path('Models/*.php')) as $file) {
-            $class = 'App\\Models\\'.basename($file, '.php');
+        foreach (glob(dirname((new ReflectionClass(Invoice::class))->getFileName()).'/*.php') as $file) {
+            $class = 'Liberu\\Accounting\\Erp\\Models\\'.basename($file, '.php');
             if (! class_exists($class)) {
                 continue;
             }

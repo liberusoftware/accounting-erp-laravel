@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use App\Models\Account;
-use App\Models\JournalEntry;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\JournalEntry;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 class JournalEntryTest extends TestCase

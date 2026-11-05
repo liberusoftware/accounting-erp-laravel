@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Approval;
 
-use App\Filament\App\Resources\ApprovalRules\Pages\CreateApprovalRule;
-use App\Models\ApprovalRule;
-use App\Models\User;
-use App\Services\TeamManagementService;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\ApprovalRule;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\ApprovalRules\Pages\CreateApprovalRule;
 use Livewire\Livewire;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;

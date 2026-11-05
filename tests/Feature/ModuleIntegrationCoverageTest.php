@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Laravel\Socialite\Two\InvalidStateException;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\ApiAccess\Support\IdempotencyStore;
 use Liberu\Foundation\ApplicationCore\Health\ReadinessRegistry;
 use Liberu\Foundation\ApplicationCore\Http\Controllers\ReadinessController;

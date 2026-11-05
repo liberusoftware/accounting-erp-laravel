@@ -4,31 +4,16 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Models\User;
-use App\Modules\ModuleManager;
-use App\Modules\ModuleServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 use Laravel\Horizon\Horizon;
+use Liberu\Accounting\Erp\Models\User;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    #[\Override]
-    public function register(): void
-    {
-        // Register the module manager as a singleton
-        $this->app->singleton(ModuleManager::class, fn ($app): ModuleManager => new ModuleManager());
-
-        // Register the module service provider
-        $this->app->register(ModuleServiceProvider::class);
-    }
-
     public function boot(): void
     {
         if (class_exists(Horizon::class)) {

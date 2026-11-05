@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Recurring;
 
-use App\Models\Invoice;
-use App\Models\InvoiceItem;
-use App\Models\JournalEntry;
-use App\Models\Team;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Notification;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\InvoiceItem;
+use Liberu\Accounting\Erp\Models\JournalEntry;
+use Liberu\Accounting\Erp\Models\Team;
 use Tests\TestCase;
 
 class RecurringInvoiceTest extends TestCase

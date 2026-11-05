@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Notifications;
 
-use App\Filament\App\Pages\NotificationSettings;
-use App\Filament\App\Pages\TeamNotificationSettings;
-use App\Models\Team;
-use App\Models\User;
-use App\Models\UserNotificationPreference;
-use App\Services\TeamManagementService;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Models\UserNotificationPreference;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
+use Liberu\Accounting\ErpFilament\Filament\App\Pages\NotificationSettings;
+use Liberu\Accounting\ErpFilament\Filament\App\Pages\TeamNotificationSettings;
 use Tests\TestCase;
 
 class NotificationSettingsTest extends TestCase

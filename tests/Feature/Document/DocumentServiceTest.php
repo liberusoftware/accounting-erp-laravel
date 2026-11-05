@@ -5,13 +5,13 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Document;
 
-use App\Models\DocumentVersion;
-use App\Models\Invoice;
-use App\Services\DocumentService;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Liberu\Accounting\Erp\Models\DocumentVersion;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Services\DocumentService;
 use Tests\TestCase;
 
 class DocumentServiceTest extends TestCase

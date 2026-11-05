@@ -1,6 +1,6 @@
 @php
     try {
-        $siteName = app(\App\Settings\GeneralSettings::class)->site_name;
+        $siteName = app(\Liberu\Accounting\Erp\Settings\GeneralSettings::class)->site_name;
     } catch (\Throwable) {
         $siteName = config('app.name', 'Accounting');
     }
@@ -14,7 +14,7 @@
     }
 
     try {
-        $menuHtml = app(\App\Services\MenuService::class)->buildMenu();
+        $menuHtml = app(\Liberu\Accounting\Erp\Services\MenuService::class)->buildMenu();
     } catch (\Throwable) {
         $menuHtml = '';
     }

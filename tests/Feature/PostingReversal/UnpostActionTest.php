@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Tests\Feature\PostingReversal;
 
-use App\Filament\App\Resources\Payments\Pages\ListPayments;
-use App\Models\Customer;
-use App\Models\Invoice;
-use App\Models\Payment;
-use App\Models\Team;
-use App\Models\User;
-use App\Services\PaymentPostingService;
-use App\Services\TenantProvisioningService;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\Payment;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\PaymentPostingService;
+use Liberu\Accounting\Erp\Services\TenantProvisioningService;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\Payments\Pages\ListPayments;
 use Livewire\Livewire;
 use Tests\TestCase;
 

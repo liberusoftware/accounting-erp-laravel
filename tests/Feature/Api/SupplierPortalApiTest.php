@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Models\User;
 
 uses(RefreshDatabase::class);
 

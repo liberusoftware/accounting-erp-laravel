@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Modules\ModuleManager;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Modules\ModuleManager;
 use Tests\TestCase;
 
 class ModuleSystemTest extends TestCase

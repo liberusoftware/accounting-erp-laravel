@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
-use App\Filament\Customer\Pages\Auth\CustomerLogin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -19,6 +18,8 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Liberu\Accounting\ErpFilament\ErpFilamentPlugin;
+use Liberu\Accounting\ErpFilament\Filament\Customer\Pages\Auth\CustomerLogin;
 
 /**
  * Customer self-service portal. Guard `customer`; no tenancy — a customer's
@@ -31,6 +32,7 @@ class CustomerPanelProvider extends PanelProvider
     {
         return $panel
             ->id('customer')
+            ->plugin(ErpFilamentPlugin::make())
             ->path('portal')
             ->authGuard('customer')
             ->login(CustomerLogin::class)
@@ -38,9 +40,6 @@ class CustomerPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Emerald,
             ])
-            ->discoverResources(in: app_path('Filament/Customer/Resources'), for: 'App\\Filament\\Customer\\Resources')
-            ->discoverPages(in: app_path('Filament/Customer/Pages'), for: 'App\\Filament\\Customer\\Pages')
-            ->discoverWidgets(in: app_path('Filament/Customer/Widgets'), for: 'App\\Filament\\Customer\\Widgets')
             ->pages([
                 Dashboard::class,
             ])

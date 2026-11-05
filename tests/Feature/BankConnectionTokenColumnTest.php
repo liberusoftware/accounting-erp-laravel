@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\BankConnection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
+use Liberu\Accounting\Erp\Models\BankConnection;
 use Tests\TestCase;
 
 class BankConnectionTokenColumnTest extends TestCase

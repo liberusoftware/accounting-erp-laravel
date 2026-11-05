@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Accounting\Vat\Models\VatRecord;
 use Liberu\Accounting\Vat\Models\VatReturn;
 use Liberu\Foundation\Organizations\Models\Team;

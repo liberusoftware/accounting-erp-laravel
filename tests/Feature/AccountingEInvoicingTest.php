@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Laravel\Sanctum\Sanctum;
@@ -18,6 +17,7 @@ use Liberu\Accounting\EInvoicing\Actions\ValidateEInvoice;
 use Liberu\Accounting\EInvoicing\Enums\DocumentStatus;
 use Liberu\Accounting\EInvoicing\Events\EInvoiceStatusChanged;
 use Liberu\Accounting\EInvoicing\Exceptions\InvalidEInvoice;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 final class AccountingEInvoicingTest extends TestCase

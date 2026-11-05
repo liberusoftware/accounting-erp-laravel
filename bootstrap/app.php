@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Middleware\EnsurePremiumAccess;
-use App\Http\Middleware\SecurityHeaders;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
 use Laravel\Sanctum\Http\Middleware\CheckAbilities;
+use Liberu\Accounting\Erp\Http\Middleware\EnsurePremiumAccess;
+use Liberu\Accounting\Erp\Http\Middleware\SecurityHeaders;
 use Liberu\Foundation\Localization\Http\Middleware\SetLocale;
 
 return Application::configure(basePath: dirname(__DIR__))

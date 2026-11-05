@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Tests\Feature\PostingReversal;
 
-use App\Models\Account;
-use App\Models\Customer;
-use App\Models\Invoice;
-use App\Models\Payment;
-use App\Models\Team;
-use App\Models\User;
-use App\Services\InvoicePostingService;
-use App\Services\PaymentPostingService;
-use App\Services\PostingReversalService;
-use App\Services\RevenueRecognitionService;
-use App\Services\TenantProvisioningService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\Payment;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\InvoicePostingService;
+use Liberu\Accounting\Erp\Services\PaymentPostingService;
+use Liberu\Accounting\Erp\Services\PostingReversalService;
+use Liberu\Accounting\Erp\Services\RevenueRecognitionService;
+use Liberu\Accounting\Erp\Services\TenantProvisioningService;
 use RuntimeException;
 use Tests\TestCase;
 

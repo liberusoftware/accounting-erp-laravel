@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Models;
 
-use App\Models\Invoice;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Invoice;
 use Tests\TestCase;
 
 class InvoiceModelTest extends TestCase

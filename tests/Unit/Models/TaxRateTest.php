@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Models;
 
-use App\Models\TaxRate;
+use Liberu\Accounting\Erp\Models\TaxRate;
 use Tests\TestCase;
 
 class TaxRateTest extends TestCase

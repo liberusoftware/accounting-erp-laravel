@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Notifications;
 
-use App\Models\Customer;
-use App\Models\Expense;
-use App\Models\Invoice;
-use App\Models\User;
-use App\Models\UserNotificationPreference;
-use App\Notifications\Channels\SmsChannel;
-use App\Notifications\ExpenseApprovalNotification;
-use App\Notifications\PaymentReminderNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\Expense;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Models\UserNotificationPreference;
+use Liberu\Accounting\Erp\Notifications\Channels\SmsChannel;
+use Liberu\Accounting\Erp\Notifications\ExpenseApprovalNotification;
+use Liberu\Accounting\Erp\Notifications\PaymentReminderNotification;
 use Tests\TestCase;
 
 class NotificationChannelsTest extends TestCase

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature\PaymentPosting;
 
-use App\Models\Invoice;
-use App\Models\JournalEntry;
-use App\Models\Payment;
-use App\Models\Team;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\JournalEntry;
+use Liberu\Accounting\Erp\Models\Payment;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 class PaymentModelTest extends TestCase

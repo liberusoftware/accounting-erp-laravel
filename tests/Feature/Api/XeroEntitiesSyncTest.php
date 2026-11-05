@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Models\Account;
-use App\Models\Bill;
-use App\Models\Invoice;
-use App\Models\Payment;
-use App\Models\Transaction;
-use App\Models\User;
-use App\Models\Vendor;
-use App\Models\XeroConnection;
-use App\Services\XeroService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\Bill;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\Payment;
+use Liberu\Accounting\Erp\Models\Transaction;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Models\Vendor;
+use Liberu\Accounting\Erp\Models\XeroConnection;
+use Liberu\Accounting\Erp\Services\XeroService;
 use Tests\TestCase;
 
 class XeroEntitiesSyncTest extends TestCase

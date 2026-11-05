@@ -1,0 +1,148 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Liberu\Accounting\Erp\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Liberu\Accounting\Erp\Traits\IsTenantModel;
+
+/**
+ * Delayed Charge Model
+ *
+ * Records future charges to be added to a customer's invoice later.
+ * Delayed charges don't affect accounts receivable or income until converted to an invoice.
+ * Useful for tracking billable work that will be invoiced in the future.
+ *
+ * @property int $delayed_charge_id
+ * @property int $customer_id
+ * @property string $charge_date
+ * @property string $description
+ * @property int $quantity
+ * @property float|string $unit_price
+ * @property float|string $amount
+ * @property int|null $invoice_id
+ * @property string $status
+ */
+class DelayedCharge extends Model
+{
+    use HasFactory, SoftDeletes;
+    use IsTenantModel;
+
+    #[\Override]
+    protected $primaryKey = 'delayed_charge_id';
+
+    #[\Override]
+    protected $fillable = [
+        'customer_id',
+        'charge_date',
+        'description',
+        'quantity',
+        'unit_price',
+        'amount',
+        'account_id',
+        'invoice_id',
+        'notes',
+        'status',
+    ];
+
+    #[\Override]
+    protected $casts = [
+        'charge_date' => 'date',
+        'quantity' => 'integer',
+        'unit_price' => 'decimal:2',
+        'amount' => 'decimal:2',
+    ];
+
+    #[\Override]
+    protected $attributes = [
+        'status' => 'pending',
+        'quantity' => 1,
+    ];
+
+    #[\Override]
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($charge): void {
+            // Auto-calculate amount
+            if (! isset($charge->amount) || $charge->amount == 0) {
+                $charge->amount = $charge->quantity * $charge->unit_price;
+            }
+        });
+
+        static::created(function ($charge): void {
+            if (empty($charge->status)) {
+                $charge->status = 'pending';
+                $charge->saveQuietly();
+            }
+        });
+    }
+
+    /**
+     * Get the customer that owns the delayed charge
+     */
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class, 'customer_id', 'id');
+    }
+
+    /**
+     * Get the account for this charge
+     */
+    public function account(): BelongsTo
+    {
+        return $this->belongsTo(Account::class, 'account_id', 'id');
+    }
+
+    /**
+     * Get the invoice this charge was added to (if any)
+     */
+    public function invoice(): BelongsTo
+    {
+        return $this->belongsTo(Invoice::class, 'invoice_id', 'id');
+    }
+
+    /**
+     * Add this delayed charge to an invoice
+     */
+    public function addToInvoice(int $invoiceId): void
+    {
+        if ($this->status === 'invoiced') {
+            throw new \Exception('Delayed charge has already been invoiced');
+        }
+
+        $this->invoice_id = $invoiceId;
+        $this->status = 'invoiced';
+        $this->save();
+    }
+
+    /**
+     * Check if charge is pending
+     */
+    public function isPending(): bool
+    {
+        return $this->status === 'pending';
+    }
+
+    /**
+     * Check if charge has been invoiced
+     */
+    public function isInvoiced(): bool
+    {
+        return $this->status === 'invoiced';
+    }
+
+    /**
+     * Void the delayed charge
+     */
+    public function void(): void
+    {
+        $this->status = 'void';
+        $this->save();
+    }
+}

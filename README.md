@@ -93,6 +93,16 @@ php artisan module:features health
 php artisan module:status search
 ```
 
+The existing integrated ERP implementation is owned by three product packages:
+
+| Package | Owns |
+| --- | --- |
+| `accounting-erp` | Existing ERP models and schema, services, events, jobs, authentication actions, commands, factories, and seeders |
+| `accounting-erp-filament` | ERP pages, resources, widgets, portal presentation, and Blade components |
+| `accounting-erp-http` | ERP HTTP controllers, API resources, routes, and HTTP views |
+
+The ERP product schema remains separate from the newer provider-neutral accounting capability schemas. `app/` composes panels and application policy; `database/seeders/DatabaseSeeder.php` delegates to the ERP package. Existing migration filenames and polymorphic identifiers are retained. Package compatibility autoloaders resolve previously serialized application class names.
+
 ## Module and theme development
 
 A module owns one cohesive capability and communicates through public contracts, actions, events, registries, or stable identifiers. Domain modules do not depend on Filament or themes; optional `*-filament`, `*-api`, and `*-livewire` packages provide presentation adapters.

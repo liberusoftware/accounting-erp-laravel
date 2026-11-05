@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Services;
 
-use App\Models\Account;
-use App\Models\JournalEntry;
-use App\Models\JournalEntryLine;
-use App\Models\User;
-use App\Services\FinancialStatementService;
-use App\Services\TeamManagementService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\JournalEntry;
+use Liberu\Accounting\Erp\Models\JournalEntryLine;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\FinancialStatementService;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
 use Tests\TestCase;
 
 /**

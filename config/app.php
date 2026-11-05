@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 use App\Providers\AppServiceProvider;
 use App\Providers\AuthServiceProvider;
-use App\Providers\EventServiceProvider;
 use App\Providers\Filament\AdminPanelProvider;
 use App\Providers\Filament\AppPanelProvider;
 use App\Providers\Filament\CustomerPanelProvider;
 use App\Providers\Filament\VendorPanelProvider;
-use App\Providers\FortifyServiceProvider;
-use App\Providers\JetstreamServiceProvider;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
@@ -187,15 +184,12 @@ return [
         AppServiceProvider::class,
         AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
-        EventServiceProvider::class,
         AdminPanelProvider::class,
         AppPanelProvider::class,
         CustomerPanelProvider::class,
         VendorPanelProvider::class,
         RouteServiceProvider::class,
 
-        JetstreamServiceProvider::class,
-        FortifyServiceProvider::class,
     ])->toArray(),
 
     /*

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Filament\App\Pages\EditProfile;
-use App\Models\Team;
-use App\Models\User;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\ErpFilament\Filament\App\Pages\EditProfile;
 use Livewire\Livewire;
 use PragmaRX\Google2FA\Google2FA;
 use Spatie\Permission\Models\Role;

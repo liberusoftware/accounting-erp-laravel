@@ -5,10 +5,10 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Subscription;
 
-use App\Models\Customer;
-use App\Models\Plan;
-use App\Models\Subscription;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\Plan;
+use Liberu\Accounting\Erp\Models\Subscription;
 use Tests\TestCase;
 
 class SubscriptionModelTest extends TestCase

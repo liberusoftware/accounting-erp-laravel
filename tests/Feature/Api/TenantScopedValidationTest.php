@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Models\Account;
-use App\Models\Customer;
-use App\Models\Team;
-use App\Models\User;
-use App\Models\Vendor;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Models\Vendor;
 use Tests\TestCase;
 
 /**

@@ -13,6 +13,34 @@
     "repositories": [
         {
             "type": "path",
+            "url": "modules/tenancy",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/accounting-erp-http",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/accounting-erp-filament",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/accounting-erp",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
             "url": "modules/theme-support",
             "options": {
                 "symlink": false,
@@ -3762,7 +3790,7 @@
                     "liberusoftware/module-manager": "1.4.2",
                     "liberusoftware/activity-comments": "1.4.2",
                     "liberusoftware/analytics-core": "1.4.1",
-                    "liberusoftware/integrations": "1.4.1",
+                    "liberusoftware/integrations": "1.7.0",
                     "liberusoftware/analytics-google": "1.4.1",
                     "liberusoftware/analytics-meta": "1.4.1",
                     "liberusoftware/currency-context": "1.4.1",
@@ -3867,7 +3895,7 @@
         "liberusoftware/identity-core-filament": "^1.0",
         "liberusoftware/identity-socialstream": "^1.0",
         "liberusoftware/import-export": "^1.0",
-        "liberusoftware/integrations": "^1.0",
+        "liberusoftware/integrations": "^1.7",
         "liberusoftware/jetstream-bridge": "^1.0",
         "liberusoftware/localization-contracts": "^1.0",
         "liberusoftware/localization-core": "^1.0",
@@ -4053,6 +4081,9 @@
         "liberusoftware/module-accounting-employee-expenses-api": "^1.0",
         "liberusoftware/module-accounting-employee-expenses-filament": "^1.0",
         "liberusoftware/module-accounting-employee-expenses-livewire": "^1.0",
+        "liberusoftware/module-accounting-erp": "^1.0",
+        "liberusoftware/module-accounting-erp-filament": "^1.0",
+        "liberusoftware/module-accounting-erp-http": "^1.0",
         "liberusoftware/module-accounting-estimates-and-quotes": "^1.0",
         "liberusoftware/module-accounting-estimates-and-quotes-api": "^1.0",
         "liberusoftware/module-accounting-estimates-and-quotes-filament": "^1.0",
@@ -4353,7 +4384,6 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Liberu\\AccountingSdk\\": "sdk/src/",
             "Liberu\\Themes\\Base\\": "themes/base/src/",
@@ -4361,10 +4391,7 @@
             "Liberu\\Themes\\Dark\\": "themes/dark/src/",
             "Liberu\\Themes\\DefaultTheme\\": "themes/default/src/",
             "Liberu\\Themes\\AccountingErp\\": "themes/accounting-erp/src/"
-        },
-        "classmap": [
-            "app/Contracts/Integrations/PaymentProviderAdapter.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Account;
-use App\Models\InventoryCostLayer;
-use App\Models\InventoryItem;
-use App\Models\User;
-use App\Services\InventoryMovementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\InventoryCostLayer;
+use Liberu\Accounting\Erp\Models\InventoryItem;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\InventoryMovementService;
 use Tests\TestCase;
 
 class InventoryMovementTest extends TestCase

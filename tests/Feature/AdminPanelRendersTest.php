@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\User;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\Foundation\RolesPermissions\Models\Role;
 

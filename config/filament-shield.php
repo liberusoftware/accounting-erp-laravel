@@ -1,11 +1,11 @@
 <?php
 
 declare(strict_types=1);
-use App\Models\User;
 use BezhanSalleh\FilamentShield\Resources\Roles\RoleResource;
 use Filament\Pages\Dashboard;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
+use Liberu\Accounting\Erp\Models\User;
 
 return [
 

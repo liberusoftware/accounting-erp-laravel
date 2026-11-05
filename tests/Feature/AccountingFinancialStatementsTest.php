@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Liberu\Accounting\ChartOfAccounts\Models\Account;
 use Liberu\Accounting\Core\Models\Book;
 use Liberu\Accounting\Core\Models\LegalEntity;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Accounting\FinancialStatements\Exceptions\InvalidStatementRequest;
 use Liberu\Accounting\FinancialStatements\Queries\StatementQuery;
 use Liberu\Accounting\GeneralLedger\Actions\CreateJournal;

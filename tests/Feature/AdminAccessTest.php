@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Support\Facades\Gate;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\Organizations\Models\Team;
 use Spatie\Permission\Models\Role;
 

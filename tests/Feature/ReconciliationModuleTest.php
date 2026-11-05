@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Module;
-use App\Modules\Reconciliation\ReconciliationModule;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Module;
+use Liberu\Accounting\Erp\Modules\Reconciliation\ReconciliationModule;
 use Tests\TestCase;
 
 class ReconciliationModuleTest extends TestCase

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Models;
 
-use App\Models\Account;
-use App\Models\JournalEntry;
-use App\Models\JournalEntryLine;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\JournalEntry;
+use Liberu\Accounting\Erp\Models\JournalEntryLine;
 use Tests\TestCase;
 
 class JournalEntryLineTest extends TestCase

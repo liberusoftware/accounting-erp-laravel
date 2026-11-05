@@ -1,7 +1,7 @@
 <?php
 
-use App\Filament\App\Widgets\SocialLinksWidget;
-use App\Settings\GeneralSettings;
+use Liberu\Accounting\Erp\Settings\GeneralSettings;
+use Liberu\Accounting\ErpFilament\Filament\App\Widgets\SocialLinksWidget;
 use Livewire\Livewire;
 
 it('renders configured social links and rejects executable URLs', function (): void {

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Approval;
 
-use App\Filament\App\Pages\PendingApprovals;
-use App\Models\ApprovalRule;
-use App\Models\Bill;
-use App\Models\User;
-use App\Services\ApprovalService;
-use App\Services\TeamManagementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
+use Liberu\Accounting\Erp\Models\ApprovalRule;
+use Liberu\Accounting\Erp\Models\Bill;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\ApprovalService;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
+use Liberu\Accounting\ErpFilament\Filament\App\Pages\PendingApprovals;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 

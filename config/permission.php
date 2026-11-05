@@ -41,12 +41,12 @@ return [
          *
          * This key is only read by two members of Spatie's `HasRoles` trait,
          * neither of which this app uses:
-         *   - `HasRoles::teams()` — `App\Models\User` resolves the trait
+         *   - `HasRoles::teams()` — `Liberu\Accounting\Erp\Models\User` resolves the trait
          *     collision with `HasTeams::teams insteadof HasRoles`, so
          *     Jetstream's `teams()` wins and Spatie's is never compiled in.
          *   - the `team()` / `withoutTeam()` query scopes — unused here.
          *
-         * Pointing it at `App\Models\Team` would therefore change no behaviour,
+         * Pointing it at `Liberu\Accounting\Erp\Models\Team` would therefore change no behaviour,
          * and it invites re-exposing Spatie's `teams()` relation, which would
          * collide with Jetstream's. Leave it null.
          */

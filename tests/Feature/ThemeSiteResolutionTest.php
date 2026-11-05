@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\Settings\Settings\SiteSettings;
 use Liberu\Foundation\Theme\Services\ThemeManager;
 

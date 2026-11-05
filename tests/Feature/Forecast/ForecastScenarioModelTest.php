@@ -5,9 +5,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Forecast;
 
-use App\Models\ForecastScenario;
-use App\Models\ForecastScenarioLine;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\ForecastScenario;
+use Liberu\Accounting\Erp\Models\ForecastScenarioLine;
 use Tests\TestCase;
 
 class ForecastScenarioModelTest extends TestCase

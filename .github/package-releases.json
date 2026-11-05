@@ -121,11 +121,11 @@
   },
   "liberusoftware/integrations": {
     "path": "modules/integrations",
-    "reference": "26194502a625f4b513a2b4daf8cd892f837fe8ef",
+    "reference": "c1a21ec9a2c45806a4762bde02cc64c87fc500db",
     "repository": "https://github.com/liberusoftware/module-integrations",
-    "source_signature": "e2d25cf3565fbe7a0198a1379fc97fe6aa004c706c53f12ddcfda04930351c64",
-    "source_tree": "6a3cac78653b732b45b453cc9af3be13a3e27f0e",
-    "version": "1.4.11"
+    "source_signature": "921174eeb28a22f52f2a2d80eeb05a078782a1f65840b63bae16d461f356873b",
+    "source_tree": "ee709560bbfaf4a627139f0de9730c226cb667d7",
+    "version": "1.7.0"
   },
   "liberusoftware/jetstream-bridge": {
     "path": "modules/jetstream-bridge",
@@ -2953,11 +2953,11 @@
   },
   "liberusoftware/module-accounting-revolut": {
     "path": "modules/accounting-revolut",
-    "reference": "4d4d8366677fb2fb3537aa1b6e6533d8435479e6",
+    "reference": "d831c1ee3f04cf5537d6399fca513ddf62d6f7d0",
     "repository": "https://github.com/liberusoftware/module-accounting-revolut",
-    "source_signature": "aaceee09a8142e45931c62b0866ab8d0d5324c9667a0aa22d792722e953caaaa",
-    "source_tree": "26c9b905c9e1f5985e686f2ad7af08636db79e5b",
-    "version": "1.0.0"
+    "source_signature": "914c438a90a5f51adceb115aa658295dfa70bdddaa63273c0e095f08e537213d",
+    "source_tree": "83087bca89db4da08547d9219c3e404435471de7",
+    "version": "1.0.1"
   },
   "liberusoftware/module-accounting-sage-accounting-migration": {
     "path": "modules/accounting-sage-accounting-migration",
@@ -3377,11 +3377,11 @@
   },
   "liberusoftware/module-accounting-wise": {
     "path": "modules/accounting-wise",
-    "reference": "ae42095cc1c9d98ad0b135d75c7517c3b49cac4e",
+    "reference": "4d8bbc58443cace74d51516941f22c8c1e70551f",
     "repository": "https://github.com/liberusoftware/module-accounting-wise",
-    "source_signature": "28f0e4e410c6f838258a025d507ae926f06d827887018265b5945c4b91324cc6",
-    "source_tree": "c34dd87d036146335a931d374043723c72a6b561",
-    "version": "1.0.0"
+    "source_signature": "a90d6eb289c0fc9c099fc57b69b4d9362949ccfcb6e2a0d59b2b520647c57cac",
+    "source_tree": "d3bda54221080d2648cdd6448c8d8d453345294b",
+    "version": "1.0.1"
   },
   "liberusoftware/module-accounting-withholding-tax": {
     "path": "modules/accounting-withholding-tax",

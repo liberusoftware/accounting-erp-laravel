@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56c1a4bedd79b491905eb3fb732d4c9d",
+    "content-hash": "08b6f6a655b3e67162f4a098baa67494",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -6761,11 +6761,11 @@
         },
         {
             "name": "liberusoftware/integrations",
-            "version": "1.4.1",
+            "version": "1.7.0",
             "dist": {
                 "type": "path",
                 "url": "modules/integrations",
-                "reference": "0cf57b1893d01cec70af87ad072d91d908bcbf74"
+                "reference": "fd452b84e5dee3485701a418a27d72a032f44487"
             },
             "require": {
                 "illuminate/database": "^13.38.0",
@@ -13978,6 +13978,156 @@
             }
         },
         {
+            "name": "liberusoftware/module-accounting-erp",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "modules/accounting-erp",
+                "reference": "00bd1f231b9ff1a36af7792aaa31d4b2236ddec0"
+            },
+            "require": {
+                "barryvdh/laravel-dompdf": "^3.1.2",
+                "bezhansalleh/filament-shield": "^4.3.1",
+                "bursteri/socialstream": "^7.0.0",
+                "filament/filament": "^5.11.0",
+                "laravel/framework": "^13.38.0",
+                "laravel/jetstream": "^5.5.3",
+                "laravel/sanctum": "^4.3.3",
+                "laravel/vonage-notification-channel": "^3.3.5",
+                "liberusoftware/identity-core": "^1.0",
+                "liberusoftware/identity-socialstream": "^1.0",
+                "liberusoftware/module-manager": "^1.0",
+                "liberusoftware/observability": "^1.0",
+                "liberusoftware/organizations-teams": "^1.0",
+                "liberusoftware/roles-permissions": "^1.0",
+                "liberusoftware/search": "^1.0",
+                "liberusoftware/settings": "^1.0",
+                "liberusoftware/tenancy": "^1.0.1",
+                "liberusoftware/users-roles": "^1.0",
+                "php": "^8.5",
+                "spatie/laravel-activitylog": "^5.1.3",
+                "spatie/laravel-menu": "^4.2.2",
+                "spatie/laravel-permission": "^8.3.2",
+                "spatie/laravel-settings": "^3.10.0",
+                "thiagoalessio/tesseract_ocr": "^2.13.0"
+            },
+            "type": "liberu-module",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liberu\\Accounting\\Erp\\ErpServiceProvider"
+                    ]
+                },
+                "liberu": {
+                    "name": "accounting-erp"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\Accounting\\Erp\\": "src/"
+                },
+                "files": [
+                    "compatibility.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Integrated ERP workflows and the existing application accounting schema.",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "liberusoftware/module-accounting-erp-filament",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "modules/accounting-erp-filament",
+                "reference": "d5f46ca410fde31dc804095107f7c16c1c298747"
+            },
+            "require": {
+                "filament/filament": "^5.11.0",
+                "laravel/framework": "^13.38.0",
+                "liberusoftware/module-accounting-erp": "^1.0",
+                "liberusoftware/module-manager": "^1.0",
+                "liberusoftware/organizations-teams": "^1.0",
+                "php": "^8.5",
+                "spatie/laravel-permission": "^8.3.2"
+            },
+            "type": "liberu-module",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liberu\\Accounting\\ErpFilament\\ErpFilamentServiceProvider"
+                    ]
+                },
+                "liberu": {
+                    "name": "accounting-erp-filament"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\Accounting\\ErpFilament\\": "src/"
+                },
+                "files": [
+                    "compatibility.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Filament resources, pages, widgets, and portal presentation for the ERP runtime.",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "liberusoftware/module-accounting-erp-http",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "modules/accounting-erp-http",
+                "reference": "923ca1d10a25c93183962821fa815006d43af830"
+            },
+            "require": {
+                "filament/filament": "^5.11.0",
+                "laravel/framework": "^13.38.0",
+                "liberusoftware/module-accounting-erp": "^1.0",
+                "liberusoftware/module-manager": "^1.0",
+                "php": "^8.5"
+            },
+            "type": "liberu-module",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liberu\\Accounting\\ErpHttp\\ErpHttpServiceProvider"
+                    ]
+                },
+                "liberu": {
+                    "name": "accounting-erp-http"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liberu\\Accounting\\ErpHttp\\": "src/"
+                },
+                "files": [
+                    "compatibility.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "HTTP controllers, API resources, and routes for the ERP runtime.",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "liberusoftware/module-accounting-estimates-and-quotes",
             "version": "1.0.0",
             "dist": {
@@ -20497,16 +20647,16 @@
         },
         {
             "name": "liberusoftware/module-accounting-revolut",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-revolut",
-                "reference": "c9590b992103020660d58a86c037fba26b9d6d8b"
+                "reference": "71bc03c81824779b5c97ee0ca7b29c9333e4e9cd"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
                 "illuminate/support": "^13.38.0",
-                "liberusoftware/integrations": "^1.4",
+                "liberusoftware/integrations": "^1.7",
                 "liberusoftware/module-accounting-bank-feeds": "^1.0",
                 "php": "^8.5"
             },
@@ -22530,16 +22680,16 @@
         },
         {
             "name": "liberusoftware/module-accounting-wise",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "dist": {
                 "type": "path",
                 "url": "modules/accounting-wise",
-                "reference": "79b411a841a2b649b4e8118e25e03d836e26d03a"
+                "reference": "397d5845244f9120d7eade43a88319fa3ab91a63"
             },
             "require": {
                 "illuminate/http": "^13.38.0",
                 "illuminate/support": "^13.38.0",
-                "liberusoftware/integrations": "^1.4",
+                "liberusoftware/integrations": "^1.7",
                 "liberusoftware/module-accounting-bank-feeds": "^1.0",
                 "php": "^8.5"
             },
@@ -24255,16 +24405,10 @@
         {
             "name": "liberusoftware/tenancy",
             "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/liberusoftware/module-tenancy.git",
-                "reference": "32cdb9096690f29205255f2eafee4b2b2847fcaa"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/liberusoftware/module-tenancy/zipball/32cdb9096690f29205255f2eafee4b2b2847fcaa",
-                "reference": "32cdb9096690f29205255f2eafee4b2b2847fcaa",
-                "shasum": ""
+                "type": "path",
+                "url": "modules/tenancy",
+                "reference": "7b244be55a1d41a6b6eae64e256d76f78fe35ed0"
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -24280,13 +24424,13 @@
             },
             "type": "liberu-module",
             "extra": {
-                "liberu": {
-                    "name": "tenancy"
-                },
                 "laravel": {
                     "providers": [
                         "Liberu\\Foundation\\Tenancy\\TenancyServiceProvider"
                     ]
+                },
+                "liberu": {
+                    "name": "tenancy"
                 }
             },
             "autoload": {
@@ -24294,16 +24438,24 @@
                     "Liberu\\Foundation\\Tenancy\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Liberu\\Foundation\\Tenancy\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit --no-configuration --bootstrap vendor/autoload.php tests"
+                ]
+            },
             "license": [
                 "MIT"
             ],
             "description": "Shared Filament and Jetstream team tenancy with scoped runtime context and Eloquent isolation.",
-            "support": {
-                "issues": "https://github.com/liberusoftware/module-tenancy/issues",
-                "source": "https://github.com/liberusoftware/module-tenancy/tree/v1.0.1"
-            },
-            "time": "2026-11-02T14:46:06+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "liberusoftware/theme-support",

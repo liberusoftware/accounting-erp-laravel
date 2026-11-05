@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Company;
-use App\Models\HmrcPayeSubmission;
-use App\Services\HmrcAuthService;
-use App\Services\HmrcRtiPayeService;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
+use Liberu\Accounting\Erp\Models\Company;
+use Liberu\Accounting\Erp\Models\HmrcPayeSubmission;
+use Liberu\Accounting\Erp\Services\HmrcAuthService;
+use Liberu\Accounting\Erp\Services\HmrcRtiPayeService;
 use Tests\TestCase;
 
 class HmrcRtiPayeTest extends TestCase

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Accounting\MultiCurrency\Actions\ConfigureCurrency;
 use Liberu\Accounting\MultiCurrency\Actions\CreateRevaluation;
 use Liberu\Accounting\MultiCurrency\Actions\RecordExchangeRate;

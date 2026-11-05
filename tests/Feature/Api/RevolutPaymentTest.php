@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Models\BankConnection;
-use App\Models\User;
-use App\Services\TeamManagementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Models\BankConnection;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
 use Tests\TestCase;
 
 class RevolutPaymentTest extends TestCase

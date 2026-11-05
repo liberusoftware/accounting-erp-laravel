@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Team;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Accounting\FixedAssets\Actions\AcquireAsset;
 use Liberu\Accounting\FixedAssets\Actions\AddAssetComponent;
 use Liberu\Accounting\FixedAssets\Actions\AddAssetDocument;

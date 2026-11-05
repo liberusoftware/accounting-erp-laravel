@@ -5,15 +5,15 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Subscription;
 
-use App\Models\Customer;
-use App\Models\Invoice;
-use App\Models\Plan;
-use App\Models\Subscription;
-use App\Models\Team;
-use App\Models\User;
-use App\Services\SubscriptionBillingService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\Plan;
+use Liberu\Accounting\Erp\Models\Subscription;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\SubscriptionBillingService;
 use Tests\TestCase;
 
 class BillingServiceTest extends TestCase

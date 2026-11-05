@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Exceptions\ApprovalDeniedException;
-use App\Models\ApprovalRule;
-use App\Models\BankConnection;
-use App\Models\OutboundPayment;
-use App\Models\User;
-use App\Services\ApprovalService;
-use App\Services\TeamManagementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Notification;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Exceptions\ApprovalDeniedException;
+use Liberu\Accounting\Erp\Models\ApprovalRule;
+use Liberu\Accounting\Erp\Models\BankConnection;
+use Liberu\Accounting\Erp\Models\OutboundPayment;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\ApprovalService;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 

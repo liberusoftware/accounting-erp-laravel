@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\User;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasDefaultTenant;
 use Filament\Models\Contracts\HasTenants;
+use Liberu\Accounting\Erp\Models\User;
 use Spatie\Permission\Traits\HasRoles;
 
 it('uses the Spatie HasRoles trait', function () {

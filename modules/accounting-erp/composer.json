@@ -1,0 +1,51 @@
+{
+    "name": "liberusoftware/module-accounting-erp",
+    "description": "Integrated ERP workflows and the existing application accounting schema.",
+    "type": "liberu-module",
+    "license": "MIT",
+    "version": "1.0.0",
+    "require": {
+        "barryvdh/laravel-dompdf": "^3.1.2",
+        "bezhansalleh/filament-shield": "^4.3.1",
+        "bursteri/socialstream": "^7.0.0",
+        "filament/filament": "^5.11.0",
+        "laravel/framework": "^13.38.0",
+        "laravel/jetstream": "^5.5.3",
+        "laravel/sanctum": "^4.3.3",
+        "laravel/vonage-notification-channel": "^3.3.5",
+        "liberusoftware/identity-core": "^1.0",
+        "liberusoftware/identity-socialstream": "^1.0",
+        "liberusoftware/module-manager": "^1.0",
+        "liberusoftware/observability": "^1.0",
+        "liberusoftware/organizations-teams": "^1.0",
+        "liberusoftware/roles-permissions": "^1.0",
+        "liberusoftware/search": "^1.0",
+        "liberusoftware/settings": "^1.0",
+        "liberusoftware/tenancy": "^1.0.1",
+        "liberusoftware/users-roles": "^1.0",
+        "php": "^8.5",
+        "spatie/laravel-activitylog": "^5.1.3",
+        "spatie/laravel-menu": "^4.2.2",
+        "spatie/laravel-permission": "^8.3.2",
+        "spatie/laravel-settings": "^3.10.0",
+        "thiagoalessio/tesseract_ocr": "^2.13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Liberu\\Accounting\\Erp\\": "src/"
+        },
+        "files": [
+            "compatibility.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Liberu\\Accounting\\Erp\\ErpServiceProvider"
+            ]
+        },
+        "liberu": {
+            "name": "accounting-erp"
+        }
+    }
+}

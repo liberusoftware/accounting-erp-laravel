@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Category;
-use App\Models\Invoice;
-use App\Models\PaymentTerm;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Category;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\PaymentTerm;
 use Tests\TestCase;
 
 class ModelSchemaConsistencyTest extends TestCase

@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Jobs\SyncPlaidTransactionsJob;
-use App\Models\BankConnection;
-use App\Models\User;
 use Firebase\JWT\JWT;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Bus;
@@ -14,6 +11,9 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Queue;
+use Liberu\Accounting\Erp\Jobs\SyncPlaidTransactionsJob;
+use Liberu\Accounting\Erp\Models\BankConnection;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 class PlaidWebhookControllerTest extends TestCase

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Currency;
-use App\Models\ExchangeRate;
-use App\Models\User;
-use App\Services\ExchangeRateService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Currency;
+use Liberu\Accounting\Erp\Models\ExchangeRate;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\ExchangeRateService;
 use Tests\TestCase;
 
 class ExchangeRateServiceTest extends TestCase

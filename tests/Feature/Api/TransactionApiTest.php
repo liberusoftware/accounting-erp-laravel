@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Models\Transaction;
-use App\Models\User;
-use App\Services\TeamManagementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Models\Transaction;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
 use Tests\TestCase;
 
 class TransactionApiTest extends TestCase

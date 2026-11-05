@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\Theme\Services\ThemeManager;
 
 it('binds the ThemeManager singleton and the theme alias to one instance', function () {

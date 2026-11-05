@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services;
 
-use App\Models\Account;
-use App\Models\BankStatement;
-use App\Models\Transaction;
-use App\Services\BankStatementImportService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\BankStatement;
+use Liberu\Accounting\Erp\Models\Transaction;
+use Liberu\Accounting\Erp\Services\BankStatementImportService;
 use ReflectionMethod;
 use Tests\TestCase;
 

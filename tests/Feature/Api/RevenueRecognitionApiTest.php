@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Accounting\RevenueRecognition\Actions\CreateRevenueSchedule;
 use Liberu\Accounting\RevenueRecognition\Models\RevenueSchedule;
 use Liberu\Foundation\Organizations\Models\Team;

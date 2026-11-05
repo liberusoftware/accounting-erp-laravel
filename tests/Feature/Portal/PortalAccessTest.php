@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Portal;
 
-use App\Models\Customer;
-use App\Models\User;
-use App\Models\Vendor;
-use App\Notifications\PortalAccessNotification;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Models\Vendor;
+use Liberu\Accounting\Erp\Notifications\PortalAccessNotification;
 use Tests\TestCase;
 
 class PortalAccessTest extends TestCase

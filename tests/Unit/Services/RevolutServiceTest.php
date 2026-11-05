@@ -2,11 +2,11 @@
 
 namespace Tests\Unit\Services;
 
-use App\Models\BankConnection;
-use App\Services\RevolutService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
+use Liberu\Accounting\Erp\Models\BankConnection;
+use Liberu\Accounting\Erp\Services\RevolutService;
 use Tests\TestCase;
 
 class RevolutServiceTest extends TestCase

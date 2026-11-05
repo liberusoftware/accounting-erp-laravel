@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\User;
 use BezhanSalleh\FilamentShield\Support\Utils;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\Foundation\RolesPermissions\Models\Role;
 use Livewire\Livewire;

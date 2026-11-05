@@ -1,9 +1,7 @@
 @import '../../../../vendor/filament/filament/resources/css/theme.css';
 
-@source '../../../../app/Filament/Admin/**/*';
-@source '../../../../resources/views/filament/admin/**/*';
-@source '../../../../app/Filament/App/**/*';
-@source '../../../../resources/views/filament/app/**/*';
+@source '../../../../modules/accounting-erp-filament/src/Filament/**/*';
+@source '../../../../modules/accounting-erp-filament/resources/views/**/*';
 
 .accounting-action-grid {
     display: grid;

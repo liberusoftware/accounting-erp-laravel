@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Account;
-use App\Services\AccountCsvService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Services\AccountCsvService;
 use Tests\TestCase;
 
 class AccountCsvServiceTest extends TestCase

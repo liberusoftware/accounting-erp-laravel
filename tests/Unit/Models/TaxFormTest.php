@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Models;
 
-use App\Models\TaxForm;
+use Liberu\Accounting\Erp\Models\TaxForm;
 use Tests\TestCase;
 
 class TaxFormTest extends TestCase

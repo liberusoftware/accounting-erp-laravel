@@ -5,10 +5,10 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Procurement;
 
-use App\Models\PurchaseRequest;
-use App\Models\Team;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\PurchaseRequest;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 class PurchaseRequestTenancyTest extends TestCase

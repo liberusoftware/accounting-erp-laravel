@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Invoice;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Invoice;
 use Tests\TestCase;
 
 class CalculateLateFeeTest extends TestCase

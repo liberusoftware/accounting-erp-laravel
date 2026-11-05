@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Accounting\OperationalReports\Actions\GenerateReport;
 use Liberu\Accounting\OperationalReports\Actions\PublishReport;
 use Liberu\Accounting\OperationalReports\Enums\ReportCategory;

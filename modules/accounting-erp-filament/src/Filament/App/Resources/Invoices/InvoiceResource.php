@@ -1,0 +1,206 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Liberu\Accounting\ErpFilament\Filament\App\Resources\Invoices;
+
+use Filament\Actions\Action;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Notifications\Notification;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Services\InvoicePostingService;
+use Liberu\Accounting\Erp\Services\PostingReversalService;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\Invoices\Pages\CreateInvoice;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\Invoices\Pages\EditInvoice;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\Invoices\Pages\ListInvoices;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\Invoices\RelationManagers\DocumentsRelationManager;
+
+class InvoiceResource extends Resource
+{
+    protected static string|\UnitEnum|null $navigationGroup = 'Sales';
+
+    #[\Override]
+    protected static ?string $model = Invoice::class;
+
+    #[\Override]
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
+
+    #[\Override]
+    public static function form(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Select::make('customer_id')
+                    ->relationship('customer', 'customer_name')
+                    ->required()
+                    ->searchable(),
+                TextInput::make('invoice_number')
+                    ->disabled()
+                    ->dehydrated(false)
+                    ->visible(fn ($record): bool => $record !== null),
+                DatePicker::make('invoice_date')
+                    ->required(),
+                DatePicker::make('due_date'),
+                // ponytail: invoice-level tax fields removed — tax lives per-line on
+                // invoice_items (see the "items" repeater below), not on the invoice.
+                TextInput::make('total_amount')
+                    ->numeric()
+                    ->required(),
+                Select::make('payment_status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'paid' => 'Paid',
+                        'failed' => 'Failed',
+                    ])
+                    ->required(),
+                Repeater::make('items')
+                    ->relationship('items')
+                    ->label('Line items')
+                    ->schema([
+                        TextInput::make('description')
+                            ->required(),
+                        Select::make('account_id')
+                            ->relationship('account', 'account_name')
+                            ->label('Revenue account')
+                            ->searchable(),
+                        TextInput::make('quantity')
+                            ->numeric()
+                            ->default(1)
+                            ->required(),
+                        TextInput::make('unit_price')
+                            ->numeric()
+                            ->required(),
+                    ])
+                    ->columns(4)
+                    ->defaultItems(1)
+                    ->columnSpanFull(),
+                Textarea::make('notes')
+                    ->rows(3),
+                Toggle::make('is_recurring')
+                    ->label('Recurring Invoice')
+                    ->live(),
+                Select::make('recurrence_frequency')
+                    ->options([
+                        'daily' => 'Daily',
+                        'weekly' => 'Weekly',
+                        'monthly' => 'Monthly',
+                        'yearly' => 'Yearly',
+                    ])
+                    ->visible(fn ($get) => $get('is_recurring'))
+                    ->required(fn ($get) => $get('is_recurring')),
+                DatePicker::make('recurrence_start')
+                    ->label('Start Date')
+                    ->visible(fn ($get) => $get('is_recurring'))
+                    ->required(fn ($get) => $get('is_recurring')),
+                DatePicker::make('recurrence_end')
+                    ->label('End Date')
+                    ->visible(fn ($get) => $get('is_recurring'))
+                    ->minDate(fn ($get) => $get('recurrence_start')),
+            ]);
+    }
+
+    #[\Override]
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('invoice_number')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('customer.customer_name')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('invoice_date')
+                    ->date()
+                    ->sortable(),
+                TextColumn::make('total_amount')
+                    ->money('USD')
+                    ->sortable(),
+                TextColumn::make('payment_status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'paid' => 'success',
+                        'failed' => 'danger',
+                        default => 'warning',
+                    }),
+            ])
+            ->recordActions([
+                EditAction::make(),
+                Action::make('download')
+                    ->icon('heroicon-o-document-arrow-down')
+                    ->action(fn (Invoice $record) => response()->streamDownload(
+                        fn (): int => print ($record->generatePDF()),
+                        "invoice_{$record->invoice_number}.pdf"
+                    )),
+                Action::make('postToLedger')
+                    ->label('Post to ledger')
+                    ->icon('heroicon-o-book-open')
+                    ->requiresConfirmation()
+                    ->visible(fn (Invoice $record): bool => $record->journal_entry_id === null)
+                    ->action(function (Invoice $record): void {
+                        try {
+                            $entry = app(InvoicePostingService::class)->post($record);
+                            Notification::make()
+                                ->title("Posted to ledger (entry {$entry->id}).")
+                                ->success()
+                                ->send();
+                        } catch (\RuntimeException $e) {
+                            Notification::make()
+                                ->title('Cannot post invoice')
+                                ->body($e->getMessage())
+                                ->danger()
+                                ->send();
+                        }
+                    }),
+                Action::make('unpost')
+                    ->label('Unpost')
+                    ->icon('heroicon-o-arrow-uturn-left')
+                    ->color('danger')
+                    ->requiresConfirmation()
+                    ->visible(fn (Invoice $record): bool => $record->journal_entry_id !== null)
+                    ->action(function (Invoice $record): void {
+                        try {
+                            app(PostingReversalService::class)->reverseInvoice($record);
+                            Notification::make()
+                                ->title('Unposted from ledger.')
+                                ->success()
+                                ->send();
+                        } catch (\Throwable $e) {
+                            Notification::make()
+                                ->title('Cannot unpost invoice')
+                                ->body($e->getMessage())
+                                ->danger()
+                                ->send();
+                        }
+                    }),
+            ]);
+    }
+
+    #[\Override]
+    public static function getRelations(): array
+    {
+        return [
+            DocumentsRelationManager::class,
+        ];
+    }
+
+    #[\Override]
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListInvoices::route('/'),
+            'create' => CreateInvoice::route('/create'),
+            'edit' => EditInvoice::route('/{record}/edit'),
+        ];
+    }
+}

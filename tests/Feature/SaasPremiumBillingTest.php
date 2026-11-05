@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use App\Models\PremiumCatalog;
-use App\Models\User;
-use App\Services\TeamManagementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Support\Facades\Http;
+use Liberu\Accounting\Erp\Models\PremiumCatalog;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
 
 uses(RefreshDatabase::class);
 

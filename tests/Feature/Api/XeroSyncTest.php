@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Models\Customer;
-use App\Models\Invoice;
-use App\Models\User;
-use App\Models\XeroConnection;
-use App\Services\TeamManagementService;
-use App\Services\XeroService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Models\XeroConnection;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
+use Liberu\Accounting\Erp\Services\XeroService;
 use Tests\TestCase;
 
 class XeroSyncTest extends TestCase

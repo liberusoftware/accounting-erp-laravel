@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\User;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Gate;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\Organizations\Models\Team;
 use Liberu\Foundation\OrganizationsFilament\Resources\TeamResource;
 use Liberu\Foundation\OrganizationsFilament\Resources\TeamResource\Pages\ListTeams;

@@ -5,13 +5,13 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Document;
 
-use App\Models\Invoice;
-use App\Models\Team;
-use App\Models\User;
-use App\Services\DocumentService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\DocumentService;
 use Tests\TestCase;
 
 class DocumentTenancyTest extends TestCase

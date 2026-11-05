@@ -1,0 +1,32 @@
+{
+    "$schema": "https://schemas.liberu.dev/module/v1.json",
+    "name": "accounting-erp",
+    "display_name": "Accounting Erp",
+    "description": "Integrated ERP workflows and the existing application accounting schema.",
+    "version": "1.0.0",
+    "category": "product",
+    "provider": "Liberu\\Accounting\\Erp\\ErpServiceProvider",
+    "requires": {
+        "php": "^8.5",
+        "laravel": "^13.0",
+        "packages": {
+            "liberusoftware/identity-core": "^1.0",
+            "liberusoftware/identity-socialstream": "^1.0",
+            "liberusoftware/module-manager": "^1.0",
+            "liberusoftware/observability": "^1.0",
+            "liberusoftware/organizations-teams": "^1.0",
+            "liberusoftware/roles-permissions": "^1.0",
+            "liberusoftware/search": "^1.0",
+            "liberusoftware/settings": "^1.0",
+            "liberusoftware/tenancy": "^1.0.1",
+            "liberusoftware/users-roles": "^1.0"
+        }
+    },
+    "capabilities": [
+        "accounting.erp"
+    ],
+    "default_enabled": true,
+    "features": [
+        "Integrated ERP workflows and the existing application accounting schema"
+    ]
+}

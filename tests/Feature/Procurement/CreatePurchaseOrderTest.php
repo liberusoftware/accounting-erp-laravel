@@ -5,14 +5,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Procurement;
 
-use App\Models\PaymentTerm;
-use App\Models\PurchaseRequest;
-use App\Models\PurchaseRequestItem;
-use App\Models\Supplier;
-use App\Models\Team;
-use App\Models\User;
-use App\Services\ProcurementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\PaymentTerm;
+use Liberu\Accounting\Erp\Models\PurchaseRequest;
+use Liberu\Accounting\Erp\Models\PurchaseRequestItem;
+use Liberu\Accounting\Erp\Models\Supplier;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Services\ProcurementService;
 use Tests\TestCase;
 
 class CreatePurchaseOrderTest extends TestCase

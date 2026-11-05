@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Models\Account;
-use App\Models\Transaction;
-use App\Services\ProviderTransactionImporter;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\Transaction;
+use Liberu\Accounting\Erp\Services\ProviderTransactionImporter;
 use Liberu\Foundation\Organizations\Models\Team;
 
 it('imports provider transactions idempotently without losing reconciliation', function (): void {

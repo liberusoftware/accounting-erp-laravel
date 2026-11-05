@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Liberu\Accounting\CashCodingFilament\CashCodingFilamentPlugin;
 use Liberu\Accounting\CashCodingFilament\Resources\CashCodingBatchResource;
 use Liberu\Accounting\CashCodingLivewire\CashCodingLivewireServiceProvider;
+use Liberu\Accounting\Erp\Models\User;
 use Livewire\Livewire;
 
 uses(RefreshDatabase::class);

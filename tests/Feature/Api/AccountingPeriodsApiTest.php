@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Liberu\Accounting\Core\Models\Book;
 use Liberu\Accounting\Core\Models\LegalEntity;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Accounting\Periods\Models\AccountingPeriod;
 
 uses(RefreshDatabase::class);

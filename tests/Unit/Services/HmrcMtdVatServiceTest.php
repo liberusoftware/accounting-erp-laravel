@@ -2,12 +2,12 @@
 
 namespace Tests\Unit\Services;
 
-use App\Models\Company;
-use App\Models\HmrcVatReturn;
-use App\Services\HmrcAuthService;
-use App\Services\HmrcMtdVatService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
+use Liberu\Accounting\Erp\Models\Company;
+use Liberu\Accounting\Erp\Models\HmrcVatReturn;
+use Liberu\Accounting\Erp\Services\HmrcAuthService;
+use Liberu\Accounting\Erp\Services\HmrcMtdVatService;
 use Tests\TestCase;
 
 class HmrcMtdVatServiceTest extends TestCase

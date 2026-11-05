@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\User;
-use Database\Seeders\RolesSeeder;
-use Database\Seeders\TeamSeeder;
-use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Database\Seeders\RolesSeeder;
+use Liberu\Accounting\Erp\Database\Seeders\TeamSeeder;
+use Liberu\Accounting\Erp\Database\Seeders\UserSeeder;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\Organizations\Models\Team;
 
 use function Pest\Laravel\seed;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Models;
 
-use App\Models\ApprovalRule;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\ApprovalRule;
 use Tests\TestCase;
 
 class ApprovalModelsTest extends TestCase

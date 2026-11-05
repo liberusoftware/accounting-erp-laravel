@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Recurring;
 
-use App\Models\Bill;
-use App\Models\BillItem;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Bill;
+use Liberu\Accounting\Erp\Models\BillItem;
 use Tests\TestCase;
 
 class RecurringBillTest extends TestCase

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Filament\App\Pages\EditProfile;
-use App\Http\Middleware\EnsureTwoFactorEnabled;
-use App\Models\Team;
-use App\Models\User;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\ErpFilament\Filament\App\Pages\EditProfile;
+use Liberu\Accounting\ErpFilament\Http\Middleware\EnsureTwoFactorEnabled;
 use Spatie\Permission\Models\Role;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;

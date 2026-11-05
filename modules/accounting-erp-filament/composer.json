@@ -1,0 +1,34 @@
+{
+    "name": "liberusoftware/module-accounting-erp-filament",
+    "description": "Filament resources, pages, widgets, and portal presentation for the ERP runtime.",
+    "type": "liberu-module",
+    "license": "MIT",
+    "version": "1.0.0",
+    "require": {
+        "filament/filament": "^5.11.0",
+        "laravel/framework": "^13.38.0",
+        "liberusoftware/module-accounting-erp": "^1.0",
+        "liberusoftware/module-manager": "^1.0",
+        "liberusoftware/organizations-teams": "^1.0",
+        "php": "^8.5",
+        "spatie/laravel-permission": "^8.3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Liberu\\Accounting\\ErpFilament\\": "src/"
+        },
+        "files": [
+            "compatibility.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Liberu\\Accounting\\ErpFilament\\ErpFilamentServiceProvider"
+            ]
+        },
+        "liberu": {
+            "name": "accounting-erp-filament"
+        }
+    }
+}

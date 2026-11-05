@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Rules\DoubleEntryValidator;
+use Liberu\Accounting\Erp\Rules\DoubleEntryValidator;
 use Tests\TestCase;
 
 class DoubleEntryValidatorTest extends TestCase

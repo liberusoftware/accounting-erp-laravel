@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Notifications;
 
-use App\Models\BankStatement;
-use App\Models\User;
-use App\Notifications\ImportFailedNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
+use Liberu\Accounting\Erp\Models\BankStatement;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Notifications\ImportFailedNotification;
 use Tests\TestCase;
 
 class ImportFailedNotificationTest extends TestCase

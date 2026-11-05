@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Liberu\Accounting\AccountsReceivable\Actions\CreateOpenItem;
@@ -10,6 +9,7 @@ use Liberu\Accounting\AccountsReceivable\Models\ReceivableOpenItem;
 use Liberu\Accounting\AccountsReceivableFilament\AccountsReceivableFilamentPlugin;
 use Liberu\Accounting\AccountsReceivableFilament\Resources\ReceivableOpenItemResource;
 use Liberu\Accounting\AccountsReceivableLivewire\AccountsReceivableLivewireServiceProvider;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Accounting\FinancialMasterData\Enums\PartyType;
 use Liberu\Accounting\FinancialMasterData\Models\Party;
 use Livewire\Livewire;

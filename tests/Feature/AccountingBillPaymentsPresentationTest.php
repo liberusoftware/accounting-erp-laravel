@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Liberu\Accounting\BillPaymentsFilament\BillPaymentsFilamentPlugin;
 use Liberu\Accounting\BillPaymentsFilament\Resources\BillPaymentResource;
 use Liberu\Accounting\BillPaymentsLivewire\BillPaymentsLivewireServiceProvider;
+use Liberu\Accounting\Erp\Models\User;
 use Livewire\Livewire;
 
 uses(RefreshDatabase::class);

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Filament\App\Resources\AssetAcquisitions\AssetAcquisitionResource;
-use App\Filament\App\Resources\Assets\AssetResource;
-use App\Models\Module;
-use App\Modules\FixedAssets\FixedAssetsModule;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Module;
+use Liberu\Accounting\Erp\Modules\FixedAssets\FixedAssetsModule;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\AssetAcquisitions\AssetAcquisitionResource;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\Assets\AssetResource;
 use Tests\TestCase;
 
 class FixedAssetsModuleTest extends TestCase

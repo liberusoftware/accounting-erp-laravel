@@ -1,0 +1,35 @@
+{
+    "$schema": "https://schemas.liberu.dev/module/v1.json",
+    "name": "accounting-erp-filament",
+    "display_name": "Accounting Erp Filament",
+    "description": "Filament resources, pages, widgets, and portal presentation for the ERP runtime.",
+    "version": "1.0.0",
+    "category": "presentation",
+    "provider": "Liberu\\Accounting\\ErpFilament\\ErpFilamentServiceProvider",
+    "requires": {
+        "php": "^8.5",
+        "laravel": "^13.0",
+        "packages": {
+            "liberusoftware/module-accounting-erp": "^1.0",
+            "liberusoftware/module-manager": "^1.0",
+            "liberusoftware/organizations-teams": "^1.0"
+        }
+    },
+    "capabilities": [
+        "accounting.erp.filament"
+    ],
+    "default_enabled": true,
+    "features": [
+        "Filament resources, pages, widgets, and portal presentation for the ERP runtime"
+    ],
+    "presentation": {
+        "filament": {
+            "admin": [
+                "Liberu\\Accounting\\ErpFilament\\ErpFilamentPlugin"
+            ],
+            "app": [
+                "Liberu\\Accounting\\ErpFilament\\ErpFilamentPlugin"
+            ]
+        }
+    }
+}

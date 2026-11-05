@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Liberu\Accounting\BankAccountsFilament\BankAccountsFilamentPlugin;
 use Liberu\Accounting\BankAccountsFilament\Resources\BankAccountResource;
 use Liberu\Accounting\BankAccountsLivewire\BankAccountsLivewireServiceProvider;
+use Liberu\Accounting\Erp\Models\User;
 use Livewire\Livewire;
 
 uses(RefreshDatabase::class);

@@ -1,26 +1,14 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
 use Illuminate\Database\Seeder;
+use Liberu\Accounting\Erp\Database\Seeders\DatabaseSeeder as ErpDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        $this->call([
-            // PermissionsSeeder::class,
-            MenuSeeder::class,
-            TeamSeeder::class,
-            RolesSeeder::class,
-            UserSeeder::class,
-        ]);
+        $this->call(ErpDatabaseSeeder::class);
     }
 }

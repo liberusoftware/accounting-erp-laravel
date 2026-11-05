@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api;
 
-use App\Models\Account;
-use App\Models\Customer;
-use App\Models\Invoice;
-use App\Models\Payment;
-use App\Models\SageConnection;
-use App\Models\User;
-use App\Models\Vendor;
-use App\Services\SageService;
-use App\Services\TeamManagementService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Liberu\Accounting\Erp\Models\Account;
+use Liberu\Accounting\Erp\Models\Customer;
+use Liberu\Accounting\Erp\Models\Invoice;
+use Liberu\Accounting\Erp\Models\Payment;
+use Liberu\Accounting\Erp\Models\SageConnection;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Models\Vendor;
+use Liberu\Accounting\Erp\Services\SageService;
+use Liberu\Accounting\Erp\Services\TeamManagementService;
 use Tests\TestCase;
 
 class SageSyncTest extends TestCase

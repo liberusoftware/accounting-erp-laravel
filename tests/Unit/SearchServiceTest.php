@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\Search\Registry\SearcherRegistry;
 use Liberu\Foundation\Search\Services\SearchService;
 

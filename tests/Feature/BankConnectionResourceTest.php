@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use App\Models\BankConnection;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\BankConnection;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 class BankConnectionResourceTest extends TestCase

@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
 use Filament\Facades\Filament;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\Settings\Settings\SiteSettings;
 use Liberu\Foundation\SettingsFilament\Pages\ManageSiteSettings;
 use Livewire\Livewire;

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use Liberu\Accounting\Erp\Models\User;
 use Liberu\Foundation\Search\Contracts\SearchIndexer;
 use Liberu\Foundation\Search\Registry\IndexableRegistry;
 

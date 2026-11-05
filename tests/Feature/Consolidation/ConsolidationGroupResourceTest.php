@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Consolidation;
 
-use App\Filament\App\Resources\ConsolidationGroups\ConsolidationGroupResource;
-use App\Models\ConsolidationGroup;
-use App\Models\Team;
-use App\Models\User;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\ConsolidationGroup;
+use Liberu\Accounting\Erp\Models\Team;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\ErpFilament\Filament\App\Resources\ConsolidationGroups\ConsolidationGroupResource;
 use Tests\TestCase;
 
 class ConsolidationGroupResourceTest extends TestCase

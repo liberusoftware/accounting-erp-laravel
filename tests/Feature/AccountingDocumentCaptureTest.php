@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Laravel\Sanctum\Sanctum;
@@ -15,6 +14,7 @@ use Liberu\Accounting\DocumentCapture\Actions\UploadDocument;
 use Liberu\Accounting\DocumentCapture\Enums\CaptureStatus;
 use Liberu\Accounting\DocumentCapture\Events\CaptureStatusChanged;
 use Liberu\Accounting\DocumentCapture\Exceptions\InvalidCapture;
+use Liberu\Accounting\Erp\Models\User;
 use Tests\TestCase;
 
 final class AccountingDocumentCaptureTest extends TestCase

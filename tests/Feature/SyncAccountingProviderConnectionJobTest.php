@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use App\Jobs\SyncAccountingProviderConnectionJob;
-use App\Models\QboConnection;
-use App\Models\SageConnection;
-use App\Models\User;
-use App\Models\XeroConnection;
-use App\Services\QuickBooksService;
-use App\Services\SageService;
-use App\Services\XeroService;
+use Liberu\Accounting\Erp\Jobs\SyncAccountingProviderConnectionJob;
+use Liberu\Accounting\Erp\Models\QboConnection;
+use Liberu\Accounting\Erp\Models\SageConnection;
+use Liberu\Accounting\Erp\Models\User;
+use Liberu\Accounting\Erp\Models\XeroConnection;
+use Liberu\Accounting\Erp\Services\QuickBooksService;
+use Liberu\Accounting\Erp\Services\SageService;
+use Liberu\Accounting\Erp\Services\XeroService;
 
 it('synchronizes only the selected active provider connection', function (string $provider, string $model, string $externalKey, int $serviceIndex): void {
     $connection = $model::query()->create(['user_id' => User::factory()->create()->id, $externalKey => 'provider-account', 'access_token' => 'access', 'refresh_token' => 'refresh', 'token_expires_at' => now()->addHour(), 'status' => 'active']);

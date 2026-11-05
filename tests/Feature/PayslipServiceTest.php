@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\Models\Employee;
-use App\Models\Payroll;
-use App\Services\PayslipService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Liberu\Accounting\Erp\Models\Employee;
+use Liberu\Accounting\Erp\Models\Payroll;
+use Liberu\Accounting\Erp\Services\PayslipService;
 use Tests\TestCase;
 
 class PayslipServiceTest extends TestCase
