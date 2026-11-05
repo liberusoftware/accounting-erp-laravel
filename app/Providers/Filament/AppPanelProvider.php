@@ -14,7 +14,6 @@ use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
@@ -32,6 +31,9 @@ class AppPanelProvider extends PanelProvider
             ->id('app')
             ->path('app')
             ->brandName('Liberu Accounting')
+            ->viteTheme('resources/css/filament/admin/theme.css')
+            ->sidebarCollapsibleOnDesktop()
+            ->unsavedChangesAlerts()
             ->colors(app(ThemeColors::class)->forSite())
             ->navigationGroups([
                 'Overview',
@@ -56,7 +58,6 @@ class AppPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/App/Widgets'), for: 'App\Filament\App\Widgets')
             ->widgets([
                 AccountWidget::class,
-                FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

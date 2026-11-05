@@ -23,7 +23,8 @@ final class EnsurePremiumAccess
         }
 
         $routeName = (string) $request->route()?->getName();
-        if ($routeName === 'dashboard'
+        if ($routeName === 'filament.app.pages.account-setup'
+            || $routeName === 'dashboard'
             || str_contains($routeName, 'dashboard')
             || str_contains($routeName, 'overview')
             || str_contains($routeName, 'payment')
