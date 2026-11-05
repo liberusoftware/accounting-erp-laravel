@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
-use Filament\Actions\Action;
+use App\Models\User;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Components\EmbeddedSchema;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Text;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Wizard;
 use Filament\Schemas\Components\Wizard\Step;
 use Filament\Schemas\Schema;
@@ -48,8 +50,17 @@ class AccountSetupWizard extends Page
     /** @var list<string> */
     public array $configuredIntegrations = [];
 
+    public static function canAccess(): bool
+    {
+        $user = Auth::user();
+        $team = Filament::getTenant() ?? $user?->currentTeam;
+
+        return $user instanceof User && $team instanceof Team && $user->ownsTeam($team);
+    }
+
     public function mount(): void
     {
+        abort_unless(static::canAccess(), 403);
         $team = $this->team();
         $setup = $team->accounting_setup ?? [];
         $this->configuredIntegrations = collect($setup['integrations'] ?? [])
@@ -82,32 +93,48 @@ class AccountSetupWizard extends Page
                             TextInput::make('business_name')->label('Business or team name')->required()->maxLength(255),
                             Select::make('country')->options(['GB' => 'United Kingdom', 'US' => 'United States', 'CA' => 'Canada', 'AU' => 'Australia', 'IE' => 'Ireland'])->required()->native(false),
                             Select::make('currency')->options(['GBP' => 'GBP — Pound sterling', 'USD' => 'USD — US dollar', 'EUR' => 'EUR — Euro', 'CAD' => 'CAD — Canadian dollar', 'AUD' => 'AUD — Australian dollar'])->required()->native(false),
-                            Select::make('fiscal_year_start')->label('Fiscal year starts')->options(collect(range(1, 12))->mapWithKeys(fn (int $month): array => [sprintf('%02d-01', $month) => Carbon::create()->month($month)->format('F')])->all())->required()->native(false),
-                            TextInput::make('timezone')->label('Timezone')->required()->default(config('app.timezone', 'UTC')),
+                            Select::make('fiscal_year_start')->label('Fiscal year starts')->options(collect(range(1, 12))->mapWithKeys(fn (int $month): array => [sprintf('%02d-01', $month) => Carbon::create(2000, $month, 1)->format('F')])->all())->required()->native(false),
+                            Select::make('timezone')->label('Timezone')->options(array_combine(timezone_identifiers_list(), timezone_identifiers_list()))->searchable()->required()->rule('timezone')->helperText('Used for your workspace reporting preferences.'),
                         ])->columns(2),
                     Step::make('Connections')
-                        ->description('Add credentials only for services you plan to use.')
+                        ->description('Optional — you can connect services later.')
                         ->schema([
-                            TextInput::make('integrations.plaid.client_id')->label('Plaid client ID')->helperText('Required for bank feeds.')->maxLength(255),
-                            TextInput::make('integrations.plaid.secret')->label('Plaid secret')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.plaid.webhook_verification_key')->label('Plaid webhook verification key')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.qbo.client_id')->label('QuickBooks client ID')->maxLength(255),
-                            TextInput::make('integrations.qbo.client_secret')->label('QuickBooks client secret')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.qbo.webhook_verifier_token')->label('QuickBooks webhook verifier token')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.xero.client_id')->label('Xero client ID')->maxLength(255),
-                            TextInput::make('integrations.xero.client_secret')->label('Xero client secret')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.sage.client_id')->label('Sage client ID')->maxLength(255),
-                            TextInput::make('integrations.sage.client_secret')->label('Sage client secret')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.hmrc.client_id')->label('HMRC client ID')->maxLength(255),
-                            TextInput::make('integrations.hmrc.client_secret')->label('HMRC client secret')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.hmrc.server_token')->label('HMRC server token')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.revolut.client_id')->label('Revolut client ID')->maxLength(255),
-                            TextInput::make('integrations.revolut.client_secret')->label('Revolut client secret')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.revolut.webhook_secret')->label('Revolut webhook secret')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.wise.client_id')->label('Wise client ID')->maxLength(255),
-                            TextInput::make('integrations.wise.client_secret')->label('Wise client secret')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.wise.webhook_public_key')->label('Wise webhook public key')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.exchange_rate_api.key')->label('Exchange-rate API key')->password()->revealable()->maxLength(255),
+                            Section::make('Bank feeds · Plaid')->description('Optional. Leave blank to keep saved credentials.')->collapsible()->collapsed()->schema([
+                                TextInput::make('integrations.plaid.client_id')->label('Plaid client ID')->helperText('Required for bank feeds.')->maxLength(255),
+                                TextInput::make('integrations.plaid.secret')->label('Plaid secret')->password()->revealable()->maxLength(255),
+                                TextInput::make('integrations.plaid.webhook_verification_key')->label('Plaid webhook verification key')->password()->revealable()->maxLength(255),
+                            ])->columns(2),
+                            Section::make('Import · QuickBooks')->description('Optional. Leave blank to keep saved credentials.')->collapsible()->collapsed()->schema([
+                                TextInput::make('integrations.qbo.client_id')->label('QuickBooks client ID')->maxLength(255),
+                                TextInput::make('integrations.qbo.client_secret')->label('QuickBooks client secret')->password()->revealable()->maxLength(255),
+                                TextInput::make('integrations.qbo.webhook_verifier_token')->label('QuickBooks webhook verifier token')->password()->revealable()->maxLength(255),
+                            ])->columns(2),
+                            Section::make('Import · Xero')->description('Optional. Leave blank to keep saved credentials.')->collapsible()->collapsed()->schema([
+                                TextInput::make('integrations.xero.client_id')->label('Xero client ID')->maxLength(255),
+                                TextInput::make('integrations.xero.client_secret')->label('Xero client secret')->password()->revealable()->maxLength(255),
+                            ])->columns(2),
+                            Section::make('Import · Sage')->description('Optional. Leave blank to keep saved credentials.')->collapsible()->collapsed()->schema([
+                                TextInput::make('integrations.sage.client_id')->label('Sage client ID')->maxLength(255),
+                                TextInput::make('integrations.sage.client_secret')->label('Sage client secret')->password()->revealable()->maxLength(255),
+                            ])->columns(2),
+                            Section::make('Tax · HMRC')->description('Optional. Leave blank to keep saved credentials.')->collapsible()->collapsed()->schema([
+                                TextInput::make('integrations.hmrc.client_id')->label('HMRC client ID')->maxLength(255),
+                                TextInput::make('integrations.hmrc.client_secret')->label('HMRC client secret')->password()->revealable()->maxLength(255),
+                                TextInput::make('integrations.hmrc.server_token')->label('HMRC server token')->password()->revealable()->maxLength(255),
+                            ])->columns(2),
+                            Section::make('Banking · Revolut')->description('Optional. Leave blank to keep saved credentials.')->collapsible()->collapsed()->schema([
+                                TextInput::make('integrations.revolut.client_id')->label('Revolut client ID')->maxLength(255),
+                                TextInput::make('integrations.revolut.client_secret')->label('Revolut client secret')->password()->revealable()->maxLength(255),
+                                TextInput::make('integrations.revolut.webhook_secret')->label('Revolut webhook secret')->password()->revealable()->maxLength(255),
+                            ])->columns(2),
+                            Section::make('Banking · Wise')->description('Optional. Leave blank to keep saved credentials.')->collapsible()->collapsed()->schema([
+                                TextInput::make('integrations.wise.client_id')->label('Wise client ID')->maxLength(255),
+                                TextInput::make('integrations.wise.client_secret')->label('Wise client secret')->password()->revealable()->maxLength(255),
+                                TextInput::make('integrations.wise.webhook_public_key')->label('Wise webhook public key')->password()->revealable()->maxLength(255),
+                            ])->columns(2),
+                            Section::make('Exchange rates')->description('Optional. Leave blank to keep saved credentials.')->collapsible()->collapsed()->schema([
+                                TextInput::make('integrations.exchange_rate_api.key')->label('Exchange-rate API key')->password()->revealable()->maxLength(255),
+                            ])->columns(2),
                         ])->columns(2),
                     Step::make('Team settings')
                         ->description('Add optional messaging credentials and keep your workspace secure.')
@@ -119,9 +146,13 @@ class AccountSetupWizard extends Page
                     Step::make('Ready to go')
                         ->description('Review the setup and finish when you are ready.')
                         ->schema([
-                            TextInput::make('setup_summary')->label('Next step')->default('Connect bank accounts and import your opening balances.')->disabled()->dehydrated(false),
+                            Text::make(fn (Get $get): string => 'Business: '.($get('business_name') ?? '')),
+                            Text::make(fn (Get $get): string => 'Books: '.($get('country') ?? '').' · '.($get('currency') ?? '').' · Year starts '.($get('fiscal_year_start') ?? '')),
+                            Text::make(fn (Get $get): string => 'Timezone: '.($get('timezone') ?? '')),
+                            Text::make('Next: review your chart of accounts, connect your bank, and enter opening balances before posting transactions. Connections and SMS are optional.'),
                         ]),
-                ])->persistStepInQueryString('setup-step'),
+                ])->persistStepInQueryString('setup-step')
+                    ->submitAction(view('filament.app.pages.setup-submit')),
             ])
             ->statePath('data');
     }
@@ -130,19 +161,12 @@ class AccountSetupWizard extends Page
     {
         return $schema->components([
             EmbeddedSchema::make('form'),
-            Actions::make([
-                Action::make('finish')
-                    ->label('Save setup')
-                    ->color('primary')
-                    ->action(function (): void {
-                        $this->save();
-                    }),
-            ]),
         ]);
     }
 
     public function save(): void
     {
+        abort_unless(static::canAccess(), 403);
         $state = $this->form->getState();
         $team = $this->team();
         $existingIntegrations = is_array($team->accounting_setup['integrations'] ?? null)
@@ -151,7 +175,7 @@ class AccountSetupWizard extends Page
 
         $team->forceFill([
             'name' => $state['business_name'],
-            'accounting_setup' => [
+            'accounting_setup' => array_replace($team->accounting_setup ?? [], [
                 'country' => $state['country'],
                 'currency' => $state['currency'],
                 'fiscal_year_start' => $state['fiscal_year_start'],
@@ -160,10 +184,10 @@ class AccountSetupWizard extends Page
                     $existingIntegrations,
                     is_array($state['integrations'] ?? null) ? $state['integrations'] : [],
                 ),
-            ],
+            ]),
             'vonage_from' => $state['vonage_from'] ?? null,
-            'accounting_setup_completed_at' => now(),
-        ])->save();
+            'accounting_setup_completed_at' => $team->accounting_setup_completed_at ?? now(),
+        ]);
 
         if (filled($state['vonage_key'] ?? null)) {
             $team->vonage_key = $state['vonage_key'];
@@ -176,6 +200,8 @@ class AccountSetupWizard extends Page
         $team->save();
 
         Notification::make()->title('Workspace setup saved')->body('Your team settings and integration credentials are encrypted. You can connect providers from the relevant Banking or Accounting screens.')->success()->send();
+
+        $this->redirect('/app');
     }
 
     /**

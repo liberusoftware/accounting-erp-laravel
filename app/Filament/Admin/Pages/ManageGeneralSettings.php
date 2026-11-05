@@ -28,6 +28,16 @@ class ManageGeneralSettings extends SettingsPage
     #[\Override]
     protected static ?string $navigationLabel = 'General Settings';
 
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isSuperAdmin() ?? false;
+    }
+
+    public function canEdit(): bool
+    {
+        return static::canAccess();
+    }
+
     #[\Override]
     public function form(Schema $schema): Schema
     {

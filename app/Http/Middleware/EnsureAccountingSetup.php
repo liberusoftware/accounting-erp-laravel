@@ -16,6 +16,7 @@ final class EnsureAccountingSetup
         $team = $request->user()?->currentTeam;
 
         if ($team !== null
+            && $request->user()->ownsTeam($team)
             && $team->accounting_setup_completed_at === null
             && ! $request->routeIs('filament.app.pages.account-setup')) {
             return redirect('/app/account-setup');

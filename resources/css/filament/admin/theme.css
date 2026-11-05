@@ -2,3 +2,27 @@
 
 @source '../../../../app/Filament/Admin/**/*';
 @source '../../../../resources/views/filament/admin/**/*';
+@source '../../../../app/Filament/App/**/*';
+@source '../../../../resources/views/filament/app/**/*';
+
+.accounting-action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 1rem;
+}
+
+.accounting-action-card {
+    @apply flex flex-col gap-2 rounded-xl border border-gray-200 bg-white p-5 transition-colors hover:border-primary-400 hover:bg-primary-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:border-white/10 dark:bg-white/5 dark:hover:border-primary-500 dark:hover:bg-white/10;
+}
+
+.accounting-action-title {
+    @apply text-sm font-semibold text-gray-950 dark:text-white;
+}
+
+.accounting-action-description {
+    @apply text-sm text-gray-600 dark:text-gray-400;
+}
+
+.fi-ta-text-item-label {
+    font-variant-numeric: tabular-nums;
+}

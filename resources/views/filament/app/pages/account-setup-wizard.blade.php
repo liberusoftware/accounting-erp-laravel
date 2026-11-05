@@ -12,7 +12,7 @@
                 <x-filament::icon icon="heroicon-o-link" class="h-5 w-5 text-primary-500" />
                 Connect services
             </div>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Add only the OAuth credentials and API keys your team needs.</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Optional: connect services now, or return when your books are ready.</p>
         </div>
         <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-white/5">
             <div class="mb-2 flex items-center gap-2 text-sm font-semibold text-gray-950 dark:text-white">
@@ -30,7 +30,7 @@
 
         @if ($this->configuredIntegrations !== [])
             <div class="mb-6 rounded-lg bg-success-50 p-4 text-sm text-success-800 dark:bg-success-950 dark:text-success-200">
-                Connected credentials are already saved for: {{ collect($this->configuredIntegrations)->map(fn (string $provider): string => strtoupper($provider))->join(', ', ' and ') }}.
+                Credentials are already saved for: {{ collect($this->configuredIntegrations)->map(fn (string $provider): string => strtoupper($provider))->join(', ', ' and ') }}.
                 Leave a credential field blank to keep it unchanged.
             </div>
         @endif
