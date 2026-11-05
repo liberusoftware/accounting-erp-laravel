@@ -26,3 +26,17 @@
 .fi-ta-text-item-label {
     font-variant-numeric: tabular-nums;
 }
+
+.accounting-workspace-summary {
+    @apply mb-6 flex flex-wrap items-center justify-between gap-4 rounded-xl bg-gray-50 p-4 dark:bg-white/5;
+}
+
+.accounting-action-card:hover .accounting-action-title {
+    @apply text-primary-600 dark:text-primary-400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .accounting-action-card {
+        transition: none;
+    }
+}

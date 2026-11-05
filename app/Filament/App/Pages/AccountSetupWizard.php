@@ -82,21 +82,33 @@ class AccountSetupWizard extends Page
         ]);
     }
 
+    public function getSubheading(): ?string
+    {
+        return 'Set up your business and reporting preferences. Connections and messaging are optional, and you can update them later.';
+    }
+
     public function form(Schema $schema): Schema
     {
         return $schema
             ->components([
                 Wizard::make([
                     Step::make('Business profile')
-                        ->description('Tell us how to configure your books.')
+                        ->icon('heroicon-o-building-office')
+                        ->description('Start with your business identity.')
                         ->schema([
                             TextInput::make('business_name')->label('Business or team name')->required()->maxLength(255),
                             Select::make('country')->options(['GB' => 'United Kingdom', 'US' => 'United States', 'CA' => 'Canada', 'AU' => 'Australia', 'IE' => 'Ireland'])->required()->native(false),
-                            Select::make('currency')->options(['GBP' => 'GBP — Pound sterling', 'USD' => 'USD — US dollar', 'EUR' => 'EUR — Euro', 'CAD' => 'CAD — Canadian dollar', 'AUD' => 'AUD — Australian dollar'])->required()->native(false),
-                            Select::make('fiscal_year_start')->label('Fiscal year starts')->options(collect(range(1, 12))->mapWithKeys(fn (int $month): array => [sprintf('%02d-01', $month) => Carbon::create(2000, $month, 1)->format('F')])->all())->required()->native(false),
+                        ])->columns(2),
+                    Step::make('Accounting preferences')
+                        ->icon('heroicon-o-book-open')
+                        ->description('Choose how you organise your reporting.')
+                        ->schema([
+                            Select::make('currency')->label('Base currency')->helperText('Choose the currency you use to keep your books. Review this before posting transactions.')->options(['GBP' => 'GBP — Pound sterling', 'USD' => 'USD — US dollar', 'EUR' => 'EUR — Euro', 'CAD' => 'CAD — Canadian dollar', 'AUD' => 'AUD — Australian dollar'])->required()->native(false),
+                            Select::make('fiscal_year_start')->label('Fiscal year starts')->helperText('The first month of your annual reporting period.')->options(collect(range(1, 12))->mapWithKeys(fn (int $month): array => [sprintf('%02d-01', $month) => Carbon::create(2000, $month, 1)->format('F')])->all())->required()->native(false),
                             Select::make('timezone')->label('Timezone')->options(array_combine(timezone_identifiers_list(), timezone_identifiers_list()))->searchable()->required()->rule('timezone')->helperText('Used for your workspace reporting preferences.'),
                         ])->columns(2),
                     Step::make('Connections')
+                        ->icon('heroicon-o-link')
                         ->description('Optional — you can connect services later.')
                         ->schema([
                             Section::make('Bank feeds · Plaid')->description('Optional. Leave blank to keep saved credentials.')->collapsible()->collapsed()->schema([
@@ -137,6 +149,7 @@ class AccountSetupWizard extends Page
                             ])->columns(2),
                         ])->columns(2),
                     Step::make('Team settings')
+                        ->icon('heroicon-o-chat-bubble-left-right')
                         ->description('Add optional messaging credentials and keep your workspace secure.')
                         ->schema([
                             TextInput::make('vonage_key')->label('Vonage API key')->password()->revealable(false)->helperText('Optional. Used for SMS notifications.'),
@@ -144,12 +157,18 @@ class AccountSetupWizard extends Page
                             TextInput::make('vonage_from')->label('SMS sender ID or number')->maxLength(255),
                         ])->columns(2),
                     Step::make('Ready to go')
+                        ->icon('heroicon-o-check-badge')
                         ->description('Review the setup and finish when you are ready.')
                         ->schema([
                             Text::make(fn (Get $get): string => 'Business: '.($get('business_name') ?? '')),
-                            Text::make(fn (Get $get): string => 'Books: '.($get('country') ?? '').' · '.($get('currency') ?? '').' · Year starts '.($get('fiscal_year_start') ?? '')),
+                            Text::make(fn (Get $get): string => 'Base currency: '.($get('currency') ?? '')),
+                            Text::make(fn (Get $get): string => 'Financial year starts: '.(collect(range(1, 12))->mapWithKeys(fn (int $month): array => [sprintf('%02d-01', $month) => Carbon::create(2000, $month, 1)->format('j F')])->get($get('fiscal_year_start'), 'Not selected'))),
                             Text::make(fn (Get $get): string => 'Timezone: '.($get('timezone') ?? '')),
-                            Text::make('Next: review your chart of accounts, connect your bank, and enter opening balances before posting transactions. Connections and SMS are optional.'),
+                            Section::make('Before your first transaction')->description('Saving this wizard stores your preferences. Complete these accounting tasks from your workspace before you start posting.')->schema([
+                                Text::make('1. Review your chart of accounts with your accountant.'),
+                                Text::make('2. Enter and check your opening balances.'),
+                                Text::make('3. Connect your bank accounts when you are ready to import transactions.'),
+                            ]),
                         ]),
                 ])->persistStepInQueryString('setup-step')
                     ->submitAction(view('filament.app.pages.setup-submit')),
