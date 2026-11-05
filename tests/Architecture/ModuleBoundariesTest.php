@@ -51,7 +51,11 @@ it('lets every package install standalone', function () {
             continue;
         }
 
-        if (($package['config']['allow-plugins']['pestphp/pest-plugin'] ?? null) !== true) {
+        $dependencies = [...($package['require'] ?? []), ...($package['require-dev'] ?? [])];
+        $usesPest = isset($dependencies['pestphp/pest'])
+            || isset($dependencies['liberusoftware/package-testbench']);
+
+        if ($usesPest && ($package['config']['allow-plugins']['pestphp/pest-plugin'] ?? null) !== true) {
             throw new RuntimeException("{$package['name']} must allow pestphp/pest-plugin, or its standalone composer update aborts before installing Pest.");
         }
     }
